@@ -4,31 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="style.css" rel="stylesheet" />
-    <link href="queries.css" rel="stylesheet" />
-    <link href="general.css" rel="stylesheet" />
+    <title>Rekebni - Votre Solution de Covoiturage</title>
+    <!-- CSS LINKS -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/queries.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
+    <!-- ICONION SCRIPT LINKS -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- FONT LINK (UBUNTU-All) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <div class="navbar"></div>
     </header>
     <main>
-      <section class="hero">
-        <div class="cta">
-          <h1 class="cta-title">
-            Voyagez en toute securité et économisez votre argent !
-          </h1>
-          <span class="cta-text"
-            >Avec Rekebni, Faites un geste pour l'environnement et voyagez en
-            toute serenité .</span
-          >
+      <section class="section-hero">
+        <div class="hero">
+          <div class="hero-text-box">
+            <h1 class="hero-title">
+              Voyagez en toute securité et économisez votre argent !
+            </h1>
+            <span class="hero-subtext"
+              >Avec Rekebni, Faites un geste pour l'environnement et voyagez en
+              toute serenité .</span
+            >
+          </div>
+          <img
+            src="img/26234278_7178884 1.svg"
+            alt="Une illustration sur le covoiturage"
+            class="hero-img"
+          />
         </div>
-        <div class="searchbar"></div>
-        <div class="searchbtn"></div>
+        <div class="searchbar">
+          <div class="searchbar-text-box">
+            <div class="depart">
+              <span class="defaulttext">Départ ...</span>
+              <span class="depart-text">Départ ...</span>
+            </div>
+            <div class="arrive">
+              <span class="defaulttext">Arrivée ...</span>
+              <span class="arrive-text">Arrivée ...</span>
+            </div>
+            <div class="date">
+              <ion-icon
+                name="calendar-number-outline"
+                class="searchbar-icon"
+              ></ion-icon>
+              <span class="date-text">Aujourd'hui</span>
+            </div>
+            <div class="personnes">
+              <ion-icon name="people-outline" class="searchbar-icon"></ion-icon>
+              <span class="personnes-text">1</span>
+            </div>
+          </div>
+          <a class="searchbar-btn" href="#">Rechercher</a>
+        </div>
       </section>
-      <section class="features"></section>
-      <section class="toptrajets"></section>
+      <section class="section-info"></section>
+      <section class="section-toptrajets"></section>
     </main>
     <footer>
       <div class="copyright"></div>
