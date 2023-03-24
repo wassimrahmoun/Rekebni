@@ -299,6 +299,11 @@
   border-radius: 25px;
   gap: 0.5rem;
 }
+.trajet:hover *,
+.trajet:active * {
+  color: #00aff5 !important;
+  transition: all 0.3s !important;
+}
 .trajet-text {
   font-size: 2rem;
   color: #030045;
@@ -401,4 +406,8 @@ footer {
 .copyright-text {
   color: #767676;
   margin-top: 3.5rem;
+}
+.address:hover,
+.address:active {
+  text-decoration: none !important;
 }
