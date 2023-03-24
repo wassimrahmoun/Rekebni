@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rekebni - Votre Solution de Covoiturage</title>
     <!-- CSS LINKS -->
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/queries.css" rel="stylesheet" />
-    <link href="css/general.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/queries.css" rel="stylesheet" />
+    <link href="../css/general.css" rel="stylesheet" />
     <!-- ICONION SCRIPT LINKS -->
     <script
       type="module"
@@ -27,12 +27,26 @@
     />
     <!-- scroll effect -->
 
+<<<<<<< HEAD:front-end/index.html
     <script src="js/script.js"></script>
+=======
+      window.onscroll = function () {
+        let currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+          document.querySelector("header").style.top = "0";
+        } else {
+          document.querySelector("header").style.top = "-100px";
+        }
+        prevScrollpos = currentScrollPos;
+      };
+    </script>
+    <script src="../js/script.js"></script>
+>>>>>>> oussama:front-end/html/index.html
   </head>
   <body>
     <header class="header">
       <a href="#">
-        <img class="logo" src="img/LOGO.svg" alt="le Logo de Rekebni" />
+        <img class="logo" src="../img/LOGO.png" alt="le Logo de Rekebni" />
       </a>
       <nav class="main-nav">
         <a class="quisommenous flex-center" href="#"
@@ -69,7 +83,7 @@
             >
           </div>
           <img
-            src="img/26234278_7178884 1.svg"
+            src="../img/26234278_7178884 1.png"
             alt="Une illustration sur le covoiturage"
             class="hero-img"
           />
@@ -99,7 +113,7 @@
           <a class="searchbar-btn" href="#">Rechercher</a>
         </div>
       </section>
-      <img src="img/Squigly-top.svg" class="waves" />
+      <img src="../img/Squigly-top.png" class="waves" />
       <section class="section-info">
         <div class="info-ele grid--typeA">
           <div class="info-textbubble bubble1">
@@ -116,10 +130,10 @@
               des émissions de CO2 et de la pollution de l'air.</span
             >
           </div>
-          <img src="img/23506590_6776431LEGO 1.png" class="info-img" />
+          <img src="../img/23506590_6776431LEGO 1.png" class="info-img" />
         </div>
         <div class="info-ele grid--typeB">
-          <img src="img/image2.svg" class="info-img" />
+          <img src="../img/image2.png" class="info-img" />
           <div class="info-textbubble bubble2">
             <div class="info-title">
               <ion-icon name="cash-outline" class="info-title-icon"></ion-icon>
@@ -150,10 +164,10 @@
               nécessaires pour assurer votre sécurité.</span
             >
           </div>
-          <img src="img/image3.svg" class="info-img" />
+          <img src="../img/image3.png" class="info-img" />
         </div>
       </section>
-      <img src="img/wave2.svg" class="waves" />
+      <img src="../img/wave2.png" class="waves" />
       <section class="section-toptrajets">
         <h2 class="trajets-title">Où voulez-vous aller?</h2>
         <div class="trajets">
@@ -218,11 +232,13 @@
           </div>
         </div>
       </section>
-      <img src="img/wave3.svg" class="waves" />
+      <img src="../img/wave3.png" class="waves" />
     </main>
     <footer>
       <div class="copyright">
-        <img class="footer-logo" src="img/LOGO.svg" />
+        <a href="#">
+          <img class="footer-logo" src="../img/LOGO.png" />
+        </a>
         <div class="sm-logos">
           <a href="#" class="sociallink">
             <ion-icon name="logo-instagram" class="sm-logo"></ion-icon>
@@ -241,7 +257,7 @@
       </div>
       <div class="contact">
         <h1 class="footer-title">Nous Contacter</h1>
-        <span class="footer-element"
+        <span class="footer-element address"
           >112 Liabes Abderahmen St, Sidi-Bel-Abbes, SBA 22046</span
         >
         <a class="footer-element" href="tel:+213 549 208 230"
