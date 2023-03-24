@@ -20,7 +20,7 @@ body {
   max-width: 110rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: 5fr 3fr;
   align-items: center;
 }
 
@@ -35,7 +35,10 @@ body {
 .logInCard {
   border: 5px solid #00aff5;
   border-radius: 39px;
-  padding: 5rem;
+  padding: 5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .texte {
@@ -45,7 +48,6 @@ body {
 }
 /* 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98  */
 .texte-title {
-  /* font-style: normal; */
   font-weight: 500;
   font-size: 3rem;
   color: #030045;
@@ -57,39 +59,35 @@ body {
   font-weight: 300;
   color: #a0a0a0;
 }
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 .inputGroup {
-  width: 400px;
+  width: 100%;
   height: fit-content;
   position: relative;
-  height: auto;
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 20px;
   flex-direction: column;
   gap: 5px;
-  align-self: center;
-  padding-left: 35px;
-  margin-left: 35px;
 }
 
 .inputGroup input {
   font-size: 100%;
-  padding: 0.8em;
+  padding: 1rem;
   outline: none;
   border: 2px solid rgb(200, 200, 200);
   border-radius: 20px;
-  width: 75%;
+  width: 100%;
 }
 
 .inputGroup label {
   font-size: 100%;
   position: absolute;
   left: 0;
-  /* padding: 25px; */
-  /* margin-left: 50px;
-  margin-top: 10px; */
   top: 50%;
-  left: 12%;
+  left: 5%;
   transform: translateY(-50%);
   pointer-events: none;
   transition: all 0.3s ease;
@@ -97,9 +95,10 @@ body {
 }
 
 .inputGroup :is(input:focus, input:valid) ~ label {
-  transform: translateY(-50%) scale(0.9);
+  top: 0%;
+  left: 10%;
+  transform: translateY(-50%) scale(1.5);
   margin: 0px;
-  margin-left: 50px;
   margin-top: 0px;
   background-color: #ffffff;
 }
@@ -110,10 +109,7 @@ body {
 .check {
   display: flex;
   flex-direction: row;
-  width: 200px;
   height: auto;
-  margin-left: 35px;
-  margin-top: 20px;
   align-items: center;
   margin-bottom: 0px;
 }
@@ -225,11 +221,7 @@ body {
 }
 
 .btn-logIN {
-  margin-top: 10px;
-  margin-left: 25px;
-  width: auto;
-  height: auto;
-  padding: 16px 120px;
+  padding: 2rem 5rem;
   color: white;
   background-color: #00aff5;
   border-radius: 20px;
@@ -238,7 +230,7 @@ body {
   font-size: large;
   font-weight: 500px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(45, 35, 66, 0.2);
 }
