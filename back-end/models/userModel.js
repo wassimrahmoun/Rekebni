@@ -54,9 +54,49 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
+
+  this.passwordChangeAt = Date.now() - 1000; //we do -1000ms to not have probleme if the new token come before this middleware
+
+  next();
+});
+
+userSchema.pre(/^find/, function (next) {
+  //this points to the corrents quatry
+  this.find({ active: { $ne: false } }); // note equiale to false because if we do ! true the others dont have the active object
+  next();
+});
+
 userSchema.methods.verifyPassword = async function (userPassword) {
   return await bcrypt.compare(userPassword, this.password);
 };
 
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangeAt) {
+    const changedTimestamp = parseInt(
+      this.passwordChangeAt.getTime() / 1000,
+      10
+    );
+
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
+};
+
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
+
+  this.passwordResetToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  // console.log({ resetToken }, this.passwordResetToken);
+
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10 min and it will expire
+
+  return resetToken;
+};
 const User = mongoose.model("User", userSchema);
 module.exports = User;
