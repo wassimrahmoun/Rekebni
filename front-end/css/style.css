@@ -231,15 +231,15 @@
   height: 100%;
 }
 .bubble1 {
-  background-image: url("/REKEBNI/front-end/img/bubble1.svg");
+  background-image: url(../img/bubble1.png);
   padding: 5rem 5rem 5rem 6.5rem;
 }
 .bubble2 {
-  background-image: url(/REKEBNI/front-end/img/bubble2.svg);
+  background-image: url(../img/bubble2.png);
   padding: 5rem 4rem 7rem 8rem;
 }
 .bubble3 {
-  background-image: url(/REKEBNI/front-end/img/bubble3.svg);
+  background-image: url(../img/bubble3.png);
   padding: 12rem 4rem 12rem 8rem;
 }
 
