@@ -1,0 +1,273 @@
+body{
+  margin: 0px;
+  font-family: "ubuntu", sans-serif;
+}
+
+
+.container{
+  align-self: center;
+}
+.ilustration, .logInCard{
+  display: inline-flex;
+  flex-direction: row;
+  vertical-align: top;
+  justify-content: space-between;
+  
+}
+
+.ilustration{
+  align-self: self-start;
+  padding-left: 25px;
+  padding-right: 110px;
+}
+
+.ilustration img {
+  width: 610px;
+}
+
+.logInCard{
+  margin-top: 30px;
+  box-sizing: border-box;
+  width: 390px;
+  height: 520px;
+  border: 5px solid #00AFF5;
+  border-radius: 39px;
+  align-content: end;
+  flex-direction: column;
+  align-items: start;
+  justify-content: stretch;
+  margin-left: 35px;
+}
+
+.texte{
+  height: 100px;
+  width: 450px;
+  padding: 10px;
+  text-align: left;
+  padding-left: 25px;
+}
+
+.texte h3{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  color: #030045;
+  line-height: 2px;
+}
+
+.texte p{
+  font-size: 10px;
+  line-height: 1px;
+  font-weight: 300;
+  color: #A0A0A0;
+}
+.inputGroup{
+  width: 400px;
+  height: fit-content;
+  position: relative;
+  height: auto;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 5px;
+  align-self: center;
+  padding-left: 35px;
+  margin-left: 35px;
+}
+
+.inputGroup input{
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  border-radius: 20px;
+  width: 75%;
+}
+
+.inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  /* padding: 25px; */
+  margin-left: 50px;
+  margin-top: 15px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: #030045;
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0px;
+  margin-left: 50px;
+  margin-top: 0px;
+  background-color: #ffffff;
+}
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(150, 150, 200);
+}
+
+.check{
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  height: auto;
+  margin-left: 35px;
+  margin-top: 20px;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.check p{
+  padding-left: 5px;
+  font-size: 12px;
+  color: rgba(160, 160, 160, 1)  ;
+  font-weight: 500;
+  margin: 0px;
+}
+
+.checkbox {
+  --border-default: #bbbbc1;
+  --border-hover: #9898a3;
+  --active: #6E7BF2;
+  --active-tick: #ffffff;
+  display: block;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.checkbox svg {
+  display: block;
+  position: absolute;
+}
+
+.checkbox input {
+  display: block;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  /* -webkit-appearance: none; */
+  width: 12px;
+  height: 12px;
+  border-radius: 36%/36%;
+  box-shadow: inset 0 0 0 1.5px var(--border, var(--border-default));
+  background: var(--background, transparent);
+  transition: background 0.25s linear, box-shadow 0.25s linear;
+}
+
+.checkbox input + svg {
+  width: 21px;
+  height: 12px;
+  left: 0;
+  top: 0;
+  color: var(--active);
+}
+
+.checkbox input + svg .tick {
+  stroke-dasharray: 20;
+  stroke-dashoffset: var(--stroke-dashoffset, 20);
+  transition: stroke-dashoffset 0.2s;
+}
+
+.checkbox input + svg .tick.mask {
+  stroke: var(--active-tick);
+}
+
+.checkbox input + svg + svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: var(--active);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  top: -6px;
+  right: -10px;
+  stroke-dasharray: 4.5px;
+  stroke-dashoffset: 13.5px;
+  pointer-events: none;
+  -webkit-animation: var(--animation, none) 0.2s ease 0.175s;
+  animation: var(--animation, none) 0.2s ease 0.175s;
+}
+
+.checkbox input:checked {
+  --background: var(--active);
+  --border: var(--active);
+}
+
+.checkbox input:checked + svg {
+  --stroke-dashoffset: 0;
+}
+
+.checkbox input:checked + svg + svg {
+  --animation: check95;
+}
+
+.checkbox:hover input:not(:checked) {
+  --border: var(--border-hover);
+}
+
+@keyframes check95 {
+  100% {
+    stroke-dashoffset: 4.5px;
+  }
+}
+
+.btn-logIN{
+  margin-top: 10px;
+  margin-left: 25px;
+  width: auto;
+  height: auto;
+  padding: 16px 120px;
+  color: white;
+  background-color: #00AFF5;
+  border-radius: 20px;
+  border: #00AFF5;
+  border: solid transparent;
+  font-size: large;
+  font-weight: 500px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(45, 35, 66, 0.2);
+}
+
+.btn-logIN:hover{
+  box-shadow: 4px 4px 8px rgba(45, 35, 66, 0.3) ;
+  transform: translateY(-2px);
+}
+
+.btn-logIN:active{
+  box-shadow: inset 0 0 7px rgba(45, 35, 66, 0.3);
+  transform: translateY(2px);
+}
+
+
+.linkToSignup{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
+  margin-left: 35px;
+}
+
+.linkToSignup p {
+  color: rgba(160, 160, 160, 1);
+  
+  font-weight: 100;
+}
+
+.linkToSignup a{
+  font-weight: bold;
+  color: #030045;
+  
+}
+
+
+
+
+
