@@ -17,7 +17,7 @@ body {
 
 .container {
   /* align-self: center; */
-  max-width: 130rem;
+  max-width: 110rem;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 8fr 4fr;
