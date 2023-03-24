@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Log IN</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&family=Ubuntu:ital,wght@0,300;0,500;0,700;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <meta charset="UTF-8">
-  <!--Link to nav bar css style-->
-  <link rel="stylesheet" href="navbar1.css">
-  <link rel="stylesheet" href="login.css">
-  <link rel="stylesheet" href="footer.css">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image" href="imags/ICON3.svg">
-  <script
+  <head>
+    <title>Rekebni - Log In Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&family=Ubuntu:ital,wght@0,300;0,500;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <meta charset="UTF-8" />
+    <!--Link to nav bar css style-->
+    <link rel="stylesheet" href="../css/navbar1.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/navbar1.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image" href="../img/ICON3 1.png" />
+    <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
@@ -30,128 +40,154 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="logo">
-        <img src="imags/LOGO.svg" alt="Rakabni">
-        <h1>Rekebni</h1>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="header-container">
+          <div class="logo">
+            <img src="../img/ICON3.svg" alt="Rakabni" />
+            <h1>Rekebni</h1>
+          </div>
+          <div class="links">
+            <a href="#" class="ajouter">
+              <ion-icon name="add-circle-outline" class="ionicon"></ion-icon>
+              <p>Ajouter un Trajet</p>
+            </a>
+            <a href="#" class="Search">
+              <ion-icon name="search-outline" class="ionicon"></ion-icon>
+              <p>Recherche</p>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="ilustration">
+        <img src="../img/ilustationLI.png" alt="Log In Illustration" />
       </div>
-      <div class="links">
-        <a href="#" class="ajouter">
-          <span class="material-symbols-outlined" style="color: #fff;"  >add_circle</span>
-          <p>Ajouter un Trajet</p>
-        </a>
-        <a href="#" class="Search">
-          <span class="material-symbols-outlined" style="color: #fff;">search</span>
-          <p>Recherche</p>
-        </a>
-      </div>
-    </nav> 
-  </header>
-  <div class="container">
-    <div class="ilustration">
-      <img src="imags/ilustationLI.svg" alt="Log IN">
-    </div>
-    <form class="logInCard">
-      <div class="texte">
-        <h3>Se Connecter</h3>
-        <p>Content de vous revoir.</p>
-        <p>Veuillez saisir vos informations d'identification</p>
-      </div>
-      
-      <!--input Email-->
-      <div class="inputGroup">
-        <input type="email" id="email" name="email" required="" autocomplete="on">
-        <label for="email">Email</label>
-      </div>
-      <!--input Password-->
-      <div class="inputGroup">
-        <input type="password" id="password" name="password" required="" autocapitalize="off">
-        <label for="password">Mot de passe</label>
-      </div>
-      <!--rappeler de moi-->
-      <div class="check">
-        <label class="checkbox">
-          <input type="checkbox">
-          <svg viewBox="0 0 21 18">
-              <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 18" id="tick-path">
-                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.25" fill="none" d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"></path>
-              </symbol>
-              <defs>
+      <form class="logInCard">
+        <div class="texte">
+          <h3 class="texte-title">Se Connecter</h3>
+          <p class="texte-text">Content de vous revoir.</p>
+          <p class="texte-text">
+            Veuillez saisir vos informations d'identification
+          </p>
+        </div>
+        <div class="input">
+          <!--input Email-->
+          <div class="inputGroup">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required=""
+              autocomplete="on"
+            />
+            <label for="email">Email</label>
+          </div>
+          <!--input Password-->
+          <div class="inputGroup">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required=""
+              autocapitalize="off"
+            />
+            <label for="password">Mot de passe</label>
+          </div>
+          <!--rappeler de moi-->
+          <div class="check">
+            <label class="checkbox">
+              <input type="checkbox" />
+              <svg viewBox="0 0 21 18">
+                <symbol
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 21 18"
+                  id="tick-path"
+                >
+                  <path
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    stroke-width="2.25"
+                    fill="none"
+                    d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                  ></path>
+                </symbol>
+                <defs>
                   <mask id="tick"></mask>
-              </defs>
-              <path d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z" mask="url(#tick)" fill="white"></path>
-          </svg>
-          <svg viewBox="0 0 11 11" class="lines">
-              <path d="M5.88086 5.89441L9.53504 4.26746"></path>
-              <path d="M5.5274 8.78838L9.45391 9.55161"></path>
-              <path d="M3.49371 4.22065L5.55387 0.79198"></path>
-          </svg>
-        </label>
-        <p>Se Rappeler de moi</p>
+                </defs>
+                <path
+                  d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
+                  mask="url(#tick)"
+                  fill="white"
+                ></path>
+              </svg>
+              <svg viewBox="0 0 11 11" class="lines">
+                <path d="M5.88086 5.89441L9.53504 4.26746"></path>
+                <path d="M5.5274 8.78838L9.45391 9.55161"></path>
+                <path d="M3.49371 4.22065L5.55387 0.79198"></path>
+              </svg>
+            </label>
+            <p>Se Rappeler de moi</p>
+          </div>
+        </div>
+        <!--Button de Connexion-->
+        <button class="btn-logIN">Connexion</button>
+        <div class="linkToSignup">
+          <a href="#">S'inscrire</a>
+          <p>&nbsp; Si vous n'avez pas de compte</p>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+      <!-- Copy Right -->
+      <div class="copyright">
+        <img class="footer-logo" src="../img/LOGOC.svg" />
+        <div class="sm-logos">
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-instagram" class="sm-logo"></ion-icon>
+          </a>
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-facebook" class="sm-logo"></ion-icon>
+          </a>
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-twitter" class="sm-logo"></ion-icon>
+          </a>
+        </div>
+        <span class="copyright-text"
+          >© 2023 Copyright par l'équipe de développement de Rekebni. Tous les
+          droits sont réservés</span
+        >
       </div>
-      <!--Button de Connexion-->
-      <button class="btn-logIN">Connexion</button>
-      <div class="linkToSignup">
-        <a href="#">S'inscrire</a>
-        <p> &nbsp; Si vous n'avez pas de compte</p>
+      <!-- Contact -->
+      <div class="contact">
+        <h1 class="footer-title">Nous Contacter</h1>
+        <span class="footer-element"
+          >112 Liabes Abderahmen St, Sidi-Bel-Abbes, SBA 22046</span
+        >
+        <a class="footer-element" href="tel:+213 549 208 230"
+          >+213 549 208 230</a
+        >
+        <a class="footer-element" href="mailto:contact@rekebni.dz"
+          >contact@rekebni.dz</a
+        >
       </div>
-      
-
-    </form>
-  </div>
-
- <!-- Footer -->
-
-  <footer>
-    <!-- Copy Right -->
-    <div class="copyright">
-      <img class="footer-logo" src="imags/LOGOC.svg" />
-      <div class="sm-logos">
-        <a href="#" class="sociallink">
-          <ion-icon name="logo-instagram" class="sm-logo"></ion-icon>
-        </a>
-        <a href="#" class="sociallink">
-          <ion-icon name="logo-facebook" class="sm-logo"></ion-icon>
-        </a>
-        <a href="#" class="sociallink">
-          <ion-icon name="logo-twitter" class="sm-logo"></ion-icon>
-        </a>
+      <div class="compte">
+        <h1 class="footer-title">Compte</h1>
+        <a class="footer-element" href="#">Se Connecter</a>
+        <a class="footer-element" href="#">Créer un Compte</a>
       </div>
-      <span class="copyright-text"
-        >© 2023 Copyright par l'équipe de développement de Rekebni. Tous les
-        droits sont réservés</span
-      >
-    </div>
-    <!-- Contact -->
-    <div class="contact">
-      <h1 class="footer-title">Nous Contacter</h1>
-      <span class="footer-element"
-        >112 Liabes Abderahmen St, Sidi-Bel-Abbes, SBA 22046</span
-      >
-      <a class="footer-element" href="tel:+213 549 208 230"
-        >+213 549 208 230</a
-      >
-      <a class="footer-element" href="mailto:contact@rekebni.dz"
-        >contact@rekebni.dz</a
-      >
-    </div>
-    <div class="compte">
-      <h1 class="footer-title">Compte</h1>
-      <a class="footer-element" href="#">Se Connecter</a>
-      <a class="footer-element" href="#">Créer un Compte</a>
-    </div>
-    <div class="resources">
-      <h1 class="footer-title">Resources</h1>
-      <a class="footer-element" href="#">A Propos de Rekebni</a>
-      <a class="footer-element" href="#">FAQ</a>
-      <a class="footer-element" href="#">Confidentialité et Conditions</a>
-    </div>
-  </footer>
- 
- 
-
-</body>
+      <div class="resources">
+        <h1 class="footer-title">Resources</h1>
+        <a class="footer-element" href="#">A Propos de Rekebni</a>
+        <a class="footer-element" href="#">FAQ</a>
+        <a class="footer-element" href="#">Confidentialité et Conditions</a>
+      </div>
+    </footer>
+  </body>
 </html>
