@@ -14,7 +14,7 @@ footer {
 .resources {
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  /* align-items: baseline; */
   gap: 1.5rem;
 }
 .footer-title {
@@ -39,6 +39,11 @@ footer {
 .footer-element:link,
 .footer-element:visited {
   color: #030045;
+}
+.address {
+  color: #030045;
+  cursor: auto;
+  text-decoration: none !important;
 }
 .footer-logo {
   width: 100px;
