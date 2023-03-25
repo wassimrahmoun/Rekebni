@@ -2,9 +2,11 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   max-width: 120rem;
-  margin: 25px;
+  margin: 0 auto;
+  padding: 10rem 7rem;
+  /* margin: 25px; */
   justify-content: space-around;
- justify-items: center
+  justify-items: center;
 }
 .copyright,
 .contact,
@@ -59,18 +61,18 @@ footer {
   margin-top: 3.5rem;
 }
 
-.compte{
+.compte {
   max-width: 200px;
 }
 
-.contact{
+.contact {
   max-width: 250px;
 }
 
-.copyright{
+.copyright {
   max-width: 250px;
 }
 
-.resources{
+.resources {
   max-width: 210px;
 }
