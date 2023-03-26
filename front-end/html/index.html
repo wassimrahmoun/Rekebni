@@ -26,18 +26,6 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" type="image" href="../img/ICON3 1.svg" />
-    <!-- scroll effect -->
-    <!-- <script>
-      window.onscroll = function () {
-        let currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-          document.querySelector("header").style.top = "0";
-        } else {
-          document.querySelector("header").style.top = "-100px";
-        }
-        prevScrollpos = currentScrollPos;
-      };
-    </script> -->
     <script src="../js/script.js"></script>
   </head>
   <body>
@@ -127,10 +115,18 @@
               des émissions de CO2 et de la pollution de l'air.</span
             >
           </div>
-          <img src="../img/23506590_6776431LEGO 1.png" class="info-img" />
+          <img
+            src="../img/picture1-ConvertImage.png"
+            data-src="../img/picture1.png"
+            class="lazy-img info-img"
+          />
         </div>
         <div class="info-ele grid--typeB">
-          <img src="../img/image2.png" class="info-img" />
+          <img
+            src="../img/image2-ConvertImage (1).png"
+            data-src="../img/picture2.png"
+            class="lazy-img info-img"
+          />
           <div class="info-textbubble bubble2">
             <div class="info-title">
               <ion-icon name="cash-outline" class="info-title-icon"></ion-icon>
@@ -161,7 +157,11 @@
               nécessaires pour assurer votre sécurité.</span
             >
           </div>
-          <img src="../img/image3.png" class="info-img" />
+          <img
+            src="../img/image3-ConvertImage.png"
+            data-src="../img/picture3.png"
+            class="lazy-img info-img"
+          />
         </div>
       </section>
       <img src="../img/wave2.png" class="waves" />
@@ -277,4 +277,30 @@
       </div>
     </footer>
   </body>
+  <script>
+    const imgTargets = document.querySelectorAll("img[data-src]");
+
+    const loadImg = function (entries, observer) {
+      const [entry] = entries;
+
+      if (!entry.isIntersecting) return;
+
+      // Replace src with data-src
+      entry.target.src = entry.target.dataset.src;
+
+      entry.target.addEventListener("load", function () {
+        entry.target.classList.remove("lazy-img");
+      });
+
+      observer.unobserve(entry.target);
+    };
+
+    const imgObserver = new IntersectionObserver(loadImg, {
+      root: null,
+      threshold: 0,
+      rootMargin: "100px",
+    });
+
+    imgTargets.forEach((img) => imgObserver.observe(img));
+  </script>
 </html>
