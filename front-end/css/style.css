@@ -139,6 +139,31 @@
   /*  */
   height: 4rem;
 }
+
+.searchbar-text-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.searchbar-text-box > * {
+  padding: 0 1rem;
+  position: relative;
+}
+
+.searchbar-text-box > *:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: calc(100% - 1rem);
+  background-color: #ccc;
+  right: -1rem;
+}
+
 .searchbar-btn {
   border: 1px solid #00aff5;
   padding: 0 3rem;
@@ -170,24 +195,17 @@
   border-radius: 11px;
   width: fit-content;
   flex: 1;
+  padding: 0 1rem;
 }
 .searchbar-text-box div {
   display: flex;
   align-items: center;
-  padding: 0 1rem !important;
+  padding: 0 0 0 1rem;
 }
-
-.searchbar-text-box div::before {
-  width: 1px;
-  height: 25px;
-  content: "";
-  background-color: #767676;
+.depart {
+  padding: 0 !important;
 }
-.searchbar-text-box div:first-child::before {
-  display: none;
-}
-.depart-text,
-.personnes {
+.arrive-text {
   margin-left: 1rem;
 }
 
@@ -219,24 +237,28 @@
 .date {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  margin-left: 1rem;
   border: none;
 }
 
 input[type="date"] {
   /* padding: 8px; */
   border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  /* border: 1px solid #ccc; */
+  font-size: 1.8rem;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-  background-color: #e2e1e1;
+  background-color: #ff500a;
   cursor: pointer;
-  color: #333;
+  color: #ffffff;
   font-size: 20px;
   padding: 4px;
   border-radius: 5px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 input[type="date"]::-webkit-inner-spin-button {

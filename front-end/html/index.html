@@ -18,37 +18,6 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <!-- just to not allow the user to input a date earlier to today -->
-    <script>
-      // var today = new Date().toISOString().split("T")[0];
-      // document.getElementById("date").setAttribute("min", today);
-
-      // const dateInput = document.getElementById("date");
-
-      // // set placeholder to nothing
-      // dateInput.addEventListener("focus", () => {
-      //   dateInput.setAttribute("placeholder", "");
-      // });
-
-      // // set placeholder to "Aujourd'hui" when today's date is selected
-      // dateInput.addEventListener("input", () => {
-      //   const today = new Date();
-      //   const selectedDate = new Date(dateInput.value);
-      //   if (selectedDate.toDateString() === today.toDateString()) {
-      //     dateInput.setAttribute("placeholder", "Aujourd'hui");
-      //   } else {
-      //     dateInput.setAttribute("placeholder", "jj/mm");
-      //   }
-      // });
-
-      //
-      //
-      // window.onload = function () {
-      //   var today = new Date();
-      //   var dateInput = document.getElementById("date");
-      //   dateInput.value = today.toISOString().substr(0, 10);
-      // };
-    </script>
     <!-- FONT LINK (UBUNTU-All) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -116,17 +85,10 @@
             <div class="arrive">
               <input
                 type="search"
-                class="depart-text"
+                class="arrive-text"
                 placeholder="Arrivée ..."
               />
             </div>
-            <!-- <div class="date">
-              <ion-icon
-                name="calendar-number-outline"
-                class="searchbar-icon"
-              ></ion-icon>
-              <span class="date-text">Aujourd'hui</span>
-            </div> -->
             <div class="date">
               <label for="date"></label>
               <input
@@ -144,21 +106,35 @@
               // Set the default value of the input element to the current date
               document.getElementById("myDate").value = today;
 
-              const dateInput = document.getElementById("date");
+              const dateInput = document.getElementById("myDate");
 
               // set placeholder to nothing
               dateInput.addEventListener("focus", () => {
                 dateInput.setAttribute("placeholder", "");
               });
-            </script>
-            <script>
+
               // To allow the user to only input a date that is beyond the current date :
               document.getElementById("myDate").setAttribute("min", today);
+
+              // chatgpt's today = aujourdhui
+
+              // const today = new Date().toISOString().substr(0, 10);
+
+              // const dateInput = document.getElementById("myDate");
+
+              // set placeholder to "Aujourd'hui" when today's date is selected
+              dateInput.addEventListener("change", () => {
+                const dateValue = dateInput.value;
+                if (dateValue === today) {
+                  dateInput.setAttribute("placeholder", "Aujourd'hui");
+                } else {
+                  dateInput.setAttribute("placeholder", "");
+                }
+              });
+
+              // Set the default value of the input element to the current date
+              dateInput.value = today;
             </script>
-            <!-- <div class="personnes">
-              <ion-icon name="people-outline" class="searchbar-icon"></ion-icon>
-              <span class="personnes-text">1</span>
-            </div> -->
             <div class="passengers">
               <label for="passengers"
                 ><ion-icon
