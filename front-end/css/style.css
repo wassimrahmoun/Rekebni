@@ -6,13 +6,18 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-  position: sticky;
+  position: absolute;
   transition: all 0.3s;
   width: 100%;
   padding: 0 10rem;
   background-color: #fff;
   z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 .scrolling {
   position: fixed;
   top: 0;
@@ -218,7 +223,17 @@
 }
 .info-img {
   width: 100%;
+  /* filter: blur(10px);
+  transition: filter 0.5s ease-in-out; */
 }
+img {
+  transition: filter 2s;
+}
+
+.lazy-img {
+  filter: blur(20px);
+}
+
 .info-textbubble {
   background-size: contain;
   background-repeat: no-repeat;
@@ -257,8 +272,15 @@
   background-color: #66d0f9;
 }
 .info-title-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
   font-size: 2.4rem;
   font-weight: 700;
+}
+.info-title-text.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .info-text {
   font-size: 2.22rem;
