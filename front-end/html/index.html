@@ -18,6 +18,37 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <!-- just to not allow the user to input a date earlier to today -->
+    <script>
+      // var today = new Date().toISOString().split("T")[0];
+      // document.getElementById("date").setAttribute("min", today);
+
+      // const dateInput = document.getElementById("date");
+
+      // // set placeholder to nothing
+      // dateInput.addEventListener("focus", () => {
+      //   dateInput.setAttribute("placeholder", "");
+      // });
+
+      // // set placeholder to "Aujourd'hui" when today's date is selected
+      // dateInput.addEventListener("input", () => {
+      //   const today = new Date();
+      //   const selectedDate = new Date(dateInput.value);
+      //   if (selectedDate.toDateString() === today.toDateString()) {
+      //     dateInput.setAttribute("placeholder", "Aujourd'hui");
+      //   } else {
+      //     dateInput.setAttribute("placeholder", "jj/mm");
+      //   }
+      // });
+
+      //
+      //
+      // window.onload = function () {
+      //   var today = new Date();
+      //   var dateInput = document.getElementById("date");
+      //   dateInput.value = today.toISOString().substr(0, 10);
+      // };
+    </script>
     <!-- FONT LINK (UBUNTU-All) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -76,23 +107,61 @@
         <div class="searchbar">
           <div class="searchbar-text-box">
             <div class="depart">
-              <span class="defaulttext">Départ ...</span>
-              <span class="depart-text">Départ ...</span>
+              <input
+                type="search"
+                class="depart-text"
+                placeholder="Départ ..."
+              />
             </div>
             <div class="arrive">
-              <span class="defaulttext">Arrivée ...</span>
-              <span class="arrive-text">Arrivée ...</span>
+              <input
+                type="search"
+                class="depart-text"
+                placeholder="Arrivée ..."
+              />
             </div>
-            <div class="date">
+            <!-- <div class="date">
               <ion-icon
                 name="calendar-number-outline"
                 class="searchbar-icon"
               ></ion-icon>
               <span class="date-text">Aujourd'hui</span>
+            </div> -->
+            <div class="date">
+              <label for="date"></label>
+              <input
+                type="date"
+                id="myDate"
+                name="date"
+                placeholder="select a date"
+                value=""
+              />
             </div>
-            <div class="personnes">
+            <script>
+              // Get the current date
+              const today = new Date().toISOString().substr(0, 10);
+
+              // Set the default value of the input element to the current date
+              document.getElementById("myDate").value = today;
+            </script>
+            <!-- <div class="personnes">
               <ion-icon name="people-outline" class="searchbar-icon"></ion-icon>
               <span class="personnes-text">1</span>
+            </div> -->
+            <div class="passengers">
+              <label for="passengers"
+                ><ion-icon
+                  name="people-outline"
+                  class="searchbar-icon"
+                ></ion-icon
+              ></label>
+              <select id="passengers" name="passengers" class="personnes-text">
+                <option value="1" class="personnes-text">1</option>
+                <option value="2" class="personnes-text">2</option>
+                <option value="3" class="personnes-text">3</option>
+                <option value="4" class="personnes-text">4</option>
+                <option value="5" class="personnes-text">5</option>
+              </select>
             </div>
           </div>
           <a class="searchbar-btn" href="#">Rechercher</a>

@@ -129,6 +129,7 @@
 }
 
 .searchbar {
+  min-height: fit-content;
   margin: 0 auto;
   display: flex;
   max-width: fit-content;
@@ -161,9 +162,10 @@
   color: #030045;
 }
 .searchbar-text-box {
+  max-width: 90rem;
   display: grid;
   align-items: center;
-  grid-template-columns: 4fr 4fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 5fr 1fr;
   border: 1px solid #767676;
   border-radius: 11px;
   width: fit-content;
@@ -171,10 +173,24 @@
 }
 .searchbar-text-box div {
   display: flex;
+  align-items: center;
   padding: 0 1rem !important;
-  border-right: 1px solid #767676;
 }
-.date,
+
+.searchbar-text-box div::before {
+  width: 1px;
+  height: 25px;
+  content: "";
+  background-color: #767676;
+}
+.searchbar-text-box div:first-child::before {
+  display: none;
+}
+.depart-text,
+.personnes {
+  margin-left: 1rem;
+}
+
 .personnes {
   cursor: pointer;
 }
@@ -189,12 +205,83 @@
 .arrive-text {
   font-size: 1.8rem;
   font-weight: 500;
+  font-family: "Ubuntu", sans-serif;
+  color: #030045;
+}
+.depart-text::placeholder,
+.arrive-text::placeholder {
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-family: "Ubuntu", sans-serif;
   color: #767676;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border: none;
+}
+
+input[type="date"] {
+  /* padding: 8px; */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-color: #e2e1e1;
+  cursor: pointer;
+  color: #333;
+  font-size: 20px;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #030045;
+}
+
+input[type="date"]::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input[type="date"]:-moz-placeholder {
+  color: transparent;
+}
+
+input[type="date"]::-moz-placeholder {
+  color: transparent;
+}
+
+input[type="date"]:-ms-input-placeholder {
+  color: transparent;
+}
+input[type="date" i] {
+  align-items: center;
+  display: inline-flex;
+  color: #030045;
+  font-family: "ubuntu", sans-serif;
+  font-weight: 700;
+  padding-inline-start: 1px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0px;
 }
 .date-text,
 .personnes-text {
   font-size: 1.8rem;
   font-weight: 500;
+  font-family: "ubuntu", sans-serif;
+  color: #030045;
+  cursor: pointer;
 }
 .searchbar-icon {
   height: 2.1rem;
@@ -202,6 +289,7 @@
   width: 2.1rem;
   color: #030045;
   margin-right: 0.5rem;
+  margin-left: 1rem;
 }
 
 /* ****************************** */
