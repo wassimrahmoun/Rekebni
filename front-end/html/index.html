@@ -143,6 +143,17 @@
 
               // Set the default value of the input element to the current date
               document.getElementById("myDate").value = today;
+
+              const dateInput = document.getElementById("date");
+
+              // set placeholder to nothing
+              dateInput.addEventListener("focus", () => {
+                dateInput.setAttribute("placeholder", "");
+              });
+            </script>
+            <script>
+              // To allow the user to only input a date that is beyond the current date :
+              document.getElementById("myDate").setAttribute("min", today);
             </script>
             <!-- <div class="personnes">
               <ion-icon name="people-outline" class="searchbar-icon"></ion-icon>
