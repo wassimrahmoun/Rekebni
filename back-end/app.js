@@ -5,6 +5,7 @@ const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes");
 const trajetRouter = require("./routes/trajetRoutes");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use(express.urlencoded({ extended: true, limit: "10kb" })); //
 app.use(cookieParser()); //
 
 //teste middleware
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   // console.log(req.headers);
@@ -24,7 +27,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-app.use(express.static(`${__dirname}/public`));
+// app.use(express.static(path.join(__dirname, "public/css")));
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
@@ -33,6 +36,16 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/trajets", trajetRouter);
+
+app.get("/", function (req, res) {
+  const filePath = path.join(__dirname, "public", "html", "index.html");
+  res.sendFile(filePath);
+});
+app.get("/login", function (req, res) {
+  const filePath = path.join(__dirname, "public", "html", "login.html");
+  res.sendFile(filePath);
+});
+
 // if we cherche /API/mehdii ou qlq chose qui nexiste pas on vous donne une err vadalnle poour comprendre
 app.all("*", (req, res, next) => {
   next(new AppError(`cant find ${req.originalUrl} on this serv`, 404));
