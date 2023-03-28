@@ -45,6 +45,10 @@ app.get("/login", function (req, res) {
   const filePath = path.join(__dirname, "public", "html", "login.html");
   res.sendFile(filePath);
 });
+app.get("/signup", function (req, res) {
+  const filePath = path.join(__dirname, "public", "html", "signup.html");
+  res.sendFile(filePath);
+});
 
 // if we cherche /API/mehdii ou qlq chose qui nexiste pas on vous donne une err vadalnle poour comprendre
 app.all("*", (req, res, next) => {
