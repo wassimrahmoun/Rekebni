@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`${__dirname}/../front-end/html/login.html`));
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
