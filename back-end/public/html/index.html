@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rekebni - Votre Solution de Covoiturage</title>
     <!-- CSS LINKS -->
+<<<<<<< HEAD
     <link href="../css/style.css" rel="stylesheet" />
     <link href="../css/queries.css" rel="stylesheet" />
     <link href="../css/general.css" rel="stylesheet" />
+=======
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/quaries.css">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
+
+>>>>>>> hadi
     <!-- ICONION SCRIPT LINKS -->
     <script
       type="module"
@@ -26,6 +33,7 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" type="image" href="../img/ICON3 1.svg" />
+<<<<<<< HEAD
     <!-- scroll effect -->
     <script>
       let prevScrollpos = window.pageYOffset;
@@ -40,6 +48,8 @@
         prevScrollpos = currentScrollPos;
       };
     </script>
+=======
+>>>>>>> hadi
     <script src="../js/script.js"></script>
   </head>
   <body>
@@ -61,10 +71,17 @@
             <span class="whitespan">Ajouter un trajet</span>
           </a>
           <div class="nav-login flex-center">
+<<<<<<< HEAD
             <a class="btn--login flex-center whitespan" href="#"
               >se connecter</a
             >
             <a class="btn--signup flex-center" href="#">s'inscrire</a>
+=======
+            <a class="btn--login flex-center whitespan" href="/login"
+              >se connecter</a
+            >
+            <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
+>>>>>>> hadi
           </div>
         </div>
       </nav>
@@ -90,6 +107,7 @@
         <div class="searchbar">
           <div class="searchbar-text-box">
             <div class="depart">
+<<<<<<< HEAD
               <span class="defaulttext">Départ ...</span>
               <span class="depart-text">Départ ...</span>
             </div>
@@ -107,6 +125,81 @@
             <div class="personnes">
               <ion-icon name="people-outline" class="searchbar-icon"></ion-icon>
               <span class="personnes-text">1</span>
+=======
+              <input
+                type="search"
+                class="depart-text"
+                placeholder="Départ ..."
+              />
+            </div>
+            <div class="arrive">
+              <input
+                type="search"
+                class="arrive-text"
+                placeholder="Arrivée ..."
+              />
+            </div>
+            <div class="date">
+              <label for="date"></label>
+              <input
+                type="date"
+                id="myDate"
+                name="date"
+                placeholder="select a date"
+                value=""
+              />
+            </div>
+            <script>
+              // Get the current date
+              const today = new Date().toISOString().substr(0, 10);
+
+              // Set the default value of the input element to the current date
+              document.getElementById("myDate").value = today;
+
+              const dateInput = document.getElementById("myDate");
+
+              // set placeholder to nothing
+              dateInput.addEventListener("focus", () => {
+                dateInput.setAttribute("placeholder", "");
+              });
+
+              // To allow the user to only input a date that is beyond the current date :
+              document.getElementById("myDate").setAttribute("min", today);
+
+              // chatgpt's today = aujourdhui
+
+              // const today = new Date().toISOString().substr(0, 10);
+
+              // const dateInput = document.getElementById("myDate");
+
+              // set placeholder to "Aujourd'hui" when today's date is selected
+              dateInput.addEventListener("change", () => {
+                const dateValue = dateInput.value;
+                if (dateValue === today) {
+                  dateInput.setAttribute("placeholder", "Aujourd'hui");
+                } else {
+                  dateInput.setAttribute("placeholder", "");
+                }
+              });
+
+              // Set the default value of the input element to the current date
+              dateInput.value = today;
+            </script>
+            <div class="passengers">
+              <label for="passengers"
+                ><ion-icon
+                  name="people-outline"
+                  class="searchbar-icon"
+                ></ion-icon
+              ></label>
+              <select id="passengers" name="passengers" class="personnes-text">
+                <option value="1" class="personnes-text">1</option>
+                <option value="2" class="personnes-text">2</option>
+                <option value="3" class="personnes-text">3</option>
+                <option value="4" class="personnes-text">4</option>
+                <option value="5" class="personnes-text">5</option>
+              </select>
+>>>>>>> hadi
             </div>
           </div>
           <a class="searchbar-btn" href="#">Rechercher</a>
@@ -129,10 +222,25 @@
               des émissions de CO2 et de la pollution de l'air.</span
             >
           </div>
+<<<<<<< HEAD
           <img src="../img/picture1.png" class="info-img" />
         </div>
         <div class="info-ele grid--typeB">
           <img src="../img/picture2.png" class="info-img" />
+=======
+          <img
+            src="../img/picture1-ConvertImage.png"
+            data-src="../img/picture1.png"
+            class="lazy-img info-img"
+          />
+        </div>
+        <div class="info-ele grid--typeB">
+          <img
+            src="../img/image2-ConvertImage (1).png"
+            data-src="../img/picture2.png"
+            class="lazy-img info-img"
+          />
+>>>>>>> hadi
           <div class="info-textbubble bubble2">
             <div class="info-title">
               <ion-icon name="cash-outline" class="info-title-icon"></ion-icon>
@@ -163,12 +271,24 @@
               nécessaires pour assurer votre sécurité.</span
             >
           </div>
+<<<<<<< HEAD
           <img src="../img/picture3.png" class="info-img" />
+=======
+          <img
+            src="../img/image3-ConvertImage.png"
+            data-src="../img/picture3.png"
+            class="lazy-img info-img"
+          />
+>>>>>>> hadi
         </div>
       </section>
       <img src="../img/wave2.png" class="waves" />
       <section class="section-toptrajets">
+<<<<<<< HEAD
         <h2 class="trajets-title">Où voulez-vous aller?</h2>
+=======
+        <h2 class="info-title-text trajets-title">Où voulez-vous aller?</h2>
+>>>>>>> hadi
         <div class="trajets">
           <a class="trajet" href="#">
             <span class="trajet-text">Alger</span>
@@ -279,4 +399,34 @@
       </div>
     </footer>
   </body>
+<<<<<<< HEAD
 </html>
+=======
+  <script>
+    const imgTargets = document.querySelectorAll("img[data-src]");
+
+    const loadImg = function (entries, observer) {
+      const [entry] = entries;
+
+      if (!entry.isIntersecting) return;
+
+      // Replace src with data-src
+      entry.target.src = entry.target.dataset.src;
+
+      entry.target.addEventListener("load", function () {
+        entry.target.classList.remove("lazy-img");
+      });
+
+      observer.unobserve(entry.target);
+    };
+
+    const imgObserver = new IntersectionObserver(loadImg, {
+      root: null,
+      threshold: 0,
+      rootMargin: "100px",
+    });
+
+    imgTargets.forEach((img) => imgObserver.observe(img));
+  </script>
+</html>
+>>>>>>> hadi

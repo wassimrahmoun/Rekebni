@@ -1,4 +1,5 @@
 nav {
+<<<<<<< HEAD
   background-image: url(../img/NavBARR.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -87,3 +88,93 @@ nav {
   color: #9bdef8;
   transition: all 0.3s;
 }
+=======
+    background-image: url(../img/NavBARR.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 10rem;
+    padding: 1rem 10rem 0 10rem;
+    /* padding-bottom: 3rem;
+    padding: 0 10rem; */
+    color: white;
+  }
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .logo img {
+    width: 40px;
+    align-self: center;
+  }
+  
+  .logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    padding-left: 10px;
+    letter-spacing: -0.5%;
+    text-align: center;
+  }
+  
+  .links {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+  }
+  
+  .ajouter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .ajouter p {
+    font-size: medium;
+    font-weight: 500;
+    color: white;
+    padding-left: 5px;
+    transition: color ease-in, 300ms;
+  }
+  
+  .Search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  
+  .Search p {
+    font-size: medium;
+    font-weight: 500;
+    color: white;
+    padding-left: 5px;
+    transition: color ease-in, 300ms;
+  }
+  
+  .ajouter:hover p,
+  .Search:hover p {
+    color: #9bdef8;
+  }
+  .ionicon {
+    color: #fff;
+    height: 2rem;
+    width: 2rem;
+  }
+  .ajouter:hover .ionicon,
+  .Search:hover .ionicon {
+    color: #9bdef8;
+    transition: all 0.3s;
+  }
+>>>>>>> hadi
