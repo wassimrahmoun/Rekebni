@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rekebni - Votre Solution de Covoiturage</title>
+    <!-- CSS LINKS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/quaries.css" />
+    <link rel="stylesheet" type="text/css" href="css/general.css" />
+
+    <!-- ICONION SCRIPT LINKS -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- FONT LINK (UBUNTU-All) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" type="image" href="../img/ICON3 1.svg" />
+    <script src="../js/script.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#">
+        <img class="logo" src="../img/LOGO.png" alt="le Logo de Rekebni" />
+      </a>
+      <nav class="main-nav">
+        <a class="quisommenous flex-center" href="#"
+          ><span class="whitespan">Qui somme nous</span></a
+        >
+        <div class="nav-righthand">
+          <a class="nav-ele" href="#">
+            <ion-icon name="search-outline" class="whiteicon"></ion-icon>
+            <span class="whitespan">Recherche</span>
+          </a>
+          <a class="nav-ele" href="#">
+            <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
+            <span class="whitespan">Ajouter un trajet</span>
+          </a>
+          <div class="nav-login flex-center">
+            <a class="btn--login flex-center whitespan" href="/login"
+              >se connecter</a
+            >
+            <a class="btn--signup flex-center" href="#">s'inscrire</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="section-hero my-section">
+        <div class="hero">
+          <div class="hero-text-box">
+            <h1 class="hero-title">
+              Voyagez en toute securité et économisez votre argent !
+            </h1>
+            <span class="hero-subtext"
+              >Avec Rekebni, Faites un geste pour l'environnement et voyagez en
+              toute serenité .</span
+            >
+          </div>
+          <img
+            src="../img/26234278_7178884 1.png"
+            alt="Une illustration sur le covoiturage"
+            class="hero-img"
+          />
+        </div>
+        <div class="searchbar">
+          <div class="searchbar-text-box">
+            <div class="depart">
+              <input
+                type="search"
+                class="depart-text"
+                placeholder="Départ ..."
+              />
+            </div>
+            <div class="arrive">
+              <input
+                type="search"
+                class="arrive-text"
+                placeholder="Arrivée ..."
+              />
+            </div>
+            <div class="date">
+              <label for="date"></label>
+              <input
+                type="date"
+                id="myDate"
+                name="date"
+                placeholder="select a date"
+                value=""
+              />
+            </div>
+            <script>
+              // Get the current date
+              const today = new Date().toISOString().substr(0, 10);
+
+              // Set the default value of the input element to the current date
+              document.getElementById("myDate").value = today;
+
+              const dateInput = document.getElementById("myDate");
+
+              // set placeholder to nothing
+              dateInput.addEventListener("focus", () => {
+                dateInput.setAttribute("placeholder", "");
+              });
+
+              // To allow the user to only input a date that is beyond the current date :
+              document.getElementById("myDate").setAttribute("min", today);
+
+              // chatgpt's today = aujourdhui
+
+              // const today = new Date().toISOString().substr(0, 10);
+
+              // const dateInput = document.getElementById("myDate");
+
+              // set placeholder to "Aujourd'hui" when today's date is selected
+              dateInput.addEventListener("change", () => {
+                const dateValue = dateInput.value;
+                if (dateValue === today) {
+                  dateInput.setAttribute("placeholder", "Aujourd'hui");
+                } else {
+                  dateInput.setAttribute("placeholder", "");
+                }
+              });
+
+              // Set the default value of the input element to the current date
+              dateInput.value = today;
+            </script>
+            <div class="passengers">
+              <label for="passengers"
+                ><ion-icon
+                  name="people-outline"
+                  class="searchbar-icon"
+                ></ion-icon
+              ></label>
+              <select id="passengers" name="passengers" class="personnes-text">
+                <option value="1" class="personnes-text">1</option>
+                <option value="2" class="personnes-text">2</option>
+                <option value="3" class="personnes-text">3</option>
+                <option value="4" class="personnes-text">4</option>
+                <option value="5" class="personnes-text">5</option>
+              </select>
+            </div>
+          </div>
+          <a class="searchbar-btn" href="#">Rechercher</a>
+        </div>
+      </section>
+      <img src="../img/Squigly-top.png" class="waves" />
+      <section class="section-info">
+        <div class="info-ele grid--typeA">
+          <div class="info-textbubble bubble1">
+            <div class="info-title">
+              <ion-icon name="leaf-outline" class="info-title-icon"></ion-icon>
+              <span class="info-title-text"
+                >Réduisez votre empreinte carbone</span
+              >
+            </div>
+            <span class="info-text"
+              >En choisissant le covoiturage, vous contribuez à la protection de
+              l'environnement en réduisant votre empreinte carbone. En diminuant
+              le nombre de véhicules sur la route, vous entraînez une réduction
+              des émissions de CO2 et de la pollution de l'air.</span
+            >
+          </div>
+          <img
+            src="../img/picture1-ConvertImage.png"
+            data-src="../img/picture1.png"
+            class="lazy-img info-img"
+          />
+        </div>
+        <div class="info-ele grid--typeB">
+          <img
+            src="../img/image2-ConvertImage (1).png"
+            data-src="../img/picture2.png"
+            class="lazy-img info-img"
+          />
+          <div class="info-textbubble bubble2">
+            <div class="info-title">
+              <ion-icon name="cash-outline" class="info-title-icon"></ion-icon>
+              <span class="info-title-text">Économisez de l'argent</span>
+            </div>
+            <span class="info-text"
+              >Avec notre service de covoiturage, vous pouvez économiser de
+              l'argent sur les frais de transport. En partageant les coûts avec
+              d'autres passagers ou conducteurs, vous pouvez réduire
+              considérablement vos dépenses de voyage.</span
+            >
+          </div>
+        </div>
+        <div class="info-ele grid--typeA">
+          <div class="info-textbubble bubble3">
+            <div class="info-title">
+              <ion-icon
+                name="lock-open-outline"
+                class="info-title-icon"
+              ></ion-icon>
+              <span class="info-title-text">Voyagez en toute sécurité</span>
+            </div>
+            <span class="info-text"
+              >Nous mettons tout en œuvre pour garantir la sécurité de notre
+              communauté de covoiturage. Tous nos conducteurs et passagers sont
+              vérifiés et approuvés. Vous pouvez ainsi voyager en toute
+              confiance, sachant que nous avons pris toutes les mesures
+              nécessaires pour assurer votre sécurité.</span
+            >
+          </div>
+          <img
+            src="../img/image3-ConvertImage.png"
+            data-src="../img/picture3.png"
+            class="lazy-img info-img"
+          />
+        </div>
+      </section>
+      <img src="../img/wave2.png" class="waves" />
+      <section class="section-toptrajets">
+        <h2 class="info-title-text trajets-title">Où voulez-vous aller?</h2>
+        <div class="trajets">
+          <a class="trajet" href="#">
+            <span class="trajet-text">Alger</span>
+            <ion-icon
+              name="arrow-forward-outline"
+              class="trajet-text-arrow"
+            ></ion-icon>
+            <span class="trajet-text">Oran</span>
+            <ion-icon
+              name="chevron-forward-outline"
+              class="trajet-fleche"
+            ></ion-icon>
+          </a>
+          <a class="trajet" href="#">
+            <span class="trajet-text">Oran</span>
+            <ion-icon
+              name="arrow-forward-outline"
+              class="trajet-text-arrow"
+            ></ion-icon>
+            <span class="trajet-text">Tlemcen</span>
+            <ion-icon
+              name="chevron-forward-outline"
+              class="trajet-fleche"
+            ></ion-icon>
+          </a>
+          <a class="trajet" href="#">
+            <span class="trajet-text">Alger</span>
+            <ion-icon
+              name="arrow-forward-outline"
+              class="trajet-text-arrow"
+            ></ion-icon>
+            <span class="trajet-text">Sétif</span>
+            <ion-icon
+              name="chevron-forward-outline"
+              class="trajet-fleche"
+            ></ion-icon>
+          </a>
+          <a class="trajet" href="#">
+            <span class="trajet-text">Sidi Bel Abbes</span>
+            <ion-icon
+              name="arrow-forward-outline"
+              class="trajet-text-arrow"
+            ></ion-icon>
+            <span class="trajet-text">Oran</span>
+            <ion-icon
+              name="chevron-forward-outline"
+              class="trajet-fleche"
+            ></ion-icon>
+          </a>
+          <div class="trajet-more">
+            <a href="#" class="morelink">
+              <span class="trajet-more-text"
+                >Voir tous nos meillieurs trajets</span
+              >
+              <ion-icon
+                name="chevron-forward-outline"
+                class="trajet-more-fleche"
+              ></ion-icon>
+            </a>
+          </div>
+        </div>
+      </section>
+      <img src="../img/wave3.png" class="waves" />
+    </main>
+    <footer>
+      <div class="copyright">
+        <a href="#">
+          <img class="footer-logo" src="../img/LOGO.png" />
+        </a>
+        <div class="sm-logos">
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-instagram" class="sm-logo"></ion-icon>
+          </a>
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-facebook" class="sm-logo"></ion-icon>
+          </a>
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-twitter" class="sm-logo"></ion-icon>
+          </a>
+        </div>
+        <span class="copyright-text"
+          >© 2023 Copyright par l'équipe de développement de Rekebni. Tous les
+          droits sont réservés</span
+        >
+      </div>
+      <div class="contact">
+        <h1 class="footer-title">Nous Contacter</h1>
+        <span class="footer-element address"
+          >112 Liabes Abderahmen St, Sidi-Bel-Abbes, SBA 22046</span
+        >
+        <a class="footer-element" href="tel:+213 549 208 230"
+          >+213 549 208 230</a
+        >
+        <a class="footer-element" href="mailto:contact@rekebni.dz"
+          >contact@rekebni.dz</a
+        >
+      </div>
+      <div class="compte">
+        <h1 class="footer-title">Compte</h1>
+        <a class="footer-element" href="#">Se Connecter</a>
+        <a class="footer-element" href="#">Créer un Compte</a>
+      </div>
+      <div class="resources">
+        <h1 class="footer-title">Resources</h1>
+        <a class="footer-element" href="#">A Propos de Rekebni</a>
+        <a class="footer-element" href="#">FAQ</a>
+        <a class="footer-element" href="#">Confidentialité et Conditions</a>
+      </div>
+    </footer>
+  </body>
+  <script>
+    const imgTargets = document.querySelectorAll("img[data-src]");
+
+    const loadImg = function (entries, observer) {
+      const [entry] = entries;
+
+      if (!entry.isIntersecting) return;
+
+      // Replace src with data-src
+      entry.target.src = entry.target.dataset.src;
+
+      entry.target.addEventListener("load", function () {
+        entry.target.classList.remove("lazy-img");
+      });
+
+      observer.unobserve(entry.target);
+    };
+
+    const imgObserver = new IntersectionObserver(loadImg, {
+      root: null,
+      threshold: 0,
+      rootMargin: "100px",
+    });
+
+    imgTargets.forEach((img) => imgObserver.observe(img));
+  </script>
+</html>

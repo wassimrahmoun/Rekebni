@@ -48,6 +48,7 @@ const trajetSchema = new mongoose.Schema({
     ref: "User",
     required: [true, "A driver is required"],
   },
+  Passagers: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
 });
 
 trajetSchema.pre(/^find/, function (next) {
