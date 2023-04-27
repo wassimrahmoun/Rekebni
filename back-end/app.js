@@ -4,6 +4,7 @@ const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes");
 const trajetRouter = require("./routes/trajetRoutes");
+const reviewRouter = require("./routes/reviewRoutes");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/trajets", trajetRouter);
+app.use("/api/v1/reviews", reviewRouter);
 
 app.get("/", function (req, res) {
   const filePath = path.join(__dirname, "public", "html", "index.html");

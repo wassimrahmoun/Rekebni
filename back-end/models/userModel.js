@@ -15,6 +15,13 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: [validator.isEmail, "Entrez une address email valide "],
   },
+  ratingsAverage: {
+    type: Number,
+    default: 4.5,
+    min: [1, "Rating must be above 1.0"],
+    max: [5, "Rating must be below 5.0"],
+    set: (val) => Math.round(val * 10) / 10, // 4.666666, 46.6666, 47, 4.7
+  },
   photo: {},
   role: {},
   password: {
