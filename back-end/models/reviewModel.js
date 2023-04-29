@@ -18,7 +18,7 @@ const reviewSchema = new mongoose.Schema(
     },
     conducteur: {
       type: mongoose.Schema.ObjectId,
-      ref: "Conducteur",
+      ref: "User",
       required: [true, "Review doit avoir un Conducteur"],
     },
     user: {
@@ -37,13 +37,11 @@ const reviewSchema = new mongoose.Schema(
 reviewSchema.index({ conducteur: 1, user: 1 }, { unique: true });
 
 reviewSchema.pre(/^find/, function (next) {
-  //   this.populate({
-  //     path: 'r',
-  //     select: 'name',
-  //   }).populate({
-  //     path: 'user',
-  //     select: 'name photo',
-  //   });
+  //this.populate({
+  //pour que dans un user le array des review on a que l'id du conducteur mais pour user name photo .....
+  //path: "conducteur",
+  //select: "name photo",
+  //})
   this.populate({
     path: "user",
     select: "name photo",
@@ -77,7 +75,7 @@ reviewSchema.statics.calcAverageRatings = async function (conducteurId) {
     await User.findByIdAndUpdate(conducteurId, {
       // if we havent we set it to sefault
       ratingsQuantity: 0,
-      ratingsAverage: 4.5,
+      ratingsAverage: 1,
     });
   }
 };
