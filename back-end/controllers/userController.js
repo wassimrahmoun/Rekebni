@@ -2,9 +2,10 @@ const User = require("./../models/userModel.js");
 const catchAsync = require("../utils/catchAsync");
 const factory = require("./handlerFactory");
 const multer = require("multer");
+const { path } = require("../app.js");
 
 exports.getAllUsers = factory.getAll(User);
-exports.getUser = factory.getOne(User);
+exports.getUser = factory.getOne(User, { path: "reviews" });
 exports.updateUser = factory.updateOne(User);
 exports.deleteUser = factory.deleteOne(User);
 
