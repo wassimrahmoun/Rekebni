@@ -1,6 +1,7 @@
 main {
   display: flex;
   justify-content: space-around;
+  gap: 2rem;
   padding: 0rem 15rem;
 }
 
@@ -175,7 +176,7 @@ main {
 .result {
   width: 100%;
   background-color: #daf4ff;
-  border-radius: 10px;
+  border-radius: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
