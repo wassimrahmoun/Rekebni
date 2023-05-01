@@ -8,7 +8,13 @@ function revealOnScroll() {
     if (revealItemTop < windowHeight - revealItemPoint) {
       revealItems[i].classList.add("is-visible");
     }
-  }
+
+  /*  document.querySelectorAll(".info-img").forEach(img=>{ const revealItemTop2 = img.getBoundingClientRect().top;
+                                                          if (revealItemTop2 < windowHeight - revealItemPoint)
+                                                          img.classList.add("show-image-transition")}) ; */
+                                                            // Transition 2
+  } 
+
 }
 window.addEventListener("scroll", revealOnScroll);
 //lazy loading images

@@ -324,11 +324,27 @@ input[type="date" i] {
   max-width: 100rem;
   margin: 0 auto;
 }
-.info-img {
+  .info-img {
   width: 100%;
   /* filter: blur(10px);
-    transition: filter 0.5s ease-in-out; */
+    transition: filter 0.5s ease-in-out;  */ 
+}  
+
+/* transition 2 */
+/*
+.info-img {
+  width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, visibility 0s 0.6s;
 }
+
+.show-image-transition {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease-in, visibility 1s 0s;
+}  */     
+
 img {
   transition: filter 2s;
 }
