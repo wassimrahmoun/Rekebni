@@ -17,10 +17,17 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const firstName = document.getElementById("first-name").value;
       const birthDate = document.getElementById("date").value;
 
-      // Checking inputs 
-      if (!email || !password || !passwordConfirm || !firstName || !lastName || !birthDate) {
-        throw new Error(`Check your inputs ❌`) ;
-      } ;
+      // Checking inputs
+      if (
+        !email ||
+        !password ||
+        !passwordConfirm ||
+        !firstName ||
+        !lastName ||
+        !birthDate
+      ) {
+        throw new Error(`Check your inputs ❌`);
+      }
       if (passwordConfirm != password)
         throw new Error(`password fields unmatching ❌`);
 
@@ -39,19 +46,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
           // birthDate:  birthDate,
         }),
       });
-      console.log(res) ;
       if (!res.ok)
         throw new Error("Something is wrong ❌ , please try again later !");
-      
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {
-      document.querySelectorAll(".erreur").forEach(txt=>txt.remove()) ;
-      var errorElement = document.createElement("span") ;
-      errorElement.textContent = err.message ;
-      errorElement.classList.add("erreur") ;
-      form.insertAdjacentElement("afterbegin",errorElement) ;
-      console.error(err) ;
+      document.querySelectorAll(".erreur").forEach((txt) => txt.remove());
+      var errorElement = document.createElement("span");
+      errorElement.textContent = err.message;
+      errorElement.classList.add("erreur");
+      form.insertAdjacentElement("afterbegin", errorElement);
     }
   });
 });
