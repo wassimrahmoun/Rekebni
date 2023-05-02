@@ -1,4 +1,12 @@
 // Page d'inscription
+const emptyOutInputs = function(){
+  document.getElementById("email").value ="" ;
+  document.getElementById("password").value ="";
+  document.getElementById(  "password-confirmation" ).value ="" ;
+  document.getElementById("last-name").value = "" ;
+  document.getElementById("first-name").value ="" ;
+  document.getElementById("date").value="" ;
+}
 document.addEventListener("DOMContentLoaded", (e) => {
   let form = document.querySelector(".sign-up-card");
   e.preventDefault();
@@ -39,19 +47,24 @@ document.addEventListener("DOMContentLoaded", (e) => {
           // birthDate:  birthDate,
         }),
       });
-      console.log(res) ;
       if (!res.ok)
         throw new Error("Something is wrong ❌ , please try again later !");
       
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {
+      emptyOutInputs() ;
       document.querySelectorAll(".erreur").forEach(txt=>txt.remove()) ;
-      var errorElement = document.createElement("span") ;
-      errorElement.textContent = err.message ;
-      errorElement.classList.add("erreur") ;
-      form.insertAdjacentElement("afterbegin",errorElement) ;
-      console.error(err) ;
+      const html =` <div class="invalid erreur" style="display: flex;" >
+      <p class="invalid-text">
+      ${err.message}
+      </p>
+      <ion-icon
+        class="invalid-icon"
+        name="alert-circle-outline"
+      ></ion-icon>
+    </div>`
+    form.firstElementChild.insertAdjacentHTML('beforeend',html) ;
     }
   });
 });
