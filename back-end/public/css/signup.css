@@ -230,7 +230,8 @@ input[type="date" i] {
   padding: 0.7rem 1rem !important;
 }
 
-input[type="date" i]:focus {
+input[type="date" i]:focus,
+input[type="date" i]:valid {
   color: #030045;
   font-family: "ubuntu", sans-serif;
   font-weight: 700;
