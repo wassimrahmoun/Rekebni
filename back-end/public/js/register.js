@@ -1,5 +1,4 @@
 // Page d'inscription
-
 document.addEventListener("DOMContentLoaded", (e) => {
   let form = document.querySelector(".sign-up-card");
   e.preventDefault();
@@ -18,8 +17,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const firstName = document.getElementById("first-name").value;
       const birthDate = document.getElementById("date").value;
 
+      // Checking inputs 
+      if (!email || !password || !passwordConfirm || !firstName || !lastName || birthDate) {
+        throw new Error(`Check your inputs ❌`) ;
+      } ;
       if (passwordConfirm != password)
-        throw new Error("password fields unmatching ❌");
+        throw new Error(`password fields unmatching ❌`);
 
       const res = await fetch("http://localhost:8000/api/v1/users/signup", {
         method: "POST",
@@ -41,7 +44,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {
-      form.insertAdjacentText("afterbegin", err.message);
+      document.querySelectorAll(".erreur").forEach(txt=>txt.remove()) ;
+      var errorElement = document.createElement("span") ;
+      errorElement.textContent = err.message ;
+      errorElement.classList.add("erreur") ;
+      form.insertAdjacentElement("afterbegin",errorElement) ;
+
     }
   });
 });
