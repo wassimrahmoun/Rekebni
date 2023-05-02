@@ -4,10 +4,13 @@ nav {
     background-repeat: no-repeat;
     background-position: center;
     height: 10rem;
-    padding: 1rem 10rem 0 10rem;
+    padding: 0rem 15rem 0 15rem;
     /* padding-bottom: 3rem;
     padding: 0 10rem; */
     color: white;
+    display:flex;
+    justify-content: space-between;
+    align-items:flex-start;
   }
   .header-container {
     display: flex;
@@ -36,7 +39,7 @@ nav {
   }
   
   .links {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: end;
     justify-content: center;
