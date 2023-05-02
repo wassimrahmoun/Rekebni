@@ -50,9 +50,13 @@ exports.createOne = (Model) =>
     });
   });
 
-exports.getOne = (Model) =>
+exports.getOne = (
+  Model,
+  popOptions // = popoption because in tours we have .populate
+) =>
   catchAsync(async (req, res, next) => {
     let query = Model.findById(req.params.id);
+    if (popOptions) query = query.populate(popOptions);
 
     const doc = await query; //populate review to have the reviews on the tour when we get a  tour // params has all paramatres like the :id
     // or  Tour.findOne({ _id: req.params.id });
