@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const birthDate = document.getElementById("date").value;
 
       // Checking inputs 
-      if (!email || !password || !passwordConfirm || !firstName || !lastName || birthDate) {
+      if (!email || !password || !passwordConfirm || !firstName || !lastName || !birthDate) {
         throw new Error(`Check your inputs ❌`) ;
       } ;
       if (passwordConfirm != password)
@@ -39,8 +39,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
           // birthDate:  birthDate,
         }),
       });
+      console.log(res) ;
       if (!res.ok)
         throw new Error("Something is wrong ❌ , please try again later !");
+      
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       errorElement.textContent = err.message ;
       errorElement.classList.add("erreur") ;
       form.insertAdjacentElement("afterbegin",errorElement) ;
+      console.error(err) ;
 
     }
   });
