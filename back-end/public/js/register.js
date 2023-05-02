@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
       errorElement.classList.add("erreur") ;
       form.insertAdjacentElement("afterbegin",errorElement) ;
       console.error(err) ;
-
     }
   });
 });

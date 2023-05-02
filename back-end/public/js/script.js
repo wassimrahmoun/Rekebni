@@ -9,9 +9,9 @@ function revealOnScroll() {
       revealItems[i].classList.add("is-visible");
     }
 
-  /*  document.querySelectorAll(".info-img").forEach(img=>{ const revealItemTop2 = img.getBoundingClientRect().top;
+   document.querySelectorAll(".info-img").forEach(img=>{ const revealItemTop2 = img.getBoundingClientRect().top;
                                                           if (revealItemTop2 < windowHeight - revealItemPoint)
-                                                          img.classList.add("show-image-transition")}) ; */
+                                                          img.classList.add("show-image-transition")}) ; 
                                                             // Transition 2
   } 
 
