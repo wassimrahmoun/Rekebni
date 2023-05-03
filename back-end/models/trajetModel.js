@@ -13,6 +13,23 @@ const trajetSchema = new mongoose.Schema({
     type: String,
     required: [true, "Vous devez preciser votre vehicule"],
   },
+  Couleur: {
+    type: String,
+    required: [true, "Vous devez preciser la couleur de votre vehicule"],
+    default: "Blanc",
+    values: [
+      "Blanc",
+      "noir",
+      "rouge",
+      "orange",
+      "blue",
+      "gris",
+      "jaune",
+      "maron",
+      "violet",
+      "vert",
+    ],
+  },
   Matricule: {
     type: String,
     required: [true, "Vous devez preciser votre plaque d'immatriculation"],
@@ -48,6 +65,7 @@ const trajetSchema = new mongoose.Schema({
     ref: "User",
     required: [true, "A driver is required"],
   },
+  Passagers: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
 });
 
 trajetSchema.pre(/^find/, function (next) {

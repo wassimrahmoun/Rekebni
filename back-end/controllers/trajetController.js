@@ -60,3 +60,33 @@ exports.searchTrajets = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.reserverTrajet = catchAsync(async (req, res, next) => {
+  const trajet = await Trajet.findById(req.params.id);
+  const placesDisponibles = trajet.places;
+
+  if (req.body.places > placesDisponibles) {
+    return res.status(400).json({
+      status: "fail",
+      message:
+        "Désolé, il n'y a pas suffisamment de places disponibles pour ce trajet",
+    });
+  }
+
+  const updatedTrajet = await Trajet.findByIdAndUpdate(
+    req.params.id,
+    {
+      $push: { Conducteur: req.body.passagerId },
+      $push: { Passagers: req.body.conducteurId },
+      $inc: { places: -req.body.places },
+    },
+    { new: true }
+  );
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      trajet: updatedTrajet,
+    },
+  });
+});
