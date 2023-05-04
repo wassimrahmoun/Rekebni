@@ -26,8 +26,8 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" type="image" href="../img/ICON3 1.svg" />
-    <script src="../js/script.js"></script>
+    <link rel="shortcut icon" type="image" href="/img/ICON3 1.svg" />
+    <script src="/js/script.js"></script>
   </head>
   <body>
     <header class="header">
@@ -35,17 +35,17 @@
         <img class="logo" src="../img/LOGO.png" alt="le Logo de Rekebni" />
       </a>
       <nav class="main-nav">
-        <a class="quisommenous flex-center" href="#"
-          ><span class="whitespan">Qui somme nous</span></a
-        >
         <div class="nav-righthand">
+          <a class="quisommenous flex-center" href="#"
+            ><span class="whitespan">Qui somme nous</span></a
+          >
           <a class="nav-ele" href="#">
             <ion-icon name="search-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan">Recherche</span>
+            <span class="whitespan" hred="/recherche">Recherche</span>
           </a>
-          <a class="nav-ele" href="#">
+          <a class="nav-ele" href="/publier">
             <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan">Ajouter un trajet</span>
+            <span class="whitespan" >Ajouter un trajet</span>
           </a>
           <div class="nav-login flex-center">
             <a class="btn--login flex-center whitespan" href="/login"
@@ -80,6 +80,7 @@
               <input
                 type="search"
                 class="depart-text"
+                id="departs"
                 placeholder="Départ ..."
               />
             </div>
@@ -87,6 +88,7 @@
               <input
                 type="search"
                 class="arrive-text"
+                id="arrives"
                 placeholder="Arrivée ..."
               />
             </div>
@@ -152,7 +154,7 @@
               </select>
             </div>
           </div>
-          <a class="searchbar-btn" href="#">Rechercher</a>
+          <a class="searchbar-btn" href="/recherche">Rechercher</a>
         </div>
       </section>
       <img src="../img/Squigly-top.png" class="waves" />
@@ -201,7 +203,7 @@
           <div class="info-textbubble bubble3">
             <div class="info-title">
               <ion-icon
-                name="lock-open-outline"
+                name="lock-closed-outline"
                 class="info-title-icon"
               ></ion-icon>
               <span class="info-title-text">Voyagez en toute sécurité</span>
@@ -336,7 +338,7 @@
   </body>
   <script>
     const imgTargets = document.querySelectorAll("img[data-src]");
-
+    
     const loadImg = function (entries, observer) {
       const [entry] = entries;
 
