@@ -9,7 +9,7 @@ router.get("/search", trajetController.searchTrajets); //je pense c mieuc dutili
 router
   .route("/")
   .get(trajetController.getAllTrajets)
-  .post(authController.protect, trajetController.createTrajet);
+  .post(trajetController.createTrajet);
 
 router.use(authController.protect);
 router.route("/reserver/:id").post(trajetController.reserverTrajet);
