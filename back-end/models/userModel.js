@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
+const slugify = require("slugify");
 
 const userSchema = new mongoose.Schema(
   {
@@ -9,6 +10,15 @@ const userSchema = new mongoose.Schema(
       type: "String",
       require: [true, "Vous devez avoir un nom "],
     },
+    prenom: {
+      type: "String",
+    },
+    pseudo: {
+      type: "String",
+      unique: true,
+      //ne pas oublier de le refaire apres require: [true, "Vous devez avoir un nom "],
+    },
+    slug: String,
     email: {
       type: String,
       required: [true, "A user must have an email address"],
@@ -27,7 +37,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "default.jpg",
     },
-    role: {},
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
     password: {
       type: String,
       require: [true, "Vous devez avoir un mot de passe "],
@@ -59,6 +73,13 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+userSchema.index({ slug: 1 });
+
+userSchema.pre("save", function (next) {
+  //changer pour pseudo apres prsq pseudo unique mais name impossible
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
 
 userSchema.virtual("reviews", {
   ref: "Review",

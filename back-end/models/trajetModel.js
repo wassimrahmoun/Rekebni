@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const trajetSchema = new mongoose.Schema({
   Depart: {
@@ -12,6 +13,10 @@ const trajetSchema = new mongoose.Schema({
   Vehicule: {
     type: String,
     required: [true, "Vous devez preciser votre vehicule"],
+  },
+  isActive: {
+    type: Boolean,
+    default: true,
   },
   Couleur: {
     type: String,
@@ -60,12 +65,33 @@ const trajetSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Vous devez ajouter un prix a votre trajet"],
   },
+  slug: String,
   Conducteur: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
     required: [true, "A driver is required"],
   },
   Passagers: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
+});
+
+//pour pas avoir la date + heur que la date
+trajetSchema.pre("save", function (next) {
+  this.date = this.date.toISOString().substring(0, 10);
+  next();
+});
+
+// pouvoir cree des trucs le meme jour sans isactive = false
+trajetSchema.pre("save", function (next) {
+  const currentDate = new Date();
+
+  date = currentDate;
+
+  date = date.toISOString().substring(0, 10);
+
+  if (this.date < date) {
+    this.isActive = false;
+  }
+  next();
 });
 
 trajetSchema.pre(/^find/, function (next) {
