@@ -87,6 +87,14 @@ exports.getAll = (Model) =>
       .paginate();
     const doc = await features.query;
     // const doc = await features.query.explain(); juste to see indexes a quoi ils servent
+    await Model.populate(doc, {
+      path: "Conducteur",
+      select: "name photo",
+    });
+    await Model.populate(doc, {
+      path: "Passagers",
+      select: "name photo",
+    });
 
     //SEND RESPONSE
     res.status(200).json({
