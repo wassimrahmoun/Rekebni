@@ -45,7 +45,7 @@
           </a>
           <a class="nav-ele" href="/publier">
             <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan" >Ajouter un trajet</span>
+            <span class="whitespan">Ajouter un trajet</span>
           </a>
           <div class="nav-login flex-center">
             <a class="btn--login flex-center whitespan" href="/login"
@@ -77,20 +77,142 @@
         <div class="searchbar">
           <div class="searchbar-text-box">
             <div class="depart">
-              <input
+              <!-- <input
                 type="search"
-                class="depart-text"
+                class=""
                 id="departs"
                 placeholder="Départ ..."
-              />
+              /> -->
+              <select
+                class="arrive-text"
+                name="wilaya"
+                id="wilaya"
+                placeholder="Wilaya"
+                required=""
+              >
+                <option value="" disabled="" selected="">
+                  Choisissez Votre Départ
+                </option>
+                <option value="ADRAR">ADRAR - 01</option>
+                <option value="CHLEF">CHLEF - 02</option>
+                <option value="LAGHOUAT">LAGHOUAT - 03</option>
+                <option value="OUM-EL-BOUAGHI">OUM-EL-BOUAGHI - 04</option>
+                <option value="BATNA">BATNA - 05</option>
+                <option value="BEJAIA">BEJAIA - 06</option>
+                <option value="BISKRA">BISKRA - 07</option>
+                <option value="BECHAR">BECHAR - 08</option>
+                <option value="BLIDA">BLIDA - 09</option>
+                <option value="BOUIRA">BOUIRA - 10</option>
+                <option value="TAMANRASSET">TAMANRASSET - 11</option>
+                <option value="TEBESSA">TEBESSA - 12</option>
+                <option value="TLEMCEN">TLEMCEN - 13</option>
+                <option value="TIARET">TIARET - 14</option>
+                <option value="TIZI-OUZOU">TIZI-OUZOU - 15</option>
+                <option value="ALGER">ALGER - 16</option>
+                <option value="DJELFA">DJELFA - 17</option>
+                <option value="JIJEL">JIJEL - 18</option>
+                <option value="SETIF">SETIF - 19</option>
+                <option value="SAIDA">SAIDA - 20</option>
+                <option value="SKIKDA">SKIKDA - 21</option>
+                <option value="SIDI-BEL-ABBES">SIDI-BEL-ABBES - 22</option>
+                <option value="ANABA">ANNABA - 23</option>
+                <option value="GUELMA">GUELMA - 24</option>
+                <option value="CONSTANTINE">CONSTANTINE - 25</option>
+                <option value="MEDEA">MEDEA - 26</option>
+                <option value="MOSTAGANEM">MOSTAGANEM - 27</option>
+                <option value="M-SILA">M-SILA - 28</option>
+                <option value="MASCARA">MASCARA - 29</option>
+                <option value="OUARGLA">OUARGLA - 30</option>
+                <option value="ORAN">ORAN - 31</option>
+                <option value="EL-BAYADH">EL-BAYADH - 32</option>
+                <option value="ILLIZI">ILLIZI - 33</option>
+                <option value="BORDJ-BOU-ARRERIDJ">
+                  BORDJ-BOU-ARRERIDJ - 34
+                </option>
+                <option value="BOUMERDES">BOUMERDES - 35</option>
+                <option value="EL-TARF">EL-TARF - 36</option>
+                <option value="TINDOUF">TINDOUF - 37</option>
+                <option value="TISSEMSILT">TISSEMSILT - 38</option>
+                <option value="EL-OUED">EL-OUED - 39</option>
+                <option value="KHENCHELA">KHENCHELA - 40</option>
+                <option value="SOUK-AHRAS">SOUK-AHRAS - 41</option>
+                <option value="TIPAZA">TIPAZA - 42</option>
+                <option value="MILA">MILA - 43</option>
+                <option value="AIN-DEFLA">AIN-DEFLA - 44</option>
+                <option value="NAAMA">NAAMA - 45</option>
+                <option value="AIN-TEMOUCHENT">AIN-TEMOUCHENT - 46</option>
+                <option value="GHARDAIA">GHARDAIA - 47</option>
+                <option value="RELIZANE">RELIZANE - 48</option>
+              </select>
             </div>
             <div class="arrive">
-              <input
+              <!-- <input
                 type="search"
                 class="arrive-text"
                 id="arrives"
                 placeholder="Arrivée ..."
-              />
+              /> -->
+              <select
+                class="depart-text"
+                name="wilaya"
+                id="wilaya"
+                placeholder="Wilaya"
+                required=""
+              >
+                <option value="" disabled="" selected="">
+                  Choisissez Votre Arrivée
+                </option>
+                <option value="ADRAR">ADRAR - 01</option>
+                <option value="CHLEF">CHLEF - 02</option>
+                <option value="LAGHOUAT">LAGHOUAT - 03</option>
+                <option value="OUM-EL-BOUAGHI">OUM-EL-BOUAGHI - 04</option>
+                <option value="BATNA">BATNA - 05</option>
+                <option value="BEJAIA">BEJAIA - 06</option>
+                <option value="BISKRA">BISKRA - 07</option>
+                <option value="BECHAR">BECHAR - 08</option>
+                <option value="BLIDA">BLIDA - 09</option>
+                <option value="BOUIRA">BOUIRA - 10</option>
+                <option value="TAMANRASSET">TAMANRASSET - 11</option>
+                <option value="TEBESSA">TEBESSA - 12</option>
+                <option value="TLEMCEN">TLEMCEN - 13</option>
+                <option value="TIARET">TIARET - 14</option>
+                <option value="TIZI-OUZOU">TIZI-OUZOU - 15</option>
+                <option value="ALGER">ALGER - 16</option>
+                <option value="DJELFA">DJELFA - 17</option>
+                <option value="JIJEL">JIJEL - 18</option>
+                <option value="SETIF">SETIF - 19</option>
+                <option value="SAIDA">SAIDA - 20</option>
+                <option value="SKIKDA">SKIKDA - 21</option>
+                <option value="SIDI-BEL-ABBES">SIDI-BEL-ABBES - 22</option>
+                <option value="ANABA">ANNABA - 23</option>
+                <option value="GUELMA">GUELMA - 24</option>
+                <option value="CONSTANTINE">CONSTANTINE - 25</option>
+                <option value="MEDEA">MEDEA - 26</option>
+                <option value="MOSTAGANEM">MOSTAGANEM - 27</option>
+                <option value="M-SILA">M-SILA - 28</option>
+                <option value="MASCARA">MASCARA - 29</option>
+                <option value="OUARGLA">OUARGLA - 30</option>
+                <option value="ORAN">ORAN - 31</option>
+                <option value="EL-BAYADH">EL-BAYADH - 32</option>
+                <option value="ILLIZI">ILLIZI - 33</option>
+                <option value="BORDJ-BOU-ARRERIDJ">
+                  BORDJ-BOU-ARRERIDJ - 34
+                </option>
+                <option value="BOUMERDES">BOUMERDES - 35</option>
+                <option value="EL-TARF">EL-TARF - 36</option>
+                <option value="TINDOUF">TINDOUF - 37</option>
+                <option value="TISSEMSILT">TISSEMSILT - 38</option>
+                <option value="EL-OUED">EL-OUED - 39</option>
+                <option value="KHENCHELA">KHENCHELA - 40</option>
+                <option value="SOUK-AHRAS">SOUK-AHRAS - 41</option>
+                <option value="TIPAZA">TIPAZA - 42</option>
+                <option value="MILA">MILA - 43</option>
+                <option value="AIN-DEFLA">AIN-DEFLA - 44</option>
+                <option value="NAAMA">NAAMA - 45</option>
+                <option value="AIN-TEMOUCHENT">AIN-TEMOUCHENT - 46</option>
+                <option value="GHARDAIA">GHARDAIA - 47</option>
+                <option value="RELIZANE">RELIZANE - 48</option>
+              </select>
             </div>
             <div class="date">
               <label for="date"></label>
@@ -288,12 +410,12 @@
           </div>
         </div>
       </section>
-      <img src="../img/wave3.png" class="waves" />
+      <!-- <img src="../img/wave3.png" class="waves" /> -->
     </main>
-    <footer>
+    <footer class="footer">
       <div class="copyright">
         <a href="#">
-          <img class="footer-logo" src="../img/LOGO.png" />
+          <img class="footer-logo" src="../img/LOGOShrunk.png" />
         </a>
         <div class="sm-logos">
           <a href="#" class="sociallink">
@@ -323,22 +445,23 @@
           >contact@rekebni.dz</a
         >
       </div>
-      <div class="compte">
-        <h1 class="footer-title">Compte</h1>
-        <a class="footer-element" href="#">Se Connecter</a>
-        <a class="footer-element" href="#">Créer un Compte</a>
-      </div>
+
       <div class="resources">
         <h1 class="footer-title">Resources</h1>
         <a class="footer-element" href="#">A Propos de Rekebni</a>
         <a class="footer-element" href="#">FAQ</a>
         <a class="footer-element" href="#">Confidentialité et Conditions</a>
       </div>
+      <div class="compte">
+        <h1 class="footer-title">Compte</h1>
+        <a class="footer-element" href="/login">Se Connecter</a>
+        <a class="footer-element" href="/signup">Créer un Compte</a>
+      </div>
     </footer>
   </body>
   <script>
     const imgTargets = document.querySelectorAll("img[data-src]");
-    
+
     const loadImg = function (entries, observer) {
       const [entry] = entries;
 
