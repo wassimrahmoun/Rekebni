@@ -11,9 +11,9 @@ router
   .get(trajetController.getAllTrajets)
   .post(authController.protect, trajetController.createTrajet);
 
-// router("/trajets/:id/:Passagers").patch(
-//   authController.protect,
-//   trajetController.reserverTrajet
-// );
+router.route("/:slug").get(trajetController.getTrajet);
+
+router.use(authController.protect);
+router.route("/reserver/:id").post(trajetController.reserverTrajet);
 
 module.exports = router;

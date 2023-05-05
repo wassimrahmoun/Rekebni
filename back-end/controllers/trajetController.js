@@ -10,10 +10,23 @@ exports.setTrajetUserIds = (req, res, next) => {
 };
 
 exports.getAllTrajets = factory.getAll(Trajet);
-exports.getTrajet = factory.getOne(Trajet);
+//exports.getTrajet = factory.getOne(Trajet);
 exports.updateTrajet = factory.updateOne(Trajet);
 exports.deleteTrajet = factory.deleteOne(Trajet);
 exports.createTrajet = factory.createOne(Trajet);
+
+exports.getTrajet = catchAsync(async (req, res, next) => {
+  const trajet = await await Trajet.findOne({ slug: req.params.slug }).populate(
+    {
+      path: "reviews",
+      fields: "review rating user",
+    }
+  );
+
+  res.status(200).render("trajet", {
+    trajet,
+  });
+});
 
 exports.searchTrajets = catchAsync(async (req, res, next) => {
   const { Depart, Arrivée, date, places } = req.query;
@@ -57,6 +70,36 @@ exports.searchTrajets = catchAsync(async (req, res, next) => {
     results: trajets.length,
     data: {
       trajets,
+    },
+  });
+});
+
+exports.reserverTrajet = catchAsync(async (req, res, next) => {
+  const trajet = await Trajet.findById(req.params.id);
+  const placesDisponibles = trajet.places;
+
+  if (req.body.places > placesDisponibles) {
+    return res.status(400).json({
+      status: "fail",
+      message:
+        "Désolé, il n'y a pas suffisamment de places disponibles pour ce trajet",
+    });
+  }
+
+  const updatedTrajet = await Trajet.findByIdAndUpdate(
+    req.params.id,
+    {
+      $push: { Conducteur: req.body.passagerId },
+      $push: { Passagers: req.body.conducteurId },
+      $inc: { places: -req.body.places },
+    },
+    { new: true }
+  );
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      trajet: updatedTrajet,
     },
   });
 });
