@@ -80,6 +80,7 @@
               <input
                 type="search"
                 class="depart-text"
+                id="departs"
                 placeholder="Départ ..."
               />
             </div>
@@ -87,6 +88,7 @@
               <input
                 type="search"
                 class="arrive-text"
+                id="arrives"
                 placeholder="Arrivée ..."
               />
             </div>
@@ -116,8 +118,6 @@
 
               // To allow the user to only input a date that is beyond the current date :
               document.getElementById("myDate").setAttribute("min", today);
-
-              // chatgpt's today = aujourdhui
 
               // const today = new Date().toISOString().substr(0, 10);
 
@@ -152,7 +152,7 @@
               </select>
             </div>
           </div>
-          <a class="searchbar-btn" href="#">Rechercher</a>
+          <a class="searchbar-btn" id="searchs" href="#">Rechercher</a>
         </div>
       </section>
       <img src="../img/Squigly-top.png" class="waves" />
@@ -334,6 +334,7 @@
       </div>
     </footer>
   </body>
+
   <script>
     const imgTargets = document.querySelectorAll("img[data-src]");
 
