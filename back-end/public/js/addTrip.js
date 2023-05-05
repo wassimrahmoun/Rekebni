@@ -51,7 +51,8 @@ document.querySelector(".ajouter-Btn").addEventListener("click",async function(e
           date:date,
           HeurD:heureDepart,
           HeurA:heureArrivé,
-          Prix:prix
+          Prix:prix,
+          Conducteur:"6415f9cb41438448f7528ca1"
         }),}) ;
 
      if (!res.ok) throw new Error(`Something went wrong ❌ , please try again later`)   ;
