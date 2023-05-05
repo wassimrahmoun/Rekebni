@@ -47,10 +47,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
           // birthDate:  birthDate,
         }),
       });
-      if (!res.ok)
-        throw new Error("Something is wrong ❌ , please try again later !");
+      if (!res.ok) throw new Error("Something went wrong ❌ , please try again later !");
       
-      data = await res.json();
+      await res.json();
+
       window.location.href = "/login";
     } catch (err) {
       emptyOutInputs() ;
