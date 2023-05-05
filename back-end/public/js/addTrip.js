@@ -36,22 +36,22 @@ document.querySelector(".ajouter-Btn").addEventListener("click",async function(e
 
     if (inputsEmpty()) throw new Error("Please check your inputs ❌") ;       // if there's an error it automatically goes to the catch block
 
-    const res = await fetch("http://localhost:8000/api/v1/trajets/recherche", {
+    const res = await fetch("http://localhost:8000/api/v1/trajets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          depart:depart,
-          destination:destination,
-          carType:carType,
-          matricule:matricule,
-          nbPersonnes:nbPersonnes,
-          fumeur:fumeur,
+          Depart:depart,
+          Arrivée:destination,
+          Vehicule:carType,
+          Matricule:matricule,
+          places:nbPersonnes,
+          fumers:fumeur,
           date:date,
-          heureDepart:heureDepart,
-          heureArrivé:heureArrivé,
-          prix:prix
+          HeurD:heureDepart,
+          HeurA:heureArrivé,
+          Prix:prix
         }),}) ;
 
      if (!res.ok) throw new Error(`Something went wrong ❌ , please try again later`)   ;
