@@ -16,15 +16,23 @@ exports.deleteTrajet = factory.deleteOne(Trajet);
 exports.createTrajet = factory.createOne(Trajet);
 
 exports.getTrajet = catchAsync(async (req, res, next) => {
-  const trajet = await await Trajet.findOne({ slug: req.params.slug }).populate(
-    {
-      path: "reviews",
-      fields: "review rating user",
-    }
-  );
+  const trajet = await await Trajet.findOne({
+    id: req.params.slug,
+    // slug: req.params.slug,
+    isActive: true,
+    // date: req.params.date,
+    //HeurD: req.params.heurD,
+  }).populate({
+    path: "reviews",
+    fields: "review rating user",
+  });
 
-  res.status(200).render("trajet", {
-    trajet,
+  res.status(200).json({
+    //to resive tours const array
+    status: "success",
+    data: {
+      trajet,
+    },
   });
 });
 
