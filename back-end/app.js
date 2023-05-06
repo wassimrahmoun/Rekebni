@@ -4,6 +4,7 @@ const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes");
 const trajetRouter = require("./routes/trajetRoutes");
+const reviewRouter = require("./routes/reviewRoutes");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/trajets", trajetRouter);
+app.use("/api/v1/reviews", reviewRouter);
 
 app.get("/", function (req, res) {
   const filePath = path.join(__dirname, "public", "html", "index.html");
@@ -49,11 +51,19 @@ app.get("/signup", function (req, res) {
   const filePath = path.join(__dirname, "public", "html", "signup.html");
   res.sendFile(filePath);
 });
+app.get("/recherche", function (req, res) {
+  const filePath = path.join(__dirname, "public", "html", "rech.html");
+  res.sendFile(filePath);
+});
+app.get("/publier", function (req, res) {
+  const filePath = path.join(__dirname, "public", "html", "addTrip.html");
+  res.sendFile(filePath);
+});
 
 // if we cherche /API/mehdii ou qlq chose qui nexiste pas on vous donne une err vadalnle poour comprendre
-app.all("*", (req, res, next) => {
-  next(new AppError(`cant find ${req.originalUrl} on this serv`, 404));
-});
+// app.all("*", (req, res, next) => {
+//   next(new AppError(`cant find ${req.originalUrl} on this serv`, 404));
+// });
 // app.use(globalErrorHandler);
 
 module.exports = app;
