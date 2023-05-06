@@ -229,7 +229,7 @@ section {
   padding: 0 !important;
 }
 .arrive-text {
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 }
 
 .personnes {
@@ -244,8 +244,11 @@ section {
   font-size: 2.3rem;
   font-weight: 500;
   font-family: "Ubuntu", sans-serif;
-  color: #030045;
+  color: #767676;
   width: 28rem;
+}
+.arrive {
+  margin-left: 1rem;
 }
 .depart-text::placeholder,
 .arrive-text::placeholder {
@@ -486,13 +489,21 @@ img {
   font-size: 3rem;
   color: #00aff5;
   display: flex;
+  transition: all 0.3s;
 }
 .trajet-more-text {
   color: #00aff5;
 }
+.trajet-more:hover,
+.trajet-more:active {
+  transform: translateY(-5px);
+}
 .morelink:hover .trajet-more-text,
 .morelink:active .trajet-more-text {
   text-decoration: underline;
+}
+.trajet-more-text {
+  text-decoration: none !important;
 }
 .trajet-more-fleche {
   color: #00aff5;
@@ -503,13 +514,14 @@ img {
 /* ****************************** */
 /* FOOTER */
 /* ****************************** */
-footer {
+.footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  max-width: 120rem;
+  /* max-width: 120rem; */
   margin: 0 auto;
   gap: 2rem;
-  padding: 10rem 0;
+  padding: 10rem 15rem;
+  background-color: #030045;
 }
 .copyright,
 .contact,
@@ -522,41 +534,43 @@ footer {
 }
 .footer-title {
   margin-bottom: 2rem;
+  color: #ccc;
 }
 .footer-element {
   font-size: 1.5rem;
   font-weight: 500;
   transition: all 500ms;
+  color: #bcbcbc;
 }
 .footer-element:hover,
 .footer-element:active {
-  color: #030045;
+  color: #bcbcbc;
   text-decoration: underline;
   transition: all 500ms;
 }
 .footer-element:link,
 .footer-element:visited {
-  color: #030045;
+  color: #bcbcbc;
 }
 .footer-logo {
-  height: 6rem;
+  height: 3.5rem;
 }
 .sm-logos {
   display: flex;
   gap: 1rem;
 }
 .sm-logo {
-  color: #767676;
+  color: #bbb;
   height: 2rem;
   width: 2rem;
   transition: all 300ms;
 }
 .sociallink:hover .sm-logo,
 .sociallink:active .sm-logo {
-  color: #444;
+  color: #bbb;
 }
 .copyright-text {
-  color: #767676;
+  color: #ccc;
   margin-top: 3.5rem;
 }
 .address:hover,
