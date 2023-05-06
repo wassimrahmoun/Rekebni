@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const date = document.getElementById("myDate");
     const dateValue = new Date(date.value).toISOString();
     const passager = document.getElementById("passengers").value;
-
     const url = `http://localhost:8000/api/v1/trajets?Depart=${departs}&Arrivée=${arriver}&date=${dateValue}&places[gte]=${passager}`;
 
     fetch(url)
