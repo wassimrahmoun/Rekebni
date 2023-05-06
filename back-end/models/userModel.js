@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: "String",
-      require: [true, "Vous devez avoir un nom "],
+      required: [true, "Vous devez avoir un nom "],
     },
     email: {
       type: String,
@@ -30,13 +30,13 @@ const userSchema = new mongoose.Schema(
     role: {},
     password: {
       type: String,
-      require: [true, "Vous devez avoir un mot de passe "],
+      required: [true, "Vous devez avoir un mot de passe "],
       select: false, //Pour postmane
       minlength: 8,
     },
     passwordConfirm: {
       type: String,
-      require: [true, "Vous devez confirmer votre mot de passe"],
+      required: [true, "Vous devez confirmer votre mot de passe"],
       select: false,
       validate: {
         validator: function (el) {
