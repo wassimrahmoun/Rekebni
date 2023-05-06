@@ -95,18 +95,10 @@ html {
     width: 3rem;
     color: rgb(233, 12, 12);
   }
-  .nbr {
-    width: 22rem;
-    padding: 1rem 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #DAF4FF;
-    border-radius: 20px;
-  }
+  
 
-  .nbr label{
-    font-size: 1.5rem;
+  .nbrpersonne input{
+    width: 15%;
   }
 
   input[type="radio"]:checked{
@@ -115,6 +107,11 @@ html {
     background-color: #00aff5;
     
   }
+
+  /* .color input{
+    width: 43%;
+    height: 100%;
+  } */
 
   .fumeur div{
     background-color: #DAF4FF;
@@ -291,5 +288,12 @@ html {
     align-self: center;
     border-radius: 20px;
     padding: 1rem 2rem;
-    
+    border: 2px solid #00AFF5;
+    transition: all ease-in-out 0.4s;
   }
+
+  .btn-addtrip button:hover{
+    background-color: white;
+    color: #030045;
+  }
+

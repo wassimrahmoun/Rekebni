@@ -18,9 +18,9 @@
     />
     <meta charset="UTF-8" />
     <!--Link to nav bar css style-->
-    <link rel="stylesheet" type="text/css" href="/css/addTrip.css" />
-    <link rel="stylesheet" type="text/css" href="/css/footer.css" /> 
-    <link rel="stylesheet" type="text/css" href="/css/navbar2.css" />
+    <link rel="stylesheet" type="text/css" href="../css/addTrip.css" />
+    <link rel="stylesheet" type="text/css" href="../css/footer.css" /> 
+    <link rel="stylesheet" type="text/css" href="../css/navbar2.css" />
     <!-- <link rel="stylesheet" type="text/css" href="../css/style.css" /> -->
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -48,9 +48,9 @@
       <nav>
         <div class="header-container">
           <a href="/">
-          <div class="logo" >
-            <img src="../img/ICON3.svg" alt="Rakabni" />
-            <h1>Rekebni</h1>
+            <div class="logo" >
+              <img src="../img/ICON3.svg" alt="Rakabni" />
+              <h1>Rekebni</h1>
             </div>
           </a>
             <div class="nav-login flex-center">
@@ -79,20 +79,17 @@
             <label for="vehicule-input">Type du Vehicule :</label>
             <input class="vehicule-input"  list="vehicule-input" id="vehicule-input" name="vehicule-input">
           </div>
+          <div class="inputs color">
+            <label for="color-input">Couleur du Vehicule :</label>
+            <input class="color-input"  id="color-input" name="color-input" type="text">
+          </div>
           <div class="inputs matricule">
             <label for="matricule-input">Matricule : </label>
             <input class="matricule-input" id="matricule-input" name="matricule-input" type="number" size="12" maxlength="12" placeholder="000000 000 000">
           </div>
           <div class="inputs nbrpersonne">
             <label for="nbrpersonne-input">Combien de personnes ?</label>
-            <div class="nbr">
-              <input class="nbrpersonne-input" id="One" name="nbrpersonne-input" type="radio" value="1" >
-              <label for="One"> 1 </label>
-              <input class="nbrpersonne-input" id="two" name="nbrpersonne-input" type="radio" value="2">
-              <label for="two"> 2 </label>
-              <input class="nbrpersonne-input" id="three" name="nbrpersonne-input" type="radio" value="3">
-              <label for="three"> 3 </label>
-            </div>
+            <input class="nbrpersonne-input" id="nbrpersonne-input" name="nbrpersonne-input" type="number" >
           </div>
           <div class="inputs fumeur">
             <label for="fumeur-input">Autorisé au fumeurs:</label>
