@@ -69,11 +69,25 @@
         <form class="trajet-info">
           <div class="inputs arrive">
             <label for="destination-input">Où allez-vous ?</label>
-            <input class="destination-input" id="destination-input" name="destination-input" placeholder="exm: Oran">
+            <select id="arrive" name="destination-input" class="destination-input">
+              <option value="0">Arrivée</option>
+              <option value="1" class="personnes-text">ORAN</option>
+              <option value="2" class="personnes-text">ALGER</option>
+              <option value="3" class="personnes-text">SBA</option>
+              <option value="4" class="personnes-text">Telemcen</option>
+              <option value="5" class="personnes-text">Tizi</option>
+            </select>
           </div>  
           <div class="inputs depart">
             <label for="destination-input">D'où vous partiez?</label>
-            <input class="destination-input" id="destination-input" name="destination-input" placeholder="exm: Alger">
+            <select id="depart" name="destination-input" class="destination-input" >
+              <option value="0">Départ</option>
+              <option value="1" class="personnes-text">ORAN</option>
+              <option value="2" class="personnes-text">ALGER</option>
+              <option value="3" class="personnes-text">SBA</option>
+              <option value="4" class="personnes-text">Telemcen</option>
+              <option value="5" class="personnes-text">Tizi</option>
+            </select>
           </div> 
           <div class="inputs vehicule">
             <label for="vehicule-input">Type du Vehicule :</label>
@@ -157,7 +171,8 @@
         </div>
       </div>
       <div class="btn-addtrip">
-        <button class="ajouter-Btn">Ajouter le trajet</button>
+        <button class="ajouter-btn">Ajouter le trajet</button>
+        <button class="affiche-btn">Afficher les trajet similaires</button>
       </div>
 
 

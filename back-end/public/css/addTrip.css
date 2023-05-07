@@ -63,11 +63,24 @@ html {
     padding: 1rem 2rem;
     outline: none;
     /* border: 2px solid #00aff5; */
-    border-radius: 17px;
+    border-radius: 12px;
     max-width: 100%;
     background-color: #DAF4FF;
     overflow: auto;
   }
+
+  .inputs select{
+    font-family: "ubuntu", sans-serif;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    outline: none;
+    /* border: 2px solid #00aff5; */
+    border-radius: 12px;
+    width: 43%;
+    background-color: #DAF4FF;
+    overflow: auto;
+  }
+
   .invalid {
     border: 2px solid #00aff5;
     border-radius: 50px;
@@ -143,7 +156,7 @@ html {
   }
 
   .price div input{
-      border-radius: 17px 0px 0px 17px;
+      border-radius: 12px 0 0 12px;
       max-width: 30%;
       padding: 0.5rem 0;
       padding-left: 2rem;
@@ -151,7 +164,7 @@ html {
       font-family: "ubuntu", sans-serif ;
    }
     .price div h6{
-        border-radius: 0px 17px 17px 0px;
+        border-radius: 0 12px 12px 0;
         background-color: #DAF4FF;
         align-self: center;
         align-items: center;
@@ -271,8 +284,9 @@ html {
   .btn-addtrip{
     max-width: 110rem;
     display: grid;
-    grid-template-columns: repeat(1, 4fr);
+    grid-template-columns: repeat(2, 4fr);
     justify-content: center;
+    gap: 1rem;
     align-items: center;
     margin: 3rem auto;
   }
@@ -283,7 +297,7 @@ html {
     font-size: 2rem;
     font-weight: 400;
     font-family: "ubuntu", sans-serif;
-    width: 50%;
+    width: 100%;
     margin: auto ;
     align-self: center;
     border-radius: 20px;
