@@ -18,6 +18,13 @@ router.use(authController.protect);
 
 router.patch("/updateMyPassword", authController.updatePassword);
 
+router.patch(
+  "/updateMe",
+  userController.uploadUserPhoto,
+  userController.resizeUserPhoto,
+  userController.updateMe
+);
+
 router
   .route("/:conducteurId/reviews")
   .post(authController.protect, reviewController.createReview);

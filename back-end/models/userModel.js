@@ -3,6 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const slugify = require("slugify");
+const mongooseTypePhone = require("mongoose-type-phone");
 
 const userSchema = new mongoose.Schema(
   {
@@ -25,6 +26,19 @@ const userSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       validate: [validator.isEmail, "Entrez une address email valide "],
+    },
+    phone: {
+      type: mongooseTypePhone.Phone,
+      required: "Le numéro de téléphone doit être correctement renseigné",
+      allowBlank: false,
+      allowedNumberTypes: [
+        mongooseTypePhone.PhoneNumberType.MOBILE,
+        mongooseTypePhone.PhoneNumberType.FIXED_LINE,
+        mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE,
+      ],
+      phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL,
+      defaultRegion: "DZ",
+      parseOnGet: false,
     },
     ratingsAverage: {
       type: Number,
