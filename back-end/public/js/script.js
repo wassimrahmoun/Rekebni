@@ -3,19 +3,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const recherche = document.querySelector(".searchbar-btn");
   recherche.addEventListener("click", async (event) => {
     event.preventDefault();
-
-    const departs = document.getElementById("departs").value;
-    const arriver = document.getElementById("arrives").value;
+    const departs = document.getElementById("departs");
+    const departSelection = departs.options[departs.selectedIndex].value;
+    const arriver = document.getElementById("arrives");
+    const arriveSelection = arriver.options[arriver.selectedIndex].value;
     const date = document.getElementById("myDate");
     const dateValue = new Date(date.value).toISOString();
     const passager = document.getElementById("passengers").value;
-    const url = `http://localhost:8000/api/v1/trajets?Depart=${departs}&Arrivée=${arriver}&date=${dateValue}&places[gte]=${passager}`;
-
+    const url = `http://localhost:8000/api/v1/trajets?Depart=${departSelection}&Arrivée=${arriveSelection}&date=${dateValue}&places[gte]=${passager}`;
+    console.log(departSelection);
+    console.log(arriveSelection);
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Afficher la réponse du serveur dans la console
-        // Traiter les données ici
+        console.log(data);
+        console.log();
+
+        // Afficher la réponse du serveur dans la console
+        //localStorage.setItem("mes-donnees", JSON.stringify(data));
+        // enrigestrer dans local storage
       })
       .catch((error) => console.error(error));
   });
