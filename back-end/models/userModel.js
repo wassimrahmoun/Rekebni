@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
     slug: {
       type: "String",
       unique: true,
-      //ne pas oublier de le refaire apres require: [true, "Vous devez avoir un nom "],
+      //ne pas oublier de le refaire apres required: [true, "Vous devez avoir un nom "],
     },
     email: {
       type: String,

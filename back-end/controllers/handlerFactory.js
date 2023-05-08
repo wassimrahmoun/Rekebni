@@ -101,7 +101,7 @@ exports.getAll = (Model) =>
       status: "success",
       results: doc.length,
       data: {
-        data: doc, // juste hire tours = tours but il  const kaka tours: kaka
+        data: doc, // juste hire
       },
     });
   });

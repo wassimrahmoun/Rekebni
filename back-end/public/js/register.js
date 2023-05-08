@@ -51,11 +51,17 @@ document.addEventListener("DOMContentLoaded", (e) => {
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {
-      document.querySelectorAll(".erreur").forEach((txt) => txt.remove());
-      var errorElement = document.createElement("span");
-      errorElement.textContent = err.message;
-      errorElement.classList.add("erreur");
-      form.insertAdjacentElement("afterbegin", errorElement);
+      document.querySelectorAll(".erreur").forEach(txt => txt.remove());
+    const html = `<div class="invalid erreur" style="display: flex;" >
+      <p class="invalid-text">
+      ${err.message}
+      </p>
+      <ion-icon
+        class="invalid-icon"
+        name="alert-circle-outline"
+      ></ion-icon>
+    </div>` ;
+    form.firstElementChild.insertAdjacentHTML('beforeend',html) ;
     }
   });
 });
