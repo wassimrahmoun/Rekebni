@@ -14,12 +14,11 @@ const userSchema = new mongoose.Schema(
     prenom: {
       type: "String",
     },
-    pseudo: {
+    slug: {
       type: "String",
       unique: true,
       //ne pas oublier de le refaire apres require: [true, "Vous devez avoir un nom "],
     },
-    slug: String,
     email: {
       type: String,
       required: [true, "A user must have an email address"],
