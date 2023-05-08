@@ -63,7 +63,6 @@ function revealOnScroll() {
 }
 window.addEventListener("scroll", revealOnScroll);
 
-<<<<<<< HEAD
 // search
 document.addEventListener("DOMContentLoaded", () => {
   const recherche = document.querySelector(".searchbar-btn");
@@ -87,8 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => console.error(error));
   });
 });
-=======
->>>>>>> oussloc
 //lazy loading images
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // const imgTargets = document.querySelectorAll("img[data-src]");
