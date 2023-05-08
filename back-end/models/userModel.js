@@ -3,6 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const slugify = require("slugify");
+const mongooseTypePhone = require("mongoose-type-phone");
 
 const userSchema = new mongoose.Schema(
   {
@@ -13,18 +14,30 @@ const userSchema = new mongoose.Schema(
     prenom: {
       type: "String",
     },
-    pseudo: {
+    slug: {
       type: "String",
       unique: true,
       //ne pas oublier de le refaire apres require: [true, "Vous devez avoir un nom "],
     },
-    slug: String,
     email: {
       type: String,
       required: [true, "A user must have an email address"],
       unique: true,
       lowercase: true,
       validate: [validator.isEmail, "Entrez une address email valide "],
+    },
+    phone: {
+      type: mongooseTypePhone.Phone,
+      required: "Le numéro de téléphone doit être correctement renseigné",
+      allowBlank: false,
+      allowedNumberTypes: [
+        mongooseTypePhone.PhoneNumberType.MOBILE,
+        mongooseTypePhone.PhoneNumberType.FIXED_LINE,
+        mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE,
+      ],
+      phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL,
+      defaultRegion: "DZ",
+      parseOnGet: false,
     },
     ratingsAverage: {
       type: Number,
