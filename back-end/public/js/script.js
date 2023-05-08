@@ -11,22 +11,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const dateValue = new Date(date.value).toISOString();
     const passager = document.getElementById("passengers").value;
     const url = `http://localhost:8000/api/v1/trajets?Depart=${departSelection}&Arrivée=${arriveSelection}&date=${dateValue}&places[gte]=${passager}`;
-    console.log(departSelection);
-    console.log(arriveSelection);
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        console.log();
-
+        window.location.href = "../recherche";
+        // const trajets = {
+        //   depart: data.data.data[0].Depart,
+        //   Conducteur: data.data.data[0].Conducteur,
+        //   Couleur: data.data.data[0].Couleur,
+        //   HeurA: data.data.data[0].HeurA,
+        //   HeurD: data.data.data[0].HeurD,
+        //   Matricule: data.data.data[0].Matricule,
+        //   Passagers: data.data.data[0].Passagers,
+        //   Prix: data.data.data[0].Prix,
+        //   Vehicule: data.data.data[0].Vehicule,
+        //   date: data.data.data[0].date,
+        //   fumers: data.data.data[0].fumers,
+        //   isActive: data.data.data[0].isActive,
+        //   places: data.data.data[0].places,
+        //   slug: data.data.data[0].slug,
+        // };
+        // console.log(trajets);
         // Afficher la réponse du serveur dans la console
-        //localStorage.setItem("mes-donnees", JSON.stringify(data));
+        localStorage.setItem("mes-donnees", JSON.stringify(data));
         // enrigestrer dans local storage
       })
       .catch((error) => console.error(error));
   });
 });
-
 function revealOnScroll() {
   var revealItems = document.querySelectorAll(".info-title-text");
   for (var i = 0; i < revealItems.length; i++) {
@@ -43,29 +56,6 @@ function revealOnScroll() {
 }
 window.addEventListener("scroll", revealOnScroll);
 
-// search
-document.addEventListener("DOMContentLoaded", () => {
-  const recherche = document.querySelector(".searchbar-btn");
-  recherche.addEventListener("click", async (event) => {
-    event.preventDefault();
-
-    const departs = document.getElementById("departs").value;
-    const arriver = document.getElementById("arrives").value;
-    const date = document.getElementById("myDate");
-    const dateValue = new Date(date.value).toISOString();
-    const passager = document.getElementById("passengers").value;
-
-    const url = `http://localhost:8000/api/v1/trajets?Depart=${departs}&Arrivée=${arriver}&date=${dateValue}&places[gte]=${passager}`;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data); // Afficher la réponse du serveur dans la console
-        // Traiter les données ici
-      })
-      .catch((error) => console.error(error));
-  });
-});
 //lazy loading images
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // const imgTargets = document.querySelectorAll("img[data-src]");
