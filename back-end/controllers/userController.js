@@ -1,5 +1,5 @@
 const multer = require("multer");
-const sharp = require("sharp");
+// const sharp = require("sharp");
 const User = require("./../models/userModel.js");
 const catchAsync = require("../utils/catchAsync");
 const factory = require("./handlerFactory");
@@ -27,19 +27,19 @@ const upload = multer({
 
 exports.uploadUserPhoto = upload.single("photo");
 
-exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
-  if (!req.file) return next();
+// exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
+//   if (!req.file) return next();
 
-  req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+//   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
 
-  await sharp(req.file.buffer)
-    .resize(500, 500)
-    .toFormat("jpeg")
-    .jpeg({ quality: 90 })
-    .toFile(`back-end/public/img/user/${req.file.filename}`);
+//   await sharp(req.file.buffer)
+//     .resize(500, 500)
+//     .toFormat("jpeg")
+//     .jpeg({ quality: 90 })
+//     .toFile(`back-end/public/img/user/${req.file.filename}`);
 
-  next();
-});
+//   next();
+// });
 
 exports.deleteMe = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user.id, { active: false });

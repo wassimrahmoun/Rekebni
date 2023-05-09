@@ -13,20 +13,13 @@ router.get(
   authController.isLoggedIn,
   authController.getCurrentUser
 );
-<<<<<<< HEAD
-=======
-
->>>>>>> said
 router
   .route("/")
   .get(trajetController.getAllTrajets)
   .post(authController.isLoggedIn, trajetController.createTrajet);
-<<<<<<< HEAD
 
 // router.route("/:slug/:date/:heurD").get(trajetController.getTrajet);
 router.route("/:id").get(trajetController.getTrajet);
-=======
->>>>>>> said
 
 router.use(authController.protect);
 router.route("/reserver/:id").post(trajetController.reserverTrajet);
