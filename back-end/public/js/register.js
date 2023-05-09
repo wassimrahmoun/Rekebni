@@ -1,4 +1,12 @@
 // Page d'inscription
+const emptyOutInputs = function(){
+  document.getElementById("email").value ="" ;
+  document.getElementById("password").value ="";
+  document.getElementById(  "password-confirmation" ).value ="" ;
+  document.getElementById("last-name").value = "" ;
+  document.getElementById("first-name").value ="" ;
+  document.getElementById("date").value="" ;
+}
 document.addEventListener("DOMContentLoaded", (e) => {
   let form = document.querySelector(".sign-up-card");
   e.preventDefault();
@@ -17,6 +25,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const firstName = document.getElementById("first-name").value;
       const birthDate = document.getElementById("date").value;
 
+<<<<<<< HEAD
       // Checking inputs
       if (
         !email ||
@@ -28,6 +37,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
       ) {
         throw new Error(`Check your inputs ❌`);
       }
+=======
+      // Checking inputs 
+      if (!email || !password || !passwordConfirm || !firstName || !lastName || !birthDate) {
+        throw new Error(`Check your inputs ❌`) ;
+      } ;
+>>>>>>> said
       if (passwordConfirm != password)
         throw new Error(`password fields unmatching ❌`);
 
@@ -46,6 +61,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
           // birthDate:  birthDate,
         }),
       });
+<<<<<<< HEAD
       if (!res.ok)
         throw new Error("Something is wrong ❌ , please try again later !");
       data = await res.json();
@@ -53,6 +69,17 @@ document.addEventListener("DOMContentLoaded", (e) => {
     } catch (err) {
       document.querySelectorAll(".erreur").forEach(txt => txt.remove());
     const html = `<div class="invalid erreur" style="display: flex;" >
+=======
+      if (!res.ok) throw new Error("Something went wrong ❌ , please try again later !");
+      
+      await res.json();
+
+      window.location.href = "/login";
+    } catch (err) {
+      emptyOutInputs() ;
+      document.querySelectorAll(".erreur").forEach(txt=>txt.remove()) ;
+      const html =` <div class="invalid erreur" style="display: flex;" >
+>>>>>>> said
       <p class="invalid-text">
       ${err.message}
       </p>
@@ -60,7 +87,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
         class="invalid-icon"
         name="alert-circle-outline"
       ></ion-icon>
+<<<<<<< HEAD
     </div>` ;
+=======
+    </div>`
+>>>>>>> said
     form.firstElementChild.insertAdjacentHTML('beforeend',html) ;
     }
   });
