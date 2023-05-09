@@ -69,24 +69,114 @@
         <form class="trajet-info">
           <div class="inputs arrive">
             <label for="destination-input">Où allez-vous ?</label>
-            <select id="arrive" name="destination-input" class="destination-input">
-              <option value="0">Arrivée</option>
-              <option value="1" class="personnes-text">ORAN</option>
-              <option value="2" class="personnes-text">ALGER</option>
-              <option value="3" class="personnes-text">SBA</option>
-              <option value="4" class="personnes-text">Telemcen</option>
-              <option value="5" class="personnes-text">Tizi</option>
+            <select id="arrive" name="destination-input" class="destination-input" required="">
+                <option value="" disabled="" selected="">
+                  Destination
+                </option>
+                <option value="ADRAR" class="destination-input">ADRAR</option>
+                <option value="CHLEF"class="destination-input">CHLEF</option>
+                <option value="LAGHOUAT"class="destination-input">LAGHOUAT</option>
+                <option value="OUM-EL-BOUAGHI" class="destination-input">OUM-EL-BOUAGHI</option>
+                <option value="BATNA" class="destination-input">BATNA</option>
+                <option value="BEJAIA" class="destination-input">BEJAIA</option>
+                <option value="BISKRA" class="destination-input">BISKRA</option>
+                <option value="BECHAR" class="destination-input">BECHAR</option>
+                <option value="BLIDA" class="destination-input">BLIDA</option>
+                <option value="BOUIRA" class="destination-input">BOUIRA</option>
+                <option value="TAMANRASSET" class="destination-input">TAMANRASSET</option>
+                <option value="TEBESSA" class="destination-input">TEBESSA </option>
+                <option value="TLEMCEN" class="destination-input">TLEMCEN</option>
+                <option value="TIARET" class="destination-input">TIARET</option>
+                <option value="TIZI-OUZOU" class="destination-input">TIZI-OUZOU</option>
+                <option value="ALGER" class="destination-input">ALGER</option>
+                <option value="DJELFA" class="destination-input">DJELFA</option>
+                <option value="JIJEL" class="destination-input">JIJEL</option>
+                <option value="SETIF" class="destination-input">SETIF</option>
+                <option value="SAIDA" class="destination-input">SAIDA</option>
+                <option value="SKIKDA" class="destination-input">SKIKDA</option>
+                <option value="SIDI-BEL-ABBES" class="destination-input">SIDI-BEL-ABBES</option>
+                <option value="ANABA" class="destination-input">ANNABA</option>
+                <option value="GUELMA" class="destination-input">GUELMA</option>
+                <option value="CONSTANTINE" class="destination-input">CONSTANTINE</option>
+                <option value="MEDEA" class="destination-input">MEDEA</option>
+                <option value="MOSTAGANEM" class="destination-input">MOSTAGANEM</option>
+                <option value="M-SILA" class="destination-input">M-SILA</option>
+                <option value="MASCARA" class="destination-input">MASCARA</option>
+                <option value="OUARGLA" class="destination-input">OUARGLA</option>
+                <option value="ORAN" class="destination-input">ORAN</option>
+                <option value="EL-BAYADH" class="destination-input">EL-BAYADH</option>
+                <option value="ILLIZI" class="destination-input">ILLIZI </option>
+                <option value="BORDJ-BOU-ARRERIDJ" class="destination-input">BORDJ-BOU-ARRERIDJ</option>
+                <option value="BOUMERDES" class="destination-input">BOUMERDES</option>
+                <option value="EL-TARF" class="destination-input">EL-TARF</option>
+                <option value="TINDOUF" class="destination-input">TINDOUF</option>
+                <option value="TISSEMSILT" class="destination-input">TISSEMSILT</option>
+                <option value="EL-OUED" class="destination-input">EL-OUED</option>
+                <option value="KHENCHELA" class="destination-input">KHENCHELA</option>
+                <option value="SOUK-AHRAS" class="destination-input">SOUK-AHRAS</option>
+                <option value="TIPAZA" class="destination-input">TIPAZA</option>
+                <option value="MILA" class="destination-input">MILA</option>
+                <option value="AIN-DEFLA" class="destination-input">AIN-DEFLA</option>
+                <option value="NAAMA" class="destination-input">NAAMA</option>
+                <option value="AIN-TEMOUCHENT" class="destination-input">AIN-TEMOUCHENT</option>
+                <option value="GHARDAIA" class="destination-input">GHARDAIA</option>
+                <option value="RELIZANE" class="destination-input">RELIZANE</option>
             </select>
           </div>  
           <div class="inputs depart">
             <label for="destination-input">D'où vous partiez?</label>
             <select id="depart" name="destination-input" class="destination-input" >
-              <option value="0">Départ</option>
-              <option value="1" class="personnes-text">ORAN</option>
-              <option value="2" class="personnes-text">ALGER</option>
-              <option value="3" class="personnes-text">SBA</option>
-              <option value="4" class="personnes-text">Telemcen</option>
-              <option value="5" class="personnes-text">Tizi</option>
+              <option value="" disabled="" selected="">
+                Départ
+              </option>
+              <option value="ADRAR" class="destination-input">ADRAR</option>
+              <option value="CHLEF"class="destination-input">CHLEF</option>
+              <option value="LAGHOUAT"class="destination-input">LAGHOUAT</option>
+              <option value="OUM-EL-BOUAGHI" class="destination-input">OUM-EL-BOUAGHI</option>
+              <option value="BATNA" class="destination-input">BATNA</option>
+              <option value="BEJAIA" class="destination-input">BEJAIA</option>
+              <option value="BISKRA" class="destination-input">BISKRA</option>
+              <option value="BECHAR" class="destination-input">BECHAR</option>
+              <option value="BLIDA" class="destination-input">BLIDA</option>
+              <option value="BOUIRA" class="destination-input">BOUIRA</option>
+              <option value="TAMANRASSET" class="destination-input">TAMANRASSET</option>
+              <option value="TEBESSA" class="destination-input">TEBESSA </option>
+              <option value="TLEMCEN" class="destination-input">TLEMCEN</option>
+              <option value="TIARET" class="destination-input">TIARET</option>
+              <option value="TIZI-OUZOU" class="destination-input">TIZI-OUZOU</option>
+              <option value="ALGER" class="destination-input">ALGER</option>
+              <option value="DJELFA" class="destination-input">DJELFA</option>
+              <option value="JIJEL" class="destination-input">JIJEL</option>
+              <option value="SETIF" class="destination-input">SETIF</option>
+              <option value="SAIDA" class="destination-input">SAIDA</option>
+              <option value="SKIKDA" class="destination-input">SKIKDA</option>
+              <option value="SIDI-BEL-ABBES" class="destination-input">SIDI-BEL-ABBES</option>
+              <option value="ANABA" class="destination-input">ANNABA</option>
+              <option value="GUELMA" class="destination-input">GUELMA</option>
+              <option value="CONSTANTINE" class="destination-input">CONSTANTINE</option>
+              <option value="MEDEA" class="destination-input">MEDEA</option>
+              <option value="MOSTAGANEM" class="destination-input">MOSTAGANEM</option>
+              <option value="M-SILA" class="destination-input">M-SILA</option>
+              <option value="MASCARA" class="destination-input">MASCARA</option>
+              <option value="OUARGLA" class="destination-input">OUARGLA</option>
+              <option value="ORAN" class="destination-input">ORAN</option>
+              <option value="EL-BAYADH" class="destination-input">EL-BAYADH</option>
+              <option value="ILLIZI" class="destination-input">ILLIZI </option>
+              <option value="BORDJ-BOU-ARRERIDJ" class="destination-input">BORDJ-BOU-ARRERIDJ</option>
+              <option value="BOUMERDES" class="destination-input">BOUMERDES</option>
+              <option value="EL-TARF" class="destination-input">EL-TARF</option>
+              <option value="TINDOUF" class="destination-input">TINDOUF</option>
+              <option value="TISSEMSILT" class="destination-input">TISSEMSILT</option>
+              <option value="EL-OUED" class="destination-input">EL-OUED</option>
+              <option value="KHENCHELA" class="destination-input">KHENCHELA</option>
+              <option value="SOUK-AHRAS" class="destination-input">SOUK-AHRAS</option>
+              <option value="TIPAZA" class="destination-input">TIPAZA</option>
+              <option value="MILA" class="destination-input">MILA</option>
+              <option value="AIN-DEFLA" class="destination-input">AIN-DEFLA</option>
+              <option value="NAAMA" class="destination-input">NAAMA</option>
+              <option value="AIN-TEMOUCHENT" class="destination-input">AIN-TEMOUCHENT</option>
+              <option value="GHARDAIA" class="destination-input">GHARDAIA</option>
+              <option value="RELIZANE" class="destination-input">RELIZANE</option>
             </select>
           </div> 
           <div class="inputs vehicule">
