@@ -41,7 +41,7 @@
           >
           <a class="nav-ele" href="#">
             <ion-icon name="search-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan" hred="/recherche">Recherche</span>
+            <span class="whitespan" >Recherche</span>
           </a>
           <a class="nav-ele" href="/publier">
             <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
@@ -60,7 +60,7 @@
       <section class="section-hero my-section">
         <div class="hero">
           <div class="hero-text-box">
-            <h1 class="hero-title">
+            <h1 class="hero-title show ">
               Voyagez en toute securité et économisez votre argent !
             </h1>
             <span class="hero-subtext"
@@ -77,16 +77,10 @@
         <div class="searchbar">
           <div class="searchbar-text-box">
             <div class="depart">
-              <!-- <input
-                type="search"
-                class=""
-                id="departs"
-                placeholder="Départ ..."
-              /> -->
               <select
                 class="arrive-text"
                 name="wilaya"
-                id="wilaya"
+                id="departs"
                 placeholder="Wilaya"
                 required=""
               >
@@ -146,16 +140,10 @@
               </select>
             </div>
             <div class="arrive">
-              <!-- <input
-                type="search"
-                class="arrive-text"
-                id="arrives"
-                placeholder="Arrivée ..."
-              /> -->
               <select
                 class="depart-text"
                 name="wilaya"
-                id="wilaya"
+                id="arrives"
                 placeholder="Wilaya"
                 required=""
               >
@@ -241,8 +229,6 @@
               // To allow the user to only input a date that is beyond the current date :
               document.getElementById("myDate").setAttribute("min", today);
 
-              // chatgpt's today = aujourdhui
-
               // const today = new Date().toISOString().substr(0, 10);
 
               // const dateInput = document.getElementById("myDate");
@@ -273,6 +259,9 @@
                 <option value="3" class="personnes-text">3</option>
                 <option value="4" class="personnes-text">4</option>
                 <option value="5" class="personnes-text">5</option>
+                <option value="6" class="personnes-text">6</option>
+                <option value="7" class="personnes-text">7</option>
+                <option value="8" class="personnes-text">8</option>
               </select>
             </div>
           </div>
@@ -459,6 +448,7 @@
       </div>
     </footer>
   </body>
+
   <script>
     const imgTargets = document.querySelectorAll("img[data-src]");
 

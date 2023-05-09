@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
+const slugify = require("slugify");
+const mongooseTypePhone = require("mongoose-type-phone");
 
 const userSchema = new mongoose.Schema(
   {
@@ -9,12 +11,33 @@ const userSchema = new mongoose.Schema(
       type: "String",
       required: [true, "Vous devez avoir un nom "],
     },
+    prenom: {
+      type: "String",
+    },
+    slug: {
+      type: "String",
+      unique: true,
+      //ne pas oublier de le refaire apres required: [true, "Vous devez avoir un nom "],
+    },
     email: {
       type: String,
       required: [true, "A user must have an email address"],
       unique: true,
       lowercase: true,
       validate: [validator.isEmail, "Entrez une address email valide "],
+    },
+    phone: {
+      type: mongooseTypePhone.Phone,
+      required: "Le numéro de téléphone doit être correctement renseigné",
+      allowBlank: false,
+      allowedNumberTypes: [
+        mongooseTypePhone.PhoneNumberType.MOBILE,
+        mongooseTypePhone.PhoneNumberType.FIXED_LINE,
+        mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE,
+      ],
+      phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL,
+      defaultRegion: "DZ",
+      parseOnGet: false,
     },
     ratingsAverage: {
       type: Number,
@@ -27,7 +50,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "default.jpg",
     },
-    role: {},
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
     password: {
       type: String,
       required: [true, "Vous devez avoir un mot de passe "],
@@ -59,6 +86,13 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+userSchema.index({ slug: 1 });
+
+userSchema.pre("save", function (next) {
+  //changer pour pseudo apres prsq pseudo unique mais name impossible
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
 
 userSchema.virtual("reviews", {
   ref: "Review",
