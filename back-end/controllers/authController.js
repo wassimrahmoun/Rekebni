@@ -226,12 +226,26 @@ exports.isLoggedIn = async (req, res, next) => {
 
       //there is a logged in user
       res.locals.user = currentUser;
+
       return next();
     } catch (err) {
       return next();
     }
   }
   next();
+};
+
+exports.getCurrentUser = (req, res, next) => {
+  // accéder à l'utilisateur connecté via res.locals.user
+  const currentUser = res.locals.user;
+
+  // envoyer l'utilisateur connecté en réponse sous forme de JSON
+  res.status(200).json({
+    status: "success",
+    data: {
+      user: currentUser,
+    },
+  });
 };
 
 exports.restrictTo = (...roles) => {

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const trajetSchema = new mongoose.Schema({
   Depart: {
     type: String,
-    require: [true, "Vous devez ajouter un point de depart  "],
+    required: [true, "Vous devez ajouter un point de depart  "],
   },
   Arrivée: {
     type: String,
@@ -12,6 +12,10 @@ const trajetSchema = new mongoose.Schema({
   Vehicule: {
     type: String,
     required: [true, "Vous devez preciser votre vehicule"],
+  },
+  isActive: {
+    type: Boolean,
+    default: false,
   },
   Couleur: {
     type: String,
