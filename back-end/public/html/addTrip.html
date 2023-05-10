@@ -1,7 +1,9 @@
+<<<<<<< HEAD
+=======
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Rekebni - Log In Page</title>
+    <title>Rekebni - Publier un trajet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,9 +20,9 @@
     />
     <meta charset="UTF-8" />
     <!--Link to nav bar css style-->
-    <link rel="stylesheet" type="text/css" href="/css/addTrip.css" />
-    <link rel="stylesheet" type="text/css" href="/css/footer.css" /> 
-    <link rel="stylesheet" type="text/css" href="/css/navbar2.css" />
+    <link rel="stylesheet" type="text/css" href="../css/addTrip.css" />
+    <link rel="stylesheet" type="text/css" href="../css/footer.css" /> 
+    <link rel="stylesheet" type="text/css" href="../css/navbar2.css" />
     <!-- <link rel="stylesheet" type="text/css" href="../css/style.css" /> -->
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -41,16 +43,18 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-    <script src="../js/login.js"></script>
+    <script defer src="../js/addTrip.js"></script>
   </head>
   <body>
     <header>
       <nav>
         <div class="header-container">
-          <div class="logo">
-            <img src="../img/ICON3.svg" alt="Rakabni" />
-            <h1>Rekebni</h1>
+          <a href="/">
+            <div class="logo" >
+              <img src="../img/ICON3.svg" alt="Rakabni" />
+              <h1>Rekebni</h1>
             </div>
+          </a>
             <div class="nav-login flex-center">
               <a class="btn--login flex-center whitespan" href="/login">se connecter</a>
               <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
@@ -67,15 +71,33 @@
         <form class="trajet-info">
           <div class="inputs arrive">
             <label for="destination-input">Où allez-vous ?</label>
-            <input class="destination-input" id="destination-input" name="destination-input" placeholder="exm: Oran">
+            <select id="arrive" name="destination-input" class="destination-input">
+              <option value="0">Arrivée</option>
+              <option value="1" class="personnes-text">ORAN</option>
+              <option value="2" class="personnes-text">ALGER</option>
+              <option value="3" class="personnes-text">SBA</option>
+              <option value="4" class="personnes-text">Telemcen</option>
+              <option value="5" class="personnes-text">Tizi</option>
+            </select>
           </div>  
           <div class="inputs depart">
             <label for="destination-input">D'où vous partiez?</label>
-            <input class="destination-input" id="destination-input" name="destination-input" placeholder="exm: Alger">
+            <select id="depart" name="destination-input" class="destination-input" >
+              <option value="0">Départ</option>
+              <option value="1" class="personnes-text">ORAN</option>
+              <option value="2" class="personnes-text">ALGER</option>
+              <option value="3" class="personnes-text">SBA</option>
+              <option value="4" class="personnes-text">Telemcen</option>
+              <option value="5" class="personnes-text">Tizi</option>
+            </select>
           </div> 
           <div class="inputs vehicule">
             <label for="vehicule-input">Type du Vehicule :</label>
             <input class="vehicule-input"  list="vehicule-input" id="vehicule-input" name="vehicule-input">
+          </div>
+          <div class="inputs color">
+            <label for="color-input">Couleur du Vehicule :</label>
+            <input class="color-input"  id="color-input" name="color-input" type="text">
           </div>
           <div class="inputs matricule">
             <label for="matricule-input">Matricule : </label>
@@ -83,14 +105,7 @@
           </div>
           <div class="inputs nbrpersonne">
             <label for="nbrpersonne-input">Combien de personnes ?</label>
-            <div class="nbr">
-              <input class="nbrpersonne-input" id="One" name="nbrpersonne-input" type="radio" value="One" >
-              <label for="One"> 1 </label>
-              <input class="nbrpersonne-input" id="two" name="nbrpersonne-input" type="radio" value="two">
-              <label for="two"> 2 </label>
-              <input class="nbrpersonne-input" id="three" name="nbrpersonne-input" type="radio" value="three">
-              <label for="three"> 3 </label>
-            </div>
+            <input class="nbrpersonne-input" id="nbrpersonne-input" name="nbrpersonne-input" type="number" >
           </div>
           <div class="inputs fumeur">
             <label for="fumeur-input">Autorisé au fumeurs:</label>
@@ -158,7 +173,8 @@
         </div>
       </div>
       <div class="btn-addtrip">
-        <button>Ajouter le trajet</button>
+        <button class="ajouter-btn">Ajouter le trajet</button>
+        <button class="affiche-btn">Afficher les trajet similaires</button>
       </div>
 
 
@@ -210,3 +226,4 @@
       </footer>
   </body>
 </html>
+>>>>>>> said
