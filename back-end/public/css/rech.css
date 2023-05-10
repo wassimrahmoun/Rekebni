@@ -219,7 +219,14 @@ body {
   width: 5rem;
   border: 3px solid #030045;
   border-radius: 100%;
+  overflow: hidden;
 }
+.profile-pic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .name {
   font-size: 2rem;
   color: #030045;
