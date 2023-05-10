@@ -11,7 +11,7 @@ const router = express.Router();
 // );
 router
   .route("/")
-  .get(authController.protect, trajetController.getAllTrajets)
+  .get(trajetController.getAllTrajets)
   .post(authController.isLoggedIn, trajetController.createTrajet);
 
 // router.route("/:slug/:date/:heurD").get(trajetController.getTrajet);
