@@ -9,15 +9,21 @@ const router = express.Router();
 //   authController.protect,
 //   trajetController.getUserTrajects
 // );
+
 router
   .route("/")
   .get(trajetController.getAllTrajets)
   .post(authController.isLoggedIn, trajetController.createTrajet);
 
 // router.route("/:slug/:date/:heurD").get(trajetController.getTrajet);
-router.route("/:id").get(trajetController.getTrajet);
+router
+  .route("/:id")
+  .get(trajetController.getTrajet)
+  .patch(trajetController.updateTrajet)
+  .delete(trajetController.deleteTrajet);
 
 router.use(authController.protect);
+router.route("/:slug").get(trajetController.getUserTrajects);
 router.route("/reserver/:id").post(trajetController.reserverTrajet);
 
 module.exports = router;

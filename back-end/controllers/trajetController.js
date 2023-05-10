@@ -43,14 +43,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
 
 exports.getUserTrajects = catchAsync(async (req, res, next) => {
   const trajet = await await Trajet.findOne({
-    id: req.params.slug,
-    // slug: req.params.slug,
-    isActive: true,
-    // date: req.params.date,
-    //HeurD: req.params.heurD,
-  }).populate({
-    path: "reviews",
-    fields: "review rating user",
+    slug: req.params.slug,
   });
 
   res.status(200).json({
