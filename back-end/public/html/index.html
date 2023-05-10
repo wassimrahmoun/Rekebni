@@ -41,7 +41,7 @@
           >
           <a class="nav-ele" href="#">
             <ion-icon name="search-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan" >Recherche</span>
+            <span class="whitespan">Recherche</span>
           </a>
           <a class="nav-ele" href="/publier">
             <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
@@ -60,7 +60,7 @@
       <section class="section-hero my-section">
         <div class="hero">
           <div class="hero-text-box">
-            <h1 class="hero-title show ">
+            <h1 class="hero-title show">
               Voyagez en toute securité et économisez votre argent !
             </h1>
             <span class="hero-subtext"
@@ -450,6 +450,30 @@
   </body>
 
   <script>
+    // const imgTargets = document.querySelectorAll("img[data-src]");
+
+    // const loadImg = function (entries, observer) {
+    //   const [entry] = entries;
+
+    //   if (!entry.isIntersecting) return;
+
+    //   // Replace src with data-src
+    //   entry.target.src = entry.target.dataset.src;
+
+    //   entry.target.addEventListener("load", function () {
+    //     entry.target.classList.remove("lazy-img");
+    //   });
+
+    //   observer.unobserve(entry.target);
+    // };
+
+    // const imgObserver = new IntersectionObserver(loadImg, {
+    //   root: null,
+    //   threshold: 0,
+    //   rootMargin: "100px",
+    // });
+
+    // imgTargets.forEach((img) => imgObserver.observe(img));
     const imgTargets = document.querySelectorAll("img[data-src]");
 
     const loadImg = function (entries, observer) {
@@ -470,7 +494,7 @@
     const imgObserver = new IntersectionObserver(loadImg, {
       root: null,
       threshold: 0,
-      rootMargin: "100px",
+      rootMargin: "50px",
     });
 
     imgTargets.forEach((img) => imgObserver.observe(img));
