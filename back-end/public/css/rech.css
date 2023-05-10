@@ -9,7 +9,9 @@ html {
   --checked-color: #00aff5;
   --bg-color: #e8e8e8;
 }
-
+::selection {
+  background: #72caec;
+}
 body {
   /* -webkit-font-smoothing: antialiased; */
   -moz-osx-font-smoothing: grayscale;
@@ -314,6 +316,11 @@ fieldset {
   padding: 1rem;
   border-radius: 10px;
   cursor: pointer !important;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -ms-user-select: none;
 }
 
 .filter-name {
