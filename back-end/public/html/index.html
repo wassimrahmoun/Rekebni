@@ -245,6 +245,9 @@
 
               // Set the default value of the input element to the current date
               dateInput.value = today;
+
+              // // Get the current date
+              // var currentDate = new Date();
             </script>
             <div class="passengers">
               <label for="passengers"
@@ -474,5 +477,21 @@
     });
 
     imgTargets.forEach((img) => imgObserver.observe(img));
+
+    // Get the current date
+    var currentDate = new Date();
+
+    // Calculate the max date as one week from now
+    var maxDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate() + 7
+    );
+
+    // Get the date input field element
+    // var dateInput = document.getElementById("myDate");
+
+    // Set the max attribute to the max date
+    dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
   </script>
 </html>
