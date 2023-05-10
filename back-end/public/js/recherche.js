@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(mesDonnees);
   const nbrtrajet = mesDonnees.results;
   console.log(nbrtrajet);
-
   // Assuming there is only one trajet in the data array
   for (let i = 0; i <= nbrtrajet; i++) {
     const trajet = mesDonnees.data[i];
