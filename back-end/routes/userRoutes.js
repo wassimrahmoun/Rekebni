@@ -21,7 +21,7 @@ router.patch("/updateMyPassword", authController.updatePassword);
 router.patch(
   "/updateMe",
   userController.uploadUserPhoto,
-  // userController.resizeUserPhoto,
+  userController.resizeUserPhoto,
   userController.updateMe
 );
 
@@ -29,9 +29,9 @@ router
   .route("/:conducteurId/reviews")
   .post(authController.protect, reviewController.createReview);
 
-router.use(authController.restrictTo("admin"));
-
-router.route("/").get(userController.getAllUsers);
+router
+  .route("/")
+  .get(authController.restrictTo("admin"), userController.getAllUsers);
 
 router
   .route("/:id")
