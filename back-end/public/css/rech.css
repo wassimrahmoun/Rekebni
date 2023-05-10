@@ -350,8 +350,8 @@ input[type="checkbox"] {
   appearance: none;
   /* Safari support */
   -webkit-appearance: none;
-  border: 0.3rem solid #fff;
-  background-color: var(--bg-color);
+  border: 1rem solid #fff;
+  background-color: var(#fff);
   border-radius: 50%;
   cursor: pointer !important;
 }
