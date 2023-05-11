@@ -3,19 +3,30 @@ const locations = document.querySelectorAll(".destination-input") ;
 const heures = document.querySelectorAll(".time-input") ;
 const nbPersonnesElements = document.querySelectorAll(".nbrpersonne-input") ;
 var nbPersonnes = 0 ;
+let userId ;
 const nbPersonnesFunction = function(){
     nbPersonnesElements.forEach(btn=> {if(btn.checked) nbPersonnes = btn.value}) ;
 }
 
+const rechercheId = function(data,email){
+  let id = 0 ;
+  data.forEach(data=>{
+    if(data.email === email.toLowerCase()) id=data.id;
+  } )
+  return id ;
+}
+
+
 const container = document.querySelector(".container") ;
 
-document.querySelector(".ajouter-Btn").addEventListener("click",async function(e){
+document.querySelector(".ajouter-btn").addEventListener("click",async function(e){
     e.preventDefault() ;
     try{
-    const destination = locations[0].value ; 
-    const depart = locations[1].value ;
+    const depart = locations[0].value ; 
+    const destination = locations[1].value ;
     const carType = document.getElementById("vehicule-input").value ;
     const matricule = document.getElementById("matricule-input").value ;
+
     //
     nbPersonnesFunction() ;
     //
@@ -24,6 +35,14 @@ document.querySelector(".ajouter-Btn").addEventListener("click",async function(e
     const heureDepart = heures[0].value ;
     const heureArrivé = heures[1].value ;
     const prix = document.getElementById("price-input").value ;
+
+    // ID 
+    const user_Email = window.localStorage.getItem("email") ;
+    const res1 = await fetch("http://localhost:8000/api/v1/users") ;
+    const data1 = (await res1.json()).data.data;        // Array of users objects
+    console.log(data1);
+    userId = rechercheId(data1 , window.localStorage.getItem("email")) ;
+
     
     // check inputs function
     const inputsEmpty =function(){
@@ -52,8 +71,8 @@ document.querySelector(".ajouter-Btn").addEventListener("click",async function(e
           HeurD:heureDepart,
           HeurA:heureArrivé,
           Prix:prix,
-          Conducteur:"6415f9cb41438448f7528ca1"
-        }),}) ;
+          Conducteur:userId
+                }),}) ;
 
      if (!res.ok) throw new Error(`Something went wrong ❌ , please try again later`)   ;
                                   

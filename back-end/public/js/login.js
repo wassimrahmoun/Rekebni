@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("la reponse est :" + data);
         // Connexion réussie, rediriger l'utilisateur vers la page suivante
         window.location.href = "/";
+        window.localStorage.setItem("email",email) ;
       } else {
         // Afficher un message d'erreur
         const errorMessage = await response.text();
