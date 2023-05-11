@@ -133,6 +133,12 @@ html {
     padding: 1rem 1rem;
     border-radius: 17px;
   }
+
+  .climatisé div{
+    background-color: #DAF4FF;
+    padding: 1rem 1rem;
+    border-radius: 17px;
+  }
   
   .time .arrow {
     width: auto;
