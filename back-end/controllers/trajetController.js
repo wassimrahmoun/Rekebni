@@ -10,7 +10,6 @@ exports.setTrajetUserIds = (req, res, next) => {
 };
 
 exports.getAllTrajets = factory.getAll(Trajet);
-// exports.getTrajet = factory.getOne(Trajet);
 exports.updateTrajet = factory.updateOne(Trajet);
 exports.deleteTrajet = factory.deleteOne(Trajet);
 exports.createTrajet = factory.createOne(Trajet);
