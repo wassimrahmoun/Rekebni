@@ -10,9 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const date = document.getElementById("myDate");
     const dateValue = new Date(date.value).toISOString();
     const passager = document.getElementById("passengers").value;
-    // script.js
-    //  recuper le nombre de passager
+
     const url = `http://localhost:8000/api/v1/trajets?Depart=${departSelection}&Arrivée=${arriveSelection}&date=${dateValue}&places[gte]=${passager}`;
+    var passengersSelect = document.getElementById("passengers");
+    var selectedPassengers = passengersSelect.value;
+    localStorage.setItem("selectedPassengers", selectedPassengers);
+    // Afficher le nombre de passagers choisi
+    console.log("Nombre de passagers choisi : " + selectedPassengers);
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -98,5 +102,3 @@ window.addEventListener("scroll", revealOnScroll);
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // le code est dans la page html
 // animation ecriture
-
-
