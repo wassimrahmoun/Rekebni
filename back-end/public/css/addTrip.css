@@ -173,8 +173,8 @@ input[type="radio"]:checked {
 }
 
 .trajet-similairs {
-  margin: 2rem 1rem;
-  padding: 1rem 2rem;
+  margin: 2rem 2rem;
+  padding: 2rem 2rem;
   border-radius: 28px;
   display: flex;
   flex-direction: column;
