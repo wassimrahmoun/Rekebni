@@ -45,24 +45,6 @@
     <script defer src="../js/addTrip.js"></script>
   </head>
   <body>
-    <!-- <header>
-      <nav>
-        <div class="header-container">
-          <a href="/">
-            <div class="logo">
-              <img src="../img/ICON3.svg" alt="Rakabni" />
-              <h1>Rekebni</h1>
-            </div>
-          </a>
-          <div class="nav-login flex-center">
-            <a class="btn--login flex-center whitespan" href="/login"
-              >se connecter</a
-            >
-            <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
-          </div>
-        </div>
-      </nav>
-    </header> -->
     <header>
       <div class="header">
         <a href="/">
@@ -77,28 +59,79 @@
               <ion-icon name="search-outline" class="whiteicon"></ion-icon>
               <span class="whitespan">Recherche</span>
             </a>
-            <a class="nav-ele" href="#">
+            <!-- <a class="nav-ele" href="#">
               <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
               <span class="whitespan">Ajouter un trajet</span>
-            </a>
-            <div class="nav-login flex-center">
+            </a> -->
+            <div class="nav-login flex-center hidden">
               <a class="btn--login flex-center whitespan" href="/login"
                 >se connecter</a
               >
-              <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
+              <a class="btn--signup flex-center hidden" href="/signup"
+                >s'inscrire</a
+              >
+            </div>
+            <div class="nav-profile">
+              <img class="profile-pic" src="default.jpg" id="menu-btn" />
+              <div class="--absolute" style="display: none" id="menu">
+                <div class="profile-menu a">
+                  <!-- <img src="../img/menubbl.png" class="bbl" /> -->
+                  <div class="profile-menu-ele child">Mon Profil</div>
+                  <div class="profile-menu-ele">Paramètres du Compte</div>
+                  <div class="profile-menu-ele last">Se Déconnecter</div>
+                </div>
+              </div>
             </div>
           </div>
         </nav>
+        <script>
+          // const parent = document.querySelector(".parent");
+          // const child = parent.querySelector(".a .child");
+
+          // child.addEventListener("mouseover", () => {
+          //   parent.style.backgroundColor = "red";
+          // });
+
+          // child.addEventListener("mouseout", () => {
+          //   parent.style.backgroundColor = "";
+          // });
+
+          const menuBtn = document.querySelector("#menu-btn");
+          const menu = document.querySelector("#menu");
+
+          menuBtn.addEventListener("click", () => {
+            if (menu.style.display === "none") {
+              menu.style.display = "block";
+            } else {
+              menu.style.display = "none";
+            }
+          });
+        </script>
       </div>
       <img class="waves2" src="../img/waves4.png" />
     </header>
     <!-- title -->
     <div class="title">
-      <h2>Créer Votre Prorpre trajet</h2>
+      <h2>Créer Votre Propre trajet</h2>
     </div>
     <!--Container-->
     <div class="container">
       <form class="trajet-info">
+        <div class="inputs depart">
+          <label for="destination-input">D'où vous partez?</label>
+          <select
+            id="depart"
+            name="destination-input"
+            class="destination-input"
+          >
+            <option value="0">Départ</option>
+            <option value="1" class="personnes-text">ORAN</option>
+            <option value="2" class="personnes-text">ALGER</option>
+            <option value="3" class="personnes-text">SBA</option>
+            <option value="4" class="personnes-text">Telemcen</option>
+            <option value="5" class="personnes-text">Tizi</option>
+          </select>
+        </div>
         <div class="inputs arrive">
           <label for="destination-input">Où allez-vous ?</label>
           <select
@@ -107,21 +140,6 @@
             class="destination-input"
           >
             <option value="0">Arrivée</option>
-            <option value="1" class="personnes-text">ORAN</option>
-            <option value="2" class="personnes-text">ALGER</option>
-            <option value="3" class="personnes-text">SBA</option>
-            <option value="4" class="personnes-text">Telemcen</option>
-            <option value="5" class="personnes-text">Tizi</option>
-          </select>
-        </div>
-        <div class="inputs depart">
-          <label for="destination-input">D'où vous partiez?</label>
-          <select
-            id="depart"
-            name="destination-input"
-            class="destination-input"
-          >
-            <option value="0">Départ</option>
             <option value="1" class="personnes-text">ORAN</option>
             <option value="2" class="personnes-text">ALGER</option>
             <option value="3" class="personnes-text">SBA</option>
