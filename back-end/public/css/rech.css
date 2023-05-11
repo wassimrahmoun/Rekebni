@@ -12,10 +12,7 @@ html {
 ::selection {
   background: #72caec;
 }
-body {
-  /* -webkit-font-smoothing: antialiased; */
-  -moz-osx-font-smoothing: grayscale;
-}
+
 .icon {
   align-self: center;
   color: #030045;
@@ -353,8 +350,8 @@ input[type="checkbox"] {
   appearance: none;
   /* Safari support */
   -webkit-appearance: none;
-  border: 0.3rem solid #fff;
-  background-color: var(--bg-color);
+  border: 1rem solid #fff;
+  background-color: var(#fff);
   border-radius: 50%;
   cursor: pointer !important;
 }

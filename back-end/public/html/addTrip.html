@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,8 +19,9 @@
     <meta charset="UTF-8" />
     <!--Link to nav bar css style-->
     <link rel="stylesheet" type="text/css" href="../css/addTrip.css" />
-    <link rel="stylesheet" type="text/css" href="../css/footer.css" /> 
+    <link rel="stylesheet" type="text/css" href="../css/footer.css" />
     <link rel="stylesheet" type="text/css" href="../css/navbar2.css" />
+    <link rel="stylesheet" type="text/css" href="../css/general.css" />
     <!-- <link rel="stylesheet" type="text/css" href="../css/style.css" /> -->
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -47,183 +46,279 @@
   </head>
   <body>
     <header>
-      <nav>
-        <div class="header-container">
-          <a href="/">
-            <div class="logo" >
-              <img src="../img/ICON3.svg" alt="Rakabni" />
-              <h1>Rekebni</h1>
+      <div class="header">
+        <a href="/">
+          <img class="logo" src="../img/LOGO22.png"le Logo de Rekebni" />
+        </a>
+        <nav class="main-nav">
+          <div class="nav-righthand">
+            <a class="quisommenous flex-center" href="#">
+              <span class="whitespan">Qui somme nous</span>
+            </a>
+            <a class="nav-ele" href="#">
+              <ion-icon name="search-outline" class="whiteicon"></ion-icon>
+              <span class="whitespan">Recherche</span>
+            </a>
+            <!-- <a class="nav-ele" href="#">
+              <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
+              <span class="whitespan">Ajouter un trajet</span>
+            </a> -->
+            <div class="nav-login flex-center hidden">
+              <a class="btn--login flex-center whitespan" href="/login"
+                >se connecter</a
+              >
+              <a class="btn--signup flex-center hidden" href="/signup"
+                >s'inscrire</a
+              >
             </div>
-          </a>
-            <div class="nav-login flex-center">
-              <a class="btn--login flex-center whitespan" href="/login">se connecter</a>
-              <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
+            <div class="nav-profile">
+              <img class="profile-pic" src="default.jpg" id="menu-btn" />
+              <div class="--absolute" style="display: none" id="menu">
+                <div class="profile-menu a">
+                  <!-- <img src="../img/menubbl.png" class="bbl" /> -->
+                  <div class="profile-menu-ele child">Mon Profil</div>
+                  <div class="profile-menu-ele">Paramètres du Compte</div>
+                  <div class="profile-menu-ele last">Se Déconnecter</div>
+                </div>
               </div>
+            </div>
           </div>
         </nav>
+        <script>
+          // const parent = document.querySelector(".parent");
+          // const child = parent.querySelector(".a .child");
+
+          // child.addEventListener("mouseover", () => {
+          //   parent.style.backgroundColor = "red";
+          // });
+
+          // child.addEventListener("mouseout", () => {
+          //   parent.style.backgroundColor = "";
+          // });
+
+          const menuBtn = document.querySelector("#menu-btn");
+          const menu = document.querySelector("#menu");
+
+          menuBtn.addEventListener("click", () => {
+            if (menu.style.display === "none") {
+              menu.style.display = "block";
+            } else {
+              menu.style.display = "none";
+            }
+          });
+        </script>
+      </div>
+      <img class="waves2" src="../img/waves4.png" />
     </header>
-      <!-- title -->
-      <div class="title">
-        <h2>Créer Votre Prorpre trajet</h2>
-      </div>
-      <!--Container-->
-      <div class="container">
-        <form class="trajet-info">
-          <div class="inputs arrive">
-            <label for="destination-input">Où allez-vous ?</label>
-            <select id="arrive" name="destination-input" class="destination-input">
-              <option value="0">Arrivée</option>
-              <option value="1" class="personnes-text">ORAN</option>
-              <option value="2" class="personnes-text">ALGER</option>
-              <option value="3" class="personnes-text">SBA</option>
-              <option value="4" class="personnes-text">Telemcen</option>
-              <option value="5" class="personnes-text">Tizi</option>
-            </select>
-          </div>  
-          <div class="inputs depart">
-            <label for="destination-input">D'où vous partiez?</label>
-            <select id="depart" name="destination-input" class="destination-input" >
-              <option value="0">Départ</option>
-              <option value="1" class="personnes-text">ORAN</option>
-              <option value="2" class="personnes-text">ALGER</option>
-              <option value="3" class="personnes-text">SBA</option>
-              <option value="4" class="personnes-text">Telemcen</option>
-              <option value="5" class="personnes-text">Tizi</option>
-            </select>
-          </div> 
-          <div class="inputs vehicule">
-            <label for="vehicule-input">Type du Vehicule :</label>
-            <input class="vehicule-input"  list="vehicule-input" id="vehicule-input" name="vehicule-input">
+    <!-- title -->
+    <div class="title">
+      <h2>Créer Votre Propre trajet</h2>
+    </div>
+    <!--Container-->
+    <div class="container">
+      <form class="trajet-info">
+        <div class="inputs depart">
+          <label for="destination-input">D'où vous partez?</label>
+          <select
+            id="depart"
+            name="destination-input"
+            class="destination-input"
+          >
+            <option value="0">Départ</option>
+            <option value="1" class="personnes-text">ORAN</option>
+            <option value="2" class="personnes-text">ALGER</option>
+            <option value="3" class="personnes-text">SBA</option>
+            <option value="4" class="personnes-text">Telemcen</option>
+            <option value="5" class="personnes-text">Tizi</option>
+          </select>
+        </div>
+        <div class="inputs arrive">
+          <label for="destination-input">Où allez-vous ?</label>
+          <select
+            id="arrive"
+            name="destination-input"
+            class="destination-input"
+          >
+            <option value="0">Arrivée</option>
+            <option value="1" class="personnes-text">ORAN</option>
+            <option value="2" class="personnes-text">ALGER</option>
+            <option value="3" class="personnes-text">SBA</option>
+            <option value="4" class="personnes-text">Telemcen</option>
+            <option value="5" class="personnes-text">Tizi</option>
+          </select>
+        </div>
+        <div class="inputs vehicule">
+          <label for="vehicule-input">Type du Vehicule :</label>
+          <input
+            class="vehicule-input"
+            list="vehicule-input"
+            id="vehicule-input"
+            name="vehicule-input"
+          />
+        </div>
+        <div class="inputs color">
+          <label for="color-input">Couleur du Vehicule :</label>
+          <input
+            class="color-input"
+            id="color-input"
+            name="color-input"
+            type="text"
+          />
+        </div>
+        <div class="inputs matricule">
+          <label for="matricule-input">Matricule : </label>
+          <input
+            class="matricule-input"
+            id="matricule-input"
+            name="matricule-input"
+            type="number"
+            size="12"
+            maxlength="12"
+            placeholder="000000 000 000"
+          />
+        </div>
+        <div class="inputs nbrpersonne">
+          <label for="nbrpersonne-input">Combien de personnes ?</label>
+          <input
+            class="nbrpersonne-input"
+            id="nbrpersonne-input"
+            name="nbrpersonne-input"
+            type="number"
+          />
+        </div>
+        <div class="inputs fumeur">
+          <label for="fumeur-input">Autorisé au fumeurs:</label>
+          <div>
+            <input
+              class="fumeur-input"
+              id="fumeur-input"
+              name="fumeur-input"
+              type="checkbox"
+            />
           </div>
-          <div class="inputs color">
-            <label for="color-input">Couleur du Vehicule :</label>
-            <input class="color-input"  id="color-input" name="color-input" type="text">
-          </div>
-          <div class="inputs matricule">
-            <label for="matricule-input">Matricule : </label>
-            <input class="matricule-input" id="matricule-input" name="matricule-input" type="number" size="12" maxlength="12" placeholder="000000 000 000">
-          </div>
-          <div class="inputs nbrpersonne">
-            <label for="nbrpersonne-input">Combien de personnes ?</label>
-            <input class="nbrpersonne-input" id="nbrpersonne-input" name="nbrpersonne-input" type="number" >
-          </div>
-          <div class="inputs fumeur">
-            <label for="fumeur-input">Autorisé au fumeurs:</label>
-            <div>
-              <input class="fumeur-input" id="fumeur-input" name="fumeur-input" type="checkbox">
+        </div>
+        <div class="inputs date">
+          <label for="date-input">Date du trajet :</label>
+          <input
+            class="date-input"
+            id="date-input"
+            name="date-input"
+            type="date"
+          />
+        </div>
+        <div class="inputs time">
+          <label for="time-input">Heure du départ et d'arrivé :</label>
+          <div>
+            <input
+              class="time-input"
+              id="time-input"
+              name="time-input"
+              type="time"
+            />
+            <div class="arrow">
+              <span class="material-symbols-outlined"> arrow_forward </span>
             </div>
-            
+            <input
+              class="time-input"
+              id="time-input"
+              name="time-input"
+              type="time"
+            />
           </div>
-          <div class="inputs date">
-            <label for="date-input">Date du trajet :</label>
-            <input class="date-input" id="date-input" name="date-input" type="date">
+        </div>
+        <div class="inputs price">
+          <label for="price-input">Votre prix par place ?</label>
+          <div>
+            <input
+              class="price-input"
+              id="price-input"
+              name="price-input"
+              type="number"
+            />
+            <h6>DA</h6>
           </div>
-          <div class="inputs time">
-            <label for="time-input">Heure du départ et d'arrivé :</label>
-            <div>
-              <input class="time-input" id="time-input" name="time-input" type="time">
-              <div class="arrow">
-              <span class="material-symbols-outlined">
-                arrow_forward
-              </span>
+        </div>
+      </form>
+      <div class="trajet-similairs">
+        <h3>Les prix actuels des trajets similaires :</h3>
+        <div class="suggested-prices">
+          <div class="trip">
+            <div class="driver-profile">
+              <div class="photo"></div>
+              <div class="ID">
+                <p class="name">Name</p>
+                <p class="avis">0.0/5 avis</p>
               </div>
-              <input class="time-input" id="time-input" name="time-input" type="time">
             </div>
-          </div>
-          <div class="inputs price">
-            <label for="price-input">Votre prix par place ?</label>
-            <div>
-              <input class="price-input" id="price-input" name="price-input" type="number">
-              <h6>DA</h6>
+            <div class="trip-info">
+              <p class="trip-trajet">Départ à Arivée</p>
+              <div class="trip-time">
+                <span class="material-symbols-outlined"> timer </span>
+                <p>08:00</p>
+                <span class="material-symbols-outlined"> arrow_forward </span>
+                <p>12:00</p>
+              </div>
             </div>
-          </div>
-        </form>
-        <div class="trajet-similairs">
-          <h3>Les prix actuels des trajets similaires :</h3>
-          <div class="suggested-prices">
-            <div class="trip">
-              <div class="driver-profile">
-                <div class="photo"></div>
-                <div class="ID">
-                  <p class="name">Name</p>
-                  <p class="avis">0.0/5 avis</p>
-                </div>
-              </div>
-              <div class="trip-info">
-                <p class="trip-trajet">Départ à Arivée</p>
-                <div class="trip-time">
-                  <span class="material-symbols-outlined">
-                    timer
-                  </span>
-                  <p>08:00</p>
-                  <span class="material-symbols-outlined">
-                    arrow_forward
-                  </span>
-                  <p>12:00</p>
-                </div>
-              </div>
-              <div class="trip-date">
-                <p>le 1 mai </p>
-              </div>
-              <div class="trip-price">
-                <p>700 DA</p>
-              </div>
+            <div class="trip-date">
+              <p>le 1 mai</p>
+            </div>
+            <div class="trip-price">
+              <p>700 DA</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="btn-addtrip">
-        <button class="ajouter-btn">Ajouter le trajet</button>
-        <button class="affiche-btn">Afficher les trajet similaires</button>
-      </div>
+    </div>
+    <div class="btn-addtrip">
+      <button class="ajouter-btn">Ajouter le trajet</button>
+      <button class="affiche-btn">Afficher les trajet similaires</button>
+    </div>
 
-
-      <!--Footer-->
-      <footer>
-        <!-- Copy Right -->
-        <div class="copyright">
-          <img class="footer-logo" src="../img/LOGOC.svg" />
-          <div class="sm-logos">
-            <a href="#" class="sociallink">
-              <ion-icon name="logo-instagram" class="sm-logo"></ion-icon>
-            </a>
-            <a href="#" class="sociallink">
-              <ion-icon name="logo-facebook" class="sm-logo"></ion-icon>
-            </a>
-            <a href="#" class="sociallink">
-              <ion-icon name="logo-twitter" class="sm-logo"></ion-icon>
-            </a>
-          </div>
-          <span class="copyright-text"
-            >© 2023 Copyright par l'équipe de développement de Rekebni. Tous les
-            droits sont réservés</span
-          >
+    <!--Footer-->
+    <footer>
+      <!-- Copy Right -->
+      <div class="copyright">
+        <img class="footer-logo" src="../img/LOGOC.svg" />
+        <div class="sm-logos">
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-instagram" class="sm-logo"></ion-icon>
+          </a>
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-facebook" class="sm-logo"></ion-icon>
+          </a>
+          <a href="#" class="sociallink">
+            <ion-icon name="logo-twitter" class="sm-logo"></ion-icon>
+          </a>
         </div>
-        <!-- Contact -->
-        <div class="contact">
-          <h1 class="footer-title">Nous Contacter</h1>
-          <span class="footer-element address"
-            >112 Liabes Abderahmen St, Sidi-Bel-Abbes, SBA 22046</span
-          >
-          <a class="footer-element" href="tel:+213 549 208 230"
-            >+213 549 208 230</a
-          >
-          <a class="footer-element" href="mailto:contact@rekebni.dz"
-            >contact@rekebni.dz</a
-          >
-        </div>
-        <div class="compte">
-          <h1 class="footer-title">Compte</h1>
-          <a class="footer-element" href="#">Se Connecter</a>
-          <a class="footer-element" href="#">Créer un Compte</a>
-        </div>
-        <div class="resources">
-          <h1 class="footer-title">Resources</h1>
-          <a class="footer-element" href="#">A Propos de Rekebni</a>
-          <a class="footer-element" href="#">FAQ</a>
-          <a class="footer-element" href="#">Confidentialité et Conditions</a>
-        </div>
-      </footer>
+        <span class="copyright-text"
+          >© 2023 Copyright par l'équipe de développement de Rekebni. Tous les
+          droits sont réservés</span
+        >
+      </div>
+      <!-- Contact -->
+      <div class="contact">
+        <h1 class="footer-title">Nous Contacter</h1>
+        <span class="footer-element address"
+          >112 Liabes Abderahmen St, Sidi-Bel-Abbes, SBA 22046</span
+        >
+        <a class="footer-element" href="tel:+213 549 208 230"
+          >+213 549 208 230</a
+        >
+        <a class="footer-element" href="mailto:contact@rekebni.dz"
+          >contact@rekebni.dz</a
+        >
+      </div>
+      <div class="compte">
+        <h1 class="footer-title">Compte</h1>
+        <a class="footer-element" href="#">Se Connecter</a>
+        <a class="footer-element" href="#">Créer un Compte</a>
+      </div>
+      <div class="resources">
+        <h1 class="footer-title">Resources</h1>
+        <a class="footer-element" href="#">A Propos de Rekebni</a>
+        <a class="footer-element" href="#">FAQ</a>
+        <a class="footer-element" href="#">Confidentialité et Conditions</a>
+      </div>
+    </footer>
   </body>
 </html>
->>>>>>> said
