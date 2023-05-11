@@ -17,28 +17,31 @@ const userSchema = new mongoose.Schema(
     slug: {
       type: "String",
       unique: true,
-      //ne pas oublier de le refaire apres required: [true, "Vous devez avoir un nom "],
+      required: [true, "Vous devez avoir un nom "],
     },
     email: {
       type: String,
       required: [true, "A user must have an email address"],
-      unique: true,
+      unique: [true, "Cette email existe deja "],
       lowercase: true,
       validate: [validator.isEmail, "Entrez une address email valide "],
     },
-    // phone: {
-    //   type: mongooseTypePhone.Phone,
-    //   required: "Le numéro de téléphone doit être correctement renseigné",
-    //   allowBlank: false,
-    //   allowedNumberTypes: [
-    //     mongooseTypePhone.PhoneNumberType.MOBILE,
-    //     mongooseTypePhone.PhoneNumberType.FIXED_LINE,
-    //     mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE,
-    //   ],
-    //   phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL,
-    //   defaultRegion: "DZ",
-    //   parseOnGet: false,
-    // },
+    phone: {
+      type: mongooseTypePhone.Phone,
+      required: [
+        true,
+        "Le numéro de téléphone doit être correctement renseigné",
+      ],
+      allowBlank: false,
+      allowedNumberTypes: [
+        mongooseTypePhone.PhoneNumberType.MOBILE,
+        mongooseTypePhone.PhoneNumberType.FIXED_LINE,
+        mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE,
+      ],
+      phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL,
+      defaultRegion: "DZ",
+      parseOnGet: false,
+    },
     ratingsAverage: {
       type: Number,
       default: 1,
