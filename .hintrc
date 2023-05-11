@@ -3,12 +3,19 @@
     "development"
   ],
   "hints": {
+<<<<<<< HEAD
+    "axe/name-role-value": [
+      "default",
+      {
+        "link-name": "off"
+=======
     "no-inline-styles": "off",
     "axe/forms": [
       "default",
       {
         "label": "off",
         "select-name": "off"
+>>>>>>> said
       }
     ],
     "axe/text-alternatives": [
@@ -17,6 +24,19 @@
         "image-alt": "off"
       }
     ],
+<<<<<<< HEAD
+    "axe/forms": [
+      "default",
+      {
+        "label": "off",
+        "select-name": "off"
+      }
+    ],
+    "no-inline-styles": "off",
+    "button-type": "off",
+    "detect-css-reflows/composite": "off",
+    "detect-css-reflows/layout": "off",
+=======
     "axe/name-role-value": [
       "default",
       {
@@ -30,14 +50,23 @@
       }
     ],
     "detect-css-reflows/composite": "off",
+>>>>>>> said
     "detect-css-reflows/paint": "off",
     "compat-api/css": [
       "default",
       {
         "ignore": [
+<<<<<<< HEAD
+          "height: fit-content"
+        ]
+      }
+    ],
+    "axe/parsing": "off"
+=======
           "width: fit-content"
         ]
       }
     ]
+>>>>>>> said
   }
 }

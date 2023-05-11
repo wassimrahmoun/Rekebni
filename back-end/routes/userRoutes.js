@@ -13,6 +13,24 @@ router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
 
 router.delete("/deleteMe", userController.deleteMe);
+
+router.use(authController.protect);
+
+router.patch("/updateMyPassword", authController.updatePassword);
+
+router.patch(
+  "/updateMe",
+  userController.uploadUserPhoto,
+  // userController.resizeUserPhoto,
+  userController.updateMe
+);
+
+router
+  .route("/:conducteurId/reviews")
+  .post(authController.protect, reviewController.createReview);
+
+router.use(authController.restrictTo("admin"));
+
 router.route("/").get(userController.getAllUsers);
 
 router
@@ -20,13 +38,5 @@ router
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
-
-router.use(authController.protect);
-
-router.patch("/updateMyPassword", authController.updatePassword);
-
-router
-  .route("/:conducteurId/reviews")
-  .post(authController.protect, reviewController.createReview);
 
 module.exports = router;

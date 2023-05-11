@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rekebni - Votre Solution de Covoiturage</title>
     <!-- CSS LINKS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/quaries.css" />
-    <link rel="stylesheet" type="text/css" href="css/general.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/quaries.css" />
+    <link rel="stylesheet" type="text/css" href="../css/general.css" />
 
     <!-- ICONION SCRIPT LINKS -->
     <script
@@ -41,7 +41,7 @@
           >
           <a class="nav-ele" href="/recherche">
             <ion-icon name="search-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan" >Recherche</span>
+            <span class="whitespan">Recherche</span>
           </a>
           <a class="nav-ele" href="/publier">
             <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
@@ -60,7 +60,7 @@
       <section class="section-hero my-section">
         <div class="hero">
           <div class="hero-text-box">
-            <h1 class="hero-title show ">
+            <h1 class="hero-title show">
               Voyagez en toute securité et économisez votre argent !
             </h1>
             <span class="hero-subtext"
@@ -77,16 +77,10 @@
         <div class="searchbar">
           <div class="searchbar-text-box">
             <div class="depart">
-              <!-- <input
-                type="search"
-                class=""
-                id="departs"
-                placeholder="Départ ..."
-              /> -->
               <select
                 class="arrive-text"
                 name="wilaya"
-                id="wilaya"
+                id="departs"
                 placeholder="Wilaya"
                 required=""
               >
@@ -146,16 +140,10 @@
               </select>
             </div>
             <div class="arrive">
-              <!-- <input
-                type="search"
-                class="arrive-text"
-                id="arrives"
-                placeholder="Arrivée ..."
-              /> -->
               <select
                 class="depart-text"
                 name="wilaya"
-                id="wilaya"
+                id="arrives"
                 placeholder="Wilaya"
                 required=""
               >
@@ -241,8 +229,6 @@
               // To allow the user to only input a date that is beyond the current date :
               document.getElementById("myDate").setAttribute("min", today);
 
-              // chatgpt's today = aujourdhui
-
               // const today = new Date().toISOString().substr(0, 10);
 
               // const dateInput = document.getElementById("myDate");
@@ -259,6 +245,9 @@
 
               // Set the default value of the input element to the current date
               dateInput.value = today;
+
+              // // Get the current date
+              // var currentDate = new Date();
             </script>
             <div class="passengers">
               <label for="passengers"
@@ -273,6 +262,9 @@
                 <option value="3" class="personnes-text">3</option>
                 <option value="4" class="personnes-text">4</option>
                 <option value="5" class="personnes-text">5</option>
+                <option value="6" class="personnes-text">6</option>
+                <option value="7" class="personnes-text">7</option>
+                <option value="8" class="personnes-text">8</option>
               </select>
             </div>
           </div>
@@ -459,7 +451,32 @@
       </div>
     </footer>
   </body>
+
   <script>
+    // const imgTargets = document.querySelectorAll("img[data-src]");
+
+    // const loadImg = function (entries, observer) {
+    //   const [entry] = entries;
+
+    //   if (!entry.isIntersecting) return;
+
+    //   // Replace src with data-src
+    //   entry.target.src = entry.target.dataset.src;
+
+    //   entry.target.addEventListener("load", function () {
+    //     entry.target.classList.remove("lazy-img");
+    //   });
+
+    //   observer.unobserve(entry.target);
+    // };
+
+    // const imgObserver = new IntersectionObserver(loadImg, {
+    //   root: null,
+    //   threshold: 0,
+    //   rootMargin: "100px",
+    // });
+
+    // imgTargets.forEach((img) => imgObserver.observe(img));
     const imgTargets = document.querySelectorAll("img[data-src]");
 
     const loadImg = function (entries, observer) {
@@ -480,9 +497,25 @@
     const imgObserver = new IntersectionObserver(loadImg, {
       root: null,
       threshold: 0,
-      rootMargin: "100px",
+      rootMargin: "50px",
     });
 
     imgTargets.forEach((img) => imgObserver.observe(img));
+
+    // Get the current date
+    var currentDate = new Date();
+
+    // Calculate the max date as one week from now
+    var maxDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate() + 7
+    );
+
+    // Get the date input field element
+    // var dateInput = document.getElementById("myDate");
+
+    // Set the max attribute to the max date
+    dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
   </script>
 </html>

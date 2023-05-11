@@ -13,6 +13,10 @@ const trajetSchema = new mongoose.Schema({
     type: String,
     required: [true, "Vous devez preciser votre vehicule"],
   },
+  isActive: {
+    type: Boolean,
+    default: false,
+  },
   Couleur: {
     type: String,
     required: [true, "Vous devez preciser la couleur de votre vehicule"],
