@@ -105,7 +105,11 @@
             } else {
               menu.style.display = "none";
             }
+            document.addEventListener("click", (event) => {             if (!menu.contains(event.target) && event.target !== menuBtn) {               menu.style.display = "none";             }           });
+        
+            
           });
+          
         </script>
       </div>
       <img class="waves2" src="../img/waves4.png" />
