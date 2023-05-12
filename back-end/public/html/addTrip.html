@@ -117,6 +117,9 @@
             } else {
               menu.style.display = "none";
             }
+            document.addEventListener("click", (event) => {             if (!menu.contains(event.target) && event.target !== menuBtn) {               menu.style.display = "none";             }           });
+        
+            
           });
 
           // Close the menu when a click is detected outside of it

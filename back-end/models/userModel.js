@@ -8,16 +8,16 @@ const mongooseTypePhone = require("mongoose-type-phone");
 const userSchema = new mongoose.Schema(
   {
     name: {
-      type: "String",
+      type: String,
       required: [true, "Vous devez avoir un nom "],
     },
     prenom: {
-      type: "String",
+      type: String,
     },
-    slug: {
-      type: "String",
-      unique: true,
-      required: [true, "Vous devez avoir un nom "],
+    pseudo: {
+      type: String,
+      required: [true, "Vous devez avoir un pseudo "],
+      unique: [true, "Cette pseudo existe deja "],
     },
     email: {
       type: String,
@@ -89,13 +89,6 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-userSchema.index({ slug: 1 });
-
-userSchema.pre("save", function (next) {
-  //changer pour pseudo apres prsq pseudo unique mais name impossible
-  this.slug = slugify(this.name, { lower: true });
-  next();
-});
 
 userSchema.virtual("reviews", {
   ref: "Review",
