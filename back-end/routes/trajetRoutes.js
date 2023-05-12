@@ -23,7 +23,7 @@ router
   .delete(trajetController.deleteTrajet);
 
 router.use(authController.protect);
-router.route("/:slug").get(trajetController.getUserTrajects);
+router.route("/conducteur/:slug").get(trajetController.getUserTrajects);
 router.route("/reserver/:id").post(trajetController.reserverTrajet);
 
 module.exports = router;

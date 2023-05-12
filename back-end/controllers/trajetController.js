@@ -41,7 +41,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
 });
 
 exports.getUserTrajects = catchAsync(async (req, res, next) => {
-  const trajet = await await Trajet.findOne({
+  const trajet = await await Trajet.find({
     slug: req.params.slug,
   });
 

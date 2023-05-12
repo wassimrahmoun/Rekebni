@@ -71,6 +71,13 @@ const trajetSchema = new mongoose.Schema(
       required: [true, "A driver is required"],
     },
     Passagers: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
+    slug: {
+      type: String,
+      required: [
+        true,
+        "Vous devez ajouter le pseudo du conducteur pour le trajet",
+      ],
+    },
   },
   {
     toJSON: { virtuals: true },
