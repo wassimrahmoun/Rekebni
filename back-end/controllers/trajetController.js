@@ -47,6 +47,9 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
 exports.getUserTrajects = catchAsync(async (req, res, next) => {
   const trajet = await await Trajet.find({
     slug: req.params.slug,
+  }).populate({
+    path: "Passagers",
+    select: "name photo",
   });
 
   res.status(200).json({
