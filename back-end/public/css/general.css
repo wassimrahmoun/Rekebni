@@ -123,3 +123,16 @@ section {
   grid-template-columns: 42fr 58fr;
   gap: 3rem;
 }
+.expriration {
+  position: absolute;
+}
+.exp-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vh;
+  height: 100vh;
+}
+body {
+  position: relative;
+}

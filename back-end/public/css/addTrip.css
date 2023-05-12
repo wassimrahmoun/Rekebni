@@ -1,6 +1,9 @@
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+  --color: #999;
+  --checked-color: #00aff5;
+  --bg-color: #e8e8e8;
 }
 
 * {
@@ -126,8 +129,58 @@ input[type="radio"]:checked {
 
 .fumeur div {
   background-color: #daf4ff;
-  padding: 1rem 1rem;
+  /* padding: 1rem 1rem; */
   border-radius: 17px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  min-height: 2rem;
+  min-width: 2rem;
+  transition: all 0.3s;
+}
+
+.custom-checkbox {
+  /* hiding browser el */
+  appearance: none;
+  padding: 0 !important;
+  border-radius: 5px !important;
+  height: 2.5rem;
+  width: 2.5rem;
+  /* Safari support */
+  -webkit-appearance: none;
+  /* border: 0.3rem solid #fff; */
+  /* background-color: var(--bg-color); */
+  cursor: pointer !important;
+}
+
+/* keyboard navigation focus appearance */
+.custom-radio:focus-visible {
+  outline-offset: 0;
+}
+
+.fumeur-input {
+  box-shadow: 0 0 0 1px var(--color);
+  /* background-color: #fff; */
+}
+
+.fumeur-input:hover {
+  /* border-width: 0; */
+}
+
+.fumeur-input:checked {
+  box-shadow: 0 0 0 1px var(--checked-color);
+  background-color: var(--checked-color);
+  /* background: no-repeat url("../img/checkmark-outline.png"); */
+  background-image: url("../img/checkmark-outline.png");
+  background-blend-mode: lighten;
+  /* background-color: #fff; */
+  background-clip: border-box;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-width: 0.3rem;
 }
 
 .time .arrow {
@@ -185,7 +238,7 @@ input[type="radio"]:checked {
 }
 
 .trajet-similairs h3 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: white;
 }

@@ -45,6 +45,14 @@
     <script defer src="../js/addTrip.js"></script>
   </head>
   <body>
+    <!-- END OF SESSION -->
+    <!-- <div class="expriration">
+      <div class="exp-container">
+        <span>Votre session a expiré !</span>
+        <span>Veuillez vous reconnecter</span>
+      </div>
+    </div> -->
+    <!-- ////////////// -->
     <header>
       <div class="header">
         <a href="/">
@@ -103,6 +111,13 @@
             if (menu.style.display === "none") {
               menu.style.display = "block";
             } else {
+              menu.style.display = "none";
+            }
+          });
+
+          // Close the menu when a click is detected outside of it
+          document.addEventListener("click", (event) => {
+            if (!menu.contains(event.target) && event.target !== menuBtn) {
               menu.style.display = "none";
             }
           });
@@ -190,7 +205,7 @@
           <label for="fumeur-input">Autorisé au fumeurs:</label>
           <div>
             <input
-              class="fumeur-input"
+              class="fumeur-input custom-checkbox"
               id="fumeur-input"
               name="fumeur-input"
               type="checkbox"
