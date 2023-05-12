@@ -21,7 +21,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
   })
     .populate({
       path: "Conducteur",
-      select: "name photo",
+      select: "name photo slug",
     })
     .populate({
       path: "reviews",
@@ -32,7 +32,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
     })
     .populate({
       path: "Passagers",
-      select: "name photo",
+      select: "name photo slug",
     });
 
   res.status(200).json({
@@ -61,10 +61,10 @@ exports.getUserTrajects = catchAsync(async (req, res, next) => {
   });
 });
 exports.getUserReservations = catchAsync(async (req, res, next) => {
+  const slug = req.params.slug;
   const trajet = await await Trajet.find({
-    slug: req.params.slug,
-  });
-
+    Passagers: { $elemMatch: { slug: slug } },
+  }).populate("Conducteur", "name photo");
   res.status(200).json({
     //to resive tours const array
     status: "success",
