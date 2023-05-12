@@ -1,10 +1,4 @@
 'use strict';
-const locations = document.querySelectorAll(".destination-input") ;
-const heures = document.querySelectorAll(".time-input") ;
-const nbPersonnesElements = document.getElementById("nbrpersonne-input") ;
-const container = document.querySelector(".container")  ;
-const trajetsSimilar = document.querySelector(".trajet-similairs") ;
-var nbPersonnes = 0 ;
 var userId = window.localStorage.getItem("userid") ;
 /* const nbPersonnesFunction = function(){
     nbPersonnesElements.forEach(btn=> {if(btn.checked) nbPersonnes = btn.value}) ;
@@ -21,6 +15,21 @@ const rechercheId = function(data,email){
 
 if(!userId) window.location.href="/login" ;        // Verifier si il est connecté
  else{
+ 
+document.addEventListener("DOMContentLoaded",function(){  
+  
+  const profilSignOut = document.getElementById("signout");       // Déconnecter
+  profilSignOut.addEventListener("click",function(){
+    window.localStorage.clear();
+    window.location.href="/" ;
+  })
+  
+  const locations = document.querySelectorAll(".destination-input") ;
+  const heures = document.querySelectorAll(".time-input") ;
+  const nbPersonnesElements = document.getElementById("nbrpersonne-input") ;
+  const container = document.querySelector(".container")  ;
+  const trajetsSimilar = document.querySelector(".trajet-similairs") ;
+  var nbPersonnes = 0 ;
 
 document.querySelector(".affiche-btn").addEventListener("click",function(){       // Trajets similaires
   trajetsSimilar.classList.remove("hidden");
@@ -91,4 +100,4 @@ document.querySelector(".ajouter-btn").addEventListener("click",async function(e
 
 })
 
- } ;
+ }) } ;
