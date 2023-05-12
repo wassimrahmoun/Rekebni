@@ -1,12 +1,12 @@
 // Page d'inscription
-const emptyOutInputs = function(){
-  document.getElementById("email").value ="" ;
-  document.getElementById("password").value ="";
-  document.getElementById(  "password-confirmation" ).value ="" ;
-  document.getElementById("last-name").value = "" ;
-  document.getElementById("first-name").value ="" ;
-  document.getElementById("date").value="" ;
-}
+const emptyOutInputs = function () {
+  document.getElementById("email").value = "";
+  document.getElementById("password").value = "";
+  document.getElementById("password-confirmation").value = "";
+  document.getElementById("last-name").value = "";
+  document.getElementById("first-name").value = "";
+  document.getElementById("date").value = "";
+};
 document.addEventListener("DOMContentLoaded", (e) => {
   let form = document.querySelector(".sign-up-card");
   e.preventDefault();
@@ -46,10 +46,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
         },
         body: JSON.stringify({
           email: email,
+          slug: "pseudo du user",
           password: password,
           passwordConfirm: passwordConfirm,
           name: `${lastName} ${firstName}`,
-          numero:phoneNumber
+          phone:phoneNumber
           // lastName: lastName,
           // firstName: firstName,
           // birthDate:  birthDate,

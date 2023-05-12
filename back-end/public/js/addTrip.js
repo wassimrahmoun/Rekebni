@@ -1,49 +1,43 @@
 'use strict';
 const locations = document.querySelectorAll(".destination-input") ;
 const heures = document.querySelectorAll(".time-input") ;
-const nbPersonnesElements = document.querySelectorAll(".nbrpersonne-input") ;
+const nbPersonnesElements = document.getElementById("nbrpersonne-input") ;
+const container = document.querySelector(".container")  ;
+const trajetsSimilar = document.querySelector(".trajet-similairs") ;
 var nbPersonnes = 0 ;
-let userId ;
-const nbPersonnesFunction = function(){
+var userId = window.localStorage.getItem("userid") ;
+/* const nbPersonnesFunction = function(){
     nbPersonnesElements.forEach(btn=> {if(btn.checked) nbPersonnes = btn.value}) ;
-}
+} */            // old nbPersonnes check box element
 
+/*
 const rechercheId = function(data,email){
   let id = 0 ;
   data.forEach(data=>{
     if(data.email === email.toLowerCase()) id=data.id;
   } )
   return id ;
-}
+} */
 
+if(!userId) window.location.href="/login" ;        // Verifier si il est connecté
+ else{
 
-const container = document.querySelector(".container") ;
+document.querySelector(".affiche-btn").addEventListener("click",function(){       // Trajets similaires
+  trajetsSimilar.classList.remove("hidden");
+}) ;
 
-document.querySelector(".ajouter-btn").addEventListener("click",async function(e){
+document.querySelector(".ajouter-btn").addEventListener("click",async function(e){  // Ajouter trajet
     e.preventDefault() ;
     try{
     const depart = locations[0].value ; 
     const destination = locations[1].value ;
     const carType = document.getElementById("vehicule-input").value ;
     const matricule = document.getElementById("matricule-input").value ;
-
-    //
-    nbPersonnesFunction() ;
-    //
     const fumeur = document.getElementById("fumeur-input").checked ;      // boolean
     const date = document.getElementById("date-input").value;
     const heureDepart = heures[0].value ;
     const heureArrivé = heures[1].value ;
     const prix = document.getElementById("price-input").value ;
-
-    // ID 
-    const user_Email = window.localStorage.getItem("email") ;
-    const res1 = await fetch("http://localhost:8000/api/v1/users") ;
-    const data1 = (await res1.json()).data.data;        // Array of users objects
-    console.log(data1);
-    userId = rechercheId(data1 , window.localStorage.getItem("email")) ;
-
-    
     // check inputs function
     const inputsEmpty =function(){
         let inputsEmptyVar = false ;
@@ -96,3 +90,5 @@ document.querySelector(".ajouter-btn").addEventListener("click",async function(e
 
 
 })
+
+ } ;

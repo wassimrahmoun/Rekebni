@@ -3,7 +3,20 @@
 // console.log(passager); // Output: the value of the "passengers" element
 
 const profilePic = document.querySelector(".profile-pic");
+var userId = window.localStorage.getItem("userid") ;
+
+
+if(!userId) window.location.href = "/login"    ;        // verifier si il est connecté
+ else {
+
 document.addEventListener("DOMContentLoaded", function () {
+
+  const profilSignOut = document.getElementById("signout");       // Déconnecter
+  profilSignOut.addEventListener("click",function(){
+    window.localStorage.clear();
+    window.location.href="/" ;
+  })
+
   const trajetbox = document.querySelector(".search-results");
   const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
   console.log(mesDonnees);
@@ -147,3 +160,5 @@ document.addEventListener("DOMContentLoaded", function () {
     trajetbox.insertAdjacentHTML("beforeend", recherche_trajet);
   }
 });
+
+ } ;

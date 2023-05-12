@@ -21,10 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("la reponse est :" + data);
+        const token = data.token; // Récupérer le token depuis la réponse JSON
+        const user = data.date.user; // Récupérer les données de l'utilisateur depuis la réponse JSON
+        console.log("Token :", token);
+        console.log("Données de l'utilisateur :", user);
+        window.localStorage.setItem("userid", user.id);
         // Connexion réussie, rediriger l'utilisateur vers la page suivante
         window.location.href = "/";
-        window.localStorage.setItem("email",email) ;
       } else {
         // Afficher un message d'erreur
         const errorMessage = await response.text();
