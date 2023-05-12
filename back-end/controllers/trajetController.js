@@ -49,7 +49,7 @@ exports.getUserTrajects = catchAsync(async (req, res, next) => {
     slug: req.params.slug,
   }).populate({
     path: "Passagers",
-    select: "name photo",
+    select: "name photo slug",
   });
 
   res.status(200).json({
