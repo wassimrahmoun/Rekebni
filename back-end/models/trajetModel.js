@@ -85,7 +85,7 @@ const trajetSchema = new mongoose.Schema(
   }
 );
 
-trajetSchema.pre("save", function (next) {
+trajetSchema.pre(/^find/, function (next) {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1;
@@ -93,31 +93,52 @@ trajetSchema.pre("save", function (next) {
   const currentHour = currentDate.getHours();
   const currentMinutes = currentDate.getMinutes();
 
-  const trajetDate = new Date(this.date);
-  const trajetYear = trajetDate.getFullYear();
-  const trajetMonth = trajetDate.getMonth() + 1;
-  const trajetDay = trajetDate.getDate();
-  const trajetHour = parseInt(this.HeurD.split(":")[0]);
-  const trajetMinutes = parseInt(this.HeurD.split(":")[1]);
+  Trajet.updateMany(
+    {
+      $expr: {
+        $or: [
+          { $lt: [{ $year: "$date" }, currentYear] },
+          {
+            $and: [
+              { $eq: [{ $year: "$date" }, currentYear] },
+              { $lt: [{ $month: "$date" }, currentMonth] },
+            ],
+          },
+          {
+            $and: [
+              { $eq: [{ $year: "$date" }, currentYear] },
+              { $eq: [{ $month: "$date" }, currentMonth] },
+              { $lt: [{ $dayOfMonth: "$date" }, currentDay] },
+            ],
+          },
+          {
+            $and: [
+              { $eq: [{ $year: "$date" }, currentYear] },
+              { $eq: [{ $month: "$date" }, currentMonth] },
+              { $eq: [{ $dayOfMonth: "$date" }, currentDay] },
+              { $lt: [{ $toInt: { $substr: ["$HeurD", 0, 2] } }, currentHour] },
+            ],
+          },
+          {
+            $and: [
+              { $eq: [{ $year: "$date" }, currentYear] },
+              { $eq: [{ $month: "$date" }, currentMonth] },
+              { $eq: [{ $dayOfMonth: "$date" }, currentDay] },
+              { $eq: [{ $toInt: { $substr: ["$HeurD", 0, 2] } }, currentHour] },
+              {
+                $lt: [
+                  { $toInt: { $substr: ["$HeurD", 3, 2] } },
+                  currentMinutes,
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    { $set: { isActive: false } }
+  );
 
-  if (
-    trajetYear < currentYear ||
-    (trajetYear === currentYear && trajetMonth < currentMonth) ||
-    (trajetYear === currentYear &&
-      trajetMonth === currentMonth &&
-      trajetDay < currentDay) ||
-    (trajetYear === currentYear &&
-      trajetMonth === currentMonth &&
-      trajetDay === currentDay &&
-      trajetHour < currentHour) ||
-    (trajetYear === currentYear &&
-      trajetMonth === currentMonth &&
-      trajetDay === currentDay &&
-      trajetHour === currentHour &&
-      trajetMinutes < currentMinutes)
-  ) {
-    this.isActive = false;
-  }
   next();
 });
 
