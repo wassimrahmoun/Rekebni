@@ -14,9 +14,9 @@ const userSchema = new mongoose.Schema(
     prenom: {
       type: "String",
     },
-    slug: {
+    pseudo: {
       type: "String",
-      unique: true,
+      unique: [true, "Cette pseudo existe deja "],
       required: [true, "Vous devez avoir un nom "],
     },
     email: {
@@ -89,12 +89,9 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-userSchema.index({ slug: 1 });
 
 userSchema.pre("save", function (next) {
-  //juste ppur linstatn le temps de mettre le pseudo user dans inscription
-  //changer pour pseudo apres prsq pseudo unique mais name impossible
-  this.slug = slugify(this.name, { lower: true });
+  this.pseudo = slugify(this.pseudo, { lower: true });
   next();
 });
 
