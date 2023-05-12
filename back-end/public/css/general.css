@@ -85,6 +85,9 @@ section {
 .hidden {
   display: none !important;
 }
+.hide-similar {
+  opacity: 0;
+}
 .img {
   margin: 0;
   width: 100%;
