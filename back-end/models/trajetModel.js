@@ -136,7 +136,12 @@ trajetSchema.pre(/^find/, function (next) {
         ],
       },
     },
-    { $set: { isActive: false } }
+    { $set: { isActive: false } },
+    (err, result) => {
+      if (err) {
+        console.error(err);
+      }
+    }
   );
 
   next();
