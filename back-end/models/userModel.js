@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema(
     },
     pseudo: {
       type: String,
+      unique: true,
       required: [true, "Vous devez avoir un pseudo "],
-      unique: [true, "Cette pseudo existe deja "],
     },
     email: {
       type: String,
@@ -89,6 +89,10 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+userSchema.pre("save", function (next) {
+  this.slug = slugify(this.pseudo, { lower: true });
+  next();
+});
 
 userSchema.virtual("reviews", {
   ref: "Review",
