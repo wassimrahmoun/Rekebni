@@ -29,6 +29,10 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
         path: "user",
         select: "name photo",
       },
+    })
+    .populate({
+      path: "Passagers",
+      select: "name photo",
     });
 
   res.status(200).json({
@@ -41,6 +45,19 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
 });
 
 exports.getUserTrajects = catchAsync(async (req, res, next) => {
+  const trajet = await await Trajet.find({
+    slug: req.params.slug,
+  });
+
+  res.status(200).json({
+    //to resive tours const array
+    status: "success",
+    data: {
+      trajet,
+    },
+  });
+});
+exports.getUserReservations = catchAsync(async (req, res, next) => {
   const trajet = await await Trajet.find({
     slug: req.params.slug,
   });
@@ -115,8 +132,8 @@ exports.reserverTrajet = catchAsync(async (req, res, next) => {
   const updatedTrajet = await Trajet.findByIdAndUpdate(
     req.params.id,
     {
-      $push: { Conducteur: req.body.passagerId },
-      $push: { Passagers: req.body.conducteurId },
+      $push: { Conducteur: req.body.conducteurId },
+      $push: { Passagers: req.body.passagerId },
       $inc: { places: -req.body.places },
     },
     { new: true }
