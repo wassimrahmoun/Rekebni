@@ -131,7 +131,7 @@
     </header>
     <main>
       <section class="section-hero my-section">
-        <div class="hero">
+        <div class="container hero">
           <div class="hero-text-box">
             <h1 class="hero-title show">
               Voyagez en toute securité et économisez votre argent !
@@ -147,7 +147,7 @@
             class="hero-img"
           />
         </div>
-        <div class="searchbar">
+        <div class="container searchbar">
           <div class="searchbar-text-box">
             <div class="depart">
               <select
@@ -346,74 +346,85 @@
       </section>
       <img src="../img/Squigly-top.png" class="waves" />
       <section class="section-info">
-        <div class="info-ele grid--typeA">
-          <div class="info-textbubble bubble1">
-            <div class="info-title">
-              <ion-icon name="leaf-outline" class="info-title-icon"></ion-icon>
-              <span class="info-title-text"
-                >Réduisez votre empreinte carbone</span
+        <div class="container info">
+          <div class="info-ele grid--typeA">
+            <div class="info-textbubble bubble1">
+              <div class="info-title">
+                <ion-icon
+                  name="leaf-outline"
+                  class="info-title-icon"
+                ></ion-icon>
+                <span class="info-title-text"
+                  >Réduisez votre empreinte carbone</span
+                >
+              </div>
+              <span class="info-text"
+                >En choisissant le covoiturage, vous contribuez à la protection
+                de l'environnement en réduisant votre empreinte carbone. En
+                diminuant le nombre de véhicules sur la route, vous entraînez
+                une réduction des émissions de CO2 et de la pollution de
+                l'air.</span
               >
             </div>
-            <span class="info-text"
-              >En choisissant le covoiturage, vous contribuez à la protection de
-              l'environnement en réduisant votre empreinte carbone. En diminuant
-              le nombre de véhicules sur la route, vous entraînez une réduction
-              des émissions de CO2 et de la pollution de l'air.</span
-            >
+            <img
+              src="../img/picture1-ConvertImage.png"
+              data-src="../img/picture1.png"
+              class="lazy-img info-img"
+            />
           </div>
-          <img
-            src="../img/picture1-ConvertImage.png"
-            data-src="../img/picture1.png"
-            class="lazy-img info-img"
-          />
-        </div>
-        <div class="info-ele grid--typeB">
-          <img
-            src="../img/image2-ConvertImage (1).png"
-            data-src="../img/picture2.png"
-            class="lazy-img info-img"
-          />
-          <div class="info-textbubble bubble2">
-            <div class="info-title">
-              <ion-icon name="cash-outline" class="info-title-icon"></ion-icon>
-              <span class="info-title-text">Économisez de l'argent</span>
+          <div class="info-ele grid--typeB">
+            <img
+              src="../img/image2-ConvertImage (1).png"
+              data-src="../img/picture2.png"
+              class="lazy-img info-img"
+            />
+            <div class="info-textbubble bubble2">
+              <div class="info-title">
+                <ion-icon
+                  name="cash-outline"
+                  class="info-title-icon"
+                ></ion-icon>
+                <span class="info-title-text">Économisez de l'argent</span>
+              </div>
+              <span class="info-text"
+                >Avec notre service de covoiturage, vous pouvez économiser de
+                l'argent sur les frais de transport. En partageant les coûts
+                avec d'autres passagers ou conducteurs, vous pouvez réduire
+                considérablement vos dépenses de voyage.</span
+              >
             </div>
-            <span class="info-text"
-              >Avec notre service de covoiturage, vous pouvez économiser de
-              l'argent sur les frais de transport. En partageant les coûts avec
-              d'autres passagers ou conducteurs, vous pouvez réduire
-              considérablement vos dépenses de voyage.</span
-            >
           </div>
-        </div>
-        <div class="info-ele grid--typeA">
-          <div class="info-textbubble bubble3">
-            <div class="info-title">
-              <ion-icon
-                name="lock-closed-outline"
-                class="info-title-icon"
-              ></ion-icon>
-              <span class="info-title-text">Voyagez en toute sécurité</span>
+          <div class="info-ele grid--typeA">
+            <div class="info-textbubble bubble3">
+              <div class="info-title">
+                <ion-icon
+                  name="lock-closed-outline"
+                  class="info-title-icon"
+                ></ion-icon>
+                <span class="info-title-text">Voyagez en toute sécurité</span>
+              </div>
+              <span class="info-text"
+                >Nous mettons tout en œuvre pour garantir la sécurité de notre
+                communauté de covoiturage. Tous nos conducteurs et passagers
+                sont vérifiés et approuvés. Vous pouvez ainsi voyager en toute
+                confiance, sachant que nous avons pris toutes les mesures
+                nécessaires pour assurer votre sécurité.</span
+              >
             </div>
-            <span class="info-text"
-              >Nous mettons tout en œuvre pour garantir la sécurité de notre
-              communauté de covoiturage. Tous nos conducteurs et passagers sont
-              vérifiés et approuvés. Vous pouvez ainsi voyager en toute
-              confiance, sachant que nous avons pris toutes les mesures
-              nécessaires pour assurer votre sécurité.</span
-            >
+            <img
+              src="../img/image3-ConvertImage.png"
+              data-src="../img/picture3.png"
+              class="lazy-img info-img"
+            />
           </div>
-          <img
-            src="../img/image3-ConvertImage.png"
-            data-src="../img/picture3.png"
-            class="lazy-img info-img"
-          />
         </div>
       </section>
       <img src="../img/wave2.png" class="waves" />
       <section class="section-toptrajets">
-        <h2 class="info-title-text trajets-title">Où voulez-vous aller?</h2>
-        <div class="trajets">
+        <h2 class="container info-title-text trajets-title">
+          Où voulez-vous aller?
+        </h2>
+        <div class="container trajets">
           <a class="trajet" href="#">
             <span class="trajet-text">Alger</span>
             <ion-icon
@@ -478,49 +489,50 @@
       <!-- <img src="../img/wave3.png" class="waves" /> -->
     </main>
     <footer class="footer">
-      <div class="copyright">
-        <a href="#">
-          <img class="footer-logo" src="../img/LOGOShrunk.png" />
-        </a>
-        <div class="sm-logos">
-          <a href="#" class="sociallink">
-            <ion-icon name="logo-instagram" class="sm-logo"></ion-icon>
+      <div class="container footer-grid">
+        <div class="copyright">
+          <a href="#">
+            <img class="footer-logo" src="../img/LOGOShrunk.png" />
           </a>
-          <a href="#" class="sociallink">
-            <ion-icon name="logo-facebook" class="sm-logo"></ion-icon>
-          </a>
-          <a href="#" class="sociallink">
-            <ion-icon name="logo-twitter" class="sm-logo"></ion-icon>
-          </a>
+          <div class="sm-logos">
+            <a href="#" class="sociallink">
+              <ion-icon name="logo-instagram" class="sm-logo"></ion-icon>
+            </a>
+            <a href="#" class="sociallink">
+              <ion-icon name="logo-facebook" class="sm-logo"></ion-icon>
+            </a>
+            <a href="#" class="sociallink">
+              <ion-icon name="logo-twitter" class="sm-logo"></ion-icon>
+            </a>
+          </div>
+          <span class="copyright-text"
+            >© 2023 Copyright par l'équipe de développement de Rekebni. Tous les
+            droits sont réservés</span
+          >
         </div>
-        <span class="copyright-text"
-          >© 2023 Copyright par l'équipe de développement de Rekebni. Tous les
-          droits sont réservés</span
-        >
-      </div>
-      <div class="contact">
-        <h1 class="footer-title">Nous Contacter</h1>
-        <span class="footer-element address"
-          >112 Liabes Abderahmen St, Sidi-Bel-Abbes, SBA 22046</span
-        >
-        <a class="footer-element" href="tel:+213 549 208 230"
-          >+213 549 208 230</a
-        >
-        <a class="footer-element" href="mailto:contact@rekebni.dz"
-          >contact@rekebni.dz</a
-        >
-      </div>
-
-      <div class="resources">
-        <h1 class="footer-title">Resources</h1>
-        <a class="footer-element" href="#">A Propos de Rekebni</a>
-        <a class="footer-element" href="#">FAQ</a>
-        <a class="footer-element" href="#">Confidentialité et Conditions</a>
-      </div>
-      <div class="compte">
-        <h1 class="footer-title">Compte</h1>
-        <a class="footer-element" href="/login">Se Connecter</a>
-        <a class="footer-element" href="/signup">Créer un Compte</a>
+        <div class="contact">
+          <h1 class="footer-title">Nous Contacter</h1>
+          <span class="footer-element address"
+            >112 Liabes Abderahmen St, Sidi-Bel-Abbes, SBA 22046</span
+          >
+          <a class="footer-element" href="tel:+213 549 208 230"
+            >+213 549 208 230</a
+          >
+          <a class="footer-element" href="mailto:contact@rekebni.dz"
+            >contact@rekebni.dz</a
+          >
+        </div>
+        <div class="resources">
+          <h1 class="footer-title">Resources</h1>
+          <a class="footer-element" href="#">A Propos de Rekebni</a>
+          <a class="footer-element" href="#">FAQ</a>
+          <a class="footer-element" href="#">Confidentialité et Conditions</a>
+        </div>
+        <div class="compte">
+          <h1 class="footer-title">Compte</h1>
+          <a class="footer-element" href="/login">Se Connecter</a>
+          <a class="footer-element" href="/signup">Créer un Compte</a>
+        </div>
       </div>
     </footer>
   </body>
