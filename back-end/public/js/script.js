@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   else {
     loginRegisterTabs.classList.add("hidden") ;
     profileTab.classList.remove("hidden") ;
-    profilSignOut.addEventListener("click",function(){
+    profilSignOut.addEventListener("click",async function(){
+      await fetch("http://localhost:8000/api/v1/users/logout") ;
       window.localStorage.clear() ;
       window.location.href="/" ;
     })

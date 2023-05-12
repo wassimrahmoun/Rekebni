@@ -12,7 +12,8 @@ if(!userId) window.location.href = "/login"    ;        // verifier si il est co
 document.addEventListener("DOMContentLoaded", function () {
 
   const profilSignOut = document.getElementById("signout");       // Déconnecter
-  profilSignOut.addEventListener("click",function(){
+  profilSignOut.addEventListener("click",async function(){
+    await fetch("http://localhost:8000/api/v1/users/logout") ;
     window.localStorage.clear();
     window.location.href="/" ;
   })
