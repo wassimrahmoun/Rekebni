@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/quaries.css" />
     <link rel="stylesheet" type="text/css" href="../css/general.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/navbar1.css" /> -->
 
     <!-- ICONION SCRIPT LINKS -->
     <script
@@ -30,7 +31,7 @@
     <script defer src="/js/script.js"></script>
   </head>
   <body>
-    <header class="header">
+    <!-- <header class="header">
       <a href="/">
         <img class="logo" src="../img/LOGO.png" alt="le Logo de Rekebni" />
       </a>
@@ -41,7 +42,7 @@
           >
           <a class="nav-ele" href="/recherche">
             <ion-icon name="search-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan" >Recherche</span>
+            <span class="whitespan">Recherche</span>
           </a>
           <a class="nav-ele" href="/publier">
             <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
@@ -55,12 +56,78 @@
           </div>
         </div>
       </nav>
+    </header> -->
+    <header>
+      <div class="header">
+        <a href="/">
+          <img class="logo" src="../img/LOGO.png"le Logo de Rekebni" />
+        </a>
+        <nav class="main-nav">
+          <div class="nav-righthand">
+            <a class="quisommenous flex-center" href="#">
+              <span class="whitespan">Qui somme nous</span>
+            </a>
+            <a class="nav-ele" href="#">
+              <ion-icon name="search-outline" class="whiteicon"></ion-icon>
+              <span class="whitespan">Recherche</span>
+            </a>
+            <a class="nav-ele" href="/publier">
+              <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
+              <span class="whitespan">Ajouter un trajet</span>
+            </a>
+            <div class="nav-login flex-center hidden">
+              <a class="btn--login flex-center whitespan" href="/login"
+                >se connecter</a
+              >
+              <a class="btn--signup flex-center hidden" href="/signup"
+                >s'inscrire</a
+              >
+            </div>
+            <div class="nav-profile">
+              <img class="profile-pic" src="default.jpg" id="menu-btn" />
+              <div class="--absolute" style="display: none" id="menu">
+                <div class="profile-menu a">
+                  <!-- <img src="../img/menubbl.png" class="bbl" /> -->
+                  <div class="profile-menu-ele child">Mon Profil</div>
+                  <div class="profile-menu-ele">Paramètres du Compte</div>
+                  <div class="profile-menu-ele last">Se Déconnecter</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <script>
+          // const parent = document.querySelector(".parent");
+          // const child = parent.querySelector(".a .child");
+
+          // child.addEventListener("mouseover", () => {
+          //   parent.style.backgroundColor = "red";
+          // });
+
+          // child.addEventListener("mouseout", () => {
+          //   parent.style.backgroundColor = "";
+          // });
+
+          const menuBtn = document.querySelector("#menu-btn");
+          const menu = document.querySelector("#menu");
+
+          menuBtn.addEventListener("click", () => {
+            if (menu.style.display === "none") {
+              menu.style.display = "block";
+            } else {
+              menu.style.display = "none";
+            }       
+            document.addEventListener("click", (event) => {             if (!menu.contains(event.target) && event.target !== menuBtn) {               menu.style.display = "none";             }           });
+          });
+        </script>
+      </div>
+      <!-- <img class="waves2" src="../img/waves4.png" /> -->
     </header>
     <main>
       <section class="section-hero my-section">
         <div class="hero">
           <div class="hero-text-box">
-            <h1 class="hero-title show ">
+            <h1 class="hero-title show">
               Voyagez en toute securité et économisez votre argent !
             </h1>
             <span class="hero-subtext"
@@ -245,6 +312,9 @@
 
               // Set the default value of the input element to the current date
               dateInput.value = today;
+
+              // // Get the current date
+              // var currentDate = new Date();
             </script>
             <div class="passengers">
               <label for="passengers"
@@ -450,6 +520,30 @@
   </body>
 
   <script>
+    // const imgTargets = document.querySelectorAll("img[data-src]");
+
+    // const loadImg = function (entries, observer) {
+    //   const [entry] = entries;
+
+    //   if (!entry.isIntersecting) return;
+
+    //   // Replace src with data-src
+    //   entry.target.src = entry.target.dataset.src;
+
+    //   entry.target.addEventListener("load", function () {
+    //     entry.target.classList.remove("lazy-img");
+    //   });
+
+    //   observer.unobserve(entry.target);
+    // };
+
+    // const imgObserver = new IntersectionObserver(loadImg, {
+    //   root: null,
+    //   threshold: 0,
+    //   rootMargin: "100px",
+    // });
+
+    // imgTargets.forEach((img) => imgObserver.observe(img));
     const imgTargets = document.querySelectorAll("img[data-src]");
 
     const loadImg = function (entries, observer) {
@@ -470,9 +564,25 @@
     const imgObserver = new IntersectionObserver(loadImg, {
       root: null,
       threshold: 0,
-      rootMargin: "100px",
+      rootMargin: "50px",
     });
 
     imgTargets.forEach((img) => imgObserver.observe(img));
+
+    // Get the current date
+    var currentDate = new Date();
+
+    // Calculate the max date as one week from now
+    var maxDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate() + 7
+    );
+
+    // Get the date input field element
+    // var dateInput = document.getElementById("myDate");
+
+    // Set the max attribute to the max date
+    dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
   </script>
 </html>
