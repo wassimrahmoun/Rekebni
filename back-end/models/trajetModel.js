@@ -16,7 +16,7 @@ const trajetSchema = new mongoose.Schema(
     },
     isActive: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     Couleur: {
       type: String,
@@ -84,6 +84,42 @@ const trajetSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+trajetSchema.pre("save", function (next) {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1;
+  const currentDay = currentDate.getDate();
+  const currentHour = currentDate.getHours();
+  const currentMinutes = currentDate.getMinutes();
+
+  const trajetDate = new Date(this.date);
+  const trajetYear = trajetDate.getFullYear();
+  const trajetMonth = trajetDate.getMonth() + 1;
+  const trajetDay = trajetDate.getDate();
+  const trajetHour = parseInt(this.HeurD.split(":")[0]);
+  const trajetMinutes = parseInt(this.HeurD.split(":")[1]);
+
+  if (
+    trajetYear < currentYear ||
+    (trajetYear === currentYear && trajetMonth < currentMonth) ||
+    (trajetYear === currentYear &&
+      trajetMonth === currentMonth &&
+      trajetDay < currentDay) ||
+    (trajetYear === currentYear &&
+      trajetMonth === currentMonth &&
+      trajetDay === currentDay &&
+      trajetHour < currentHour) ||
+    (trajetYear === currentYear &&
+      trajetMonth === currentMonth &&
+      trajetDay === currentDay &&
+      trajetHour === currentHour &&
+      trajetMinutes < currentMinutes)
+  ) {
+    this.isActive = false;
+  }
+  next();
+});
 
 trajetSchema.virtual("reviews", {
   ref: "Review",
