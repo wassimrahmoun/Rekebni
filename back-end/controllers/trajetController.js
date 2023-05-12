@@ -21,7 +21,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
   })
     .populate({
       path: "Conducteur",
-      select: "name photo slug",
+      select: "name photo pseudo",
     })
     .populate({
       path: "reviews",
@@ -32,7 +32,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
     })
     .populate({
       path: "Passagers",
-      select: "name photo slug",
+      select: "name photo pseudo",
     });
 
   res.status(200).json({
@@ -46,7 +46,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
 
 exports.getUserTrajects = catchAsync(async (req, res, next) => {
   const trajet = await await Trajet.find({
-    slug: req.params.slug,
+    pseudo: req.params.slug,
   }).populate({
     path: "Passagers",
     select: "name photo slug",

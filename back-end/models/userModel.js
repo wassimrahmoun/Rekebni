@@ -15,9 +15,9 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     pseudo: {
-      type: String,
-      unique: true,
-      required: [true, "Vous devez avoir un pseudo "],
+      type: "String",
+      index: { unique: true, name: "unique_pseudo_index" },
+      required: [true, "Vous devez avoir un nom "],
     },
     email: {
       type: String,
@@ -89,8 +89,11 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+userSchema.index({ pseudo: 1 });
+
 userSchema.pre("save", function (next) {
-  this.slug = slugify(this.pseudo, { lower: true });
+  this.pseudo = slugify(this.pseudo, { lower: true });
   next();
 });
 
