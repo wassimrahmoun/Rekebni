@@ -16,6 +16,7 @@ const rechercheId = function(data,email){
 if (!userId) window.location.href = "/login"; // Verifier si il est connecté
 else {
   document.addEventListener("DOMContentLoaded", function () {
+
     const profilSignOut = document.getElementById("signout"); // Déconnecter
     profilSignOut.addEventListener("click", async function () {
       await fetch("http://localhost:8000/api/v1/users/logout") ;
@@ -31,17 +32,11 @@ else {
     const trajetsSimilar = document.querySelector(".trajet-similairs");
     var nbPersonnes = 0;
 
-    document
-      .querySelector(".affiche-btn")
-      .addEventListener("click", function () {
-        // Trajets similaires
+    document.querySelector(".affiche-btn").addEventListener("click", function () {   // Trajets similaires
         trajetsSimilar.classList.remove("hide-similar");
       });
 
-    document
-      .querySelector(".ajouter-btn")
-      .addEventListener("click", async function (e) {
-        // Ajouter trajet
+    document.querySelector(".ajouter-btn").addEventListener("click", async function (e) {     // Ajouter trajet
         e.preventDefault();
         try {
           const depart = locations[0].value;
@@ -56,17 +51,7 @@ else {
           // check inputs function
           const inputsEmpty = function () {
             let inputsEmptyVar = false;
-            if (
-              destination &&
-              depart &&
-              carType &&
-              matricule &&
-              date &&
-              heureDepart &&
-              heureArrivé &&
-              prix
-            )
-              inputsEmptyVar = false;
+            if (destination && depart && carType && matricule && date && heureDepart && heureArrivé && prix)  inputsEmptyVar = false;
             else inputsEmptyVar = true;
             return inputsEmptyVar;
           };
