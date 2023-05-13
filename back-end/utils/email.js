@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const htmlToText = require("html-to-text");
+// const htmlToText = require("html-to-text");
 
 module.exports = class Email {
   constructor(user, url) {

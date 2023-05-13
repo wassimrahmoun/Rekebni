@@ -5,7 +5,7 @@ const emptyOutInputs = function () {
   document.getElementById("password-confirmation").value = "";
   document.getElementById("last-name").value = "";
   document.getElementById("first-name").value = "";
-  document.getElementById("date").value = "";
+  document.getElementById("pseudo").value = "";
 };
 document.addEventListener("DOMContentLoaded", (e) => {
   let form = document.querySelector(".sign-up-card");
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const phoneNumber = document.getElementById("num-tel").value;
       const lastName = document.getElementById("last-name").value;
       const firstName = document.getElementById("first-name").value;
-      const birthDate = document.getElementById("date").value;
+      const pseudo = document.getElementById("pseudo").value;
 
       // Checking inputs
       if (
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         !phoneNumber ||
         !firstName ||
         !lastName ||
-        !birthDate
+        !pseudo
       ) {
         throw new Error(`Check your inputs ❌`);
       }
@@ -56,12 +56,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
         },
         body: JSON.stringify({
           email: email,
-          slug: "pseudo du user",
+          pseudo: pseudo,
           password: password,
           passwordConfirm: passwordConfirm,
           name: `${lastName} ${firstName}`,
           phone: phoneNumber,
-
           // lastName: lastName,
           // firstName: firstName,
           // birthDate:  birthDate,
@@ -72,8 +71,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {
+      emptyOutInputs();
       document.querySelectorAll(".erreur").forEach((txt) => txt.remove());
-      const html = `<div class="invalid erreur" style="display: flex;" >
+      const html = ` <div class="invalid erreur" style="display: flex;" >
       <p class="invalid-text">
       ${err.message}
       </p>
