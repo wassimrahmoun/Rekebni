@@ -6,16 +6,27 @@ const profilePic = document.querySelector(".profile-pic");
 var userId = window.localStorage.getItem("userid") ;
 
 
-if(!userId) window.location.href = "/login"    ;        // verifier si il est connecté
- else {
+
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  const loginRegisterTabs = document.querySelector(".nav-login") ;
+  const profileTab = document.querySelector(".nav-profile") ;
+
+  if(!userId){
+    profileTab.classList.add("hidden");
+    loginRegisterTabs.classList.remove("hidden");         // connecté ou déconnecté
+  }
+  else {
+    loginRegisterTabs.classList.add("hidden");
+    profileTab.classList.remove("hidden") ;
+  }
 
   const profilSignOut = document.getElementById("signout");       // Déconnecter
   profilSignOut.addEventListener("click",async function(){
     await fetch("http://localhost:8000/api/v1/users/logout") ;
-    window.localStorage.clear();
-    window.location.href="/" ;
+    window.localStorage.removeItem("userid") ;
+    window.location.href="/recherche" ;
   })
 
   const trajetbox = document.querySelector(".search-results");
@@ -162,4 +173,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
- } ;

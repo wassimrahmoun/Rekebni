@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     profileTab.classList.remove("hidden") ;
     profilSignOut.addEventListener("click",async function(){
       await fetch("http://localhost:8000/api/v1/users/logout") ;
-      window.localStorage.clear() ;
+      window.localStorage.removeItem("userid") ;
       window.location.href="/" ;
     })
   }
