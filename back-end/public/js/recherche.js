@@ -3,38 +3,49 @@
 // console.log(passager); // Output: the value of the "passengers" element
 
 const profilePic = document.querySelector(".profile-pic");
-document.addEventListener("DOMContentLoaded", function () {
-  const trajetbox = document.querySelector(".search-results");
-  const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
-  console.log(mesDonnees);
-  const nbrtrajet = mesDonnees.results;
-  const selectedPassengers = localStorage.getItem("selectedPassengers");
-  if (selectedPassengers) {
-    console.log("le nombre de passager est :" + selectedPassengers);
-  } else {
-    console.log("selectedPassengers not found in local storage.");
-  }
+var userId = window.localStorage.getItem("userid");
 
-  const departt = mesDonnees.data.data[0].Depart;
-  const arriverr = mesDonnees.data.data[0].Arrivée;
-  const resultats = mesDonnees.results;
-  const Datee = mesDonnees.data.data[0].date.substring(0, 10);
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = date.toLocaleString("default", { month: "long" });
-    const day = date.getDate();
+if (!userId) window.location.href = "/login"; // verifier si il est connecté
+else {
+  document.addEventListener("DOMContentLoaded", function () {
+    const profilSignOut = document.getElementById("signout"); // Déconnecter
+    profilSignOut.addEventListener("click", async function () {
+      await fetch("http://localhost:8000/api/v1/users/logout");
+      window.localStorage.clear();
+      window.location.href = "/";
+    });
 
-    return {
-      year,
-      month,
-      day,
-    };
-  }
-  const formattedDate = formatDate(Datee);
-  console.log(formattedDate.year);
-  const Passagerss = mesDonnees.passager;
-  const infodebase = `
+    const trajetbox = document.querySelector(".search-results");
+    const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
+    console.log(mesDonnees);
+    const nbrtrajet = mesDonnees.results;
+    const selectedPassengers = localStorage.getItem("selectedPassengers");
+    if (selectedPassengers) {
+      console.log("le nombre de passager est :" + selectedPassengers);
+    } else {
+      console.log("selectedPassengers not found in local storage.");
+    }
+
+    const departt = mesDonnees.data.data[0].Depart;
+    const arriverr = mesDonnees.data.data[0].Arrivée;
+    const resultats = mesDonnees.results;
+    const Datee = mesDonnees.data.data[0].date.substring(0, 10);
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = date.toLocaleString("default", { month: "long" });
+      const day = date.getDate();
+
+      return {
+        year,
+        month,
+        day,
+      };
+    }
+    const formattedDate = formatDate(Datee);
+    console.log(formattedDate.year);
+    const Passagerss = mesDonnees.passager;
+    const infodebase = `
 <span class="searched-trip-info">
 <span class="searched-trip-info-depart">${departt}</span>
 <ion-icon name="arrow-forward-outline" class="icon"></ion-icon>
@@ -50,33 +61,33 @@ document.addEventListener("DOMContentLoaded", function () {
 <span class="amount-of-results-value">${resultats}</span>
 <span class="amount-of-results-text">Résultats</span>
 </span>`;
-  trajetbox.insertAdjacentHTML("beforeend", infodebase);
-  // Assuming there is only one trajet in the data array
-  for (let i = 0; i <= nbrtrajet; i++) {
-    const trajet = mesDonnees.data[i];
-    const trajets = {
-      status: mesDonnees.status,
-      depart: mesDonnees.data.data[i].Depart,
-      Arrivée: mesDonnees.data.data[i].Arrivée,
-      Conducteur: mesDonnees.data.data[i].Conducteur.name,
-      photo: mesDonnees.data.data[i].Conducteur.photo,
-      Couleur: mesDonnees.data.data[i].Couleur,
-      HeurA: mesDonnees.data.data[i].HeurA,
-      HeurD: mesDonnees.data.data[i].HeurD,
-      Matricule: mesDonnees.data.data[i].Matricule,
-      Passagers: mesDonnees.data.data[i].Passagers,
-      Prix: mesDonnees.data.data[i].Prix,
-      Vehicule: mesDonnees.data.data[i].Vehicule,
-      date: mesDonnees.data.data[i].date,
-      fumers: mesDonnees.data.data[i].fumers,
-      isActive: mesDonnees.data.data[i].isActive,
-      places: mesDonnees.data.data[i].places,
-      slug: mesDonnees.data.data[i].slug,
-      ranking: mesDonnees.data.data[i].Conducteur.ratingsAverage,
-    };
+    trajetbox.insertAdjacentHTML("beforeend", infodebase);
+    // Assuming there is only one trajet in the data array
+    for (let i = 0; i <= nbrtrajet; i++) {
+      const trajet = mesDonnees.data[i];
+      const trajets = {
+        status: mesDonnees.status,
+        depart: mesDonnees.data.data[i].Depart,
+        Arrivée: mesDonnees.data.data[i].Arrivée,
+        Conducteur: mesDonnees.data.data[i].Conducteur.name,
+        photo: mesDonnees.data.data[i].Conducteur.photo,
+        Couleur: mesDonnees.data.data[i].Couleur,
+        HeurA: mesDonnees.data.data[i].HeurA,
+        HeurD: mesDonnees.data.data[i].HeurD,
+        Matricule: mesDonnees.data.data[i].Matricule,
+        Passagers: mesDonnees.data.data[i].Passagers,
+        Prix: mesDonnees.data.data[i].Prix,
+        Vehicule: mesDonnees.data.data[i].Vehicule,
+        date: mesDonnees.data.data[i].date,
+        fumers: mesDonnees.data.data[i].fumers,
+        isActive: mesDonnees.data.data[i].isActive,
+        places: mesDonnees.data.data[i].places,
+        slug: mesDonnees.data.data[i].slug,
+        ranking: mesDonnees.data.data[i].Conducteur.ratingsAverage,
+      };
 
-    console.log(trajets);
-    const recherche_trajet = ` 
+      console.log(trajets);
+      const recherche_trajet = ` 
   <div class="results-box">
   <div class="result">
   <div class="left">
@@ -144,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
   </div>
   `;
-    trajetbox.insertAdjacentHTML("beforeend", recherche_trajet);
-  }
-});
+      trajetbox.insertAdjacentHTML("beforeend", recherche_trajet);
+    }
+  });
+}
