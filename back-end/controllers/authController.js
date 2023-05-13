@@ -36,9 +36,8 @@ const createSendToken = (user, statusCode, res) => {
 };
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
-  const url = `http://localhost:8000/api/v1/users/${newUser.id}`;
-  await new Email(newUser).sendWelcome(url);
-
+  const url = `http://localhost:8000/api/v1/users/activate/${newUser.id}`;
+  await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, res);
 });
 
@@ -274,7 +273,7 @@ exports.activateUser = catchAsync(async (req, res, next) => {
   const userId = req.params.id;
 
   // Recherchez l'utilisateur dans la base de données
-  const user = await User.findById(userId);
+  const user = await User.findById({ _id: userId });
 
   // Vérifiez si l'utilisateur existe
   if (!user) {

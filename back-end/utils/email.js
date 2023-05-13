@@ -1,9 +1,10 @@
 const nodemailer = require("nodemailer");
-// const pug = require("pug");
+const htmlToText = require("html-to-text");
 
 module.exports = class Email {
-  constructor(user) {
+  constructor(user, url) {
     this.to = user.email;
+    this.url = url;
     this.firstName = user.name;
     this.from = `WASSELNI <${process.env.EMAIL_FROM}>`;
   }
@@ -31,29 +32,28 @@ module.exports = class Email {
   }
 
   // Send the actual email
-  async send(template, subject) {
-    // 1) Render HTML based on a pug template
-
-    // 2) Define email options
+  async send(subject, text) {
+    // Define email options
     const mailOptions = {
       from: this.from,
       to: this.to,
       subject,
-      text: "Hello nous somme WASSELNI",
+      text,
     };
 
-    // 3) Create a transport and send email
+    // Create a transport and send email
     await this.newTransport().sendMail(mailOptions);
   }
 
   async sendWelcome() {
-    await this.send("welcome", "Welcome to the WASSELNI Family!");
+    const subject = "Welcome to the WASSELNI Family!";
+    const text = `Dear ${this.firstName},\n\nWelcome to the WASSELNI Family! Please click on the following link to get started:\n${this.url}\n\nBest regards,\nWASSELNI Team`;
+    await this.send(subject, text);
   }
 
   async sendPasswordReset() {
-    await this.send(
-      "passwordReset",
-      "Your password reset token (valid for only 10 minutes)"
-    );
+    const subject = "Your password reset token (valid for only 10 minutes)";
+    const text = `Dear ${this.firstName},\n\nYou have requested to reset your password. Please click on the following link to reset it (valid for only 10 minutes):\n${this.url}\n\nIf you didn't request this, please ignore this email.\n\nBest regards,\nWASSELNI Team`;
+    await this.send(subject, text);
   }
 };
