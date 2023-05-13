@@ -4,6 +4,14 @@ main {
   gap: 2rem;
   padding: 0rem 15rem;
 }
+html {
+  --color: #999;
+  --checked-color: #00aff5;
+  --bg-color: #e8e8e8;
+}
+::selection {
+  background: #72caec;
+}
 
 .icon {
   align-self: center;
@@ -134,11 +142,14 @@ main {
 
 .search-results {
   border: 3px solid #00aff5;
+  display: flex;
+  flex-direction: column;
   border-radius: 25px;
   margin-top: 2rem;
   padding: 3rem;
   background-color: #fff;
   width: 90rem;
+  gap: 1rem;
   /* offset-x | offset-y | blur-radius | color */
   box-shadow: 0px 0rem 4.8rem rgba(0, 0, 0, 0.3);
 }
@@ -205,7 +216,14 @@ main {
   width: 5rem;
   border: 3px solid #030045;
   border-radius: 100%;
+  overflow: hidden;
 }
+.profile-pic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .name {
   font-size: 2rem;
   color: #030045;
@@ -254,10 +272,11 @@ main {
   align-items: end;
   gap: 1.5rem;
   justify-content: space-between;
+  height: 100%;
 }
 .price {
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 3.5rem;
 }
 .remaining-places {
   font-size: 1.9rem;
@@ -273,45 +292,140 @@ main {
   border: 3px solid #00aff5;
   border-radius: 25px;
   background-color: #fff;
-  padding: 2.5rem;
+  padding: 2rem;
   margin-top: 2rem;
   height: fit-content;
   color: #030045;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
+  /* offset-x | offset-y | blur-radius | color */
   box-shadow: 0px 0rem 4.8rem rgba(0, 0, 0, 0.3);
 }
-.filter-title {
-  font-size: 2.8rem;
-}
-.order,
-.details {
+fieldset {
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
   gap: 0.9rem;
 }
+.filter-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
 .filter {
   display: flex;
   gap: 1rem;
   align-items: center;
-  cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.2s;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer !important;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -ms-user-select: none;
 }
-/* .filter:hover .filter-name {
-  transform: translateY(-5px);
-  font-size: 2.4rem;
-} */
-.filter-icon {
-  height: 2.3rem;
-  width: 2.3rem;
-  color: #00aff5;
-}
+
 .filter-name {
-  font-size: 2.3rem;
-  font-weight: 400;
-  transition: all 0.5s;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.filter:hover,
+.filter:active {
+  background-color: #daf4ff;
+}
+
+/* color: #00aff5; */
+
+input[type="radio"],
+input[type="checkbox"] {
+  min-height: 2rem;
+  min-width: 2rem;
+  transition: all 0.3s;
+}
+.custom-radio {
+  /* hiding browser el */
+  appearance: none;
+  /* Safari support */
+  -webkit-appearance: none;
+  border: 1rem solid #fff;
+  background-color: var(#fff);
+  border-radius: 50%;
+  cursor: pointer !important;
+}
+
+/* keyboard navigation focus appearance */
+.custom-radio:focus-visible {
+  outline-offset: 0;
+  transition: all 1s;
+}
+
+#filter-time,
+#filter-price,
+#filter-duration {
+  box-shadow: 0 0 0 1px var(--color);
+}
+
+#filter-time:hover,
+#filter-price:hover,
+#filter-duration:hover {
+  /* border-width: 0; */
+}
+
+#filter-time:checked,
+#filter-price:checked,
+#filter-duration:checked {
+  box-shadow: 0 0 0 1px var(--checked-color);
+  background-color: var(--checked-color);
+  border-width: 0.3rem;
+}
+
+.custom-checkbox {
+  /* hiding browser el */
+  appearance: none;
+  /* Safari support */
+  -webkit-appearance: none;
+  /* border: 0.3rem solid #fff; */
+  /* background-color: var(--bg-color); */
+  border-radius: 5px;
+  cursor: pointer !important;
+}
+
+/* keyboard navigation focus appearance */
+.custom-radio:focus-visible {
+  outline-offset: 0;
+}
+
+#filter-smoke,
+#filter-profile,
+#filter-ac {
+  box-shadow: 0 0 0 1px var(--color);
+  /* background-color: #fff; */
+}
+
+#filter-smoke:hover,
+#filter-profile:hover,
+#filter-ac:hover {
+  /* border-width: 0; */
+}
+
+#filter-smoke:checked,
+#filter-profile:checked,
+#filter-ac:checked {
+  box-shadow: 0 0 0 1px var(--checked-color);
+  background-color: var(--checked-color);
+  /* background: no-repeat url("../img/checkmark-outline.png"); */
+  background-image: url("../img/checkmark-outline.png");
+  background-blend-mode: lighten;
+  /* background-color: #fff; */
+  background-clip: border-box;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  /* border-width: 0.3rem; */
 }
 
 /* #0f0 */
@@ -378,3 +492,95 @@ footer {
 .address:active {
   text-decoration: none !important;
 }
+/* #0f0 */
+/* //////////////////////////// */
+/* PROFIL CSS HANDING */
+/* //////////////////////////// */
+.nav-profile {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0px;
+}
+.profile-pic {
+  height: 5rem;
+  width: 5rem;
+  border: 3px solid #030045;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 7rem;
+  top: 7rem;
+  max-width: 22rem;
+  border-radius: 1.3rem 1.3rem 1.3rem 1.3rem;
+  /* Clip the box shadows to container */
+  overflow: hidden;
+  /* Add box shadows */
+  transition: all 0.5s;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+.bbl {
+  width: 100%;
+}
+.profile-menu-ele {
+  background-color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: red;
+  cursor: pointer;
+}
+.profile-menu-ele:hover,
+.profile-menu-ele:active {
+  background-color: #daf4ff;
+}
+
+.profile-menu-ele:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+}
+.profile-menu-ele:not(:last-child) {
+  color: #030045;
+}
+/* .last {
+  padding-bottom: 0px;
+} */
+/* .--absolute::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-bottom: 2rem solid #daf4ff;
+  display: block;
+  transform: translateX(0.5rem);
+} */
+.--absolute::before + .profile-menu-ele:hover {
+  background-color: #c3e5f3;
+}
+/* .--absolute::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #000;
+  display: block;
+  height: 1rem;
+  width: 2rem;
+  background-color: #d8d8d8;
+} */
+
+/* .child {
+  padding-top: 0px;
+} */

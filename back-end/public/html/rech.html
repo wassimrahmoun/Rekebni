@@ -26,7 +26,7 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" type="image" href="/img/ICON3 1.svg" />
-    <script src="/js/script.js"></script>
+    <script src="/js/recherche.js"></script>
   </head>
   <body>
     <header>
@@ -47,20 +47,63 @@
               <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
               <span class="whitespan">Ajouter un trajet</span>
             </a>
-            <div class="nav-login flex-center">
+            <div class="nav-login flex-center hidden">
               <a class="btn--login flex-center whitespan" href="/login"
                 >se connecter</a
               >
-              <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
+              <a class="btn--signup flex-center hidden" href="/signup"
+                >s'inscrire</a
+              >
+            </div>
+            <div class="nav-profile">
+              <img class="profile-pic" src="default.jpg" id="menu-btn" />
+              <div class="--absolute" style="display: none" id="menu">
+                <div class="profile-menu a">
+                  <!-- <img src="../img/menubbl.png" class="bbl" /> -->
+                  <div class="profile-menu-ele child">Mon Profil</div>
+                  <div class="profile-menu-ele">Paramètres du Compte</div>
+                  <div class="profile-menu-ele last">Se Déconnecter</div>
+                </div>
+              </div>
             </div>
           </div>
         </nav>
+        <script>
+          // const parent = document.querySelector(".parent");
+          // const child = parent.querySelector(".a .child");
+
+          // child.addEventListener("mouseover", () => {
+          //   parent.style.backgroundColor = "red";
+          // });
+
+          // child.addEventListener("mouseout", () => {
+          //   parent.style.backgroundColor = "";
+          // });
+
+          const menuBtn = document.querySelector("#menu-btn");
+          const menu = document.querySelector("#menu");
+
+          menuBtn.addEventListener("click", () => {
+            if (menu.style.display === "none") {
+              menu.style.display = "block";
+            } else {
+              menu.style.display = "none";
+            }
+          });
+
+          // Close the menu when a click is detected outside of it
+          document.addEventListener("click", (event) => {
+            if (!menu.contains(event.target) && event.target !== menuBtn) {
+              menu.style.display = "none";
+            }
+          });
+        </script>
       </div>
       <img class="waves2" src="../img/waves.png" />
     </header>
     <main>
       <section class="search-results">
-        <span class="searched-trip-info">
+        <!-- <span class="searched-trip-info">
           <span class="searched-trip-info-depart">Alger</span>
           <ion-icon name="arrow-forward-outline" class="icon"></ion-icon>
           <span class="searched-trip-info-arrival">Oran</span>
@@ -74,390 +117,10 @@
         <span class="amount-of-results">
           <span class="amount-of-results-value">999</span>
           <span class="amount-of-results-text">Résultats</span>
-        </span>
-        <div class="results-box">
-          <div class="result">
-            <div class="left">
-              <div class="driver-info">
-                <div class="profile-pic"></div>
-                <div class="next-to-pic">
-                  <div class="name">Mohamed</div>
-                  <span class="rating">
-                    <ion-icon name="star-outline" class="icon"></ion-icon>
-                    <span class="rating-value">4.9</span>
-                    <span>/ 5 - </span>
-                  </span>
-                  <span class="reviews">
-                    <span class="reviews-value">999</span>
-                    <span class="reviews-text"> Avis</span>
-                  </span>
-                </div>
-              </div>
-              <div class="trip-info">
-                <span class="locations">
-                  <span>de</span>
-                  <span class="depart">Bourdj-Bou-Arreridj</span>
-                  <span> à </span>
-                  <span class="arrival">Constantine</span>
-                </span>
-                <div class="date">
-                  <ion-icon
-                    name="calendar-outline"
-                    class="date-icon icon"
-                  ></ion-icon>
-                  <div>
-                    <span>le</span>
-                    <span class="date-day">99</span>
-                    <span class="date-month">Septembre</span>
-                  </div>
-                </div>
-                <div class="time">
-                  <ion-icon
-                    name="time-outline"
-                    class="time-icon icon"
-                  ></ion-icon>
-                  <div class="time-text">
-                    <span class="depart-time">88:88</span>
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      class="icon"
-                    ></ion-icon>
-                    <span class="arrival-time">88:88</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price">
-                <span class="price-value">9999.99</span>
-                <span class="price-text"> DA</span>
-              </div>
-              <div class="remaining-places">
-                <span class="remaining-places-text">Places restantes:</span>
-                <ion-icon name="person-outline" class="icon"></ion-icon>
-                <span class="remaining-places-value">99</span>
-              </div>
-            </div>
-          </div>
-          <div class="result">
-            <div class="left">
-              <div class="driver-info">
-                <div class="profile-pic"></div>
-                <div class="next-to-pic">
-                  <div class="name">Mohamed</div>
-                  <span class="rating">
-                    <ion-icon name="star-outline" class="icon"></ion-icon>
-                    <span class="rating-value">4.9</span>
-                    <span>/ 5 - </span>
-                  </span>
-                  <span class="reviews">
-                    <span class="reviews-value">999</span>
-                    <span class="reviews-text"> Avis</span>
-                  </span>
-                </div>
-              </div>
-              <div class="trip-info">
-                <span class="locations">
-                  <span>de</span>
-                  <span class="depart">Bourdj-Bou-Arreridj</span>
-                  <span> à </span>
-                  <span class="arrival">Constantine</span>
-                </span>
-                <div class="date">
-                  <ion-icon
-                    name="calendar-outline"
-                    class="date-icon icon"
-                  ></ion-icon>
-                  <div>
-                    <span>le</span>
-                    <span class="date-day">99</span>
-                    <span class="date-month">Septembre</span>
-                  </div>
-                </div>
-                <div class="time">
-                  <ion-icon
-                    name="time-outline"
-                    class="time-icon icon"
-                  ></ion-icon>
-                  <div class="time-text">
-                    <span class="depart-time">88:88</span>
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      class="icon"
-                    ></ion-icon>
-                    <span class="arrival-time">88:88</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price">
-                <span class="price-value">9999.99</span>
-                <span class="price-text"> DA</span>
-              </div>
-              <div class="remaining-places">
-                <span class="remaining-places-text">Places restantes:</span>
-                <ion-icon name="person-outline" class="icon"></ion-icon>
-                <span class="remaining-places-value">99</span>
-              </div>
-            </div>
-          </div>
-          <div class="result">
-            <div class="left">
-              <div class="driver-info">
-                <div class="profile-pic"></div>
-                <div class="next-to-pic">
-                  <div class="name">Mohamed</div>
-                  <span class="rating">
-                    <ion-icon name="star-outline" class="icon"></ion-icon>
-                    <span class="rating-value">4.9</span>
-                    <span>/ 5 - </span>
-                  </span>
-                  <span class="reviews">
-                    <span class="reviews-value">999</span>
-                    <span class="reviews-text"> Avis</span>
-                  </span>
-                </div>
-              </div>
-              <div class="trip-info">
-                <span class="locations">
-                  <span>de</span>
-                  <span class="depart">Bourdj-Bou-Arreridj</span>
-                  <span> à </span>
-                  <span class="arrival">Constantine</span>
-                </span>
-                <div class="date">
-                  <ion-icon
-                    name="calendar-outline"
-                    class="date-icon icon"
-                  ></ion-icon>
-                  <div>
-                    <span>le</span>
-                    <span class="date-day">99</span>
-                    <span class="date-month">Septembre</span>
-                  </div>
-                </div>
-                <div class="time">
-                  <ion-icon
-                    name="time-outline"
-                    class="time-icon icon"
-                  ></ion-icon>
-                  <div class="time-text">
-                    <span class="depart-time">88:88</span>
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      class="icon"
-                    ></ion-icon>
-                    <span class="arrival-time">88:88</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price">
-                <span class="price-value">9999.99</span>
-                <span class="price-text"> DA</span>
-              </div>
-              <div class="remaining-places">
-                <span class="remaining-places-text">Places restantes:</span>
-                <ion-icon name="person-outline" class="icon"></ion-icon>
-                <span class="remaining-places-value">99</span>
-              </div>
-            </div>
-          </div>
-          <div class="result">
-            <div class="left">
-              <div class="driver-info">
-                <div class="profile-pic"></div>
-                <div class="next-to-pic">
-                  <div class="name">Mohamed</div>
-                  <span class="rating">
-                    <ion-icon name="star-outline" class="icon"></ion-icon>
-                    <span class="rating-value">4.9</span>
-                    <span>/ 5 - </span>
-                  </span>
-                  <span class="reviews">
-                    <span class="reviews-value">999</span>
-                    <span class="reviews-text"> Avis</span>
-                  </span>
-                </div>
-              </div>
-              <div class="trip-info">
-                <span class="locations">
-                  <span>de</span>
-                  <span class="depart">Bourdj-Bou-Arreridj</span>
-                  <span> à </span>
-                  <span class="arrival">Constantine</span>
-                </span>
-                <div class="date">
-                  <ion-icon
-                    name="calendar-outline"
-                    class="date-icon icon"
-                  ></ion-icon>
-                  <div>
-                    <span>le</span>
-                    <span class="date-day">99</span>
-                    <span class="date-month">Septembre</span>
-                  </div>
-                </div>
-                <div class="time">
-                  <ion-icon
-                    name="time-outline"
-                    class="time-icon icon"
-                  ></ion-icon>
-                  <div class="time-text">
-                    <span class="depart-time">88:88</span>
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      class="icon"
-                    ></ion-icon>
-                    <span class="arrival-time">88:88</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price">
-                <span class="price-value">9999.99</span>
-                <span class="price-text"> DA</span>
-              </div>
-              <div class="remaining-places">
-                <span class="remaining-places-text">Places restantes:</span>
-                <ion-icon name="person-outline" class="icon"></ion-icon>
-                <span class="remaining-places-value">99</span>
-              </div>
-            </div>
-          </div>
-          <div class="result">
-            <div class="left">
-              <div class="driver-info">
-                <div class="profile-pic"></div>
-                <div class="next-to-pic">
-                  <div class="name">Mohamed</div>
-                  <span class="rating">
-                    <ion-icon name="star-outline" class="icon"></ion-icon>
-                    <span class="rating-value">4.9</span>
-                    <span>/ 5 - </span>
-                  </span>
-                  <span class="reviews">
-                    <span class="reviews-value">999</span>
-                    <span class="reviews-text"> Avis</span>
-                  </span>
-                </div>
-              </div>
-              <div class="trip-info">
-                <span class="locations">
-                  <span>de</span>
-                  <span class="depart">Bourdj-Bou-Arreridj</span>
-                  <span> à </span>
-                  <span class="arrival">Constantine</span>
-                </span>
-                <div class="date">
-                  <ion-icon
-                    name="calendar-outline"
-                    class="date-icon icon"
-                  ></ion-icon>
-                  <div>
-                    <span>le</span>
-                    <span class="date-day">99</span>
-                    <span class="date-month">Septembre</span>
-                  </div>
-                </div>
-                <div class="time">
-                  <ion-icon
-                    name="time-outline"
-                    class="time-icon icon"
-                  ></ion-icon>
-                  <div class="time-text">
-                    <span class="depart-time">88:88</span>
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      class="icon"
-                    ></ion-icon>
-                    <span class="arrival-time">88:88</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price">
-                <span class="price-value">9999.99</span>
-                <span class="price-text"> DA</span>
-              </div>
-              <div class="remaining-places">
-                <span class="remaining-places-text">Places restantes:</span>
-                <ion-icon name="person-outline" class="icon"></ion-icon>
-                <span class="remaining-places-value">99</span>
-              </div>
-            </div>
-          </div>
-          <div class="result">
-            <div class="left">
-              <div class="driver-info">
-                <div class="profile-pic"></div>
-                <div class="next-to-pic">
-                  <div class="name">Mohamed</div>
-                  <span class="rating">
-                    <ion-icon name="star-outline" class="icon"></ion-icon>
-                    <span class="rating-value">4.9</span>
-                    <span>/ 5 - </span>
-                  </span>
-                  <span class="reviews">
-                    <span class="reviews-value">999</span>
-                    <span class="reviews-text"> Avis</span>
-                  </span>
-                </div>
-              </div>
-              <div class="trip-info">
-                <span class="locations">
-                  <span>de</span>
-                  <span class="depart">Bourdj-Bou-Arreridj</span>
-                  <span> à </span>
-                  <span class="arrival">Constantine</span>
-                </span>
-                <div class="date">
-                  <ion-icon
-                    name="calendar-outline"
-                    class="date-icon icon"
-                  ></ion-icon>
-                  <div>
-                    <span>le</span>
-                    <span class="date-day">99</span>
-                    <span class="date-month">Septembre</span>
-                  </div>
-                </div>
-                <div class="time">
-                  <ion-icon
-                    name="time-outline"
-                    class="time-icon icon"
-                  ></ion-icon>
-                  <div class="time-text">
-                    <span class="depart-time">88:88</span>
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      class="icon"
-                    ></ion-icon>
-                    <span class="arrival-time">88:88</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price">
-                <span class="price-value">9999.99</span>
-                <span class="price-text"> DA</span>
-              </div>
-              <div class="remaining-places">
-                <span class="remaining-places-text">Places restantes:</span>
-                <ion-icon name="person-outline" class="icon"></ion-icon>
-                <span class="remaining-places-value">99</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        </span> -->
       </section>
       <section class="filters">
-        <div>
+        <!-- <div>
           <span class="filter-title">Trier par</span>
           <div class="order">
             <div class="filter">
@@ -465,14 +128,20 @@
                 name="caret-down-outline"
                 class="filter-icon"
               ></ion-icon>
-              <span class="filter-name">Prix</span>
+              <span class="filter-name">Prix le plus bas</span>
             </div>
             <div class="filter">
               <ion-icon
                 name="caret-down-outline"
                 class="filter-icon"
               ></ion-icon>
-              <span class="filter-name">Temps de Départ</span>
+              <input
+                type="radio"
+                class="radio-btn"
+                name="Temps de Départ"
+                id="temps"
+              />
+              <label for="temps" class="filter-name">Temps de Départ</label>
             </div>
             <div class="filter">
               <ion-icon
@@ -482,12 +151,49 @@
               <span class="filter-name">Durée du Trajet</span>
             </div>
           </div>
-        </div>
-        <div>
+        </div> -->
+        <fieldset>
+          <legend class="filter-title">Trier par</legend>
+
+          <label for="filter-price" class="filter-name filter">
+            <input
+              type="radio"
+              id="filter-price"
+              name="trier"
+              value="Prix le plus bas"
+              class="custom-radio"
+              checked
+            />
+            Prix le plus bas
+          </label>
+
+          <label for="filter-time" class="filter-name filter">
+            <input
+              type="radio"
+              id="filter-time"
+              name="trier"
+              value="Départ le plus tôt"
+              class="custom-radio"
+            />
+            Départ le plus tôt
+          </label>
+
+          <label for="filter-duration" class="filter-name filter">
+            <input
+              type="radio"
+              id="filter-duration"
+              name="trier"
+              value="Durée la plus courte"
+              class="custom-radio"
+            />
+            Durée la plus courte
+          </label>
+        </fieldset>
+        <!-- <div>
           <span class="filter-title">Détails</span>
           <div class="details">
             <div class="filter">
-              <ion-icon name="radio-button-on-outline" class="filter-icon">
+              <ion-icon name="radio-button-off-outline" class="filter-icon">
               </ion-icon>
               <span class="filter-name">Profile Vérifié</span>
             </div>
@@ -497,7 +203,55 @@
               <span class="filter-name">Interdit aux Fumeurs</span>
             </div>
           </div>
-        </div>
+        </div> -->
+        <fieldset>
+          <legend class="filter-title">Détails</legend>
+
+          <label for="filter-profile" class="filter-name filter">
+            <input
+              type="checkbox"
+              id="filter-profile"
+              name="profil"
+              value="Profil Vérifié"
+              class="custom-checkbox"
+            />
+            Profil Verifié
+          </label>
+
+          <label for="filter-ac" class="filter-name filter">
+            <input
+              type="checkbox"
+              id="filter-ac"
+              name="fumer"
+              value="Interdit aux Fumeurs"
+              class="custom-checkbox"
+              checked
+            />
+            Interdit aux Fumeurs
+          </label>
+
+          <!-- <label for="filter-ac" class="filter-name filter">
+            <input
+              type="checkbox"
+              id="filter-ac"
+              name="climatiseur"
+              value="Voiture Climatisée"
+              class="custom-checkbox"
+              checked
+            />
+            Voiture Climatisée
+          </label> -->
+          <label for="filter-smoke" class="filter-name filter">
+            <input
+              type="checkbox"
+              id="filter-smoke"
+              name="fumer"
+              value="Interdit aux Fumeurs"
+              class="custom-checkbox"
+            />
+            Voiture Climatisée
+          </label>
+        </fieldset>
       </section>
     </main>
     <footer>

@@ -43,6 +43,9 @@
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+  --color: #999;
+  --checked-color: #00aff5;
+  --bg-color: #e8e8e8;
 }
 * {
   box-sizing: border-box;
@@ -53,6 +56,11 @@ html {
 }
 body {
   font-family: "ubuntu", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+  background: #72caec;
 }
 span,
 h1,
@@ -74,7 +82,9 @@ section {
 /* ****************************** */
 /* GENERAL COMPONENTS (reusables)*/
 /* ****************************** */
-
+.hidden {
+  display: none !important;
+}
 .img {
   margin: 0;
   width: 100%;
@@ -112,4 +122,17 @@ section {
   display: grid;
   grid-template-columns: 42fr 58fr;
   gap: 3rem;
+}
+.expriration {
+  position: absolute;
+}
+.exp-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vh;
+  height: 100vh;
+}
+body {
+  position: relative;
 }
