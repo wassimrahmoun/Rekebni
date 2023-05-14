@@ -89,6 +89,7 @@ const userSchema = new mongoose.Schema(
 userSchema.index({ slug: 1 });
 
 userSchema.pre("save", function (next) {
+  //juste ppur linstatn le temps de mettre le pseudo user dans inscription
   //changer pour pseudo apres prsq pseudo unique mais name impossible
   this.slug = slugify(this.name, { lower: true });
   next();

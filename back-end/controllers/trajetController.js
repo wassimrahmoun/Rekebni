@@ -10,21 +10,39 @@ exports.setTrajetUserIds = (req, res, next) => {
 };
 
 exports.getAllTrajets = factory.getAll(Trajet);
-//exports.getTrajet = factory.getOne(Trajet);
 exports.updateTrajet = factory.updateOne(Trajet);
 exports.deleteTrajet = factory.deleteOne(Trajet);
 exports.createTrajet = factory.createOne(Trajet);
 
 exports.getTrajet = catchAsync(async (req, res, next) => {
-  const trajet = await await Trajet.findOne({
-    id: req.params.slug,
-    // slug: req.params.slug,
+  const trajet = await Trajet.findById({
+    _id: req.params.id,
     isActive: true,
-    // date: req.params.date,
-    //HeurD: req.params.heurD,
-  }).populate({
-    path: "reviews",
-    fields: "review rating user",
+  })
+    .populate({
+      path: "Conducteur",
+      select: "name photo",
+    })
+    .populate({
+      path: "reviews",
+      populate: {
+        path: "user",
+        select: "name photo",
+      },
+    });
+
+  res.status(200).json({
+    //to resive tours const array
+    status: "success",
+    data: {
+      trajet,
+    },
+  });
+});
+
+exports.getUserTrajects = catchAsync(async (req, res, next) => {
+  const trajet = await await Trajet.findOne({
+    slug: req.params.slug,
   });
 
   res.status(200).json({
