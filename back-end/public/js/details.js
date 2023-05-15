@@ -279,23 +279,8 @@ document.addEventListener("DOMContentLoaded", function () {
       afficherinfo(data);
       affichervehicule(data);
 
-      // if (data.data.trajet) {
-      //   reviewsObj = {};
-      //   data.data.trajet.reviews.forEach((review, index) => {
-      //     reviewsObj[index] = {
-      //       date: review.createdAt,
-      //       id: review.id,
-      //       review: review.review,
-      //       rating: review.rating,
-      //       conducteur: review.conducteur,
-      //       user: review.user,
-      //     };
-      //   });
-
-      //   console.log(reviewsObj[0].user.photo);
-      // }
       if (data.data.trajet) {
-        const reviewsObj = {};
+        reviewsObj = {};
         data.data.trajet.reviews.forEach((review, index) => {
           reviewsObj[index] = {
             date: review.createdAt,
@@ -303,19 +288,34 @@ document.addEventListener("DOMContentLoaded", function () {
             review: review.review,
             rating: review.rating,
             conducteur: review.conducteur,
-            user: review.user
-              ? {
-                  photo: review.user.photo,
-                  _id: review.user._id,
-                  name: review.user.name,
-                  id: review.user.id,
-                }
-              : null,
+            user: review.user,
           };
         });
 
         console.log(reviewsObj);
       }
+      // if (data.data.trajet) {
+      //   const reviewsObj = {};
+      //   data.data.trajet.reviews.forEach((review, index) => {
+      //     reviewsObj[index] = {
+      //       date: review.createdAt,
+      //       id: review.id,
+      //       review: review.review,
+      //       rating: review.rating,
+      //       conducteur: review.conducteur,
+      //       user: review.user
+      //         ? {
+      //             photo: review.user.photo,
+      //             _id: review.user._id,
+      //             name: review.user.name,
+      //             id: review.user.id,
+      //           }
+      //         : null,
+      //     };
+      //   });
+
+      //   console.log(reviewsObj);
+      // }
 
       showPerson(currentItem);
     })
@@ -324,8 +324,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function showPerson(person) {
   const item = reviewsObj[person];
-  fullname.textContent = item.name;
-  ladate.textContent = item.date;
+  img.src = `../img/user/${item.user.photo}`;
+  fullname.textContent = item.user.name;
+  ladate.textContent = item.date.substring(0, 10);
   info.textContent = item.review;
 }
 
