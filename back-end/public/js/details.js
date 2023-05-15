@@ -172,91 +172,21 @@ function affichervehicule(data) {
    `;
   container.insertAdjacentHTML("afterbegin", infocar);
 }
+function footer(data) {
+  const foote = document.querySelector(".section-phone");
+  const phone = data.data.trajet.Conducteur.phone;
+  const footer = `
+  <div class="container">
+  <span class="section-phone-title"
+            >contactez le conducteur pour se mettre d'accord sur le lieu du
+            RDV</span
+          >
+          <div>
+            <span class="prix"></span>
+            <span id="telephone" class="price">${phone}</span>`;
+  foote.insertAdjacentHTML("afterbegin", footer);
+}
 
-// function createReviewsObj(data) {
-//   if (data.data.trajet) {
-//     const reviewsObj = {};
-//     data.data.trajet.reviews.forEach((review, index) => {
-//       reviewsObj[index] = {
-//         date: review.createdAt,
-//         id: review.id,
-//         review: review.review,
-//         rating: review.rating,
-//         conducteur: review.conducteur,
-//         user: review.user,
-//       };
-//     });
-//     return reviewsObj;
-//   } else {
-//     console.log("Aucune review trouvée pour ce trajet.");
-//     return {};
-//   }
-// }
-// const img = document.getElementById("review-photo");
-// const ladate = document.getElementById("review-date");
-// const fullname = document.getElementById("review-full-name");
-// const info = document.getElementById("review-texte");
-
-// const prevBtn = document.querySelector(".btn btn--left");
-// const nextBtn = document.querySelector(".btn btn--right");
-// const star = document.querySelector(".rating-stars");
-// let currentitem = 0;
-// document.addEventListener("DOMContentLoaded", function () {
-//   const selectedTrajetId = localStorage.getItem("selectedTrajetId");
-//   console.log(selectedTrajetId);
-//   const url = `http://localhost:8000/api/v1/trajets/${selectedTrajetId}`;
-//   fetch(url)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log(data);
-//       afficherinfo(data);
-//       affichervehicule(data);
-//       // récupérer les critiques et les stocker dans reviewsObj
-//       if (data.data.trajet) {
-//         const reviewsObj = {};
-//         data.data.trajet.reviews.forEach((review, index) => {
-//           reviewsObj[index] = {
-//             date: review.createdAt,
-//             id: review.id,
-//             review: review.review,
-//             rating: review.rating,
-//             conducteur: review.conducteur,
-//             name: review.name,
-//           };
-//         });
-
-//         console.log(reviewsObj);
-//       }
-//       const item = reviewsObj[currentitem];
-//       fullname.textContent = item.id;
-//       ladate.textContent = item.date;
-//       info.textContent = item.review;
-//     })
-//     .catch((error) => console.error(error));
-// });
-
-// function showPerson(person) {
-//   const item = reviews[person];
-//   fullname.textContent = item.id;
-//   ladate.textContent = item.date;
-//   info.textContent = item.review;
-// }
-// // show next person
-// nextBtn.addEventListener("click", function () {
-//   currentItem++;
-//   if (currentItem > reviewsObj.length - 1) {
-//     currentItem = 0;
-//   }
-//   showPerson(currentItem);
-// });
-// // show prev person
-// prevBtn.addEventListener("click", function () {
-//   currentItem--;
-//   if (currentItem < 0) {
-//     currentItem = reviewsObj.length - 1;
-//   }
-//   showPerson(currentItem);
-// });
 const img = document.getElementById("review-photo");
 const ladate = document.getElementById("review-date");
 const fullname = document.getElementById("review-full-name");
@@ -278,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(data);
       afficherinfo(data);
       affichervehicule(data);
-
+      footer(data);
       if (data.data.trajet) {
         reviewsObj = {};
         data.data.trajet.reviews.forEach((review, index) => {
@@ -294,29 +224,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log(reviewsObj);
       }
-      // if (data.data.trajet) {
-      //   const reviewsObj = {};
-      //   data.data.trajet.reviews.forEach((review, index) => {
-      //     reviewsObj[index] = {
-      //       date: review.createdAt,
-      //       id: review.id,
-      //       review: review.review,
-      //       rating: review.rating,
-      //       conducteur: review.conducteur,
-      //       user: review.user
-      //         ? {
-      //             photo: review.user.photo,
-      //             _id: review.user._id,
-      //             name: review.user.name,
-      //             id: review.user.id,
-      //           }
-      //         : null,
-      //     };
-      //   });
-
-      //   console.log(reviewsObj);
-      // }
-
       showPerson(currentItem);
     })
     .catch((error) => console.error(error));
