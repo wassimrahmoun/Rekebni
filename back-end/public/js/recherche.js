@@ -1,5 +1,9 @@
 //  code propre
-const profilePic = document.querySelector(".profile-pic");
+var user = JSON.parse(window.localStorage.getItem("userJson"));
+var userId ;
+if(user)  userId = user.id ;
+
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   const year = date.getFullYear();
@@ -136,19 +140,44 @@ function displayrecherch(nbrtrajet, mesDonnees) {
     trajetbox.insertAdjacentHTML("beforeend", recherche_trajet);
   }
 }
-document.addEventListener("DOMContentLoaded", function () {
-  // Déconnecter 
-  const profilSignOut = document.getElementById("signout"); // Déconnecter
+
+const showProfilePic = function(){
+  var userPic = user.photo ;
+  document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
+}
+
+const signOutEventListener=function(){
+   const profilSignOut = document.getElementById("signout"); // Déconnecter
     profilSignOut.addEventListener("click", async function () {
       await fetch("http://localhost:8000/api/v1/users/logout") ;
-      window.localStorage.removeItem("userid") ;
-      window.location.href = "/recherche";
+      window.localStorage.removeItem("userJson") ;
+      window.location.href = "/";
       
     });
-    //
+}
+
+document.addEventListener("DOMContentLoaded", function () { 
+  // verifier si connecté / deconnecté
+  const loginRegisterTabs = document.querySelector(".nav-login");
+  const profileTab = document.querySelector(".nav-profile");
+  if (!userId){
+    profileTab.classList.add("hidden") ;
+    loginRegisterTabs.classList.remove("hidden") ;
+    } 
+    else {
+      loginRegisterTabs.classList.add("hidden") ;
+      profileTab.classList.remove("hidden") ;
+      showProfilePic() ;
+      signOutEventListener() ;
+    }
+  //  
+    
+  
   const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
   console.log(mesDonnees);
   const nbrtrajet = mesDonnees.results;
+  console.log(`nbTrajet : ${nbrtrajet}`) ;
+  console.log(`mes données ${mesDonnees.data.data[0].id}`) ;
   const selectedPassengers = localStorage.getItem("selectedPassengers");
   displaySearchInfo(mesDonnees, selectedPassengers);
   displayrecherch(nbrtrajet, mesDonnees);
