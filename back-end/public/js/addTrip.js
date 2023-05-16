@@ -18,7 +18,7 @@ const rechercheId = function(data,email){
 if (!userId) window.location.href = "/login"; // Verifier si il est connecté
 else {
   document.addEventListener("DOMContentLoaded", function () {
-    // document.querySelector(".profile-pic").setAttribute("src",`back-end/public/img/user/${userPic}`) ;O
+    document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
 
     const profilSignOut = document.getElementById("signout"); // Déconnecter
     profilSignOut.addEventListener("click", async function () {
