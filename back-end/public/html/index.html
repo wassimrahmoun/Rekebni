@@ -75,22 +75,26 @@
               <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
               <span class="whitespan">Ajouter un trajet</span>
             </a>
-            <div class="nav-login flex-center ">
+            <div class="nav-login flex-center">
               <a class="btn--login flex-center whitespan" href="/login"
                 >se connecter</a
               >
-              <a class="btn--signup flex-center " href="/signup"
-                >s'inscrire</a
-              >
+              <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
             </div>
             <div class="nav-profile hidden">
               <img class="profile-pic" src="default.jpg" id="menu-btn" />
               <div class="--absolute" style="display: none" id="menu">
                 <div class="profile-menu a">
                   <!-- <img src="../img/menubbl.png" class="bbl" /> -->
-                  <div class="profile-menu-ele child" id="profil">Mon Profil</div>
-                  <div class="profile-menu-ele" id="settings">Paramètres du Compte</div>
-                  <div class="profile-menu-ele last" id="signout">Se Déconnecter</div>
+                  <div class="profile-menu-ele child" id="profil">
+                    Mon Profil
+                  </div>
+                  <div class="profile-menu-ele" id="settings">
+                    Paramètres du Compte
+                  </div>
+                  <div class="profile-menu-ele last" id="signout">
+                    Se Déconnecter
+                  </div>
                 </div>
               </div>
             </div>
@@ -116,8 +120,12 @@
               menu.style.display = "block";
             } else {
               menu.style.display = "none";
-            }       
-            document.addEventListener("click", (event) => {             if (!menu.contains(event.target) && event.target !== menuBtn) {               menu.style.display = "none";             }           });
+            }
+            document.addEventListener("click", (event) => {
+              if (!menu.contains(event.target) && event.target !== menuBtn) {
+                menu.style.display = "none";
+              }
+            });
           });
 
           // Close the menu when a click is detected outside of it

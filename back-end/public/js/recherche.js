@@ -1,86 +1,51 @@
-// import { getPassager } from './script.js';
-// const passager = getPassager();
-// console.log(passager); // Output: the value of the "passengers" element
-
+//  code propre
 const profilePic = document.querySelector(".profile-pic");
-var userId = window.localStorage.getItem("userid") ;
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = date.toLocaleString("default", { month: "long" });
+  const day = date.getDate();
 
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const loginRegisterTabs = document.querySelector(".nav-login") ;
-  const profileTab = document.querySelector(".nav-profile") ;
-
-  if(!userId){
-    profileTab.classList.add("hidden");
-    loginRegisterTabs.classList.remove("hidden");         // connecté ou déconnecté
-  }
-  else {
-    loginRegisterTabs.classList.add("hidden");
-    profileTab.classList.remove("hidden") ;
-  }
-
-  const profilSignOut = document.getElementById("signout");       // Déconnecter
-  profilSignOut.addEventListener("click",async function(){
-    await fetch("http://localhost:8000/api/v1/users/logout") ;
-    window.localStorage.removeItem("userid") ;
-    window.location.href="/recherche" ;
-  })
-
+  return {
+    year,
+    month,
+    day,
+  };
+}
+function displaySearchInfo(mesDonnees, selectedPassengers) {
   const trajetbox = document.querySelector(".search-results");
-  const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
-  console.log(mesDonnees);
   const nbrtrajet = mesDonnees.results;
-  const selectedPassengers = localStorage.getItem("selectedPassengers");
-  if (selectedPassengers) {
-    console.log("le nombre de passager est :" + selectedPassengers);
-  } else {
-    console.log("selectedPassengers not found in local storage.");
-  }
-
   const departt = mesDonnees.data.data[0].Depart;
   const arriverr = mesDonnees.data.data[0].Arrivée;
   const resultats = mesDonnees.results;
   const Datee = mesDonnees.data.data[0].date.substring(0, 10);
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = date.toLocaleString("default", { month: "long" });
-    const day = date.getDate();
-
-    return {
-      year,
-      month,
-      day,
-    };
-  }
   const formattedDate = formatDate(Datee);
-  console.log(formattedDate.year);
-  const Passagerss = mesDonnees.passager;
   const infodebase = `
-<span class="searched-trip-info">
-<span class="searched-trip-info-depart">${departt}</span>
-<ion-icon name="arrow-forward-outline" class="icon"></ion-icon>
-<span class="searched-trip-info-arrival">${arriverr}</span>
-<span> le </span>
-<span class="searched-trip-info-day">${formattedDate.day}</span>
-<span class="searched-trip-info-month">${formattedDate.month}</span>
-<span> pour </span>
-<span class="searched-trip-info-passengers-value"></span>
-<span class="searched-trip-info-passengers-text">Personnes</span>
-</span>
-<span class="amount-of-results">
-<span class="amount-of-results-value">${resultats}</span>
-<span class="amount-of-results-text">Résultats</span>
-</span>`;
-  trajetbox.insertAdjacentHTML("beforeend", infodebase);
-  // Assuming there is only one trajet in the data array
+    <span class="searched-trip-info">
+      <span class="searched-trip-info-depart">${departt}</span>
+      <ion-icon name="arrow-forward-outline" class="icon"></ion-icon>
+      <span class="searched-trip-info-arrival">${arriverr}</span>
+      <span> le </span>
+      <span class="searched-trip-info-day">${formattedDate.day}</span>
+      <span class="searched-trip-info-month">${formattedDate.month}</span>
+      <span> pour </span>
+      <span class="searched-trip-info-passengers-value">${selectedPassengers}</span>
+      <span class="searched-trip-info-passengers-text">Personnes</span>
+    </span>
+    <span class="amount-of-results">
+      <span class="amount-of-results-value">${resultats}</span>
+      <span class="amount-of-results-text">Résultats</span>
+    </span>
+  `;
+
+  trajetbox.insertAdjacentHTML("afterbegin", infodebase);
+}
+function displayrecherch(nbrtrajet, mesDonnees) {
   for (let i = 0; i <= nbrtrajet; i++) {
     const trajet = mesDonnees.data[i];
     const trajets = {
       status: mesDonnees.status,
+      id: mesDonnees.data.data[i].id,
       depart: mesDonnees.data.data[i].Depart,
       Arrivée: mesDonnees.data.data[i].Arrivée,
       Conducteur: mesDonnees.data.data[i].Conducteur.name,
@@ -99,10 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
       slug: mesDonnees.data.data[i].slug,
       ranking: mesDonnees.data.data[i].Conducteur.ratingsAverage,
     };
-
-    console.log(trajets);
+    const trajetbox = document.querySelector(".search-results");
     const recherche_trajet = ` 
-  <div class="results-box">
+  <div class="results-box" id="${trajets.id}">
   <div class="result">
   <div class="left">
     <div class="driver-info">
@@ -171,5 +135,28 @@ document.addEventListener("DOMContentLoaded", function () {
   `;
     trajetbox.insertAdjacentHTML("beforeend", recherche_trajet);
   }
+}
+document.addEventListener("DOMContentLoaded", function () {
+  const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
+  console.log(mesDonnees);
+  const nbrtrajet = mesDonnees.results;
+  const selectedPassengers = localStorage.getItem("selectedPassengers");
+  displaySearchInfo(mesDonnees, selectedPassengers);
+  displayrecherch(nbrtrajet, mesDonnees);
 });
-
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".results-box").forEach(function (trajetElement) {
+    trajetElement.addEventListener("click", function (event) {
+      const trajetId = event.currentTarget.id;
+      console.log(trajetId);
+      localStorage.setItem("selectedTrajetId", trajetId);
+      const currentUrl = window.location.href;
+      const currentPathname = window.location.pathname;
+      const detailsUrl = currentUrl.replace(
+        currentPathname,
+        "/html/details.html"
+      );
+      window.location.href = detailsUrl;
+    });
+  });
+});
