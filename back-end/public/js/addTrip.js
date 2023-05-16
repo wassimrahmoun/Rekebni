@@ -1,5 +1,7 @@
 "use strict";
 var userId = window.localStorage.getItem("userid");
+var userSlug = window.localStorage.getItem("userSlug");
+var userPic = window.localStorage.getItem("userPic");
 /* const nbPersonnesFunction = function(){
     nbPersonnesElements.forEach(btn=> {if(btn.checked) nbPersonnes = btn.value}) ;
 } */ // old nbPersonnes check box element
@@ -16,6 +18,7 @@ const rechercheId = function(data,email){
 if (!userId) window.location.href = "/login"; // Verifier si il est connecté
 else {
   document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".profile-pic").src = `back-end/public/img/user/${userPic}` ;
 
     const profilSignOut = document.getElementById("signout"); // Déconnecter
     profilSignOut.addEventListener("click", async function () {
@@ -76,9 +79,10 @@ else {
               HeurA: heureArrivé,
               Prix: prix,
               Conducteur: userId,
+              slug:userSlug
             }),
           });
-
+          console.log(res) ;
           if (!res.ok)
             throw new Error(`Something went wrong ❌ , please try again later`);
 

@@ -137,6 +137,15 @@ function displayrecherch(nbrtrajet, mesDonnees) {
   }
 }
 document.addEventListener("DOMContentLoaded", function () {
+  // Déconnecter 
+  const profilSignOut = document.getElementById("signout"); // Déconnecter
+    profilSignOut.addEventListener("click", async function () {
+      await fetch("http://localhost:8000/api/v1/users/logout") ;
+      window.localStorage.removeItem("userid") ;
+      window.location.href = "/recherche";
+      
+    });
+    //
   const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
   console.log(mesDonnees);
   const nbrtrajet = mesDonnees.results;

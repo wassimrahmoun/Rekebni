@@ -26,8 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Token :", token);
         console.log("Données de l'utilisateur :", user);
         window.localStorage.setItem("userid", user.id);
+        console.log(user) ;
+        window.localStorage.setItem("userSlug",user.pseudo) ;
+        window.localStorage.setItem("userPic",user.photo) ;
         // Connexion réussie, rediriger l'utilisateur vers la page suivante
-        window.location.href = "/";
+       window.location.href = "/";
       } else {
         // Afficher un message d'erreur
         const errorMessage = await response.text();

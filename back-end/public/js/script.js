@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   else {
     loginRegisterTabs.classList.add("hidden") ;
     profileTab.classList.remove("hidden") ;
-    profilSignOut.addEventListener("click",async function(){
+
+    profilSignOut.addEventListener("click",async function(){           // déconnecter
       await fetch("http://localhost:8000/api/v1/users/logout") ;
       window.localStorage.removeItem("userid") ;
       window.location.href="/" ;
@@ -62,4 +63,5 @@ function revealOnScroll() {
     }
   }
 }
+
 window.addEventListener("scroll", revealOnScroll);
