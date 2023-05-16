@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var passengersSelect = document.getElementById("passengers");
     var selectedPassengers = passengersSelect.value;
     localStorage.setItem("selectedPassengers", selectedPassengers);
-    const url = `http://localhost:8000/api/v1/trajets?Depart=${departSelection}&Arrivée=${arriveSelection}&date=${dateValue}&places[gte]=${passager}`;
+    const url = `http://localhost:8000/api/v1/trajets?&Depart=${departSelection}&Arrivée=${arriveSelection}&date=${dateValue}&places[gte]=${passager}`;
     var passengersSelect = document.getElementById("passengers");
     var selectedPassengers = passengersSelect.value;
     localStorage.setItem("selectedPassengers", selectedPassengers);
