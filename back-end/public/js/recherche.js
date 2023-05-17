@@ -1,4 +1,13 @@
 //  code propre
+
+function gett(x) {
+  console.log(x);
+  localStorage.setItem("selectedTrajetId", x);
+  const currentUrl = window.location.href;
+  const currentPathname = window.location.pathname;
+  const detailsUrl = currentUrl.replace(currentPathname, "/html/details.html");
+  window.location.href = detailsUrl;
+}
 const profilePic = document.querySelector(".profile-pic");
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -70,7 +79,9 @@ function displayrecherch(nbrtrajet, mesDonnees) {
     };
 
     const recherche_trajet = `
-      <div class="results-box" id="${trajets.id}">
+      <div class="results-box" id="${trajets.id}" onclick="gett('${
+      trajets.id
+    }')"}>
         <div class="result">
           <div class="left">
             <div class="driver-info">
@@ -260,19 +271,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".results-box").forEach(function (trajetElement) {
-    trajetElement.addEventListener("click", function (event) {
-      const trajetId = event.currentTarget.id;
-      console.log(trajetId);
-      localStorage.setItem("selectedTrajetId", trajetId);
-      const currentUrl = window.location.href;
-      const currentPathname = window.location.pathname;
-      const detailsUrl = currentUrl.replace(
-        currentPathname,
-        "/html/details.html"
-      );
-      window.location.href = detailsUrl;
-    });
-  });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   document.querySelectorAll(".results-box").forEach(function (trajetElement) {
+//     trajetElement.addEventListener("click", function (event) {
+//       const trajetId = event.currentTarget.id;
+//       console.log(trajetId);
+//       localStorage.setItem("selectedTrajetId", trajetId);
+//       const currentUrl = window.location.href;
+//       const currentPathname = window.location.pathname;
+//       const detailsUrl = currentUrl.replace(
+//         currentPathname,
+//         "/html/details.html"
+//       );
+//       window.location.href = detailsUrl;
+//     });
+//   });
+// });
