@@ -110,7 +110,6 @@
 
           const menuBtn = document.querySelector("#menu-btn");
           const menu = document.querySelector("#menu");
-
           menuBtn.addEventListener("click", () => {
             if (menu.style.display === "none") {
               menu.style.display = "block";
@@ -199,7 +198,7 @@
           <label for="destination-input">Où allez-vous ?</label>
           <select id="arrive" name="destination-input" class="destination-input" required="">
             <option value="" disabled="" selected="">
-              Départ
+              Arivée
             </option>
             <option value="ADRAR">ADRAR - 01</option>
             <option value="CHLEF">CHLEF - 02</option>
@@ -258,6 +257,7 @@
             list="vehicule-input"
             id="vehicule-input"
             name="vehicule-input"
+            required
           />
         </div>
         <div class="inputs color">
@@ -267,6 +267,7 @@
             id="color-input"
             name="color-input"
             type="text"
+            required
           />
         </div>
         <div class="inputs matricule">
@@ -276,9 +277,9 @@
             id="matricule-input"
             name="matricule-input"
             type="number"
-            size="12"
-            maxlength="12"
             placeholder="000000 000 000"
+            pattern="\d{6}/\d{3}/\d{2}" 
+            required
           />
         </div>
         <div class="inputs nbrpersonne">
@@ -288,6 +289,7 @@
             id="nbrpersonne-input"
             name="nbrpersonne-input"
             type="number"
+            required
           />
         </div>
         <div class="inputs fumeur">
@@ -329,6 +331,7 @@
               id="time-input"
               name="time-input"
               type="time"
+              required
             />
             <div class="arrow">
               <span class="material-symbols-outlined"> arrow_forward </span>
@@ -349,11 +352,16 @@
               id="price-input"
               name="price-input"
               type="number"
+              required
             />
             <h6>DA</h6>
           </div>
         </div>
       </form>
+      <div class="btn-addtrip">
+        <button class="ajouter-btn">Ajouter le trajet</button>
+        <button class="affiche-btn">Afficher les trajet similaires</button>
+      </div>
       <div class="trajet-similairs hide-similar">
         <h3>Les prix actuels des trajets similaires :</h3>
         <div class="suggested-prices">
@@ -384,11 +392,6 @@
         </div>
       </div>
     </div>
-    <div class="btn-addtrip">
-      <button class="ajouter-btn">Ajouter le trajet</button>
-      <button class="affiche-btn">Afficher les trajet similaires</button>
-    </div>
-
     <!--Footer-->
     <footer>
       <!-- Copy Right -->
