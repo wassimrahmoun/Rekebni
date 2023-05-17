@@ -21,6 +21,15 @@ const signOutEventListener=function(){
       
     });
 }
+
+const averageRating = function(arr){
+  let sum = 0 ;
+  const numberOfRatings = arr.length ;
+  arr.forEach(user=>{
+  sum+=user.rating ;
+  })
+  return sum/numberOfRatings ;
+}
 /* const nbPersonnesFunction = function(){
     nbPersonnesElements.forEach(btn=> {if(btn.checked) nbPersonnes = btn.value}) ;
 } */ // old nbPersonnes check box element
@@ -43,28 +52,77 @@ else {
     
 
     const locations = document.querySelectorAll(".destination-input");
-    const departs = document.querySelectorAll(".personnes-text");
-    const destinations = document.querySelectorAll(".personnes-text-arrivée");
     const heures = document.querySelectorAll(".time-input");
     const container = document.querySelector(".container");
     const trajetsSimilar = document.querySelector(".trajet-similairs");
   
 
-    document.querySelector(".affiche-btn").addEventListener("click", function () {   // Trajets similaires
-        trajetsSimilar.classList.remove("hide-similar");
-      });
+    document.querySelector(".affiche-btn").addEventListener("click", async function () {   // Trajets similaires
+      const depart = locations[0].value ;
+      const destination =locations[1].value ;
+      const carType = document.getElementById("vehicule-input").value;
+      const matricule = document.getElementById("matricule-input").value;
+      const nbPersonnes = document.getElementById("nbrpersonne-input").value ;
+      const fumeur = document.getElementById("fumeur-input").checked; // boolean
+      const climatisation = document.getElementById("climatisation-input").checked ;
+      const date = document.getElementById("date-input").value;
+      const heureDepart = heures[0].value;
+      const heureArrivé = heures[1].value;
+      const prix = document.getElementById("price-input").value;
+
+      const url = `http://localhost:8000/api/v1/trajets?Depart=${depart}&Arrivée=${destination}&sort={"Prix"}` ;
+      const response = await fetch(url) ;
+      const data = (await response.json()).data.data ;
+      console.log(data);
+      data.forEach(trajet=>{
+        const date =  new Date(trajet.date) ;
+        const day = String(date.getDate()).padStart(2,"0") ;
+        const month = date.toLocaleDateString("default",{month:"short"}) ;
+        const year = date.getFullYear() 
+        let html = `
+        <div class="trip" style="display: flex" >
+          <div class="driver-profile">
+            <div class="photo" src="../img/user/${trajet.Conducteur.photo}"></div>
+            <div class="ID">
+              <p class="name">${trajet.Conducteur.name}</p>
+              <p class="avis">${trajet.Conducteur.ratingsAverage}/5 avis</p>
+            </div>
+          </div>
+          <div class="trip-info">
+            <p class="trip-trajet">${trajet.Depart} à ${trajet.Arrivée}</p>
+            <div class="trip-time">
+              <span class="material-symbols-outlined"> timer </span>
+              <p>${trajet.HeurD}</p>
+              <span class="material-symbols-outlined"> arrow_forward </span>
+              <p>${trajet.HeurA}</p>
+            </div>
+          </div>
+          <div class="trip-date">
+            <p>le ${day} ${month} ${year}</p>
+          </div>
+          <div class="trip-price">
+            <p>${trajet.Prix} DA</p>
+          </div>
+        </div>
+      </div>`
+      document.querySelector(".suggested-prices").insertAdjacentHTML("beforeend",html) ;
+      })
+     
+      
+      });     
+
 
     document.querySelector(".ajouter-btn").addEventListener("click", async function (e) {     // Ajouter trajet
         e.preventDefault();
         try {
-          const departIndex = locations[0].value - 1 ;
-          const destinationIndex = locations[1].value - 1;
-          const depart = (departIndex>=0)?departs[departIndex].textContent:"" ;
-          const destination =(destinationIndex>=0)?destinations[destinationIndex].textContent:"" ;
+        
+          const depart = locations[0].value ;
+          const destination =locations[1].value ;
           const carType = document.getElementById("vehicule-input").value;
           const matricule = document.getElementById("matricule-input").value;
           const nbPersonnes = document.getElementById("nbrpersonne-input").value ;
           const fumeur = document.getElementById("fumeur-input").checked; // boolean
+          const climatisation = document.getElementById("climatisation-input").checked ;
           const date = document.getElementById("date-input").value;
           const heureDepart = heures[0].value;
           const heureArrivé = heures[1].value;
@@ -99,6 +157,7 @@ else {
               HeurA: heureArrivé,
               Prix: prix,
               Conducteur: userId,
+              climatisation:climatisation,
               slug:userSlug
             }),
           });

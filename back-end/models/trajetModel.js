@@ -48,6 +48,10 @@ const trajetSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    climatisation:{
+      type:Boolean ,
+      default:false,
+    },
 
     date: {
       type: Date,
