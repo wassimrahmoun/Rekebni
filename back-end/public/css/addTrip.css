@@ -164,9 +164,9 @@ input[type="checkbox"] {
   /* background-color: #fff; */
 }
 
-.fumeur-input:hover {
-  /* border-width: 0; */
-}
+/* .fumeur-input:hover {
+   border-width: 0; 
+} */
 
 .fumeur-input:checked {
   box-shadow: 0 0 0 1px var(--checked-color);
@@ -252,7 +252,7 @@ input[type="checkbox"] {
 }
 
 .trip {
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -260,6 +260,13 @@ input[type="checkbox"] {
   padding: 1rem;
   width: 100%;
   border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0px rgba(45, 35, 66, 0.2);
+  transition: all 0.3s;
+}
+
+.trip:hover {
+  transform: translateY(-2px);
 }
 
 .driver-profile {
