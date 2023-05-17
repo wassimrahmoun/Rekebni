@@ -325,6 +325,43 @@
             name="date-input"
             type="date"
           />
+          <script>
+            // Get the current date
+            const today = new Date().toISOString().substr(0, 10);
+
+            // Set the default value of the input element to the current date
+            document.getElementById("date-input").value = today;
+
+            const dateInput = document.getElementById("date-input");
+
+            // set placeholder to nothing
+            dateInput.addEventListener("focus", () => {
+              dateInput.setAttribute("placeholder", "");
+            });
+
+            // To allow the user to only input a date that is beyond the current date :
+            document.getElementById("date-input").setAttribute("min", today);
+
+            // const today = new Date().toISOString().substr(0, 10);
+
+            // const dateInput = document.getElementById("date-input");
+
+            // set placeholder to "Aujourd'hui" when today's date is selected
+            dateInput.addEventListener("change", () => {
+              const dateValue = dateInput.value;
+              if (dateValue === today) {
+                dateInput.setAttribute("placeholder", "Aujourd'hui");
+              } else {
+                dateInput.setAttribute("placeholder", "");
+              }
+            });
+
+            // Set the default value of the input element to the current date
+            dateInput.value = today;
+
+            // // Get the current date
+            // var currentDate = new Date();
+          </script>
         </div>
         <div class="inputs time">
           <label for="time-input">Heure du départ et d'arrivé :</label>
