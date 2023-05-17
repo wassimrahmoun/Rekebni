@@ -95,6 +95,13 @@ exports.getAll = (Model) =>
       path: "Passagers",
       select: "name photo",
     });
+    await Model.populate(doc, {
+      path: "reviews",
+      populate: {
+        path: "user",
+        select: "name photo",
+      },
+    });
 
     //SEND RESPONSE
     res.status(200).json({

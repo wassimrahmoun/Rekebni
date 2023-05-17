@@ -42,7 +42,7 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-    <script defer src="../js/addTrip.js"></script>
+    <script src="../js/addTrip.js"></script>
   </head>
   <body>
     <!-- END OF SESSION -->
@@ -75,26 +75,36 @@
               <a class="btn--login flex-center whitespan" href="/login"
                 >se connecter</a
               >
-              <a class="btn--signup flex-center hidden" href="/signup"
-                >s'inscrire</a
-              >
+              <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
             </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
             <div class="nav-profile">
               <img class="profile-pic" src="default.jpg" id="menu-btn" />
               <div class="--absolute" style="display: none" id="menu">
                 <div class="profile-menu a">
                   <!-- <img src="../img/menubbl.png" class="bbl" /> -->
-                  <div class="profile-menu-ele child">Mon Profil</div>
-                  <div class="profile-menu-ele">Paramètres du Compte</div>
-                  <div class="profile-menu-ele last">Se Déconnecter</div>
+                  <div class="profile-menu-ele child" id="profil">
+                    Mon Profil
+                  </div>
+                  <div class="profile-menu-ele" id="settings">
+                    Paramètres du Compte
+                  </div>
+                  <div class="profile-menu-ele last" id="signout">
+                    Se Déconnecter
+                  </div>
                 </div>
+<<<<<<< HEAD
 =======
           </a>
             <div class="nav-login flex-center">
               <a class="btn--login flex-center whitespan" href="/login">my page</a>
               <a class="btn--signup flex-center" href="/signup">se déconnecter</a>
 >>>>>>> said
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
               </div>
             </div>
           </div>
@@ -120,6 +130,9 @@
             } else {
               menu.style.display = "none";
             }
+            document.addEventListener("click", (event) => {             if (!menu.contains(event.target) && event.target !== menuBtn) {               menu.style.display = "none";             }           });
+        
+            
           });
 
           // Close the menu when a click is detected outside of it
@@ -133,6 +146,9 @@
       <img class="waves2" src="../img/waves4.png" />
     </header>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
     <!-- title -->
     <div class="title">
       <h2>Créer Votre Propre trajet</h2>
@@ -218,6 +234,7 @@
               name="fumeur-input"
               type="checkbox"
             />
+<<<<<<< HEAD
 =======
       <!-- title -->
       <div class="title">
@@ -346,6 +363,8 @@
             <label for="vehicule-input">Type du Vehicule :</label>
             <input class="vehicule-input"  list="vehicule-input" id="vehicule-input" name="vehicule-input">
 >>>>>>> said
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
           </div>
         </div>
         <div class="inputs date">
@@ -399,7 +418,7 @@
           </div>
         </div>
       </form>
-      <div class="trajet-similairs">
+      <div class="trajet-similairs hide-similar">
         <h3>Les prix actuels des trajets similaires :</h3>
         <div class="suggested-prices">
           <div class="trip">

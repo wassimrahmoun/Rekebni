@@ -26,7 +26,7 @@ body {
 .title h2 {
   font-weight: 700;
   font-size: 4rem;
-  color: #030045;
+  color: rgb(3, 0, 69);
   word-spacing: 2px;
   letter-spacing: -1%;
 }
@@ -56,11 +56,15 @@ body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
 .inputs label {
   font-size: 1.7rem;
   color: #030045;
   align-self: center;
 }
+<<<<<<< HEAD
 =======
   .inputs select{
     font-family: "ubuntu", sans-serif;
@@ -75,6 +79,8 @@ body {
     overflow: auto;
   }
 >>>>>>> said
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
 
 .inputs input {
   font-size: 1.5rem;
@@ -88,6 +94,9 @@ body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
 .inputs select {
   font-family: "ubuntu", sans-serif;
   font-size: 1.5rem;
@@ -99,12 +108,15 @@ body {
   background-color: #daf4ff;
   overflow: auto;
 }
+<<<<<<< HEAD
 =======
   .nbrpersonne input{
     width: 15%;
     
   }
 >>>>>>> said
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
 
 .invalid {
   border: 2px solid #00aff5;
@@ -297,6 +309,7 @@ input[type="checkbox"] {
   background: #00aff5;
   justify-content: start;
   align-self: start;
+  transition: all 0.5s;
 }
 
 .trajet-similairs h3 {
