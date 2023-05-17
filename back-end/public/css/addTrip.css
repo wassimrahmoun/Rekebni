@@ -245,7 +245,9 @@ input[type="checkbox"] {
 }
 .suggested-prices {
   display: flex;
+  max-height: 49rem ;
   flex-direction: column;
+  overflow-y: scroll;
   align-items: flex-start;
   padding: 0px;
   gap: 0.5rem;
