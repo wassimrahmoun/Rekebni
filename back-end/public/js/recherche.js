@@ -135,7 +135,6 @@ function erreur() {
   const errorMessage = document.createElement("div");
   errorMessage.classList.add("error-message");
   errorMessage.textContent = "Aucun resultat n'est disponible";
-
   // Insertion du message d'erreur dans le document
   const container = document.querySelector(".search-results");
   container.appendChild(errorMessage);
@@ -158,16 +157,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       fetch(url)
         .then((response) => response.json())
-        .then((donnon) => {
-          console.log(donnon);
-          const nbrrtrajet = donnon.results;
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
           console.log();
           const trajetbox = document.querySelector(".search-results");
           trajetbox.innerHTML = "";
 
           // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(donnon, selectedPassengers);
-          displayrecherch(nbrrtrajet, donnon);
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
         })
         .catch((error) => console.error(error));
     }
@@ -180,15 +179,15 @@ document.addEventListener("DOMContentLoaded", function () {
       fetch(url)
         .then((response) => response.json())
         .then((donnon) => {
-          console.log(donnon);
-          const nbrrtrajet = donnon.results;
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
           console.log();
           const trajetbox = document.querySelector(".search-results");
           trajetbox.innerHTML = "";
 
           // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(donnon, selectedPassengers);
-          displayrecherch(nbrrtrajet, donnon);
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
         })
         .catch((error) => console.error(error));
     }
@@ -200,15 +199,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       fetch(url)
         .then((response) => response.json())
-        .then((donnon) => {
-          console.log(donnon);
-          const nbrrtrajet = donnon.results;
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
           console.log();
           const trajetbox = document.querySelector(".search-results");
           trajetbox.innerHTML = "";
           // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(donnon, selectedPassengers);
-          displayrecherch(nbrrtrajet, donnon);
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
         })
         .catch((error) => console.error(error));
     }
@@ -221,17 +220,17 @@ document.addEventListener("DOMContentLoaded", function () {
       fetch(url)
         .then((response) => response.json())
         .then((donnon) => {
-          console.log(donnon);
-          const nbrrtrajet = donnon.results;
-          if (donnon.results === 0) {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
             erreur();
           }
           console.log();
           const trajetbox = document.querySelector(".search-results");
           trajetbox.innerHTML = "";
           // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(donnon, selectedPassengers);
-          displayrecherch(nbrrtrajet, donnon);
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
         })
         .catch((error) => console.error(error));
     }
@@ -243,18 +242,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       fetch(url)
         .then((response) => response.json())
-        .then((donnon) => {
-          console.log(donnon);
-          const nbrrtrajet = donnon.results;
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
           console.log();
-          if (donnon.results === 0) {
+          if (mesDonnees.results === 0) {
             erreur();
           }
           const trajetbox = document.querySelector(".search-results");
           trajetbox.innerHTML = "";
           // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(donnon, selectedPassengers);
-          displayrecherch(nbrrtrajet, donnon);
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
         })
         .catch((error) => console.error(error));
     }
