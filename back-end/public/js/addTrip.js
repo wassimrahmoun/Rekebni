@@ -73,7 +73,6 @@ else {
       const url = `http://localhost:8000/api/v1/trajets?Depart=${depart}&Arrivée=${destination}&sort={"Prix"}` ;
       const response = await fetch(url) ;
       const data = (await response.json()).data.data ;
-      console.log(data);
       data.forEach(trajet=>{
         const date =  new Date(trajet.date) ;
         const day = String(date.getDate()).padStart(2,"0") ;
