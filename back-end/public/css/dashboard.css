@@ -1,0 +1,341 @@
+.menu {
+  position: sticky;
+  top: 0px;
+  height: 100vh;
+  width: 23rem;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menu-item {
+  padding: 1rem 1rem;
+  font-weight: 400;
+  background-color: #fff;
+  color: #00aff5;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #00aff5;
+  color: #fff;
+}
+input[type="radio"]:not(:checked) + label {
+  background-color: #fff;
+  color: #00aff5;
+}
+.custom-radio {
+  height: 0px;
+  width: 0px;
+}
+.disconnect {
+  background-color: rgba(255, 0, 0, 0.13);
+  color: #ff0000;
+}
+body {
+  display: flex;
+}
+
+/* //////////////////////////////// */
+/* PROFILE */
+/* //////////////////////////////// */
+.section-content {
+  margin: 3rem 0rem 10rem 0rem;
+  width: 100%;
+  transition: all 0.5s;
+}
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+.head-photo {
+  position: relative;
+}
+
+.head-pfp {
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  border: 3px solid #030045;
+}
+.edit--photo {
+  height: 2.2rem;
+  width: 2.2rem;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  cursor: pointer;
+}
+.head-name {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.head-name-fullname {
+  font-size: 3.5rem;
+}
+.edit--name {
+  height: 3.5rem;
+  width: 3.5rem;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  cursor: pointer;
+}
+.edit--icon {
+  height: 70%;
+  width: 70%;
+  color: #030045;
+}
+.head-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.head-rating-star {
+  width: 2rem;
+  height: 2rem;
+}
+.head-rating-score {
+  font-size: 2rem;
+}
+.title {
+  color: #00aff5;
+  font-weight: 900;
+  font-size: 1.7rem;
+  margin-bottom: 1.2rem;
+}
+.content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.content span {
+  font-size: 1.7rem;
+}
+.mdp {
+  letter-spacing: 0.1rem;
+}
+.edit--content {
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  cursor: pointer;
+}
+.divider {
+  width: 100;
+  background-color: #eee;
+  content: "";
+  height: 0.5rem;
+  border-radius: 999px;
+  margin: 1rem 0rem;
+}
+.tel {
+  font-weight: 900;
+}
+.delete-account {
+  padding: 1rem 3rem;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.delete--container {
+  width: 100ù;
+  display: flex;
+  justify-content: center;
+}
+.save-alert {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  width: 60%;
+  display: flex;
+  background-color: #cacaca;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.35rem;
+}
+.save-alert div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.save-alert div button {
+  font-family: "ubuntu", sans-serif;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  border-radius: 7px;
+  background-color: #43d72b;
+  color: #fff;
+  cursor: pointer;
+}
+.cancel {
+  background-color: transparent !important;
+  color: #030045 !important;
+}
+.container {
+  margin: 0rem 4rem !important;
+}
+/* //////////////////////////////// */
+/* reservations */
+/* //////////////////////////////// */
+.section-title {
+  font-size: 3.5rem;
+  color: #00aff5;
+}
+.result {
+  width: 100%;
+  background-color: #daf4ff;
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.driver-info {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+.profile-pic {
+  height: 5rem;
+  width: 5rem;
+  border: 3px solid #030045;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.next-to-pic {
+  margin-bottom: 0.5rem;
+}
+.name {
+  font-size: 2rem;
+  color: #030045;
+  font-weight: bold;
+}
+.rating *,
+.reviews * {
+  color: #444;
+  font-size: 1.5rem;
+}
+.trip-info {
+  font-size: 2.5rem;
+}
+.locations {
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.time,
+.date {
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.date-icon {
+  height: 2.8rem;
+  width: 2.8rem;
+  margin-left: 0.2rem;
+}
+.time-icon {
+  height: 3.1rem;
+  width: 3.1rem;
+}
+.time-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.icon {
+  align-self: center;
+  color: #030045;
+  vertical-align: text-bottom;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 1.5rem;
+  justify-content: space-between;
+  height: 100%;
+}
+.price {
+  font-weight: 700;
+  font-size: 3.5rem;
+}
+.remaining-places {
+  font-size: 1.9rem;
+  display: flex;
+  gap: 0.3rem;
+  align-items: baseline;
+}
+.past {
+  background-color: #ddd;
+}
+.leave-a-review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background-color: #00aff5;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 3px solid #00aff5;
+}
+.leave-a-review * {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.leave-a-review:hover *,
+.leave-a-review:active * {
+  color: #00aff5;
+}
+
+.leave-a-review:hover,
+.leave-a-review:active {
+  background-color: #fff;
+}
+
+.reservations {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
