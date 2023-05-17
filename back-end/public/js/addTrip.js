@@ -82,7 +82,7 @@ else {
         let html = `
         <div class="trip" style="display: flex" >
           <div class="driver-profile">
-            <div class="photo" src="../img/user/${trajet.Conducteur.photo}"></div>
+            <img class="photo" src="../img/user/${trajet.Conducteur.photo}"></img>
             <div class="ID">
               <p class="name">${trajet.Conducteur.name}</p>
               <p class="avis">${trajet.Conducteur.ratingsAverage}/5 avis</p>
