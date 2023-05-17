@@ -127,6 +127,7 @@ html {
     content: '★';
   }
   
+  
   .rating > input:checked + label:hover,
   .rating > input:checked + label:hover ~ label,
   .rating > input:checked ~ label:hover,
