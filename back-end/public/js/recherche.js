@@ -61,10 +61,12 @@ function displayrecherch(nbrtrajet, mesDonnees) {
       Vehicule: trajet.Vehicule,
       date: trajet.date,
       fumers: trajet.fumers,
+      climatisation: trajet.climatisation,
       isActive: trajet.isActive,
       places: trajet.places,
       slug: trajet.slug,
       ranking: trajet.Conducteur.ratingsAverage,
+      reviews: Object.keys(trajet.reviews).length,
     };
 
     const recherche_trajet = `
@@ -83,7 +85,7 @@ function displayrecherch(nbrtrajet, mesDonnees) {
                   <span>/ 5 - </span>
                 </span>
                 <span class="reviews">
-                  <span class="reviews-value">999</span>
+                  <span class="reviews-value">${trajets.reviews}</span>
                   <span class="reviews-text"> Avis</span>
                 </span>
               </div>
@@ -129,9 +131,21 @@ function displayrecherch(nbrtrajet, mesDonnees) {
     trajetbox.insertAdjacentHTML("beforeend", recherche_trajet);
   }
 }
+function erreur() {
+  const errorMessage = document.createElement("div");
+  errorMessage.classList.add("error-message");
+  errorMessage.textContent = "Aucun resultat n'est disponible";
+
+  // Insertion du message d'erreur dans le document
+  const container = document.querySelector(".search-results");
+  container.appendChild(errorMessage);
+}
 document.addEventListener("DOMContentLoaded", function () {
   const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
   console.log(mesDonnees);
+  if (mesDonnees.results === 0) {
+    erreur();
+  }
   const nbrtrajet = mesDonnees.results;
   const selectedPassengers = localStorage.getItem("selectedPassengers");
   displaySearchInfo(mesDonnees, selectedPassengers);
@@ -192,7 +206,6 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log();
           const trajetbox = document.querySelector(".search-results");
           trajetbox.innerHTML = "";
-
           // const trajettbox = document.querySelector(".search-results");
           displaySearchInfo(donnon, selectedPassengers);
           displayrecherch(nbrrtrajet, donnon);
@@ -210,7 +223,33 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((donnon) => {
           console.log(donnon);
           const nbrrtrajet = donnon.results;
+          if (donnon.results === 0) {
+            erreur();
+          }
           console.log();
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+          // const trajettbox = document.querySelector(".search-results");
+          displaySearchInfo(donnon, selectedPassengers);
+          displayrecherch(nbrrtrajet, donnon);
+        })
+        .catch((error) => console.error(error));
+    }
+  });
+  const clim = document.getElementById("filter-smoke");
+  clim.addEventListener("click", () => {
+    if (clim.checked) {
+      url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&climatisation=true`;
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((donnon) => {
+          console.log(donnon);
+          const nbrrtrajet = donnon.results;
+          console.log();
+          if (donnon.results === 0) {
+            erreur();
+          }
           const trajetbox = document.querySelector(".search-results");
           trajetbox.innerHTML = "";
           // const trajettbox = document.querySelector(".search-results");
