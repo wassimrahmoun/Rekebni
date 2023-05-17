@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       fetch(url)
         .then((response) => response.json())
-        .then((donnon) => {
+        .then((mesDonnees) => {
           console.log(mesDonnees);
           const nbrrtrajet = mesDonnees.results;
           if (mesDonnees.results === 0) {
