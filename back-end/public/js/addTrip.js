@@ -30,6 +30,7 @@ const averageRating = function(arr){
   })
   return sum/numberOfRatings ;
 }
+
 /* const nbPersonnesFunction = function(){
     nbPersonnesElements.forEach(btn=> {if(btn.checked) nbPersonnes = btn.value}) ;
 } */ // old nbPersonnes check box element
@@ -48,16 +49,25 @@ else {
   document.addEventListener("DOMContentLoaded", function () {
     showProfilePic() ;
     signOutEventListener() ;
-    
+    var msg = document.getElementById("pas-de-trajets") ;
     
 
     const locations = document.querySelectorAll(".destination-input");
     const heures = document.querySelectorAll(".time-input");
     const container = document.querySelector(".container");
     const trajetsSimilar = document.querySelector(".trajet-similairs");
+
+    const cleanTrajetsSimilairesContainer = function(){
+     const tripContainer = document.querySelectorAll(".trip") ;
+     tripContainer.forEach(trip=>{
+                                   trip.remove() ; 
+     })
+     msg.classList.add("hidden") ;
+     }
   
 
     document.querySelector(".affiche-btn").addEventListener("click", async function () {   // Trajets similaires
+      cleanTrajetsSimilairesContainer() ;
       const depart = locations[0].value ;
       const destination =locations[1].value ;
       const carType = document.getElementById("vehicule-input").value;
@@ -73,6 +83,8 @@ else {
       const url = `http://localhost:8000/api/v1/trajets?Depart=${depart}&Arrivée=${destination}&sort={"Prix"}` ;
       const response = await fetch(url) ;
       const data = (await response.json()).data.data ;
+      if(data.length<1){msg.classList.remove("hidden") ;} 
+      else{
       data.forEach(trajet=>{
         const date =  new Date(trajet.date) ;
         const day = String(date.getDate()).padStart(2,"0") ;
@@ -105,7 +117,7 @@ else {
         </div>
       </div>`
       document.querySelector(".suggested-prices").insertAdjacentHTML("beforeend",html) ;
-      })
+      })} 
      
       
       });     
