@@ -344,7 +344,7 @@
 
             // const today = new Date().toISOString().substr(0, 10);
 
-            // const dateInput = document.getElementById("date-input");
+            // const dateInput = document.getElementById("myDate");
 
             // set placeholder to "Aujourd'hui" when today's date is selected
             dateInput.addEventListener("change", () => {
@@ -425,30 +425,6 @@
               <p>700 DA</p>
             </div>
           </div>
-          <div class="trip">
-            <div class="driver-profile">
-              <div class="photo"></div>
-              <div class="ID">
-                <p class="name">Senhadji</p>
-                <p class="avis">0.0/5 avis</p>
-              </div>
-            </div>
-            <div class="trip-info">
-              <p class="trip-trajet">Telemencen <br/> Oran</p>
-            </div>
-            <div class="trip-date">
-              <p>8 juin 2023</p>
-              <div class="trip-time">
-                <span class="material-symbols-outlined"> timer </span>
-                <p>08:00</p>
-                <span class="material-symbols-outlined"> arrow_forward </span>
-                <p>12:00</p>
-              </div>
-            </div>
-            <div class="trip-price">
-              <p>7110 DA</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -503,4 +479,21 @@
       </div>
     </footer>
   </body>
+  <script>
+    // Get the current date
+    var currentDate = new Date();
+
+    // Calculate the max date as one week from now
+    var maxDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate() + 7
+    );
+
+    // Get the date input field element
+    // var dateInput = document.getElementById("myDate");
+
+    // Set the max attribute to the max date
+    dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
+  </script>
 </html>
