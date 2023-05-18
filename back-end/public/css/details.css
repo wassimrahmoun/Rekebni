@@ -426,6 +426,9 @@ main {
 /* ******************************* */
 /* DRIVER */
 /* ******************************* */
+.container{
+  padding: 0 !important;
+}
 .driver-profile {
   margin: 1.5rem 0rem;
   display: flex;
@@ -461,6 +464,8 @@ main {
   display: flex;
   position: relative;
   gap: 2.5rem;
+  max-width: 70%;
+  margin: 0 auto;
 }
 
 .review {
@@ -468,9 +473,10 @@ main {
   background-color: #daf4ff;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  /* justify-content: center; */
+  gap: 2rem;
   flex-grow: 1;
-  padding: 3.5rem 2rem;
+  padding: 2rem 2rem;
   transition: all 0.5s;
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.15);
 }
@@ -479,13 +485,15 @@ main {
 }
 
 .rating-stars {
+    align-self: center;
   display: flex;
   gap: 0.3rem;
 }
 
 .rating-star {
-  height: 2rem;
-  width: 2rem;
+
+  height: 3rem;
+  width: 3rem;
 }
 
 .review-photo {
@@ -497,6 +505,10 @@ main {
 
 .review-text {
   font-size: 1.8rem;
+  min-height: 15rem;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 2rem;
 }
 
 .review-date {
@@ -509,6 +521,11 @@ main {
 }
 .review-full-name {
   font-size: 2rem;
+}
+.user-info{
+  display: flex;
+  gap: 1rem;
+  align-self: center;
 }
 
 .btn {
@@ -575,7 +592,12 @@ main {
 /* ******************************* */
 /* CAR */
 /* ******************************* */
+.car-title, .avis-title{
+  justify-content: center;
+}
 .car {
+  margin: 0 auto;
+  max-width: 70%;
   display: flex;
   justify-content: space-between;
   padding: 4rem;
