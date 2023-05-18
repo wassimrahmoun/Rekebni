@@ -111,7 +111,6 @@
 
           const menuBtn = document.querySelector("#menu-btn");
           const menu = document.querySelector("#menu");
-
           menuBtn.addEventListener("click", () => {
             if (menu.style.display === "none") {
               menu.style.display = "block";
@@ -200,7 +199,7 @@
           <label for="destination-input">Où allez-vous ?</label>
           <select id="arrive" name="destination-input" class="destination-input" required="">
             <option value="" disabled="" selected="">
-              Départ
+              Arivée
             </option>
             <option value="ADRAR">ADRAR - 01</option>
             <option value="CHLEF">CHLEF - 02</option>
@@ -259,6 +258,7 @@
             list="vehicule-input"
             id="vehicule-input"
             name="vehicule-input"
+            required
           />
         </div>
         <div class="inputs color">
@@ -268,6 +268,7 @@
             id="color-input"
             name="color-input"
             type="text"
+            required
           />
         </div>
         <div class="inputs matricule">
@@ -276,20 +277,23 @@
             class="matricule-input"
             id="matricule-input"
             name="matricule-input"
-            type="number"
-            size="12"
-            maxlength="12"
+            type="text"
             placeholder="000000 000 000"
+            required=""
           />
         </div>
         <div class="inputs nbrpersonne">
           <label for="nbrpersonne-input">Combien de personnes ?</label>
-          <input
-            class="nbrpersonne-input"
-            id="nbrpersonne-input"
-            name="nbrpersonne-input"
-            type="number"
-          />
+          <select id="nbrpersonne-input" name="nbrpersonne-input" class="nbrpersonne-input">
+            <option value="1" class="personnes-text">1</option>
+            <option value="2" class="personnes-text">2</option>
+            <option value="3" class="personnes-text">3</option>
+            <option value="4" class="personnes-text">4</option>
+            <option value="5" class="personnes-text">5</option>
+            <option value="6" class="personnes-text">6</option>
+            <option value="7" class="personnes-text">7</option>
+            <option value="8" class="personnes-text">8</option>
+          </select>
         </div>
         <div class="inputs fumeur">
           <label for="fumeur-input">Autorisé au fumeurs:</label>
@@ -321,22 +325,60 @@
             name="date-input"
             type="date"
           />
+          <script>
+            // Get the current date
+            const today = new Date().toISOString().substr(0, 10);
+
+            // Set the default value of the input element to the current date
+            document.getElementById("date-input").value = today;
+
+            const dateInput = document.getElementById("date-input");
+
+            // set placeholder to nothing
+            dateInput.addEventListener("focus", () => {
+              dateInput.setAttribute("placeholder", "");
+            });
+
+            // To allow the user to only input a date that is beyond the current date :
+            document.getElementById("date-input").setAttribute("min", today);
+
+            // const today = new Date().toISOString().substr(0, 10);
+
+            // const dateInput = document.getElementById("myDate");
+
+            // set placeholder to "Aujourd'hui" when today's date is selected
+            dateInput.addEventListener("change", () => {
+              const dateValue = dateInput.value;
+              if (dateValue === today) {
+                dateInput.setAttribute("placeholder", "Aujourd'hui");
+              } else {
+                dateInput.setAttribute("placeholder", "");
+              }
+            });
+
+            // Set the default value of the input element to the current date
+            dateInput.value = today;
+
+            // // Get the current date
+            // var currentDate = new Date();
+          </script>
         </div>
         <div class="inputs time">
           <label for="time-input">Heure du départ et d'arrivé :</label>
           <div>
             <input
               class="time-input"
-              id="time-input"
+              id="time-depart" 
               name="time-input"
               type="time"
+              required
             />
             <div class="arrow">
               <span class="material-symbols-outlined"> arrow_forward </span>
             </div>
             <input
               class="time-input"
-              id="time-input"
+              id="time-ariver"
               name="time-input"
               type="time"
             />
@@ -350,6 +392,7 @@
               id="price-input"
               name="price-input"
               type="number"
+              required
             />
             <h6>DA</h6>
           </div>
@@ -368,16 +411,16 @@
               </div>
             </div>
             <div class="trip-info">
-              <p class="trip-trajet">Départ à Arivée</p>
+              <p class="trip-trajet">Départ <br/> Arivée</p>
+            </div>
+            <div class="trip-date">
+              <p>le 1 mai</p>
               <div class="trip-time">
                 <span class="material-symbols-outlined"> timer </span>
                 <p>08:00</p>
                 <span class="material-symbols-outlined"> arrow_forward </span>
                 <p>12:00</p>
               </div>
-            </div>
-            <div class="trip-date">
-              <p>le 1 mai</p>
             </div>
             <div class="trip-price">
               <p>700 DA</p>
@@ -387,10 +430,9 @@
       </div>
     </div>
     <div class="btn-addtrip">
-      <button class="ajouter-btn">Ajouter le trajet</button>
-      <button class="affiche-btn">Afficher les trajet similaires</button>
+        <button class="ajouter-btn" id="ajouter-btn">Ajouter le trajet</button>
+        <button class="affiche-btn">Afficher les trajet similaires</button>
     </div>
-
     <!--Footer-->
     <footer>
       <!-- Copy Right -->
@@ -438,4 +480,101 @@
       </div>
     </footer>
   </body>
+  <script>
+    // Get the current date
+    var currentDate = new Date();
+
+    // Calculate the max date as one week from now
+    var maxDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate() + 7
+    );
+
+    // Get the date input field element
+    // var dateInput = document.getElementById("myDate");
+
+    // Set the max attribute to the max date
+    dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
+
+    var numberInput = document.getElementById("matricule-input");
+    var submitButton = document.getElementById("ajouter-btn");
+
+    submitButton.addEventListener("click", function() {
+      var pattern = /^\d{6} \d{3} \d{2}$/;
+  
+      if (pattern.test(numberInput.value)) {
+        alert("Clear validation message");
+      } else {
+        alert("Please enter a number in the format of XXXXXX YYY ZZ");
+      }
+    });   
+
+    var colorInput = document.getElementById("color-input");
+    var verifyButton = document.getElementById("ajouter-btn");
+
+    verifyButton.addEventListener("click", function() {
+      var colorName = colorInput.value.trim().toLowerCase();
+  
+      if (isValidColor(colorName)) {
+        alert("The color exists!") ;
+      } else {
+         alert("The color does not exist!");
+      }
+    });
+
+    function isValidColor(colorName) {
+      var div = document.createElement("div");
+      div.style.color = colorName;
+      return div.style.color !== "";
+    }
+    function translateWord(word) {
+      var apiKey = "YOUR_GOOGLE_TRANSLATE_API_KEY";
+      var apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+  
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", apiUrl);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onload = function() {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        var translatedText = response.data.translations[0].translatedText;
+        translationResult.textContent = translatedText;
+      } else {
+         translationResult.textContent = "Translation failed.";
+      }
+    };
+  
+     var data = JSON.stringify({
+      q: word,
+      source: "fr",
+      target: "en",
+    });
+  
+    xhr.send(data);
+  }
+
+  var time1Input = document.getElementById("time-depart");
+  var time2Input = document.getElementById("time-ariver");
+
+
+  time1Input.addEventListener("input", validateTimeInputs);
+  time2Input.addEventListener("input", validateTimeInputs);
+
+  function validateTimeInputs() {
+  var time1 = time1Input.value;
+  var time2 = time2Input.value;
+  
+  if (time1 && time2) {
+    var time1Obj = new Date(`2000-01-01T${time1}`);
+    var time2Obj = new Date(`2000-01-01T${time2}`);
+    
+    var diffInMinutes = (time2Obj - time1Obj) / 60000; // Convert milliseconds to minutes
+    
+    if (!(diffInMinutes >= 60)) {
+      alert("The second time must be at least 1 hour after the first time.");
+    } 
+  }
+}
+  </script>
 </html>

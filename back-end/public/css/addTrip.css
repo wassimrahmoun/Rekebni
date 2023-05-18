@@ -26,7 +26,7 @@ body {
 .title h2 {
   font-weight: 700;
   font-size: 4rem;
-  color: #030045;
+  color: rgb(3, 0, 69);
   word-spacing: 2px;
   letter-spacing: -1%;
 }
@@ -43,7 +43,7 @@ body {
 }
 
 .trajet-info {
-  padding: 3rem 3rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -55,11 +55,25 @@ body {
   justify-content: space-between;
 }
 
+
 .inputs label {
   font-size: 1.7rem;
   color: #030045;
   align-self: center;
 }
+
+  .inputs select{
+    font-family: "ubuntu", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    outline: none;
+    /* border: 2px solid #00aff5; */
+    border-radius: 12px;
+    width: 43%;
+    background-color: #DAF4FF;
+    overflow: auto;
+  }
 
 .inputs input {
   font-size: 1.5rem;
@@ -72,6 +86,7 @@ body {
   overflow: auto;
 }
 
+
 .inputs select {
   font-family: "ubuntu", sans-serif;
   font-size: 1.5rem;
@@ -83,6 +98,12 @@ body {
   background-color: #daf4ff;
   overflow: auto;
 }
+
+  .nbrpersonne select{
+    width: 13%;
+    
+  }
+
 
 .invalid {
   border: 2px solid #00aff5;
@@ -116,73 +137,75 @@ body {
   width: 15%;
 }
 
+.time .arrow {
+ width: auto;
+  align-self: center;
+}
+ 
+
 input[type="radio"]:checked {
-  padding: 0 0.6rem;
-  border: 2px solid #00aff5;
-  background-color: #00aff5;
+padding: 0 0.6rem;
+border: 2px solid #00aff5;
+background-color: #00aff5;
 }
 
 /* .color input{
-    width: 43%;
-    height: 100%;
-  } */
+  width: 43%;
+  height: 100%;
+} */
 
-.fumeur div {
-  background-color: #daf4ff;
-  /* padding: 1rem 1rem; */
-  border-radius: 17px;
-}
+
 
 input[type="radio"],
 input[type="checkbox"] {
-  min-height: 2rem;
-  min-width: 2rem;
-  transition: all 0.3s;
+min-height: 2rem;
+min-width: 2rem;
+transition: all 0.3s;
 }
 .container{
   padding: 0 1rem !important;
 }
 .custom-checkbox {
-  /* hiding browser el */
-  appearance: none;
-  padding: 0 !important;
-  border-radius: 5px !important;
-  height: 2.5rem;
-  width: 2.5rem;
-  /* Safari support */
-  -webkit-appearance: none;
-  /* border: 0.3rem solid #fff; */
-  /* background-color: var(--bg-color); */
-  cursor: pointer !important;
+/* hiding browser el */
+appearance: none;
+padding: 0 !important;
+border-radius: 5px !important;
+height: 2.5rem;
+width: 2.5rem;
+/* Safari support */
+-webkit-appearance: none;
+/* border: 0.3rem solid #fff; */
+/* background-color: var(--bg-color); */
+cursor: pointer !important;
 }
 
 /* keyboard navigation focus appearance */
 .custom-radio:focus-visible {
-  outline-offset: 0;
+outline-offset: 0;
 }
 
 .fumeur-input {
-  box-shadow: 0 0 0 1px var(--color);
-  /* background-color: #fff; */
+box-shadow: 0 0 0 1px var(--color);
+/* background-color: #fff; */
 }
 
 /* .fumeur-input:hover {
-   border-width: 0; 
+ border-width: 0; 
 } */
 
 .fumeur-input:checked {
-  box-shadow: 0 0 0 1px var(--checked-color);
-  background-color: var(--checked-color);
-  /* background: no-repeat url("../img/checkmark-outline.png"); */
-  background-image: url("../img/checkmark-outline.png");
-  background-blend-mode: lighten;
-  /* background-color: #fff; */
-  background-clip: border-box;
-  background-origin: border-box;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border-width: 0.3rem;
+box-shadow: 0 0 0 1px var(--checked-color);
+background-color: var(--checked-color);
+/* background: no-repeat url("../img/checkmark-outline.png"); */
+background-image: url("../img/checkmark-outline.png");
+background-blend-mode: lighten;
+/* background-color: #fff; */
+background-clip: border-box;
+background-origin: border-box;
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+border-width: 0.3rem;
 }
 
 .time .arrow {
@@ -190,10 +213,14 @@ input[type="checkbox"] {
   align-self: center;
 }
 
+ 
 .time div {
   display: flex;
   flex-direction: row;
 }
+
+
+
 
 .time input {
   padding: 0.5rem 2rem;
@@ -228,8 +255,8 @@ input[type="checkbox"] {
 }
 
 .trajet-similairs {
-  margin: 3rem 3rem;
-  padding: 2rem 2rem;
+  margin: 2rem;
+  padding: 2rem;
   border-radius: 28px;
   display: flex;
   flex-direction: column;
@@ -256,21 +283,22 @@ input[type="checkbox"] {
 }
 
 .trip {
-  display: none;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 2fr 2fr 4fr 2fr;
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
   padding: 1rem;
   width: 100%;
   border-radius: 20px;
+  transition: all 500ms;
   cursor: pointer;
-  box-shadow: 0px rgba(45, 35, 66, 0.2);
-  transition: all 0.3s;
 }
 
-.trip:hover {
-  transform: translateY(-2px);
+.trip:hover,
+.trip:active{
+  box-shadow: 0px 5px 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
 }
 
 .driver-profile {
@@ -314,8 +342,18 @@ input[type="checkbox"] {
 
 .trip-trajet {
   align-self: center;
+  text-align: center;
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+
+
+
+.trip-date{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .trip-time {
@@ -335,7 +373,7 @@ input[type="checkbox"] {
 }
 
 .trip-price p {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 

@@ -374,6 +374,7 @@ input[type="checkbox"] {
   /* border-width: 0; */
 }
 
+
 #filter-time:checked,
 #filter-price:checked,
 #filter-duration:checked {
@@ -584,3 +585,15 @@ footer {
 /* .child {
   padding-top: 0px;
 } */
+.error-message {
+  color: #030045;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  font-weight: 500;
+}

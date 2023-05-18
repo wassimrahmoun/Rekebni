@@ -118,6 +118,8 @@
         <div class="container main-title">DÉTAILS DU TRAJET</div>
       </section>
       <section class="infooo">
+        
+        
         <!-- <div class="trajet-date container">
           le
           <span id="trajet-jour-de-semaine">Mercredi</span>
@@ -175,6 +177,9 @@
             <span class="rating">/5</span>
           </div>
         </div> -->
+        <div id="loading-spinner-container">
+          <div id="loading-spinner"></div>
+        </div>
         <div class="container avis">
           <span class="section-title avis-title">avis</span>
           <ul class="carousel">
@@ -207,21 +212,20 @@
                 />
               </div>
               <span id="review-texte" class="review-text">
-                <!-- “ Six Monitors, Six CONSOLES, dog cam, cat cam, cat this, cat
+                “ Six Monitors, Six CONSOLES, dog cam, cat cam, cat this, cat
                 that and a bunch of other stuff dude! these guys are using NASA
-                computers. “ -->
+                computers. “
               </span>
-              <img
-                id="review-photo"
-                class="review-photo"
-              
-              />
-              <div class="user">
-                <span id="review-date" class="review-date"></span>
-                <span id="review-full-name" class="review-full-name">
-                  
-                </span>
-              </div>
+              <div class="user-info">
+                <img
+                  id="review-photo"
+                  class="review-photo"
+                />
+                <div class="user">
+                  <span id="review-date" class="review-date"></span>
+                  <span id="review-full-name" class="review-full-name"></span>
+                </div>
+              </div> 
             </li>
 
             <button class="btn btn--left">
@@ -237,7 +241,7 @@
       </section>
       <section class="section-car">
         <div class="container">
-          <span class="section-title">details du vehicule</span>
+          <span class="section-title car-title">details du vehicule</span>
           <div class="car">
             <!-- <div class="side">
               <span class="variable">Vehicule</span>
@@ -268,6 +272,13 @@
             <span class="prix">+213&nbsp;</span>
             <span id="telephone" class="price">549 208 230</span> -->
           </div>
+        </div>
+      </section>
+      <section>
+        <div class="container container-confirm">
+          <button class="confirm">
+            Prendre le trajet
+          </button>
         </div>
       </section>
     </main>

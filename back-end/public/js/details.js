@@ -1,3 +1,23 @@
+"use strict"
+const reserverTrajet = document.querySelector(".confirm") ;
+var user = JSON.parse(window.localStorage.getItem("userJson"));
+var token = window.localStorage.getItem("userToken") ;
+var userId = user.id ;
+var place ;
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Simulating a delay of 3 seconds for demonstration purposes
+  setTimeout(function () {
+    // Remove the spinner and display the content
+    document.getElementById("loading-spinner-container").style.display = "none";
+    document.body.style.overflow = "auto"; // Show scrollbars
+
+    // Add your code to show the content or perform other actions
+    // ...
+  }, 3000);
+});
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   const year = date.getFullYear();
@@ -55,6 +75,33 @@ function formatDuree(heureDepart, heureArrivee) {
   const dureeMinutes = arrivee[1] - depart[1];
 
   return `${dureeHeures}h.${Math.abs(dureeMinutes)}`;
+}
+function getStarRatingHTML(rating) {
+  const starComplet = "../img/Star.png";
+  const demiStar = "../img/half-star.png";
+  const starVide = "../img/empty-star.png";
+
+  const maxRating = 5;
+  const roundedRating = Math.round(rating * 2) / 2; // Arrondir à 0.5 près
+
+  let starHTML = "";
+
+  // Générer les étoiles complètes
+  for (let i = 1; i <= Math.floor(roundedRating); i++) {
+    starHTML += `<img src="${starComplet}" alt="Star" />`;
+  }
+
+  // Générer la demi-étoile si nécessaire
+  if (roundedRating % 1 !== 0) {
+    starHTML += `<img src="${demiStar}" alt="Half Star" />`;
+  }
+
+  // Générer les étoiles vides pour compléter jusqu'à la note maximale
+  for (let i = Math.ceil(roundedRating); i < maxRating; i++) {
+    starHTML += `<img src="${starVide}" alt="Empty Star" />`;
+  }
+
+  return starHTML;
 }
 
 function afficherinfo(data) {
@@ -123,7 +170,9 @@ function afficherinfo(data) {
             <span id="conducteur-nom" class="driver-text">${nom}</span>
             <span id="conducteur-prenom" class="driver-text"></span>
             <span class="driver-text"></span>
-            <span id="rating" class="driver-text">${printStars(etoile)}</span>
+            <span id="rating" class="driver-text">${getStarRatingHTML(
+              etoile
+            )}</span>
             <span class="rating"></span>
           </div>
         </div>`;
@@ -135,10 +184,13 @@ function affichervehicule(data) {
   // const fumers = data.data.trajet.fumers;
   let fumers = data.data.trajet.fumers;
   fumers = fumers ? "oui" : "non";
+  let clim = data.data.trajet.climatisation;
+  clim = clim ? "oui" : "non";
 
   const Matricule = data.data.trajet.Matricule;
   const Couleur = data.data.trajet.Couleur;
-  const place = data.data.trajet.places;
+  place = data.data.trajet.places;
+
   const infocar = `
   <div class="side">
     <span class="variable">Vehicule</span>
@@ -159,7 +211,7 @@ function affichervehicule(data) {
     ${Couleur}
   </span>
   <span id="voiture-climat" class="value">
-    Oui
+    ${clim}
   </span>
   <span id="voiture-fumer" class="value">
     ${fumers}
@@ -254,3 +306,21 @@ prevBtn.addEventListener("click", function () {
   }
   showPerson(currentItem);
 });
+
+
+reserverTrajet.addEventListener("click", async function(){
+ const url = `http://localhost:8000/api/v1/trajets/reserver/${userId}` ;
+ const res = await fetch(url , {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+             "Authorization": `Bearer ${token}` 
+            },
+            body: JSON.stringify({
+              passagerId:userId ,
+              places:place
+            }),
+          });
+ 
+ console.log(res);
+})
