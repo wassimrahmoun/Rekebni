@@ -1,7 +1,13 @@
 * {
   transition: all 0.5s;
 }
-
+html {
+  overflow: hidden;
+}
+.section-content {
+  max-height: 100vh;
+  overflow-y: scroll !important;
+}
 .menu {
   position: sticky;
   top: 0px;
@@ -190,20 +196,29 @@ body {
   opacity: 0;
   border: 0px;
 }
-.unhiddens-text ~ .unshown {
-  font-size: 1.7rem;
+.unshown .unhiddens-text {
+  font-size: 1.7rem !important;
+  opacity: 1 !important;
 }
 .unhiddens-text {
-  font-size: 0rem;
-  transition: all 0s;
+  font-size: 0rem !important;
+  transition: all 0.5s;
+}
+
+.nogap {
+  gap: 0;
+}
+
+.put-away {
+  transform: translate(-50%, 6rem) !important;
 }
 /* //////////////////////////////// */
 /* PROFILE */
 /* //////////////////////////////// */
 .section-content {
-  margin: 3rem 0rem 10rem 0rem;
+  padding: 3rem 0rem 10rem 0rem;
   width: 100%;
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 .head {
   display: flex;

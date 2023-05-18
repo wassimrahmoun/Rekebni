@@ -160,7 +160,9 @@
                 />
               </div>
             </div>
-            <button class="confirm-pass-btn">Confirmer le mot de passe</button>
+            <button class="confirm-pass-btn">
+              Sauvegarder le mot de passe
+            </button>
           </div>
         </div>
         <div class="divider"></div>
@@ -172,8 +174,8 @@
           </botton>
         </div>
         <div class="content">
-          <span class="unhiddens-text">ousdjeziri</span>
-          <div class="input-parent unshown">
+          <div class="input-parent nogap unshown">
+            <span class="unhiddens-text">ousdjeziri</span>
             <input class="input" type="text" id="name" name="name" size="25" />
           </div>
         </div>
@@ -186,8 +188,9 @@
           </botton>
         </div>
         <div class="content">
-          <div>
-            <span class="tel">+213</span> <span>&nbsp;549 208 230</span>
+          <div class="input-parent nogap unshown">
+            <span class="unhiddens-text">+213 549 208 230</span>
+            <input class="input" type="text" id="tel" name="name" size="25" />
           </div>
         </div>
         <div class="divider"></div>
@@ -199,14 +202,24 @@
           </botton>
         </div>
         <div class="content">
-          <span>djezirioussama@gmail.com</span>
+          <div class="input-parent nogap unshown">
+            <span class="unhiddens-text">djezirioussama@gmail.com</span>
+            <input
+              class="input"
+              type="email"
+              id="email"
+              name="name"
+              size="25"
+            />
+          </div>
         </div>
+        <!-- <span></span> -->
         <div class="divider"></div>
         <div class="delete--container">
           <botton class="delete-account disconnect">supprimer le compte</botton>
         </div>
       </div>
-      <div class="save-alert">
+      <div class="save-alert put-away">
         <span>
           soyez prudent - vous avez des modifications non enregistrées
         </span>
@@ -919,6 +932,8 @@
         var cancelButtonElements = document.querySelectorAll(".edit--content");
         var textElements = document.querySelectorAll(".button-text");
         var inputParents = document.querySelectorAll(".input-parent");
+        var savePopUp = document.querySelector(".save-alert");
+        var b = false;
         // var buttonElements = document.querySelectorAll(".button");
         for (let i = 0; i < cancelButtonElements.length; i++) {
           if (!cancelButtonElements[i].classList.contains("special")) {
