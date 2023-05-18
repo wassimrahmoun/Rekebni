@@ -100,53 +100,106 @@
         </div>
       </div>
       <div class="container">
-        <div class="title">mot de passe</div>
-        <div class="content">
-          <span class="mdp">••••••••</span>
-          <botton class="edit--content">
-            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
-            <span class="button-text">cancel</span>
-          </botton>
-          <label for="pass">Votre ancien Mot de passe:</label>
-          <input type="password" id="pass" name="password" class="input" />
-          <label for="confirm-pass" class=""
-            >Confirmez votre mot de passe actuel:</label
-          >
-          <input
-            type="password"
-            id="confirm-pass"
-            name="confirm password"
-            class=""
-          />
-        </div>
-        <div class="divider"></div>
-        <div class="title">pseudonyme</div>
-        <div class="content">
-          <span>ousdjeziri</span>
+        <div class="title">
+          mot de passe
           <botton class="edit--content">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
             <span class="button-text">cancel</span>
           </botton>
         </div>
+        <div class="content dynamic">
+          <!-- <span class="mdp">••••••••</span>  -->
+          <div class="input-parent unshown">
+            <div class="input-father">
+              <div class="input-container">
+                <label for="pass" class="input-label"
+                  >Votre ancien Mot de passe:</label
+                >
+                <input
+                  type="password"
+                  id="pass"
+                  name="password"
+                  class="input"
+                  size="15"
+                />
+              </div>
+              <div class="input-container">
+                <label for="new-mdp" class="input-label"
+                  >Saisisez votre nouveau Mot de passe:
+                </label>
+                <input
+                  type="text"
+                  id="new-mdp"
+                  name="name"
+                  size="15"
+                  class="input"
+                />
+              </div>
+              <div class="input-container">
+                <label for="confirm-pass" class="input-label"
+                  >Confirmez votre mot de passe actuel:</label
+                >
+                <input
+                  type="password"
+                  id="confirm-pass"
+                  name="confirm password"
+                  class="input"
+                  size="15"
+                />
+              </div>
+              <div class="input-container">
+                <label for="confirm-nv-mdp" class="input-label"
+                  >Confirmez votre nouveau Mot de passe:</label
+                >
+                <input
+                  type="text"
+                  id="confirm-new-mdp"
+                  name="name"
+                  size="15"
+                  class="input"
+                />
+              </div>
+            </div>
+            <button class="confirm-pass-btn">Confirmer le mot de passe</button>
+          </div>
+        </div>
         <div class="divider"></div>
-        <div class="title">numéro de telephone</div>
+        <div class="title">
+          pseudonyme
+          <botton class="edit--content">
+            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+            <span class="button-text">cancel</span>
+          </botton>
+        </div>
+        <div class="content">
+          <span class="unhiddens-text">ousdjeziri</span>
+          <div class="input-parent unshown">
+            <input class="input" type="text" id="name" name="name" size="25" />
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="title">
+          numéro de telephone
+          <botton class="edit--content">
+            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+            <span class="button-text">cancel</span>
+          </botton>
+        </div>
         <div class="content">
           <div>
             <span class="tel">+213</span> <span>&nbsp;549 208 230</span>
           </div>
+        </div>
+        <div class="divider"></div>
+        <div class="title">
+          adresse e-mail
           <botton class="edit--content">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
             <span class="button-text">cancel</span>
           </botton>
         </div>
-        <div class="divider"></div>
-        <div class="title">adresse e-mail</div>
         <div class="content">
           <span>djezirioussama@gmail.com</span>
-          <botton class="edit--content">
-            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
-            <span class="button-text">cancel</span>
-          </botton>
         </div>
         <div class="divider"></div>
         <div class="delete--container">
@@ -865,32 +918,29 @@
       document.addEventListener("DOMContentLoaded", function () {
         var cancelButtonElements = document.querySelectorAll(".edit--content");
         var textElements = document.querySelectorAll(".button-text");
-        var defaulElements = document.querySelectorAll("default-element");
-        var inputElements = document.querySelectorAll("input");
+        var inputParents = document.querySelectorAll(".input-parent");
         // var buttonElements = document.querySelectorAll(".button");
-
         for (let i = 0; i < cancelButtonElements.length; i++) {
           if (!cancelButtonElements[i].classList.contains("special")) {
             cancelButtonElements[i].addEventListener("click", function (event) {
               textElements[i].classList.toggle("redify");
               cancelButtonElements[i].classList.toggle("redifyed");
-              defaultElements[i].classList.toggle("shown");
-              inputElements[i].classList.toggle("shown");
+              inputParents[i].classList.toggle("unshown");
             });
           }
         }
 
-        document.addEventListener("click", function (event) {
-          for (let i = 0; i < cancelButtonElements.length; i++) {
-            if (
-              textElements[i].classList.contains("redify") &&
-              !cancelButtonElements[i].contains(event.target)
-            ) {
-              textElements[i].classList.remove("redify");
-              cancelButtonElements[i].classList.remove("redifyed");
-            }
-          }
-        });
+        // document.addEventListener("click", function (event) {
+        //   for (let i = 0; i < cancelButtonElements.length; i++) {
+        //     if (
+        //       textElements[i].classList.contains("redify") &&
+        //       !cancelButtonElements[i].contains(event.target)
+        //     ) {
+        //       textElements[i].classList.remove("redify");
+        //       cancelButtonElements[i].classList.remove("redifyed");
+        //     }
+        //   }
+        // });
       });
     </script>
   </body>

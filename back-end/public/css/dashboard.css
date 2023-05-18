@@ -1,3 +1,7 @@
+* {
+  transition: all 0.5s;
+}
+
 .menu {
   position: sticky;
   top: 0px;
@@ -9,6 +13,9 @@
   justify-content: space-between;
   padding: 3rem 2rem;
 }
+/* .content span {
+  font-size: 1.7rem;
+} */
 
 .top {
   display: flex;
@@ -72,6 +79,124 @@ body {
   overflow-x: hidden;
 }
 
+.input-parent {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.input-father {
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-column-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.input-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-label {
+  font-size: 1.6rem;
+  color: #030045;
+  font-weight: 500;
+}
+.input {
+  border: 2px solid #030045;
+  border-radius: 999px;
+  font-size: 2rem;
+  font-family: "ubuntu", sans-serif;
+  padding: 0.7rem;
+  color: #030045;
+  transition: all 0.3s;
+}
+.input:focus {
+  border: 2px solid #00aff5;
+}
+.confirm-pass-btn {
+  background-color: #00aff5;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 2;
+  align-self: center;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  transition: all 0.3s;
+}
+.confirm-pass-btn:hover,
+.confirm-pass-btn:active {
+  color: #fff;
+  box-shadow: 0px 5px 25px #44444488;
+  transform: translateY(-10px);
+}
+.confirm-pass-btn:active {
+  transform: translateY(-3px);
+}
+
+.input-parent.unshown * * * {
+  padding: 0;
+  /* width: 0;
+  height: 0; */
+  gap: 0;
+  font-size: 0;
+  border: 0px;
+  opacity: 0;
+}
+.input-parent.unshown * * {
+  padding: 0;
+  /* width: 0;
+  height: 0; */
+  gap: 0;
+  font-size: 0;
+  opacity: 0;
+  border: 0px;
+}
+.input-parent.unshown * {
+  padding: 0;
+  /* width: 0;
+  height: 0; */
+  gap: 0;
+  font-size: 0;
+  opacity: 0;
+  border: 0px;
+}
+.input-parent.unshown {
+  gap: 0;
+}
+/* :::: */
+.input-parent * * * {
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.input-parent * * {
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+.input-parent * {
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+.input-parent {
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.unshown .input {
+  padding: 0;
+  gap: 0;
+  font-size: 0;
+  opacity: 0;
+  border: 0px;
+}
+.unhiddens-text ~ .unshown {
+  font-size: 1.7rem;
+}
+.unhiddens-text {
+  font-size: 0rem;
+  transition: all 0s;
+}
 /* //////////////////////////////// */
 /* PROFILE */
 /* //////////////////////////////// */
@@ -82,8 +207,8 @@ body {
 }
 .head {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
@@ -149,6 +274,8 @@ body {
   font-size: 2rem;
 }
 .title {
+  display: flex;
+  gap: 1rem;
   color: #00aff5;
   font-weight: 900;
   font-size: 1.7rem;
@@ -157,11 +284,12 @@ body {
 .content {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
-.content span {
-  font-size: 1.7rem;
+.content.dynamic {
+  justify-content: center;
 }
+
 .mdp {
   letter-spacing: 0.1rem;
 }
