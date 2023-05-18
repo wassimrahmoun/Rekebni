@@ -1,4 +1,31 @@
+"use strict"
+const reserverTrajet = document.querySelector(".confirm") ;
+var user = JSON.parse(window.localStorage.getItem("userJson"));
+var token = window.localStorage.getItem("userToken") ;
+var userId ;
+if(user)  userId = user.id ;
+var selectedTrajetId ;
+var place ;
+
+const showProfilePic = function(){
+  const userPic = user.photo ;
+  document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
+}
+
+const signOutEventListener=function(){
+   const profilSignOut = document.getElementById("signout"); // Déconnecter
+    profilSignOut.addEventListener("click", async function () {
+      await fetch("http://localhost:8000/api/v1/users/logout") ;
+      window.localStorage.removeItem("userJson") ;
+      window.location.href = "/";
+      
+    });
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
+  showProfilePic() ;
+  signOutEventListener() ;
   // Simulating a delay of 3 seconds for demonstration purposes
   setTimeout(function () {
     // Remove the spinner and display the content
@@ -9,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ...
   }, 3000);
 });
+
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -181,7 +209,7 @@ function affichervehicule(data) {
 
   const Matricule = data.data.trajet.Matricule;
   const Couleur = data.data.trajet.Couleur;
-  const place = data.data.trajet.places;
+  place = data.data.trajet.places;
 
   const infocar = `
   <div class="side">
@@ -243,7 +271,7 @@ let currentItem = 0;
 let reviewsObj = {};
 
 document.addEventListener("DOMContentLoaded", function () {
-  const selectedTrajetId = localStorage.getItem("selectedTrajetId");
+  selectedTrajetId = localStorage.getItem("selectedTrajetId");
   console.log(selectedTrajetId);
   const url = `http://localhost:8000/api/v1/trajets/${selectedTrajetId}`;
   fetch(url)
@@ -298,3 +326,20 @@ prevBtn.addEventListener("click", function () {
   }
   showPerson(currentItem);
 });
+
+
+reserverTrajet.addEventListener("click", async function(){
+ const url = `http://localhost:8000/api/v1/trajets/reserver/${selectedTrajetId}` ;
+ const res = await fetch(url , {
+            method: "POST",
+            headers: {
+             "Content-Type": "application/json",
+             "Authorization": `Bearer ${token}` 
+            },
+            body: JSON.stringify({
+              passagerId:userId ,
+              places:place
+            }),
+          });
+ 
+})
