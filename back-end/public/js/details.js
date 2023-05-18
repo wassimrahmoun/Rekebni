@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Simulating a delay of 3 seconds for demonstration purposes
+  setTimeout(function () {
+    // Remove the spinner and display the content
+    document.getElementById("loading-spinner-container").style.display = "none";
+    document.body.style.overflow = "auto"; // Show scrollbars
+
+    // Add your code to show the content or perform other actions
+    // ...
+  }, 3000);
+});
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   const year = date.getFullYear();

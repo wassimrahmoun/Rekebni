@@ -271,19 +271,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   document.querySelectorAll(".results-box").forEach(function (trajetElement) {
-//     trajetElement.addEventListener("click", function (event) {
-//       const trajetId = event.currentTarget.id;
-//       console.log(trajetId);
-//       localStorage.setItem("selectedTrajetId", trajetId);
-//       const currentUrl = window.location.href;
-//       const currentPathname = window.location.pathname;
-//       const detailsUrl = currentUrl.replace(
-//         currentPathname,
-//         "/html/details.html"
-//       );
-//       window.location.href = detailsUrl;
-//     });
-//   });
-// });
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".results-box").forEach(function (trajetElement) {
+    trajetElement.addEventListener("click", function (event) {
+      const trajetId = event.currentTarget.id;
+      console.log(trajetId);
+      localStorage.setItem("selectedTrajetId", trajetId);
+      const currentUrl = window.location.href;
+      const currentPathname = window.location.pathname;
+      const detailsUrl = currentUrl.replace(
+        currentPathname,
+        "/html/details.html"
+      );
+      window.location.href = detailsUrl;
+    });
+  });
+});
