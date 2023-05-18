@@ -131,6 +131,7 @@ body {
   cursor: pointer;
 }
 .edit--icon {
+  opacity: 1;
   height: 70%;
   width: 70%;
   color: #030045;
@@ -539,4 +540,23 @@ body {
 }
 .past * * * * {
   color: #030045 !important;
+}
+.button-text {
+  transition: all 0.5s;
+  border-radius: 500rem;
+  background-color: #ffadad;
+  color: #ff0000;
+  font-size: 1.3rem;
+  padding: 0rem;
+  max-width: 0px;
+  opacity: 0;
+}
+.button-text.redify {
+  opacity: 1;
+  padding: 0.5rem 0.7rem;
+  max-width: fit-content;
+}
+.redifyed .edit--icon {
+  max-width: 0px;
+  opacity: 0;
 }

@@ -105,6 +105,7 @@
           <span class="mdp">••••••••</span>
           <botton class="edit--content">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+            <span class="button-text">cancel</span>
           </botton>
         </div>
         <div class="divider"></div>
@@ -113,6 +114,7 @@
           <span>ousdjeziri</span>
           <botton class="edit--content">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+            <span class="button-text">cancel</span>
           </botton>
         </div>
         <div class="divider"></div>
@@ -123,6 +125,7 @@
           </div>
           <botton class="edit--content">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+            <span class="button-text">cancel</span>
           </botton>
         </div>
         <div class="divider"></div>
@@ -131,6 +134,7 @@
           <span>djezirioussama@gmail.com</span>
           <botton class="edit--content">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+            <span class="button-text">cancel</span>
           </botton>
         </div>
         <div class="divider"></div>
@@ -845,6 +849,32 @@
           btn.addEventListener("click", function (event) {
             event.stopPropagation();
           });
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        var cancelButtonElements = document.querySelectorAll(".edit--content");
+        var textElements = document.querySelectorAll(".button-text");
+        // var buttonElements = document.querySelectorAll(".button");
+
+        for (let i = 0; i < cancelButtonElements.length; i++) {
+          if (!cancelButtonElements[i].classList.contains("past")) {
+            cancelButtonElements[i].addEventListener("click", function (event) {
+              textElements[i].classList.toggle("redify");
+              cancelButtonElements[i].classList.toggle("redifyed");
+            });
+          }
+        }
+
+        document.addEventListener("click", function (event) {
+          for (let i = 0; i < cancelButtonElements.length; i++) {
+            if (
+              textElements[i].classList.contains("redify") &&
+              !cancelButtonElements[i].contains(event.target)
+            ) {
+              textElements[i].classList.remove("redify");
+              cancelButtonElements[i].classList.remove("redifyed");
+            }
+          }
         });
       });
     </script>
