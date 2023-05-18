@@ -58,20 +58,20 @@ module.exports = class Email {
       "utf8"
     );
     const modifiedHtml = html.replace("{{url}}", this.url);
-    console.log(this.url);
     //reste a le remplacer dans le html jcp comment faire
     await this.send(subject, text, modifiedHtml);
   }
 
   async sendPasswordReset() {
     const subject = `Your password reset token (valid for only 10 minutes)`;
+
     const text = `Dear ${this.firstName},\n\nYou have requested to reset your password. Please click on the following link to reset it (valid for only 10 minutes):\n${this.url}\n\nIf you didn't request this, please ignore this email.\n\nBest regards,\nWASSELNI Team`;
 
-    const html = fs.readFileSync(
-      "back-end/public/html/rénitialisermdp.html",
+    const html1 = fs.readFileSync(
+      "back-end/public/html/réinitialisermdp.html",
       "utf8"
     );
-    const modifiedHtml = html.replace("{{url}}", this.url);
+    const modifiedHtml = html1.replace("{{url}}", this.url);
 
     await this.send(subject, text, modifiedHtml);
   }
