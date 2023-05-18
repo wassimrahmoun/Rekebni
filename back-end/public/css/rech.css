@@ -374,6 +374,7 @@ input[type="checkbox"] {
   /* border-width: 0; */
 }
 
+
 #filter-time:checked,
 #filter-price:checked,
 #filter-duration:checked {

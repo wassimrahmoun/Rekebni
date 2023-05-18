@@ -26,7 +26,7 @@ body {
 .title h2 {
   font-weight: 700;
   font-size: 4rem;
-  color: #030045;
+  color: rgb(3, 0, 69);
   word-spacing: 2px;
   letter-spacing: -1%;
 }
@@ -55,11 +55,32 @@ body {
   justify-content: space-between;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
 .inputs label {
   font-size: 1.7rem;
   color: #030045;
   align-self: center;
 }
+<<<<<<< HEAD
+=======
+  .inputs select{
+    font-family: "ubuntu", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    outline: none;
+    /* border: 2px solid #00aff5; */
+    border-radius: 12px;
+    width: 43%;
+    background-color: #DAF4FF;
+    overflow: auto;
+  }
+>>>>>>> said
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
 
 .inputs input {
   font-size: 1.5rem;
@@ -72,6 +93,10 @@ body {
   overflow: auto;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
 .inputs select {
   font-family: "ubuntu", sans-serif;
   font-size: 1.5rem;
@@ -83,6 +108,15 @@ body {
   background-color: #daf4ff;
   overflow: auto;
 }
+<<<<<<< HEAD
+=======
+  .nbrpersonne input{
+    width: 15%;
+    
+  }
+>>>>>>> said
+=======
+>>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
 
 .invalid {
   border: 2px solid #00aff5;
@@ -127,11 +161,30 @@ input[type="radio"]:checked {
     height: 100%;
   } */
 
+<<<<<<< HEAD
 .fumeur div {
   background-color: #daf4ff;
   /* padding: 1rem 1rem; */
   border-radius: 17px;
 }
+=======
+  .fumeur div{
+    background-color: #DAF4FF;
+    padding: 1rem 1rem;
+    border-radius: 17px;
+  }
+
+  .climatisé div{
+    background-color: #DAF4FF;
+    padding: 1rem 1rem;
+    border-radius: 17px;
+  }
+  
+  .time .arrow {
+    width: auto;
+    align-self: center;
+  }
+>>>>>>> said
 
 input[type="radio"],
 input[type="checkbox"] {
@@ -188,10 +241,31 @@ input[type="checkbox"] {
   align-self: center;
 }
 
+<<<<<<< HEAD
 .time div {
   display: flex;
   flex-direction: row;
 }
+=======
+  .trip{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff; 
+    padding: 1rem ;
+    width: 100%;
+    border-radius: 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+  .trip:hover,
+  .trip:active{
+    box-shadow: 0px 5px 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+  }
+>>>>>>> said
 
 .time input {
   padding: 0.5rem 2rem;
