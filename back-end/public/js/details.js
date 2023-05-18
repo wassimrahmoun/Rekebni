@@ -2,12 +2,30 @@
 const reserverTrajet = document.querySelector(".confirm") ;
 var user = JSON.parse(window.localStorage.getItem("userJson"));
 var token = window.localStorage.getItem("userToken") ;
-var userId = user.id ;
+var userId ;
+if(user)  userId = user.id ;
 var selectedTrajetId ;
 var place ;
 
+const showProfilePic = function(){
+  const userPic = user.photo ;
+  document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
+}
+
+const signOutEventListener=function(){
+   const profilSignOut = document.getElementById("signout"); // Déconnecter
+    profilSignOut.addEventListener("click", async function () {
+      await fetch("http://localhost:8000/api/v1/users/logout") ;
+      window.localStorage.removeItem("userJson") ;
+      window.location.href = "/";
+      
+    });
+}
+
 
 document.addEventListener("DOMContentLoaded", function () {
+  showProfilePic() ;
+  signOutEventListener() ;
   // Simulating a delay of 3 seconds for demonstration purposes
   setTimeout(function () {
     // Remove the spinner and display the content
@@ -18,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ...
   }, 3000);
 });
+
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -310,9 +329,7 @@ prevBtn.addEventListener("click", function () {
 
 
 reserverTrajet.addEventListener("click", async function(){
- const url = `http://localhost:8000/api/v1/trajets/reserver/${userId}` ;
- console.log(selectedTrajetId) ;
- console.log(token) ;
+ const url = `http://localhost:8000/api/v1/trajets/reserver/${selectedTrajetId}` ;
  const res = await fetch(url , {
             method: "POST",
             headers: {
@@ -320,10 +337,9 @@ reserverTrajet.addEventListener("click", async function(){
              "Authorization": `Bearer ${token}` 
             },
             body: JSON.stringify({
-              passagerId:selectedTrajetId ,
+              passagerId:userId ,
               places:place
             }),
           });
  
- console.log(res);
 })
