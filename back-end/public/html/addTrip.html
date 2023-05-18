@@ -276,10 +276,9 @@
             class="matricule-input"
             id="matricule-input"
             name="matricule-input"
-            type="number"
+            type="text"
             placeholder="000000 000 000"
-            pattern="\d{6}/\d{3}/\d{2}" 
-            required
+            required=""
           />
         </div>
         <div class="inputs nbrpersonne">
@@ -368,7 +367,7 @@
           <div>
             <input
               class="time-input"
-              id="time-input"
+              id="time-depart" 
               name="time-input"
               type="time"
               required
@@ -378,7 +377,7 @@
             </div>
             <input
               class="time-input"
-              id="time-input"
+              id="time-ariver"
               name="time-input"
               type="time"
             />
@@ -429,7 +428,7 @@
       </div>
     </div>
     <div class="btn-addtrip">
-        <button class="ajouter-btn">Ajouter le trajet</button>
+        <button class="ajouter-btn" id="ajouter-btn">Ajouter le trajet</button>
         <button class="affiche-btn">Afficher les trajet similaires</button>
     </div>
     <!--Footer-->
@@ -495,5 +494,85 @@
 
     // Set the max attribute to the max date
     dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
+
+    var numberInput = document.getElementById("matricule-input");
+    var submitButton = document.getElementById("ajouter-btn");
+
+    submitButton.addEventListener("click", function() {
+      var pattern = /^\d{6} \d{3} \d{2}$/;
+  
+      if (pattern.test(numberInput.value)) {
+        alert("Clear validation message");
+      } else {
+        alert("Please enter a number in the format of XXXXXX YYY ZZ");
+      }
+    });   
+
+    var colorInput = document.getElementById("color-input");
+    var verifyButton = document.getElementById("ajouter-btn");
+
+    verifyButton.addEventListener("click", function() {
+      var colorName = colorInput.value.trim().toLowerCase();
+  
+      if (isValidColor(colorName)) {
+        alert("The color exists!") ;
+      } else {
+         alert("The color does not exist!");
+      }
+    });
+
+    function isValidColor(colorName) {
+      var div = document.createElement("div");
+      div.style.color = colorName;
+      return div.style.color !== "";
+    }
+    function translateWord(word) {
+      var apiKey = "YOUR_GOOGLE_TRANSLATE_API_KEY";
+      var apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+  
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", apiUrl);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onload = function() {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        var translatedText = response.data.translations[0].translatedText;
+        translationResult.textContent = translatedText;
+      } else {
+         translationResult.textContent = "Translation failed.";
+      }
+    };
+  
+     var data = JSON.stringify({
+      q: word,
+      source: "fr",
+      target: "en",
+    });
+  
+    xhr.send(data);
+  }
+
+  var time1Input = document.getElementById("time-depart");
+  var time2Input = document.getElementById("time-ariver");
+
+
+  time1Input.addEventListener("input", validateTimeInputs);
+  time2Input.addEventListener("input", validateTimeInputs);
+
+  function validateTimeInputs() {
+  var time1 = time1Input.value;
+  var time2 = time2Input.value;
+  
+  if (time1 && time2) {
+    var time1Obj = new Date(`2000-01-01T${time1}`);
+    var time2Obj = new Date(`2000-01-01T${time2}`);
+    
+    var diffInMinutes = (time2Obj - time1Obj) / 60000; // Convert milliseconds to minutes
+    
+    if (!(diffInMinutes >= 60)) {
+      alert("The second time must be at least 1 hour after the first time.");
+    } 
+  }
+}
   </script>
 </html>
