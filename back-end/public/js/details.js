@@ -3,6 +3,7 @@ const reserverTrajet = document.querySelector(".confirm") ;
 var user = JSON.parse(window.localStorage.getItem("userJson"));
 var token = window.localStorage.getItem("userToken") ;
 var userId = user.id ;
+var selectedTrajetId ;
 var place ;
 
 
@@ -251,7 +252,7 @@ let currentItem = 0;
 let reviewsObj = {};
 
 document.addEventListener("DOMContentLoaded", function () {
-  const selectedTrajetId = localStorage.getItem("selectedTrajetId");
+  selectedTrajetId = localStorage.getItem("selectedTrajetId");
   console.log(selectedTrajetId);
   const url = `http://localhost:8000/api/v1/trajets/${selectedTrajetId}`;
   fetch(url)
@@ -310,14 +311,16 @@ prevBtn.addEventListener("click", function () {
 
 reserverTrajet.addEventListener("click", async function(){
  const url = `http://localhost:8000/api/v1/trajets/reserver/${userId}` ;
+ console.log(selectedTrajetId) ;
+ console.log(token) ;
  const res = await fetch(url , {
             method: "POST",
             headers: {
-              "Content-Type": "application/json",
+             "Content-Type": "application/json",
              "Authorization": `Bearer ${token}` 
             },
             body: JSON.stringify({
-              passagerId:userId ,
+              passagerId:selectedTrajetId ,
               places:place
             }),
           });
