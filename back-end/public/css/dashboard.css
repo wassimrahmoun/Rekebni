@@ -541,22 +541,27 @@ body {
 .past * * * * {
   color: #030045 !important;
 }
-.button-text {
-  transition: all 0.5s;
+
+.edit--content .button-text {
+  transition: all 0.2s ease-out;
   border-radius: 500rem;
   background-color: #ffadad;
   color: #ff0000;
-  font-size: 1.3rem;
   padding: 0rem;
-  max-width: 0px;
+  max-width: 0rem;
   opacity: 0;
+  font-size: 0.1rem;
 }
 .button-text.redify {
   opacity: 1;
   padding: 0.5rem 0.7rem;
   max-width: fit-content;
+  font-size: 1.5rem;
 }
 .redifyed .edit--icon {
   max-width: 0px;
   opacity: 0;
+}
+.edit--content.redifyed {
+  width: fit-content !important;
 }
