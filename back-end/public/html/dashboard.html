@@ -487,7 +487,82 @@
       <div class="container">
         <div class="section-title">Mes Trajets</div>
         <div class="divider"></div>
-        <div class="trajets">
+        <div class="trajets" id="parentContainer">
+          <div class="trajet">
+            <div class="trajet-top">
+              <div class="left">
+                <div class="trip-info">
+                  <span class="locations--trajet">
+                    <span class="depart white">ORAN</span>
+                    <span class="white"> vers </span>
+                    <span class="arrival white">ALGER</span>
+                  </span>
+                </div>
+              </div>
+              <div class="timing">
+                <div class="date">
+                  <ion-icon
+                    name="calendar-outline"
+                    class="date-icon icon md hydrated white"
+                    role="img"
+                    aria-label="calendar outline"
+                  ></ion-icon>
+                  <div>
+                    <span class="white">le</span>
+                    <span class="date-day white">2023-05-20</span>
+                  </div>
+                </div>
+                <div class="time">
+                  <ion-icon
+                    name="time-outline"
+                    class="time-icon icon md hydrated white"
+                    role="img"
+                    aria-label="time outline"
+                  ></ion-icon>
+                  <div class="time-text">
+                    <span class="depart-time white">12:30</span>
+                    <ion-icon
+                      name="arrow-forward-outline"
+                      class="icon md hydrated white"
+                      role="img"
+                      aria-label="arrow forward outline"
+                    ></ion-icon>
+                    <span class="arrival-time white">18:00</span>
+                  </div>
+                </div>
+              </div>
+              <div class="right--trajet">
+                <div class="price">
+                  <span class="price-value white">1000</span>
+                  <span class="price-text white">DA</span>
+                </div>
+              </div>
+            </div>
+            <div class="trajet-bottom">
+              <div>
+                <span class="passager-title">les passagers -</span>
+                <span class="passager-remaining">2</span>
+                <span class="passager-remaining">places restantes</span>
+              </div>
+              <div class="passager-info">
+                <img class="passager-pfp" src="../img/user/default.jpg" />
+                <span class="passager-name">oussama djeziri</span>
+              </div>
+              <div class="passager-info">
+                <img class="passager-pfp" src="../img/user/default.jpg" />
+                <span class="passager-name">oussama djeziri</span>
+              </div>
+              <div class="passager-info">
+                <img class="passager-pfp" src="../img/user/default.jpg" />
+                <span class="passager-name">oussama djeziri</span>
+              </div>
+              <div class="passager-info">
+                <img class="passager-pfp" src="../img/user/default.jpg" />
+                <span class="passager-name">oussama djeziri</span>
+              </div>
+            </div>
+            <button class="cancel-trip">annuler le trajet</button>
+          </div>
           <div class="trajet">
             <div class="trajet-top">
               <div class="left">
@@ -660,19 +735,95 @@
       //     }
       //   });
       // });
-      document.addEventListener("DOMContentLoaded", function () {
-        var trajetElement = document.querySelector(".trajet");
-        var trajetBottomElement = document.querySelector(".trajet-bottom");
-        var buttonElement = document.querySelector(".trajet button");
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   var trajetElement = document.querySelector(".trajet");
+      //   var trajetBottomElement = document.querySelector(".trajet-bottom");
+      //   var buttonElement = document.querySelector(".trajet button");
 
-        trajetElement.addEventListener("click", function (event) {
+      //   trajetElement.addEventListener("click", function (event) {
+      //     if (event.target !== buttonElement) {
+      //       trajetBottomElement.classList.toggle("open");
+      //       trajetElement.classList.toggle("opened");
+      //     }
+      //   });
+
+      //   document.addEventListener("click", function (event) {
+      //     if (
+      //       trajetBottomElement.classList.contains("open") &&
+      //       event.target !== buttonElement &&
+      //       !trajetElement.contains(event.target)
+      //     ) {
+      //       trajetBottomElement.classList.remove("open");
+      //       trajetElement.classList.remove("opened");
+      //     }
+      //   });
+
+      //   buttonElement.addEventListener("click", function (event) {
+      //     event.stopPropagation();
+      //   });
+      // });
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   var trajetElement = document.querySelectorAll(".trajet");
+      //   var trajetBottomElement = document.querySelectorAll(".trajet-bottom");
+      //   var buttonElement = document.querySelectorAll(".trajet button");
+      //   trajetElement.forEach((trajetElement) => {
+      //     trajetBottomElement.forEach((trajetBottomElement) => {
+      //       buttonElement.forEach((buttonElement) => {
+      //         trajetElement.addEventListener("click", function (event) {
+      //           if (event.target !== buttonElement) {
+      //             trajetBottomElement.classList.toggle("open");
+      //             trajetElement.classList.toggle("opened");
+      //           }
+      //         });
+
+      //         document.addEventListener("click", function (event) {
+      //           if (
+      //             trajetBottomElement.classList.contains("open") &&
+      //             event.target !== buttonElement &&
+      //             !trajetElement.contains(event.target)
+      //           ) {
+      //             trajetBottomElement.classList.remove("open");
+      //             trajetElement.classList.remove("opened");
+      //           }
+      //         });
+
+      //         buttonElement.addEventListener("click", function (event) {
+      //           event.stopPropagation();
+      //         });
+      //       });
+      //     });
+      //   });
+      // });
+      // space left bellow
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   //   var trajetElement = document.querySelector(".cancel");
+      //   //   var trajetBottomElement = document.querySelector(".trajet-bottom");
+      //   //   trajetElement.addEventListener("click", function (event) {
+      //   //     trajetBottomElement.classList.toggle("open");
+      //   //   });
+      //   //   document.addEventListener("click", function (event) {
+      //   //     if (
+      //   //       !trajetElement.contains(event.target) &&
+      //   //       trajetBottomElement.classList.contains("open")
+      //   //     ) {
+      //   //       trajetBottomElement.classList.remove("open");
+      //   //     }
+      //   //   });
+      // });
+      document.addEventListener("DOMContentLoaded", function () {
+        var parentElement = document.getElementById("parentContainer");
+
+        parentElement.addEventListener("click", function (event) {
+          var trajetElement = event.target.closest(".trajet");
+          var trajetBottomElement =
+            trajetElement.querySelector(".trajet-bottom");
+          var buttonElement = trajetElement.querySelector("button");
+
           if (event.target !== buttonElement) {
             trajetBottomElement.classList.toggle("open");
             trajetElement.classList.toggle("opened");
           }
-        });
 
-        document.addEventListener("click", function (event) {
           if (
             trajetBottomElement.classList.contains("open") &&
             event.target !== buttonElement &&
@@ -681,10 +832,6 @@
             trajetBottomElement.classList.remove("open");
             trajetElement.classList.remove("opened");
           }
-        });
-
-        buttonElement.addEventListener("click", function (event) {
-          event.stopPropagation();
         });
       });
     </script>
