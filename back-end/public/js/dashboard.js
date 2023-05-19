@@ -204,9 +204,9 @@ document.addEventListener("DOMContentLoaded",async function(){
         })
         console.log(res) ;
         const reservations = (await res.json()).data.trajet ;
-        console.log(reservations) ;
         const reservationsContainer = document.querySelector(".reservations") ;
         reservations.forEach(reservation=>{
+           if(reservation.Conducteur){
            const date =  new Date(reservation.date) ;
            const day = String(date.getDate()).padStart(2,"0") ;
            const month = String(date.getMonth()).padStart(2,"0") ;
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded",async function(){
                                             <span class="remaining-places-value white">${reservation.places}</span>
                                             </div>`
             :  `                        <a href="/html/addReview.html">
-                                           <div class="leave-a-review">
+                                           <div class="leave-a-review" id=${reservation.Conducteur.id}>
                                             <span>laisser un avis</span>
                                            </div>
                                          </a>`}
@@ -305,12 +305,26 @@ document.addEventListener("DOMContentLoaded",async function(){
            </div>
          </div>`  ;
          reservationsContainer.insertAdjacentHTML("afterbegin",html) ;
+           }
+         
         })
+
+        const reviewEventListener = function(){
+          const reviewBtns = document.querySelectorAll(".leave-a-review") ;
+          reviewBtns.forEach(reviewBtn=>{reviewBtn.addEventListener("click",function(){
+            const conducteurId = this.id ;
+            window.localStorage.setItem("conducteurId",conducteurId) ;
+          })}) ;
+         }
+    
+         reviewEventListener() ;
+    
 
      }
 
+     
      mesReservations() ;
-
+  
      const deleteTrajetEventListener = function(){
         const deleteTrajetElement = document.querySelectorAll(".cancel-trip") ;
         deleteTrajetElement.forEach(elmnt=>{elmnt.addEventListener("click",async function(){

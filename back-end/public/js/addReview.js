@@ -1,24 +1,49 @@
 var user = JSON.parse(window.localStorage.getItem("userJson"));
 var userId ;
 if (user) userId = user.id ;
+var token = window.localStorage.getItem("userToken") ;
+var conducteurId = window.localStorage.getItem("conducteurId") ;
 
 
 
 
-document.addEventListener("DOMContentLoaded",async function(){
-    
+document.addEventListener("DOMContentLoaded",function(){
+    const btn = document.querySelector(".btn") ;
+    btn.addEventListener("click",async function(e){
+    e.preventDefault() ;
+    // getting inputs
+    try{
+    const review = document.getElementById("comment") ;
+    const ratingsElement = document.querySelector(".rating") ;
+    const ratings = ratingsElement.querySelectorAll("input") ;
+    var rating = 0 ;
+    ratings.forEach(rtng=>{if(rtng.checked) rating= rtng.value}) ;
+    console.log(rating);
+
     const url = "http://localhost:8000/api/v1/reviews"
-    const conducteurId = 20 ;
     const res = await fetch(url, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
-              review:"",
-              rating:"",
-              conducteur:"",
+              review:review,
+              rating:rating,
+              conducteur: conducteurId ,
               user:userId
             }),
           });
+       
+   if (!res.ok) throw new Error("Something has gone wrong ❌ , please try again later !")       
+
+ 
+   await res.json() ;
+
+}catch(err){
+
+  console.error(err.message) ;
+
+}
 })
+}) ;
