@@ -96,6 +96,10 @@ app.get("/details", function (req, res) {
   const filePath = path.join(__dirname, "public", "html", "details.html");
   res.sendFile(filePath);
 });
+app.get("/resetPassword", function (req, res) {
+  const filePath = path.join(__dirname, "public", "html", "resetPassword");
+  res.sendFile(filePath);
+});
 app.get("/Moncompte", function (req, res) {
   const filePath = path.join(__dirname, "public", "html", "dashboard.html");
   res.sendFile(filePath);
