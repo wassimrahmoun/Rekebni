@@ -9,17 +9,8 @@ function gett(x) {
   window.location.href = detailsUrl;
 }
 var user = JSON.parse(window.localStorage.getItem("userJson"));
-var userId ;
-if(user)  userId = user.id ;
-
-if (!userId) window.location.href = "/login"; // verifier si il est connecté
-else {
-  document.addEventListener("DOMContentLoaded", function () {
-    const profilSignOut = document.getElementById("signout"); // Déconnecter
-    profilSignOut.addEventListener("click", function () {
-      window.localStorage.clear();
-      window.location.href = "/";
-    });
+var userId;
+if (user) userId = user.id;
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -155,20 +146,21 @@ function displayrecherch(nbrtrajet, mesDonnees) {
   }
 }
 
-const showProfilePic = function(){
-  var userPic = user.photo ;
-  document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
-}
+const showProfilePic = function () {
+  var userPic = user.photo;
+  document
+    .querySelector(".profile-pic")
+    .setAttribute("src", `../img/user/${userPic}`);
+};
 
-const signOutEventListener=function(){
-   const profilSignOut = document.getElementById("signout"); // Déconnecter
-    profilSignOut.addEventListener("click", async function () {
-      await fetch("http://localhost:8000/api/v1/users/logout") ;
-      window.localStorage.removeItem("userJson") ;
-      window.location.href = "/";
-      
-    });
-}
+const signOutEventListener = function () {
+  const profilSignOut = document.getElementById("signout"); // Déconnecter
+  profilSignOut.addEventListener("click", async function () {
+    await fetch("http://localhost:8000/api/v1/users/logout");
+    window.localStorage.removeItem("userJson");
+    window.location.href = "/";
+  });
+};
 
 function erreur() {
   const errorMessage = document.createElement("div");
@@ -178,31 +170,29 @@ function erreur() {
   const container = document.querySelector(".search-results");
   container.appendChild(errorMessage);
 }
-document.addEventListener("DOMContentLoaded", function () { 
+document.addEventListener("DOMContentLoaded", function () {
   // verifier si connecté / deconnecté
   const loginRegisterTabs = document.querySelector(".nav-login");
   const profileTab = document.querySelector(".nav-profile");
-  if (!userId){
-    profileTab.classList.add("hidden") ;
-    loginRegisterTabs.classList.remove("hidden") ;
-    } 
-    else {
-      loginRegisterTabs.classList.add("hidden") ;
-      profileTab.classList.remove("hidden") ;
-      showProfilePic() ;
-      signOutEventListener() ;
-    }
-  //  
-    
-  
+  if (!userId) {
+    profileTab.classList.add("hidden");
+    loginRegisterTabs.classList.remove("hidden");
+  } else {
+    loginRegisterTabs.classList.add("hidden");
+    profileTab.classList.remove("hidden");
+    showProfilePic();
+    signOutEventListener();
+  }
+  //
+
   const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
   console.log(mesDonnees);
   if (mesDonnees.results === 0) {
     erreur();
   }
   const nbrtrajet = mesDonnees.results;
-  console.log(`nbTrajet : ${nbrtrajet}`) ;
-  console.log(`mes données ${mesDonnees.data.data[0].id}`) ;
+  console.log(`nbTrajet : ${nbrtrajet}`);
+  console.log(`mes données ${mesDonnees.data.data[0].id}`);
   const selectedPassengers = localStorage.getItem("selectedPassengers");
   displaySearchInfo(mesDonnees, selectedPassengers);
   displayrecherch(nbrtrajet, mesDonnees);
