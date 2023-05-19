@@ -298,7 +298,10 @@ function gett(x) {
   const detailsUrl = currentUrl.replace(currentPathname, "/html/details.html");
   window.location.href = detailsUrl;
 }
-const profilePic = document.querySelector(".profile-pic");
+var user = JSON.parse(window.localStorage.getItem("userJson"));
+var userId;
+if (user) userId = user.id;
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   const year = date.getFullYear();
@@ -432,6 +435,23 @@ function displayrecherch(nbrtrajet, mesDonnees) {
     trajetbox.insertAdjacentHTML("beforeend", recherche_trajet);
   }
 }
+
+const showProfilePic = function () {
+  var userPic = user.photo;
+  document
+    .querySelector(".profile-pic")
+    .setAttribute("src", `../img/user/${userPic}`);
+};
+
+const signOutEventListener = function () {
+  const profilSignOut = document.getElementById("signout"); // Déconnecter
+  profilSignOut.addEventListener("click", async function () {
+    await fetch("http://localhost:8000/api/v1/users/logout");
+    window.localStorage.removeItem("userJson");
+    window.location.href = "/";
+  });
+};
+
 function erreur() {
   const errorMessage = document.createElement("div");
   errorMessage.classList.add("error-message");
@@ -561,12 +581,28 @@ function erreur() {
 //   });
 // });
 document.addEventListener("DOMContentLoaded", function () {
+  // verifier si connecté / deconnecté
+  const loginRegisterTabs = document.querySelector(".nav-login");
+  const profileTab = document.querySelector(".nav-profile");
+  if (!userId) {
+    profileTab.classList.add("hidden");
+    loginRegisterTabs.classList.remove("hidden");
+  } else {
+    loginRegisterTabs.classList.add("hidden");
+    profileTab.classList.remove("hidden");
+    showProfilePic();
+    signOutEventListener();
+  }
+  //
+
   const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
   console.log(mesDonnees);
   if (mesDonnees.results === 0) {
     erreur();
   }
   const nbrtrajet = mesDonnees.results;
+  console.log(`nbTrajet : ${nbrtrajet}`);
+  console.log(`mes données ${mesDonnees.data.data[0].id}`);
   const selectedPassengers = localStorage.getItem("selectedPassengers");
   displaySearchInfo(mesDonnees, selectedPassengers);
   displayrecherch(nbrtrajet, mesDonnees);
