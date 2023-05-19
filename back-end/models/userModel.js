@@ -8,11 +8,11 @@ const mongooseTypePhone = require("mongoose-type-phone");
 const userSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
+      type: "String",
       required: [true, "Vous devez avoir un nom "],
     },
     prenom: {
-      type: String,
+      type: "String",
     },
     pseudo: {
       type: "String",
