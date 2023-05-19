@@ -8,11 +8,11 @@ const mongooseTypePhone = require("mongoose-type-phone");
 const userSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
+      type: "String",
       required: [true, "Vous devez avoir un nom "],
     },
     prenom: {
-      type: String,
+      type: "String",
     },
     pseudo: {
       type: "String",
@@ -80,8 +80,7 @@ const userSchema = new mongoose.Schema(
     passwordResetExpires: Date,
     active: {
       type: Boolean,
-      default: true,
-      select: false,
+      default: false,
     },
   },
   {
@@ -121,11 +120,11 @@ userSchema.pre("save", function (next) {
   next();
 });
 
-userSchema.pre(/^find/, function (next) {
-  //this points to the corrents quatry
-  this.find({ active: { $ne: false } }); // note equiale to false because if we do ! true the others dont have the active object
-  next();
-});
+// userSchema.pre(/^find/, function (next) {
+//   //this points to the corrents quatry
+//   this.find({ active: { $ne: false } }); // note equiale to false because if we do ! true the others dont have the active object
+//   next();
+// });
 
 userSchema.methods.verifyPassword = async function (userPassword) {
   return await bcrypt.compare(userPassword, this.password);
