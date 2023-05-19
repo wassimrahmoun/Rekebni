@@ -240,7 +240,9 @@
         </div>
         <div class="content">
           <div class="input-parent nogap unshown">
-            <span class="unhiddens-text">djezirioussama@gmail.com</span>
+            <span class="unhiddens-text" id="email"
+              >djezirioussama@gmail.com</span
+            >
             <input
               class="input"
               type="email"
@@ -611,7 +613,7 @@
       <div class="container">
         <div class="section-title">Mes Trajets</div>
         <div class="divider"></div>
-        <div class="trajets" id="parentContainer">
+        <div class="trajets">
           <div class="trajet">
             <div class="trajet-top">
               <div class="left">
@@ -687,6 +689,7 @@
             </div>
             <button class="cancel-trip">annuler le trajet</button>
           </div>
+
           <div class="trajet">
             <div class="trajet-top">
               <div class="left">
@@ -948,82 +951,6 @@
       //     }
       //   });
       // });
-      // document.addEventListener("DOMContentLoaded", function () {
-      //   var trajetElement = document.querySelector(".trajet");
-      //   var trajetBottomElement = document.querySelector(".trajet-bottom");
-      //   var buttonElement = document.querySelector(".trajet button");
-
-      //   trajetElement.addEventListener("click", function (event) {
-      //     if (event.target !== buttonElement) {
-      //       trajetBottomElement.classList.toggle("open");
-      //       trajetElement.classList.toggle("opened");
-      //     }
-      //   });
-
-      //   document.addEventListener("click", function (event) {
-      //     if (
-      //       trajetBottomElement.classList.contains("open") &&
-      //       event.target !== buttonElement &&
-      //       !trajetElement.contains(event.target)
-      //     ) {
-      //       trajetBottomElement.classList.remove("open");
-      //       trajetElement.classList.remove("opened");
-      //     }
-      //   });
-
-      //   buttonElement.addEventListener("click", function (event) {
-      //     event.stopPropagation();
-      //   });
-      // });
-      // document.addEventListener("DOMContentLoaded", function () {
-      //   var trajetElement = document.querySelectorAll(".trajet");
-      //   var trajetBottomElement = document.querySelectorAll(".trajet-bottom");
-      //   var buttonElement = document.querySelectorAll(".trajet button");
-      //   trajetElement.forEach((trajetElement) => {
-      //     trajetBottomElement.forEach((trajetBottomElement) => {
-      //       buttonElement.forEach((buttonElement) => {
-      //         trajetElement.addEventListener("click", function (event) {
-      //           if (event.target !== buttonElement) {
-      //             trajetBottomElement.classList.toggle("open");
-      //             trajetElement.classList.toggle("opened");
-      //           }
-      //         });
-
-      //         document.addEventListener("click", function (event) {
-      //           if (
-      //             trajetBottomElement.classList.contains("open") &&
-      //             event.target !== buttonElement &&
-      //             !trajetElement.contains(event.target)
-      //           ) {
-      //             trajetBottomElement.classList.remove("open");
-      //             trajetElement.classList.remove("opened");
-      //           }
-      //         });
-
-      //         buttonElement.addEventListener("click", function (event) {
-      //           event.stopPropagation();
-      //         });
-      //       });
-      //     });
-      //   });
-      // });
-      // space left bellow
-      // document.addEventListener("DOMContentLoaded", function () {
-      //   //   var trajetElement = document.querySelector(".cancel");
-      //   //   var trajetBottomElement = document.querySelector(".trajet-bottom");
-      //   //   trajetElement.addEventListener("click", function (event) {
-      //   //     trajetBottomElement.classList.toggle("open");
-      //   //   });
-      //   //   document.addEventListener("click", function (event) {
-      //   //     if (
-      //   //       !trajetElement.contains(event.target) &&
-      //   //       trajetBottomElement.classList.contains("open")
-      //   //     ) {
-      //   //       trajetBottomElement.classList.remove("open");
-      //   //     }
-      //   //   });
-      // });
-      // });
       // });
       document.addEventListener("DOMContentLoaded", function () {
         var trajetElements = document.querySelectorAll(".trajet");
@@ -1057,35 +984,6 @@
             event.stopPropagation();
           });
         });
-      });
-      document.addEventListener("DOMContentLoaded", function () {
-        var cancelButtonElements = document.querySelectorAll(".edit--content");
-        var textElements = document.querySelectorAll(".button-text");
-        var inputParents = document.querySelectorAll(".input-parent");
-        var savePopUp = document.querySelector(".save-alert");
-        var b = false;
-        // var buttonElements = document.querySelectorAll(".button");
-        for (let i = 0; i < cancelButtonElements.length; i++) {
-          if (!cancelButtonElements[i].classList.contains("special")) {
-            cancelButtonElements[i].addEventListener("click", function (event) {
-              textElements[i].classList.toggle("redify");
-              cancelButtonElements[i].classList.toggle("redifyed");
-              inputParents[i].classList.toggle("unshown");
-            });
-          }
-        }
-
-        // document.addEventListener("click", function (event) {
-        //   for (let i = 0; i < cancelButtonElements.length; i++) {
-        //     if (
-        //       textElements[i].classList.contains("redify") &&
-        //       !cancelButtonElements[i].contains(event.target)
-        //     ) {
-        //       textElements[i].classList.remove("redify");
-        //       cancelButtonElements[i].classList.remove("redifyed");
-        //     }
-        //   }
-        // });
       });
     </script>
   </body>

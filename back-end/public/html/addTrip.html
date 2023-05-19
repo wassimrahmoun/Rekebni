@@ -43,6 +43,7 @@
       rel="stylesheet"
     />
     <script src="../js/addTrip.js"></script>
+    <script src="../js/addTrip.js"></script>
   </head>
   <body>
     <!-- END OF SESSION -->
@@ -78,7 +79,7 @@
               <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
             </div>
             <div class="nav-profile">
-              <img class="profile-pic" src="default.jpg" id="menu-btn" />
+              <img class="profile-pic" src="../img/user/default.jpg" id="menu-btn" />
               <div class="--absolute" style="display: none" id="menu">
                 <div class="profile-menu a">
                   <!-- <img src="../img/menubbl.png" class="bbl" /> -->
@@ -305,13 +306,13 @@
             />
           </div>
         </div>
-        <div class="inputs fumeur">
-          <label for="fumeur-input">Climatisation:</label>
+        <div class="inputs climatisation">
+          <label for="climatisation-input">Climatisation:</label>
           <div>
             <input
               class="fumeur-input custom-checkbox"
-              id="fumeur-input"
-              name="fumeur-input"
+              id="climatisation-input"
+              name="climatisation-input"
               type="checkbox"
             />
           </div>
@@ -397,33 +398,11 @@
           </div>
         </div>
       </form>
-      <div class="trajet-similairs hide-similar">
+      <div class="trajet-similairs">
         <h3>Les prix actuels des trajets similaires :</h3>
+        <h2 id="pas-de-trajets" class="hidden">Il n'y a pas des trajets similaires pour l'instant ! </h2>
         <div class="suggested-prices">
-          <div class="trip">
-            <div class="driver-profile">
-              <div class="photo"></div>
-              <div class="ID">
-                <p class="name">Name</p>
-                <p class="avis">0.0/5 avis</p>
-              </div>
-            </div>
-            <div class="trip-info">
-              <p class="trip-trajet">Départ <br/> Arivée</p>
-            </div>
-            <div class="trip-date">
-              <p>le 1 mai</p>
-              <div class="trip-time">
-                <span class="material-symbols-outlined"> timer </span>
-                <p>08:00</p>
-                <span class="material-symbols-outlined"> arrow_forward </span>
-                <p>12:00</p>
-              </div>
-            </div>
-            <div class="trip-price">
-              <p>700 DA</p>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

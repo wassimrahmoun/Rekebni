@@ -21,18 +21,18 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
   })
     .populate({
       path: "Conducteur",
-      select: "name photo slug ratingsAverage phone",
+      select: "name photo pseudo ratingsAverage",
     })
     .populate({
       path: "reviews",
       populate: {
         path: "user",
-        select: "name photo",
+        select: "name photo pseudo ratingAverage",
       },
     })
     .populate({
       path: "Passagers",
-      select: "name photo slug",
+      select: "name photo pseudo",
     });
 
   res.status(200).json({
@@ -45,7 +45,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
 });
 
 exports.getUserTrajects = catchAsync(async (req, res, next) => {
-  const trajet = await await Trajet.find({
+  const trajet = await Trajet.find({
     slug: req.params.slug,
   }).populate({
     path: "Passagers",
@@ -61,10 +61,10 @@ exports.getUserTrajects = catchAsync(async (req, res, next) => {
   });
 });
 exports.getUserReservations = catchAsync(async (req, res, next) => {
-  const slug = req.params.slug;
-  const trajet = await await Trajet.find({
-    Passagers: { $elemMatch: { slug: slug } },
-  }).populate("Conducteur", "name photo");
+  const id = req.params.id;
+  const trajet = await Trajet.find({ Passagers: id })
+    .populate("Passagers")
+    .populate("Conducteur", "name photo");
   res.status(200).json({
     //to resive tours const array
     status: "success",
@@ -135,7 +135,6 @@ exports.reserverTrajet = catchAsync(async (req, res, next) => {
   const updatedTrajet = await Trajet.findByIdAndUpdate(
     req.params.id,
     {
-      $push: { Conducteur: req.body.conducteurId },
       $push: { Passagers: req.body.passagerId },
       $inc: { places: -req.body.places },
     },
