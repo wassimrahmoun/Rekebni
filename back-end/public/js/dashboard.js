@@ -94,9 +94,8 @@ document.addEventListener("DOMContentLoaded",async function(){
     emailElement.textContent = userEmail ;
     }
     profilTabInfos() ;
-    console.log(user);
+
     const trajetsContainer = document.querySelector(".trajets") ;
-    // const url = `http://localhost:8000/api/v1/trajets/conducteur/${userPseudo}` ;
     const url = `http://localhost:8000/api/v1/trajets/conducteur/${userPseudo}` ;
     const res = await fetch(url , {
         method: "GET",
@@ -206,6 +205,7 @@ document.addEventListener("DOMContentLoaded",async function(){
         const reservations = (await res.json()).data.trajet ;
         const reservationsContainer = document.querySelector(".reservations") ;
         reservations.forEach(reservation=>{
+          console.log(reservation);
            if(reservation.Conducteur){
            const date =  new Date(reservation.date) ;
            const day = String(date.getDate()).padStart(2,"0") ;
