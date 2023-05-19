@@ -80,6 +80,28 @@ input[type="radio"] + label:active {
   transform: translateY(-2px);
 }
 
+.return-container {
+  display: flex;
+  gap: 0.7rem;
+  flex-direction: column;
+}
+.return {
+  text-align: center;
+  font-size: 1.606rem;
+}
+.return:hover,
+.return:active {
+  background-color: #00aff5;
+  color: #fff;
+}
+.return:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px #44444433;
+}
+.return:active {
+  transform: translateY(-2px);
+}
+
 body {
   display: flex;
   overflow-x: hidden;
