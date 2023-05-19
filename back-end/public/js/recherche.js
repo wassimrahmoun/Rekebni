@@ -12,6 +12,14 @@ var user = JSON.parse(window.localStorage.getItem("userJson"));
 var userId ;
 if(user)  userId = user.id ;
 
+if (!userId) window.location.href = "/login"; // verifier si il est connecté
+else {
+  document.addEventListener("DOMContentLoaded", function () {
+    const profilSignOut = document.getElementById("signout"); // Déconnecter
+    profilSignOut.addEventListener("click", function () {
+      window.localStorage.clear();
+      window.location.href = "/";
+    });
 
 function formatDate(dateString) {
   const date = new Date(dateString);
