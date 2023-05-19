@@ -620,6 +620,30 @@ main {
   font-size: 2.5rem;
   font-weight: 300;
 }
+.confirm{
+  padding: 2rem 3rem;
+  background-color: #00aff5;
+  border-radius: 15px;
+  font-size: 3rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.confirm:hover ,.confirm:active{
+  box-shadow: 0px 10px 25px #44444486;
+  transform: translateY(-10px);
+  color: #fff;
+    padding: 2.2rem 3.2rem;
+      font-size: 3.2rem;
+}
+.confirm:active{
+  transform: translateY(-2px);
+}
+.container-confirm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 8.5rem;
+}
 /* #0f0 */
 /* ****************************** */
 /* FOOTER */

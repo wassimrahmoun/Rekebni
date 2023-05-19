@@ -43,6 +43,7 @@
       rel="stylesheet"
     />
     <script src="../js/addTrip.js"></script>
+    <script src="../js/addTrip.js"></script>
   </head>
   <body>
     <!-- END OF SESSION -->
@@ -77,12 +78,8 @@
               >
               <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
             </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
             <div class="nav-profile">
-              <img class="profile-pic" src="default.jpg" id="menu-btn" />
+              <img class="profile-pic" src="../img/user/default.jpg" id="menu-btn" />
               <div class="--absolute" style="display: none" id="menu">
                 <div class="profile-menu a">
                   <!-- <img src="../img/menubbl.png" class="bbl" /> -->
@@ -96,15 +93,6 @@
                     Se Déconnecter
                   </div>
                 </div>
-<<<<<<< HEAD
-=======
-          </a>
-            <div class="nav-login flex-center">
-              <a class="btn--login flex-center whitespan" href="/login">my page</a>
-              <a class="btn--signup flex-center" href="/signup">se déconnecter</a>
->>>>>>> said
-=======
->>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
               </div>
             </div>
           </div>
@@ -123,7 +111,6 @@
 
           const menuBtn = document.querySelector("#menu-btn");
           const menu = document.querySelector("#menu");
-
           menuBtn.addEventListener("click", () => {
             if (menu.style.display === "none") {
               menu.style.display = "block";
@@ -145,10 +132,6 @@
       </div>
       <img class="waves2" src="../img/waves4.png" />
     </header>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
     <!-- title -->
     <div class="title">
       <h2>Créer Votre Propre trajet</h2>
@@ -157,94 +140,7 @@
     <div class="container">
       <form class="trajet-info">
         <div class="inputs depart">
-          <label for="destination-input">D'où vous partez?</label>
-          <select
-            id="depart"
-            name="destination-input"
-            class="destination-input"
-          >
-            <option value="0">Départ</option>
-            <option value="1" class="personnes-text">ORAN</option>
-            <option value="2" class="personnes-text">ALGER</option>
-            <option value="3" class="personnes-text">SBA</option>
-            <option value="4" class="personnes-text">Telemcen</option>
-            <option value="5" class="personnes-text">Tizi</option>
-          </select>
-        </div>
-        <div class="inputs arrive">
-          <label for="destination-input">Où allez-vous ?</label>
-          <select
-            id="arrive"
-            name="destination-input"
-            class="destination-input"
-          >
-            <option value="0">Arrivée</option>
-            <option value="1" class="personnes-text">ORAN</option>
-            <option value="2" class="personnes-text">ALGER</option>
-            <option value="3" class="personnes-text">SBA</option>
-            <option value="4" class="personnes-text">Telemcen</option>
-            <option value="5" class="personnes-text">Tizi</option>
-          </select>
-        </div>
-        <div class="inputs vehicule">
-          <label for="vehicule-input">Type du Vehicule :</label>
-          <input
-            class="vehicule-input"
-            list="vehicule-input"
-            id="vehicule-input"
-            name="vehicule-input"
-          />
-        </div>
-        <div class="inputs color">
-          <label for="color-input">Couleur du Vehicule :</label>
-          <input
-            class="color-input"
-            id="color-input"
-            name="color-input"
-            type="text"
-          />
-        </div>
-        <div class="inputs matricule">
-          <label for="matricule-input">Matricule : </label>
-          <input
-            class="matricule-input"
-            id="matricule-input"
-            name="matricule-input"
-            type="number"
-            size="12"
-            maxlength="12"
-            placeholder="000000 000 000"
-          />
-        </div>
-        <div class="inputs nbrpersonne">
-          <label for="nbrpersonne-input">Combien de personnes ?</label>
-          <input
-            class="nbrpersonne-input"
-            id="nbrpersonne-input"
-            name="nbrpersonne-input"
-            type="number"
-          />
-        </div>
-        <div class="inputs fumeur">
-          <label for="fumeur-input">Autorisé au fumeurs:</label>
-          <div>
-            <input
-              class="fumeur-input custom-checkbox"
-              id="fumeur-input"
-              name="fumeur-input"
-              type="checkbox"
-            />
-<<<<<<< HEAD
-=======
-      <!-- title -->
-      <div class="title">
-        <h2>Créer Votre Prorpre trajet</h2>
-      </div>
-      <!--Container-->
-      <div class="container">
-        <form class="trajet-info">
-          <div class="inputs arrive">
-            <label for="destination-input">D'où vous partiez?</label>
+          <label for="destination-input">D'où vous partiez?</label>
             <select id="arrive" name="destination-input" class="destination-input" required="">
               <option value="" disabled="" selected="">
                 Départ
@@ -282,9 +178,7 @@
               <option value="ORAN">ORAN - 31</option>
               <option value="EL-BAYADH">EL-BAYADH - 32</option>
               <option value="ILLIZI">ILLIZI - 33</option>
-              <option value="BORDJ-BOU-ARRERIDJ">
-                BORDJ-BOU-ARRERIDJ - 34
-              </option>
+              <option value="BORDJ-BOU-ARRERIDJ">BORDJ-BOU-ARRERIDJ - 34</option>
               <option value="BOUMERDES">BOUMERDES - 35</option>
               <option value="EL-TARF">EL-TARF - 36</option>
               <option value="TINDOUF">TINDOUF - 37</option>
@@ -300,71 +194,127 @@
               <option value="GHARDAIA">GHARDAIA - 47</option>
               <option value="RELIZANE">RELIZANE - 48</option>
             </select>
-          </div>  
-          <div class="inputs depart">
-            <label for="destination-input">Où allez-vous ?</label>
-            <select id="depart" name="destination-input" class="destination-input" >
-              <option value="" disabled="" selected="">
-                Départ
-              </option>
-              <option value="ADRAR">ADRAR - 01</option>
-              <option value="CHLEF">CHLEF - 02</option>
-              <option value="LAGHOUAT">LAGHOUAT - 03</option>
-              <option value="OUM-EL-BOUAGHI">OUM-EL-BOUAGHI - 04</option>
-              <option value="BATNA">BATNA - 05</option>
-              <option value="BEJAIA">BEJAIA - 06</option>
-              <option value="BISKRA">BISKRA - 07</option>
-              <option value="BECHAR">BECHAR - 08</option>
-              <option value="BLIDA">BLIDA - 09</option>
-              <option value="BOUIRA">BOUIRA - 10</option>
-              <option value="TAMANRASSET">TAMANRASSET - 11</option>
-              <option value="TEBESSA">TEBESSA - 12</option>
-              <option value="TLEMCEN">TLEMCEN - 13</option>
-              <option value="TIARET">TIARET - 14</option>
-              <option value="TIZI-OUZOU">TIZI-OUZOU - 15</option>
-              <option value="ALGER">ALGER - 16</option>
-              <option value="DJELFA">DJELFA - 17</option>
-              <option value="JIJEL">JIJEL - 18</option>
-              <option value="SETIF">SETIF - 19</option>
-              <option value="SAIDA">SAIDA - 20</option>
-              <option value="SKIKDA">SKIKDA - 21</option>
-              <option value="SIDI-BEL-ABBES">SIDI-BEL-ABBES - 22</option>
-              <option value="ANABA">ANNABA - 23</option>
-              <option value="GUELMA">GUELMA - 24</option>
-              <option value="CONSTANTINE">CONSTANTINE - 25</option>
-              <option value="MEDEA">MEDEA - 26</option>
-              <option value="MOSTAGANEM">MOSTAGANEM - 27</option>
-              <option value="M-SILA">M-SILA - 28</option>
-              <option value="MASCARA">MASCARA - 29</option>
-              <option value="OUARGLA">OUARGLA - 30</option>
-              <option value="ORAN">ORAN - 31</option>
-              <option value="EL-BAYADH">EL-BAYADH - 32</option>
-              <option value="ILLIZI">ILLIZI - 33</option>
-              <option value="BORDJ-BOU-ARRERIDJ">
-                BORDJ-BOU-ARRERIDJ - 34
-              </option>
-              <option value="BOUMERDES">BOUMERDES - 35</option>
-              <option value="EL-TARF">EL-TARF - 36</option>
-              <option value="TINDOUF">TINDOUF - 37</option>
-              <option value="TISSEMSILT">TISSEMSILT - 38</option>
-              <option value="EL-OUED">EL-OUED - 39</option>
-              <option value="KHENCHELA">KHENCHELA - 40</option>
-              <option value="SOUK-AHRAS">SOUK-AHRAS - 41</option>
-              <option value="TIPAZA">TIPAZA - 42</option>
-              <option value="MILA">MILA - 43</option>
-              <option value="AIN-DEFLA">AIN-DEFLA - 44</option>
-              <option value="NAAMA">NAAMA - 45</option>
-              <option value="AIN-TEMOUCHENT">AIN-TEMOUCHENT - 46</option>
-              <option value="GHARDAIA">GHARDAIA - 47</option>
-              <option value="RELIZANE">RELIZANE - 48</option>
-            </select>
-          </div> 
-          <div class="inputs vehicule">
-            <label for="vehicule-input">Type du Vehicule :</label>
-            <input class="vehicule-input"  list="vehicule-input" id="vehicule-input" name="vehicule-input">
->>>>>>> said
-=======
->>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
+        </div>
+        <div class="inputs arrive">
+          <label for="destination-input">Où allez-vous ?</label>
+          <select id="arrive" name="destination-input" class="destination-input" required="">
+            <option value="" disabled="" selected="">
+              Arivée
+            </option>
+            <option value="ADRAR">ADRAR - 01</option>
+            <option value="CHLEF">CHLEF - 02</option>
+            <option value="LAGHOUAT">LAGHOUAT - 03</option>
+            <option value="OUM-EL-BOUAGHI">OUM-EL-BOUAGHI - 04</option>
+            <option value="BATNA">BATNA - 05</option>
+            <option value="BEJAIA">BEJAIA - 06</option>
+            <option value="BISKRA">BISKRA - 07</option>
+            <option value="BECHAR">BECHAR - 08</option>
+            <option value="BLIDA">BLIDA - 09</option>
+            <option value="BOUIRA">BOUIRA - 10</option>
+            <option value="TAMANRASSET">TAMANRASSET - 11</option>
+            <option value="TEBESSA">TEBESSA - 12</option>
+            <option value="TLEMCEN">TLEMCEN - 13</option>
+            <option value="TIARET">TIARET - 14</option>
+            <option value="TIZI-OUZOU">TIZI-OUZOU - 15</option>
+            <option value="ALGER">ALGER - 16</option>
+            <option value="DJELFA">DJELFA - 17</option>
+            <option value="JIJEL">JIJEL - 18</option>
+            <option value="SETIF">SETIF - 19</option>
+            <option value="SAIDA">SAIDA - 20</option>
+            <option value="SKIKDA">SKIKDA - 21</option>
+            <option value="SIDI-BEL-ABBES">SIDI-BEL-ABBES - 22</option>
+            <option value="ANABA">ANNABA - 23</option>
+            <option value="GUELMA">GUELMA - 24</option>
+            <option value="CONSTANTINE">CONSTANTINE - 25</option>
+            <option value="MEDEA">MEDEA - 26</option>
+            <option value="MOSTAGANEM">MOSTAGANEM - 27</option>
+            <option value="M-SILA">M-SILA - 28</option>
+            <option value="MASCARA">MASCARA - 29</option>
+            <option value="OUARGLA">OUARGLA - 30</option>
+            <option value="ORAN">ORAN - 31</option>
+            <option value="EL-BAYADH">EL-BAYADH - 32</option>
+            <option value="ILLIZI">ILLIZI - 33</option>
+            <option value="BORDJ-BOU-ARRERIDJ">BORDJ-BOU-ARRERIDJ - 34</option>
+            <option value="BOUMERDES">BOUMERDES - 35</option>
+            <option value="EL-TARF">EL-TARF - 36</option>
+            <option value="TINDOUF">TINDOUF - 37</option>
+            <option value="TISSEMSILT">TISSEMSILT - 38</option>
+            <option value="EL-OUED">EL-OUED - 39</option>
+            <option value="KHENCHELA">KHENCHELA - 40</option>
+            <option value="SOUK-AHRAS">SOUK-AHRAS - 41</option>
+            <option value="TIPAZA">TIPAZA - 42</option>
+            <option value="MILA">MILA - 43</option>
+            <option value="AIN-DEFLA">AIN-DEFLA - 44</option>
+            <option value="NAAMA">NAAMA - 45</option>
+            <option value="AIN-TEMOUCHENT">AIN-TEMOUCHENT - 46</option>
+            <option value="GHARDAIA">GHARDAIA - 47</option>
+            <option value="RELIZANE">RELIZANE - 48</option>
+          </select>
+        </div>
+        <div class="inputs vehicule">
+          <label for="vehicule-input">Type du Vehicule :</label>
+          <input
+            class="vehicule-input"
+            list="vehicule-input"
+            id="vehicule-input"
+            name="vehicule-input"
+            required
+          />
+        </div>
+        <div class="inputs color">
+          <label for="color-input">Couleur du Vehicule :</label>
+          <input
+            class="color-input"
+            id="color-input"
+            name="color-input"
+            type="text"
+            required
+          />
+        </div>
+        <div class="inputs matricule">
+          <label for="matricule-input">Matricule : </label>
+          <input
+            class="matricule-input"
+            id="matricule-input"
+            name="matricule-input"
+            type="text"
+            placeholder="000000 000 000"
+            required=""
+          />
+        </div>
+        <div class="inputs nbrpersonne">
+          <label for="nbrpersonne-input">Combien de personnes ?</label>
+          <select id="nbrpersonne-input" name="nbrpersonne-input" class="nbrpersonne-input">
+            <option value="1" class="personnes-text">1</option>
+            <option value="2" class="personnes-text">2</option>
+            <option value="3" class="personnes-text">3</option>
+            <option value="4" class="personnes-text">4</option>
+            <option value="5" class="personnes-text">5</option>
+            <option value="6" class="personnes-text">6</option>
+            <option value="7" class="personnes-text">7</option>
+            <option value="8" class="personnes-text">8</option>
+          </select>
+        </div>
+        <div class="inputs fumeur">
+          <label for="fumeur-input">Autorisé au fumeurs:</label>
+          <div>
+            <input
+              class="fumeur-input custom-checkbox"
+              id="fumeur-input"
+              name="fumeur-input"
+              type="checkbox"
+            />
+          </div>
+        </div>
+        <div class="inputs climatisation">
+          <label for="climatisation-input">Climatisation:</label>
+          <div>
+            <input
+              class="fumeur-input custom-checkbox"
+              id="climatisation-input"
+              name="climatisation-input"
+              type="checkbox"
+            />
           </div>
         </div>
         <div class="inputs date">
@@ -375,34 +325,63 @@
             name="date-input"
             type="date"
           />
+          <script>
+            // Get the current date
+            const today = new Date().toISOString().substr(0, 10);
+
+            // Set the default value of the input element to the current date
+            document.getElementById("date-input").value = today;
+
+            const dateInput = document.getElementById("date-input");
+
+            // set placeholder to nothing
+            dateInput.addEventListener("focus", () => {
+              dateInput.setAttribute("placeholder", "");
+            });
+
+            // To allow the user to only input a date that is beyond the current date :
+            document.getElementById("date-input").setAttribute("min", today);
+
+            // const today = new Date().toISOString().substr(0, 10);
+
+            // const dateInput = document.getElementById("myDate");
+
+            // set placeholder to "Aujourd'hui" when today's date is selected
+            dateInput.addEventListener("change", () => {
+              const dateValue = dateInput.value;
+              if (dateValue === today) {
+                dateInput.setAttribute("placeholder", "Aujourd'hui");
+              } else {
+                dateInput.setAttribute("placeholder", "");
+              }
+            });
+
+            // Set the default value of the input element to the current date
+            dateInput.value = today;
+
+            // // Get the current date
+            // var currentDate = new Date();
+          </script>
         </div>
         <div class="inputs time">
           <label for="time-input">Heure du départ et d'arrivé :</label>
           <div>
             <input
               class="time-input"
-              id="time-input"
+              id="time-depart" 
               name="time-input"
               type="time"
+              required
             />
             <div class="arrow">
               <span class="material-symbols-outlined"> arrow_forward </span>
             </div>
-<<<<<<< HEAD
             <input
               class="time-input"
-              id="time-input"
+              id="time-ariver"
               name="time-input"
               type="time"
             />
-=======
-          </div>
-          <div class="inputs climatisé">
-            <label for="climatisé-input">Climatisation:</label>
-            <div>
-              <input class="climatisé-input" id="climatisé-input" name="climatisé-input" type="checkbox">
-            </div>
->>>>>>> said
           </div>
         </div>
         <div class="inputs price">
@@ -413,46 +392,24 @@
               id="price-input"
               name="price-input"
               type="number"
+              required
             />
             <h6>DA</h6>
           </div>
         </div>
       </form>
-      <div class="trajet-similairs hide-similar">
+      <div class="trajet-similairs">
         <h3>Les prix actuels des trajets similaires :</h3>
+        <h2 id="pas-de-trajets" class="hidden">Il n'y a pas des trajets similaires pour l'instant ! </h2>
         <div class="suggested-prices">
-          <div class="trip">
-            <div class="driver-profile">
-              <div class="photo"></div>
-              <div class="ID">
-                <p class="name">Name</p>
-                <p class="avis">0.0/5 avis</p>
-              </div>
-            </div>
-            <div class="trip-info">
-              <p class="trip-trajet">Départ à Arivée</p>
-              <div class="trip-time">
-                <span class="material-symbols-outlined"> timer </span>
-                <p>08:00</p>
-                <span class="material-symbols-outlined"> arrow_forward </span>
-                <p>12:00</p>
-              </div>
-            </div>
-            <div class="trip-date">
-              <p>le 1 mai</p>
-            </div>
-            <div class="trip-price">
-              <p>700 DA</p>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
     <div class="btn-addtrip">
-      <button class="ajouter-btn">Ajouter le trajet</button>
-      <button class="affiche-btn">Afficher les trajet similaires</button>
+        <button class="ajouter-btn" id="ajouter-btn">Ajouter le trajet</button>
+        <button class="affiche-btn">Afficher les trajet similaires</button>
     </div>
-
     <!--Footer-->
     <footer>
       <!-- Copy Right -->
@@ -500,4 +457,101 @@
       </div>
     </footer>
   </body>
+  <script>
+    // Get the current date
+    var currentDate = new Date();
+
+    // Calculate the max date as one week from now
+    var maxDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate() + 7
+    );
+
+    // Get the date input field element
+    // var dateInput = document.getElementById("myDate");
+
+    // Set the max attribute to the max date
+    dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
+
+    var numberInput = document.getElementById("matricule-input");
+    var submitButton = document.getElementById("ajouter-btn");
+
+    submitButton.addEventListener("click", function() {
+      var pattern = /^\d{6} \d{3} \d{2}$/;
+  
+      if (pattern.test(numberInput.value)) {
+        alert("Clear validation message");
+      } else {
+        alert("Please enter a number in the format of XXXXXX YYY ZZ");
+      }
+    });   
+
+    var colorInput = document.getElementById("color-input");
+    var verifyButton = document.getElementById("ajouter-btn");
+
+    verifyButton.addEventListener("click", function() {
+      var colorName = colorInput.value.trim().toLowerCase();
+  
+      if (isValidColor(colorName)) {
+        alert("The color exists!") ;
+      } else {
+         alert("The color does not exist!");
+      }
+    });
+
+    function isValidColor(colorName) {
+      var div = document.createElement("div");
+      div.style.color = colorName;
+      return div.style.color !== "";
+    }
+    function translateWord(word) {
+      var apiKey = "YOUR_GOOGLE_TRANSLATE_API_KEY";
+      var apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+  
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", apiUrl);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onload = function() {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        var translatedText = response.data.translations[0].translatedText;
+        translationResult.textContent = translatedText;
+      } else {
+         translationResult.textContent = "Translation failed.";
+      }
+    };
+  
+     var data = JSON.stringify({
+      q: word,
+      source: "fr",
+      target: "en",
+    });
+  
+    xhr.send(data);
+  }
+
+  var time1Input = document.getElementById("time-depart");
+  var time2Input = document.getElementById("time-ariver");
+
+
+  time1Input.addEventListener("input", validateTimeInputs);
+  time2Input.addEventListener("input", validateTimeInputs);
+
+  function validateTimeInputs() {
+  var time1 = time1Input.value;
+  var time2 = time2Input.value;
+  
+  if (time1 && time2) {
+    var time1Obj = new Date(`2000-01-01T${time1}`);
+    var time2Obj = new Date(`2000-01-01T${time2}`);
+    
+    var diffInMinutes = (time2Obj - time1Obj) / 60000; // Convert milliseconds to minutes
+    
+    if (!(diffInMinutes >= 60)) {
+      alert("The second time must be at least 1 hour after the first time.");
+    } 
+  }
+}
+  </script>
 </html>

@@ -1,3 +1,13 @@
+* {
+  transition: all 0.5s;
+}
+html {
+  overflow: hidden;
+}
+.section-content {
+  max-height: 100vh;
+  overflow-y: scroll !important;
+}
 .menu {
   position: sticky;
   top: 0px;
@@ -9,6 +19,9 @@
   justify-content: space-between;
   padding: 3rem 2rem;
 }
+/* .content span {
+  font-size: 1.7rem;
+} */
 
 .top {
   display: flex;
@@ -67,23 +80,177 @@ input[type="radio"] + label:active {
   transform: translateY(-2px);
 }
 
+.return-container {
+  display: flex;
+  gap: 0.7rem;
+  flex-direction: column;
+}
+.return {
+  text-align: center;
+  font-size: 1.606rem;
+}
+.return:hover,
+.return:active {
+  background-color: #00aff5;
+  color: #fff;
+}
+.return:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px #44444433;
+}
+.return:active {
+  transform: translateY(-2px);
+}
+
 body {
   display: flex;
   overflow-x: hidden;
 }
 
+.input-parent {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.input-father {
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-column-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.input-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-label {
+  font-size: 1.6rem;
+  color: #030045;
+  font-weight: 500;
+}
+.input {
+  border: 2px solid #030045;
+  border-radius: 999px;
+  font-size: 2rem;
+  font-family: "ubuntu", sans-serif;
+  padding: 0.7rem;
+  color: #030045;
+  transition: all 0.3s;
+}
+.input:focus {
+  border: 2px solid #00aff5;
+}
+.confirm-pass-btn {
+  background-color: #00aff5;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 2;
+  align-self: center;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  transition: all 0.3s;
+}
+.confirm-pass-btn:hover,
+.confirm-pass-btn:active {
+  color: #fff;
+  box-shadow: 0px 5px 25px #44444488;
+  transform: translateY(-10px);
+}
+.confirm-pass-btn:active {
+  transform: translateY(-3px);
+}
+
+.input-parent.unshown * * * {
+  padding: 0;
+  /* width: 0;
+  height: 0; */
+  gap: 0;
+  font-size: 0;
+  border: 0px;
+  opacity: 0;
+}
+.input-parent.unshown * * {
+  padding: 0;
+  /* width: 0;
+  height: 0; */
+  gap: 0;
+  font-size: 0;
+  opacity: 0;
+  border: 0px;
+}
+.input-parent.unshown * {
+  padding: 0;
+  /* width: 0;
+  height: 0; */
+  gap: 0;
+  font-size: 0;
+  opacity: 0;
+  border: 0px;
+}
+.input-parent.unshown {
+  gap: 0;
+}
+/* :::: */
+.input-parent * * * {
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.input-parent * * {
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+.input-parent * {
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+.input-parent {
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.unshown .input {
+  padding: 0;
+  gap: 0;
+  font-size: 0;
+  opacity: 0;
+  border: 0px;
+}
+.unshown .unhiddens-text {
+  font-size: 1.7rem !important;
+  opacity: 1 !important;
+}
+
+.head-name .unshown .unhiddens-text {
+  font-size: 2.5rem !important;
+  opacity: 1 !important;
+}
+.unhiddens-text {
+  font-size: 0rem !important;
+  transition: all 0.5s;
+}
+
+.nogap {
+  gap: 0;
+}
+
+.put-away {
+  transform: translate(-50%, 6rem) !important;
+}
 /* //////////////////////////////// */
 /* PROFILE */
 /* //////////////////////////////// */
 .section-content {
-  margin: 3rem 0rem 10rem 0rem;
+  padding: 3rem 0rem 10rem 0rem;
   width: 100%;
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 .head {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
@@ -111,7 +278,22 @@ body {
   bottom: 3px;
   right: 3px;
   cursor: pointer;
+  border: 0px;
 }
+#edit--photo input[type="file"] {
+  opacity: 0;
+  cursor: pointer !important;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.edit--photo input {
+  display: none;
+}
+#prenom {
+  margin-bottom: 0.5rem;
+}
+
 .head-name {
   display: flex;
   gap: 1rem;
@@ -131,10 +313,25 @@ body {
   cursor: pointer;
 }
 .edit--icon {
+  opacity: 1;
   height: 70%;
   width: 70%;
   color: #030045;
+  cursor: pointer;
 }
+
+.edit--icon-photo {
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 70%;
+  color: #030045;
+  cursor: pointer;
+}
+
 .head-rating {
   display: flex;
   align-items: center;
@@ -148,6 +345,8 @@ body {
   font-size: 2rem;
 }
 .title {
+  display: flex;
+  gap: 1rem;
   color: #00aff5;
   font-weight: 900;
   font-size: 1.7rem;
@@ -156,11 +355,12 @@ body {
 .content {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
-.content span {
-  font-size: 1.7rem;
+.content.dynamic {
+  justify-content: center;
 }
+
 .mdp {
   letter-spacing: 0.1rem;
 }
@@ -539,4 +739,96 @@ body {
 }
 .past * * * * {
   color: #030045 !important;
+}
+
+.edit--content .button-text {
+  transition: all 0.2s ease-out;
+  border-radius: 500rem;
+  background-color: #ffadad;
+  color: #ff0000;
+  padding: 0rem;
+  max-width: 0rem;
+  opacity: 0;
+  font-size: 0.1rem;
+}
+.button-text.redify {
+  opacity: 1;
+  padding: 0.5rem 0.7rem;
+  max-width: fit-content;
+  font-size: 1.5rem;
+}
+.redifyed .edit--icon {
+  max-width: 0px;
+  opacity: 0;
+}
+.edit--content.redifyed {
+  width: fit-content !important;
+}
+/* //////////////////////////////// */
+/* avis */
+/* //////////////////////////////// */
+.avis {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+.review {
+  border-radius: 29px;
+  background-color: #daf4ff;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-self: center;
+  /* justify-content: center; */
+  gap: 2rem;
+  flex-grow: 1;
+  padding: 2rem 2rem;
+  transition: all 0.5s;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.15);
+}
+.review:hover {
+  transform: translateY(-0.5rem);
+}
+
+.rating-stars {
+  align-self: center;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.rating-star {
+  height: 3rem;
+  width: 3rem;
+}
+
+.review-photo {
+  width: 5rem;
+  height: 5rem;
+  border: 2px solid #030045;
+  border-radius: 999px;
+}
+
+.review-text {
+  font-size: 1.8rem;
+  min-height: 15rem;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.review-date {
+  font-size: 1.4rem;
+}
+.user {
+  display: flex;
+  gap: 0.1rem;
+  flex-direction: column;
+}
+.review-full-name {
+  font-size: 2rem;
+}
+.user-info {
+  display: flex;
+  gap: 1rem;
+  align-self: center;
 }

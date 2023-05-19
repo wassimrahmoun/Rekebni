@@ -52,6 +52,7 @@ const trajetSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
     date: {
       type: Date,
       required: [true, "Vous devez ajouter date de depart"],
