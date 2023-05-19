@@ -174,3 +174,20 @@ body {
   font-weight: 700;
   color: #030045;
 }
+.linkTologin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.linkTologin p {
+  color: rgba(160, 160, 160, 1);
+
+  font-weight: 100;
+}
+
+.linkTologin a {
+  font-weight: 700;
+  color: #030045;
+}
