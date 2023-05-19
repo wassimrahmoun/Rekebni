@@ -38,6 +38,7 @@ function afficherEtoiles(ranking) {
           }    
 
 const openCloseTrajetElementEventsListener = function(){
+    console.log(userId) ;
         var trajetElements = document.querySelectorAll(".trajet");
         var trajetBottomElements = document.querySelectorAll(".trajet-bottom");
         var buttonElements = document.querySelectorAll("button");
@@ -104,9 +105,9 @@ document.addEventListener("DOMContentLoaded",async function(){
          "Authorization": `Bearer ${token}` 
         }
       });
-    console.log(res) ;
+    // console.log(res) ;
     const trajets = (await res.json()).data.trajet ;  // array of current user trajets
-    console.log(trajets) ;
+    // console.log(trajets) ;
     
     const mesTrajets = function(){
     trajets.forEach(trajet=>{
@@ -191,4 +192,34 @@ document.addEventListener("DOMContentLoaded",async function(){
      }
 
      mesTrajets() ;
+
+     const mesReservations =async function(){
+        const res = await fetch(`http://localhost:8000/api/v1/trajets/passager/645e8fd0ddef963735c6e2c9`,{
+         method: "GET",
+        headers: {
+         "Content-Type": "application/json",
+         "Authorization": `Bearer ${token}` 
+        }
+        })
+        console.log(res) ;
+        const reservations = await res.json() ;
+        console.log(reservations) ;
+
+     }
+
+     mesReservations() ;
+
+     const deleteAccountEventListener = function(){
+       const deleteAccountElement = document.querySelector(".delete-account") ;
+       deleteAccountElement.addEventListener("click",async function(){
+        const url =`http://localhost:8000/api/v1/users/${userId}` ;
+        const res = await fetch(url,{
+            method:"DELETE"
+        })
+        if(res.ok) { window.localStorage.removeItem("userJson");
+                     window.location.href="/" ;}
+       })
+     }
+     
+     deleteAccountEventListener() ;
 }) ;

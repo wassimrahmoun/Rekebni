@@ -60,11 +60,12 @@ exports.getUserTrajects = catchAsync(async (req, res, next) => {
     },
   });
 });
+
 exports.getUserReservations = catchAsync(async (req, res, next) => {
-  const slug = req.params.slug;
-  const trajet = await await Trajet.find({
-    Passagers: { $elemMatch: { slug: slug } },
-  }).populate("Conducteur", "name photo");
+  const id = req.params.id;
+  const trajet = await Trajet.find({ Passagers: id })
+    .populate("Passagers")
+    .populate("Conducteur", "name photo");
   res.status(200).json({
     //to resive tours const array
     status: "success",
