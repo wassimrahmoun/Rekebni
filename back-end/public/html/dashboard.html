@@ -78,14 +78,49 @@
       <div class="head">
         <div class="head-photo">
           <img src="../img/user/avatar-details.jpg" class="head-pfp" />
-          <botton id="edit--photo" class="edit--photo special">
-            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
-          </botton>
+          <label for="edit--photo" class="edit--photo special">
+            <ion-icon
+              name="create-outline"
+              class="edit--icon edit--icon-photo"
+            ></ion-icon>
+            <input
+              type="file"
+              accept="image/png, image/jpeg"
+              id="edit--photo"
+            />
+          </label>
         </div>
         <div class="head-name">
-          <span class="head-name-fullname">Felix Lengyel</span>
-          <botton id="edit--name" class="edit--name special">
+          <!-- <span class="head-name-fullname">Felix Lengyel</span> -->
+          <div class="input-parent nogap unshown">
+            <span
+              id="head-name-fullname"
+              class="head-name-fullname unhiddens-text"
+              >Felix Lengyel</span
+            >
+            <input
+              class="input"
+              type="text"
+              id="prenom"
+              name="name"
+              size="15"
+              placeholder="Votre Prénom"
+            />
+            <input
+              class="input"
+              type="text"
+              id="nom"
+              name="name"
+              size="15"
+              placeholder="Votre Nom de Famille"
+            />
+          </div>
+          <!-- <botton id="edit--name" class="edit--name special">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+          </botton> -->
+          <botton class="edit--content edit--name">
+            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+            <span class="button-text">cancel</span>
           </botton>
         </div>
         <div class="head-rating">
