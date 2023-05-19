@@ -330,6 +330,7 @@ prevBtn.addEventListener("click", function () {
 
 reserverTrajet.addEventListener("click", async function(){
  const url = `http://localhost:8000/api/v1/trajets/reserver/${selectedTrajetId}` ;
+ try{
  const res = await fetch(url , {
             method: "POST",
             headers: {
@@ -341,5 +342,16 @@ reserverTrajet.addEventListener("click", async function(){
               places:place
             }),
           });
+  
+if (!res.ok) throw new Error("Something has gone wrong ❌ , please try again later !") ;
+
+await res.json() ;
+
+window.location.href = "/html/dashboard.html" ;
+
+
+}catch(err){
+  console.error(err.message) ;
+}
  
 })

@@ -75,6 +75,7 @@ const openCloseTrajetElementEventsListener = function(){
 
 document.addEventListener("DOMContentLoaded",async function(){
     signOutEventListener() ;
+    
     const profilTabInfos = function(){
     const imgElement = document.querySelector(".head-pfp") ;
     const ratingsStarsElement = document.querySelector(".head-rating-stars") ;
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded",async function(){
     phoneElement.textContent = userPhoneFormatted ;
     emailElement.textContent = userEmail ;
     }
+
     profilTabInfos() ;
 
     const trajetsContainer = document.querySelector(".trajets") ;
@@ -194,7 +196,8 @@ document.addEventListener("DOMContentLoaded",async function(){
      mesTrajets() ;
 
      const mesReservations =async function(){
-        const res = await fetch(`http://localhost:8000/api/v1/trajets/passager/645e8fd0ddef963735c6e2c9`,{  // mettre userId aprés
+        // const res = await fetch(`http://localhost:8000/api/v1/trajets/passager/645e8fd0ddef963735c6e2c9`,{  // mettre userId aprés
+        const res = await fetch(`http://localhost:8000/api/v1/trajets/passager/${userId}`,{
          method: "GET",
         headers: {
          "Content-Type": "application/json",

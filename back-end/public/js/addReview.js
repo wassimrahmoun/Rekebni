@@ -25,20 +25,22 @@ document.addEventListener("DOMContentLoaded",function(){
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}`
+              "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify({
-              review:review,
-              rating:rating,
-              conducteur: conducteurId ,
-              user:userId
+               review: review,
+               rating: rating,
+               conducteur: conducteurId,
+               user: userId,
             }),
           });
        
+    console.log(res) ;
    if (!res.ok) throw new Error("Something has gone wrong ❌ , please try again later !")       
 
- 
    await res.json() ;
+
+   window.location.href ="/html/dashboard.html"
 
 }catch(err){
 
