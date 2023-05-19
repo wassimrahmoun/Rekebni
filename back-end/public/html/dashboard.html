@@ -69,23 +69,60 @@
           class="custom-radio"
           onclick="showSection('reviews-section')"
         />
-        <label for="reviews" class="menu-item">Mes Avis</label>
+        <label for="reviews" class="menu-item">Avis Sur Moi</label>
       </fieldset>
-
-      <span class="menu-item disconnect">Se Déconnecter</span>
+      <div class="return-container">
+        <a href="/" class="return menu-item">retour à la page d'accueil</a>
+        <span class="menu-item disconnect">Se Déconnecter</span>
+      </div>
     </section>
     <section id="profile-section" class="section-content">
       <div class="head">
         <div class="head-photo">
           <img src="../img/user/avatar-details.jpg" class="head-pfp" />
-          <botton id="edit--photo" class="edit--photo special">
-            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
-          </botton>
+          <label for="edit--photo" class="edit--photo special">
+            <ion-icon
+              name="create-outline"
+              class="edit--icon edit--icon-photo"
+            ></ion-icon>
+            <input
+              type="file"
+              accept="image/png, image/jpeg"
+              id="edit--photo"
+            />
+          </label>
         </div>
         <div class="head-name">
-          <span class="head-name-fullname">Felix Lengyel</span>
-          <botton id="edit--name" class="edit--name special">
+          <!-- <span class="head-name-fullname">Felix Lengyel</span> -->
+          <div class="input-parent nogap unshown">
+            <span
+              id="head-name-fullname"
+              class="head-name-fullname unhiddens-text"
+              >Felix Lengyel</span
+            >
+            <input
+              class="input"
+              type="text"
+              id="prenom"
+              name="name"
+              size="15"
+              placeholder="Votre Prénom"
+            />
+            <input
+              class="input"
+              type="text"
+              id="nom"
+              name="name"
+              size="15"
+              placeholder="Votre Nom de Famille"
+            />
+          </div>
+          <!-- <botton id="edit--name" class="edit--name special">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+          </botton> -->
+          <botton class="edit--content edit--name">
+            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+            <span class="button-text">cancel</span>
           </botton>
         </div>
         <div class="head-rating">
@@ -160,7 +197,9 @@
                 />
               </div>
             </div>
-            <button class="confirm-pass-btn">Confirmer le mot de passe</button>
+            <button class="confirm-pass-btn">
+              Sauvegarder le mot de passe
+            </button>
           </div>
         </div>
         <div class="divider"></div>
@@ -172,8 +211,8 @@
           </botton>
         </div>
         <div class="content">
-          <span class="unhiddens-text">ousdjeziri</span>
-          <div class="input-parent unshown">
+          <div class="input-parent nogap unshown">
+            <span class="unhiddens-text" id="pseudo">ousdjeziri</span>
             <input class="input" type="text" id="name" name="name" size="25" />
           </div>
         </div>
@@ -186,8 +225,9 @@
           </botton>
         </div>
         <div class="content">
-          <div>
-            <span class="tel">+213</span> <span>&nbsp;549 208 230</span>
+          <div class="input-parent nogap unshown">
+            <span id="telephone" class="unhiddens-text">+213 549 208 230</span>
+            <input class="input" type="text" id="tel" name="name" size="25" />
           </div>
         </div>
         <div class="divider"></div>
@@ -199,14 +239,23 @@
           </botton>
         </div>
         <div class="content">
-          <span>djezirioussama@gmail.com</span>
+          <div class="input-parent nogap unshown">
+            <span class="unhiddens-text">djezirioussama@gmail.com</span>
+            <input
+              class="input"
+              type="email"
+              id="email"
+              name="name"
+              size="25"
+            />
+          </div>
         </div>
         <div class="divider"></div>
         <div class="delete--container">
           <botton class="delete-account disconnect">supprimer le compte</botton>
         </div>
       </div>
-      <div class="save-alert">
+      <div class="save-alert put-away">
         <span>
           soyez prudent - vous avez des modifications non enregistrées
         </span>
@@ -384,9 +433,11 @@
                 <span class="price-value">1000</span>
                 <span class="price-text">DA</span>
               </div>
-              <div class="leave-a-review">
-                <span>laisser un avis</span>
-              </div>
+              <a href="/html/addReview.html">
+                <div class="leave-a-review">
+                  <span>laisser un avis</span>
+                </div>
+              </a>
             </div>
           </div>
           <div class="result past">
@@ -464,9 +515,11 @@
                 <span class="price-value">1000</span>
                 <span class="price-text">DA</span>
               </div>
-              <div class="leave-a-review">
-                <span>laisser un avis</span>
-              </div>
+              <a href="/html/addReview.html">
+                <div class="leave-a-review">
+                  <span>laisser un avis</span>
+                </div>
+              </a>
             </div>
           </div>
           <div class="result past">
@@ -544,9 +597,11 @@
                 <span class="price-value">1000</span>
                 <span class="price-text">DA</span>
               </div>
-              <div class="leave-a-review">
-                <span>laisser un avis</span>
-              </div>
+              <a href="/html/addReview.html">
+                <div class="leave-a-review">
+                  <span>laisser un avis</span>
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -766,6 +821,94 @@
       <div class="container">
         <div class="section-title">Mes Avis</div>
         <div class="divider"></div>
+        <div class="avis">
+          <div class="review">
+            <div class="rating-stars">
+              <img
+                id="rating-star-1"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+              <img
+                id="rating-star-2"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+              <img
+                id="rating-star-3"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+              <img
+                id="rating-star-4"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+              <img
+                id="rating-star-5"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+            </div>
+            <span id="review-texte" class="review-text"
+              >2eme review teste bon conducteur ...</span
+            >
+            <div class="user-info">
+              <img
+                id="review-photo"
+                class="review-photo"
+                src="../img/user/default.jpg"
+              />
+              <div class="user">
+                <span id="review-date" class="review-date">2023-05-13</span>
+                <span id="review-full-name" class="review-full-name">said</span>
+              </div>
+            </div>
+          </div>
+          <li class="review">
+            <div class="rating-stars">
+              <img
+                id="rating-star-1"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+              <img
+                id="rating-star-2"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+              <img
+                id="rating-star-3"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+              <img
+                id="rating-star-4"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+              <img
+                id="rating-star-5"
+                src="../img/Star.png"
+                class="rating-star"
+              />
+            </div>
+            <span id="review-texte" class="review-text"
+              >2eme review teste bon conducteur ...</span
+            >
+            <div class="user-info">
+              <img
+                id="review-photo"
+                class="review-photo"
+                src="../img/user/default.jpg"
+              />
+              <div class="user">
+                <span id="review-date" class="review-date">2023-05-13</span>
+                <span id="review-full-name" class="review-full-name">said</span>
+              </div>
+            </div>
+          </li>
+        </div>
       </div>
     </section>
     <script>
@@ -919,6 +1062,8 @@
         var cancelButtonElements = document.querySelectorAll(".edit--content");
         var textElements = document.querySelectorAll(".button-text");
         var inputParents = document.querySelectorAll(".input-parent");
+        var savePopUp = document.querySelector(".save-alert");
+        var b = false;
         // var buttonElements = document.querySelectorAll(".button");
         for (let i = 0; i < cancelButtonElements.length; i++) {
           if (!cancelButtonElements[i].classList.contains("special")) {
