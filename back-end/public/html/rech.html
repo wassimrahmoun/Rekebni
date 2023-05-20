@@ -56,13 +56,23 @@
               >
             </div>
             <div class="nav-profile">
-              <img class="profile-pic" src="default.jpg" id="menu-btn" />
+              <img
+                class="profile-pic"
+                src="../img/user/default.jpg"
+                id="menu-btn"
+              />
               <div class="--absolute" style="display: none" id="menu">
                 <div class="profile-menu a">
                   <!-- <img src="../img/menubbl.png" class="bbl" /> -->
-                  <div class="profile-menu-ele child">Mon Profil</div>
-                  <div class="profile-menu-ele">Paramètres du Compte</div>
-                  <div class="profile-menu-ele last">Se Déconnecter</div>
+                  <div class="profile-menu-ele child" id="profil">
+                    Mon Profil
+                  </div>
+                  <div class="profile-menu-ele" id="settings">
+                    Paramètres du Compte
+                  </div>
+                  <div class="profile-menu-ele last" id="signout">
+                    Se Déconnecter
+                  </div>
                 </div>
               </div>
             </div>
@@ -162,7 +172,6 @@
               name="trier"
               value="Prix le plus bas"
               class="custom-radio"
-              checked
             />
             Prix le plus bas
           </label>
@@ -183,10 +192,10 @@
               type="radio"
               id="filter-duration"
               name="trier"
-              value="Durée la plus courte"
+              value=" Prix le plus chere"
               class="custom-radio"
             />
-            Durée la plus courte
+            Prix le plus chere
           </label>
         </fieldset>
         <!-- <div>
@@ -207,7 +216,7 @@
         <fieldset>
           <legend class="filter-title">Détails</legend>
 
-          <label for="filter-profile" class="filter-name filter">
+          <!-- <label for="filter-profile" class="filter-name filter">
             <input
               type="checkbox"
               id="filter-profile"
@@ -216,7 +225,7 @@
               class="custom-checkbox"
             />
             Profil Verifié
-          </label>
+          </label> -->
 
           <label for="filter-ac" class="filter-name filter">
             <input
@@ -225,7 +234,6 @@
               name="fumer"
               value="Interdit aux Fumeurs"
               class="custom-checkbox"
-              checked
             />
             Interdit aux Fumeurs
           </label>
@@ -300,7 +308,8 @@
       </div>
     </footer>
   </body>
-  <script>
+</html>
+<!-- <script>
     const imgTargets = document.querySelectorAll("img[data-src]");
 
     const loadImg = function (entries, observer) {
@@ -326,4 +335,4 @@
 
     imgTargets.forEach((img) => imgObserver.observe(img));
   </script>
-</html>
+</html> -->

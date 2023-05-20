@@ -68,15 +68,17 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+button {
   color: #030045;
+  font-family: "ubuntu", sans-serif;
 }
 a {
   text-decoration: none;
   /* color: none; */
 }
 section {
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
   display: block;
 }
 /* ****************************** */
@@ -84,6 +86,9 @@ section {
 /* ****************************** */
 .hidden {
   display: none !important;
+}
+.hide-similar {
+  opacity: 0;
 }
 .img {
   margin: 0;
@@ -135,4 +140,9 @@ section {
 }
 body {
   position: relative;
+}
+.container {
+  max-width: 120rem;
+  padding: 0 3rem;
+  margin: 0 auto;
 }

@@ -10,23 +10,61 @@ exports.setTrajetUserIds = (req, res, next) => {
 };
 
 exports.getAllTrajets = factory.getAll(Trajet);
-//exports.getTrajet = factory.getOne(Trajet);
 exports.updateTrajet = factory.updateOne(Trajet);
 exports.deleteTrajet = factory.deleteOne(Trajet);
 exports.createTrajet = factory.createOne(Trajet);
 
 exports.getTrajet = catchAsync(async (req, res, next) => {
-  const trajet = await await Trajet.findOne({
-    id: req.params.slug,
-    // slug: req.params.slug,
+  const trajet = await Trajet.findById({
+    _id: req.params.id,
     isActive: true,
-    // date: req.params.date,
-    //HeurD: req.params.heurD,
+  })
+    .populate({
+      path: "Conducteur",
+      select: "name photo slug ratingsAverage phone",
+    })
+    .populate({
+      path: "reviews",
+      populate: {
+        path: "user",
+        select: "name photo",
+      },
+    })
+    .populate({
+      path: "Passagers",
+      select: "name photo slug",
+    });
+
+  res.status(200).json({
+    //to resive tours const array
+    status: "success",
+    data: {
+      trajet,
+    },
+  });
+});
+
+exports.getUserTrajects = catchAsync(async (req, res, next) => {
+  const trajet = await await Trajet.find({
+    slug: req.params.slug,
   }).populate({
-    path: "reviews",
-    fields: "review rating user",
+    path: "Passagers",
+    select: "name photo slug",
   });
 
+  res.status(200).json({
+    //to resive tours const array
+    status: "success",
+    data: {
+      trajet,
+    },
+  });
+});
+exports.getUserReservations = catchAsync(async (req, res, next) => {
+  const slug = req.params.slug;
+  const trajet = await await Trajet.find({
+    Passagers: { $elemMatch: { slug: slug } },
+  }).populate("Conducteur", "name photo");
   res.status(200).json({
     //to resive tours const array
     status: "success",
@@ -97,8 +135,8 @@ exports.reserverTrajet = catchAsync(async (req, res, next) => {
   const updatedTrajet = await Trajet.findByIdAndUpdate(
     req.params.id,
     {
-      $push: { Conducteur: req.body.passagerId },
-      $push: { Passagers: req.body.conducteurId },
+      $push: { Conducteur: req.body.conducteurId },
+      $push: { Passagers: req.body.passagerId },
       $inc: { places: -req.body.places },
     },
     { new: true }

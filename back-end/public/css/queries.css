@@ -1,0 +1,23 @@
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+
+/**************************/
+/* BELOW 1600px */
+/**************************/
+@media (max-width: 100em) {
+  .hero-title {
+    font-size: 4rem;
+  }
+  .hero-subtext {
+    font-size: 1.8rem;
+  }
+  .info-title-text {
+    font-size: 2.4rem;
+  }
+  .info-text {
+  }
+}
+/**************************/
+/* BELOW 1400px */
+/**************************/
+@media (max-width: 87.5em) {
+}
