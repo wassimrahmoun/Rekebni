@@ -21,7 +21,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
   })
     .populate({
       path: "Conducteur",
-      select: "name photo pseudo ratingsAverage",
+      select: "name photo pseudo ratingsAverage phone",
     })
     .populate({
       path: "reviews",
