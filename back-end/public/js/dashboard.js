@@ -381,61 +381,99 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
   const mesAvis = async function(){
-    const res = await fetch(`http://localhost:8000/api/v1/trajets/${userId}/reviews`,{
+    const res = await fetch(`http://localhost:8000/api/v1/reviews/${userId}`,{
       method:"GET",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
       },
     }) ;
-    console.log(res) ;
+    const avis = (await res.json()).data.review ;
+    console.log(avis) ;
+    const avisContainer = document.querySelector(".avis") ;
+    avis.forEach(review=>{
+    const date = new Date(review.createdAt) ;
+    const day = String(date.getDate()).padStart(2,"0") ;
+    const month = String(date.getMonth()).padStart(2,"0") ;
+    const year = date.getFullYear() ;
+    const html2 = afficherEtoiles(review.rating) ;
     const html = `
     <div class="review">
     <div class="rating-stars">
-      <img
-        id="rating-star-1"
-        src="../img/Star.png"
-        class="rating-star"
-      />
-      <img
-        id="rating-star-2"
-        src="../img/Star.png"
-        class="rating-star"
-      />
-      <img
-        id="rating-star-3"
-        src="../img/Star.png"
-        class="rating-star"
-      />
-      <img
-        id="rating-star-4"
-        src="../img/Star.png"
-        class="rating-star"
-      />
-      <img
-        id="rating-star-5"
-        src="../img/Star.png"
-        class="rating-star"
-      />
+      ${html2}
     </div>
     <span id="review-texte" class="review-text"
-      >2eme review teste bon conducteur ...</span
+      >${review.review}</span
     >
     <div class="user-info">
       <img
         id="review-photo"
         class="review-photo"
-        src="../img/user/default.jpg"
+        src="../img/user/${review.user.photo}"
       />
       <div class="user">
-        <span id="review-date" class="review-date">2023-05-13</span>
-        <span id="review-full-name" class="review-full-name">said</span>
+        <span id="review-date" class="review-date">${year}-${month}-${day}</span>
+        <span id="review-full-name" class="review-full-name">${review.user.name}</span>
       </div>
     </div>
   </div>` ;
-  } ;
+  avisContainer.insertAdjacentHTML("beforeend",html) ;
+  }
+ ) };
+
   mesAvis() ;
 
+  const profilModifier = function(){
+    var alertContainer = document.querySelector(".save-alert") ;
+    const editBtns = document.querySelectorAll(".edit--content") ;
+  
+    editBtns.forEach(btn=>{
+      btn.addEventListener("click",function(){
+       alertContainer.classList.remove("put-away") ;
+      })
+    })
+
+    const hidden = Array.from(editBtns).every(btn=>!btn.classList.contains("redifyed")) ;
+    console.log(hidden) ;
+
+    const saveBtn = document.getElementById("save") ;
+    saveBtn.addEventListener("click",async function(){
+      const prenomInput = document.getElementById("prenom").value ;
+      const nomInput = document.getElementById("nom").value ;
+      const pseudoInput = document.getElementById("name").value ;      
+      const telephoneInput = document.getElementById("tel").value ;
+      const emailInput = document.getElementById("email").value ;
+
+      if (prenomInput && nomInput){const nomComplet =`${nomInput} ${prenomInput}`} ;
+
+      if(nomComplet) userName = nomComplet ;
+      if (pseudoInput) userPseudo = pseudoInput ;
+      if (telephoneInput && telephoneInput.length==10) userPhone = telephoneInput ;
+      if (emailInput) userEmail = emailInput ;
+
+      const url = `http://localhost:8000/api/v1/users/updateMe` ;
+      const res = await fetch(url,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+           name:userName,
+           email: userEmail,
+           pseudo: userPseudo,
+           phone: userPhone,
+        }),
+      }) ;
+
+      console.log(res) ;
+      
+
+
+    })
+  }
+
+  profilModifier() ;
   
     var cancelButtonElements = document.querySelectorAll(".edit--content");
     var textElements = document.querySelectorAll(".button-text");
