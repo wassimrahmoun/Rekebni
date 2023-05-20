@@ -22,7 +22,7 @@ const sortTrajetsOuReservations = function(trajets){
   trajets.sort((a,b)=>{
     const date1 = new Date(a.date) ;
     const date2 = new Date(b.date);
-    return date1 - date2
+    return date2 - date1 ;
   })
 } 
 
