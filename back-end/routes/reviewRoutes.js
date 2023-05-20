@@ -13,7 +13,7 @@ router
 
 router
   .route("/:id")
-  .get(reviewController.getReview)
+  .get(reviewController.getReviewsofuser)
   .patch(reviewController.updateReview)
   .delete(reviewController.deleteReview);
 
