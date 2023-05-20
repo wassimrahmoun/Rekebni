@@ -22,7 +22,7 @@ const sortTrajetsOuReservations = function(trajets){
   trajets.sort((a,b)=>{
     const date1 = new Date(a.date) ;
     const date2 = new Date(b.date);
-    return date2 - date1
+    return date1 - date2
   })
 } 
 
@@ -380,7 +380,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   deleteAccountEventListener();
 
 
-  const mesAvis =function(){
+  const mesAvis = async function(){
+    const res = await fetch(`http://localhost:8000/api/v1/trajets/${userId}/reviews`,{
+      method:"GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    }) ;
+    console.log(res) ;
     const html = `
     <div class="review">
     <div class="rating-stars">
@@ -424,9 +432,27 @@ document.addEventListener("DOMContentLoaded", async function () {
         <span id="review-full-name" class="review-full-name">said</span>
       </div>
     </div>
-  </div>`
-  }
-});
+  </div>` ;
+  } ;
+  mesAvis() ;
+
+  
+    var cancelButtonElements = document.querySelectorAll(".edit--content");
+    var textElements = document.querySelectorAll(".button-text");
+    var inputParents = document.querySelectorAll(".input-parent");
+    var savePopUp = document.querySelector(".save-alert");
+    var b = false;
+    // var buttonElements = document.querySelectorAll(".button");
+    for (let i = 0; i < cancelButtonElements.length; i++) {
+      if (!cancelButtonElements[i].classList.contains("special")) {
+        cancelButtonElements[i].addEventListener("click", function (event) {
+          textElements[i].classList.toggle("redify");
+          cancelButtonElements[i].classList.toggle("redifyed");
+          inputParents[i].classList.toggle("unshown");
+        });
+      }
+    };
+}) ;
 
 ////////////////////////////////////////////////////////////////////////////////////
 
