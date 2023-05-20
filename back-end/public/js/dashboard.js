@@ -18,6 +18,14 @@ if (user) {
   userEmail = user.email;
 }
 
+const sortTrajetsOuReservations = function(trajets){
+  trajets.sort((a,b)=>{
+    const date1 = new Date(a.date) ;
+    const date2 = new Date(b.date);
+    return date2 - date1
+  })
+} 
+
 const signOutEventListener = function () {
   const profilSignOut = document.querySelector(".disconnect"); // Déconnecter
   profilSignOut.addEventListener("click", async function () {
@@ -44,7 +52,6 @@ function afficherEtoiles(ranking) {
 }
 
 const openCloseTrajetElementEventsListener = function () {
-  console.log(userId);
   var trajetElements = document.querySelectorAll(".trajet");
   var trajetBottomElements = document.querySelectorAll(".trajet-bottom");
   var buttonElements = document.querySelectorAll("button");
@@ -108,15 +115,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      "Authorization": `Bearer ${token}`,
     },
   });
   // console.log(res) ;
-  const trajets = (await res.json()).data.trajet; // array of current user trajets
-  // console.log(trajets) ;
+  let trajets = (await res.json()).data.trajet; // array of current user trajets;
+  await sortTrajetsOuReservations(trajets) ;
 
   const mesTrajets = function () {
-    console.log(trajets);
     trajets.forEach((trajet) => {
       const date = new Date(trajet.date);
       const day = String(date.getDate()).padStart(2, "0");
@@ -206,15 +212,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`,
         },
       }
     );
-    console.log(res);
-    const reservations = (await res.json()).data.trajet;
+    let reservations = (await res.json()).data.trajet;
+    await sortTrajetsOuReservations(reservations) ;
     const reservationsContainer = document.querySelector(".reservations");
     reservations.forEach((reservation) => {
-      console.log(reservation);
       if (reservation.Conducteur) {
         const date = new Date(reservation.date);
         const day = String(date.getDate()).padStart(2, "0");
@@ -373,69 +378,56 @@ document.addEventListener("DOMContentLoaded", async function () {
   };
 
   deleteAccountEventListener();
+
+
+  const mesAvis =function(){
+    const html = `
+    <div class="review">
+    <div class="rating-stars">
+      <img
+        id="rating-star-1"
+        src="../img/Star.png"
+        class="rating-star"
+      />
+      <img
+        id="rating-star-2"
+        src="../img/Star.png"
+        class="rating-star"
+      />
+      <img
+        id="rating-star-3"
+        src="../img/Star.png"
+        class="rating-star"
+      />
+      <img
+        id="rating-star-4"
+        src="../img/Star.png"
+        class="rating-star"
+      />
+      <img
+        id="rating-star-5"
+        src="../img/Star.png"
+        class="rating-star"
+      />
+    </div>
+    <span id="review-texte" class="review-text"
+      >2eme review teste bon conducteur ...</span
+    >
+    <div class="user-info">
+      <img
+        id="review-photo"
+        class="review-photo"
+        src="../img/user/default.jpg"
+      />
+      <div class="user">
+        <span id="review-date" class="review-date">2023-05-13</span>
+        <span id="review-full-name" class="review-full-name">said</span>
+      </div>
+    </div>
+  </div>`
+  }
 });
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-document.addEventListener("DOMContentLoaded", function () {
-  var trajetElements = document.querySelectorAll(".trajet");
-  var trajetBottomElements = document.querySelectorAll(".trajet-bottom");
-  var buttonElements = document.querySelectorAll("button");
 
-  for (let i = 0; i < trajetElements.length; i++) {
-    if (!trajetElements[i].classList.contains("past")) {
-      trajetElements[i].addEventListener("click", function (event) {
-        trajetBottomElements[i].classList.toggle("open");
-        trajetElements[i].classList.toggle("opened");
-      });
-    }
-  }
-
-  document.addEventListener("click", function (event) {
-    for (let i = 0; i < trajetElements.length; i++) {
-      if (
-        trajetBottomElements[i].classList.contains("open") &&
-        event.target !== buttonElements[i] &&
-        !trajetElements[i].contains(event.target)
-      ) {
-        trajetBottomElements[i].classList.remove("open");
-        trajetElements[i].classList.remove("opened");
-      }
-    }
-  });
-
-  buttonElements.forEach((btn) => {
-    btn.addEventListener("click", function (event) {
-      event.stopPropagation();
-    });
-  });
-});
-document.addEventListener("DOMContentLoaded", function () {
-  var cancelButtonElements = document.querySelectorAll(".edit--content");
-  var textElements = document.querySelectorAll(".button-text");
-  var inputParents = document.querySelectorAll(".input-parent");
-  var savePopUp = document.querySelector(".save-alert");
-  var b = false;
-  // var buttonElements = document.querySelectorAll(".button");
-  for (let i = 0; i < cancelButtonElements.length; i++) {
-    if (!cancelButtonElements[i].classList.contains("special")) {
-      cancelButtonElements[i].addEventListener("click", function (event) {
-        textElements[i].classList.toggle("redify");
-        cancelButtonElements[i].classList.toggle("redifyed");
-        inputParents[i].classList.toggle("unshown");
-      });
-    }
-  }
-
-  // document.addEventListener("click", function (event) {
-  //   for (let i = 0; i < cancelButtonElements.length; i++) {
-  //     if (
-  //       textElements[i].classList.contains("redify") &&
-  //       !cancelButtonElements[i].contains(event.target)
-  //     ) {
-  //       textElements[i].classList.remove("redify");
-  //       cancelButtonElements[i].classList.remove("redifyed");
-  //     }
-  //   }
-  // });
-});
