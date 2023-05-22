@@ -5,6 +5,7 @@ const catchAsync = require("../utils/catchAsync");
 const factory = require("./handlerFactory");
 const { path } = require("../app.js");
 const Email = require("../utils/email");
+const AppError = require("../utils/appError");
 
 exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User, { path: "reviews" });
