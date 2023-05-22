@@ -55,25 +55,14 @@ body {
   justify-content: space-between;
 }
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
->>>>>>> oussama
+
 .inputs label {
   font-size: 1.7rem;
   color: #030045;
   align-self: center;
 }
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
->>>>>>> oussama
   .inputs select{
     font-family: "ubuntu", sans-serif;
     font-size: 1.5rem;
@@ -86,12 +75,7 @@ body {
     background-color: #DAF4FF;
     overflow: auto;
   }
-<<<<<<< HEAD
-=======
->>>>>>> said
-=======
->>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
->>>>>>> oussama
+
 
 .inputs input {
   font-size: 1.5rem;
@@ -104,14 +88,7 @@ body {
   overflow: auto;
 }
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
->>>>>>> oussama
 .inputs select {
   font-family: "ubuntu", sans-serif;
   font-size: 1.5rem;
@@ -123,24 +100,20 @@ body {
   background-color: #daf4ff;
   overflow: auto;
 }
-<<<<<<< HEAD
+
 
   .nbrpersonne select{
     width: 13%;
     
   }
 
-=======
-<<<<<<< HEAD
-=======
+
   .nbrpersonne input{
     width: 15%;
     
   }
->>>>>>> said
-=======
->>>>>>> 623abc059e9970f13c9ae5917981dfabc2f5a45d
->>>>>>> oussama
+
+
 
 .invalid {
   border: 2px solid #00aff5;
