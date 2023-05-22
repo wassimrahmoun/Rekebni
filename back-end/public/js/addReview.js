@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded",function(){
     e.preventDefault() ;
     // getting inputs
     try{
-    const review = document.getElementById("comment") ;
+    const review = document.getElementById("comment").value ;
     const ratingsElement = document.querySelector(".rating") ;
     const ratings = ratingsElement.querySelectorAll("input") ;
     var rating = 0 ;

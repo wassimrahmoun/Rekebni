@@ -6,6 +6,7 @@ const emptyOutInputs = function () {
   document.getElementById("last-name").value = "";
   document.getElementById("first-name").value = "";
   document.getElementById("pseudo").value = "";
+  document.getElementById("num-tel").value ="" ;
 };
 document.addEventListener("DOMContentLoaded", (e) => {
   let form = document.querySelector(".sign-up-card");
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {
-      emptyOutInputs();
+      // emptyOutInputs();
       document.querySelectorAll(".erreur").forEach((txt) => txt.remove());
       const html = ` <div class="invalid erreur" style="display: flex;" >
       <p class="invalid-text">
