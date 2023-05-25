@@ -4,6 +4,8 @@ const User = require("./../models/userModel.js");
 const catchAsync = require("../utils/catchAsync");
 const factory = require("./handlerFactory");
 const { path } = require("../app.js");
+const Email = require("../utils/email");
+const AppError = require("../utils/appError");
 
 exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User, { path: "reviews" });
@@ -70,7 +72,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
 
   // 2) Filtered out unwanted fields names that are not allowed to be updated
-  const filteredBody = filterObj(req.body, "name", "email", "slug");
+  const filteredBody = filterObj(req.body, "name", "email", "pseudo", "phone");
   if (req.file) filteredBody.photo = req.file.filename;
 
   // 3) Update user document
@@ -85,4 +87,23 @@ exports.updateMe = catchAsync(async (req, res, next) => {
       user: updatedUser,
     },
   });
+});
+
+exports.emailtrajetannule = catchAsync(async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+
+    if (!user) {
+      return next(new AppError("There is no user with email address.", 404));
+    }
+    await new Email(user).Trajetannuler();
+    res.status(200).json({
+      status: "success",
+      message: "sent to email!",
+    });
+  } catch (err) {}
+  return next(
+    new AppError("There was an error sending the email. Try again later!"),
+    500
+  );
 });

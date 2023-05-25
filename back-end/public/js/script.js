@@ -1,20 +1,35 @@
-var userId = window.localStorage.getItem("userid");
+var user = JSON.parse(window.localStorage.getItem("userJson"));
+var userId ;
+if(user)  userId = user.id ;
 const loginRegisterTabs = document.querySelector(".nav-login");
 const profileTab = document.querySelector(".nav-profile");
-const profilSignOut = document.getElementById("signout");
+
+const showProfilePic = function(){
+  var userPic = user.photo ;
+  document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
+}
+
+const signOutEventListener=function(){
+   const profilSignOut = document.getElementById("signout"); // Déconnecter
+    profilSignOut.addEventListener("click", async function () {
+      await fetch("http://localhost:8000/api/v1/users/logout") ;
+      window.localStorage.removeItem("userJson") ;
+      window.location.href = "/";
+      
+    });
+}
 // search
 document.addEventListener("DOMContentLoaded", () => {
   // Check if user connected show profil tab , else show login/register
-  if (!userId) {
-    profileTab.classList.add("hidden");
-    loginRegisterTabs.classList.remove("hidden");
-  } else {
-    loginRegisterTabs.classList.add("hidden");
-    profileTab.classList.remove("hidden");
-    profilSignOut.addEventListener("click", function () {
-      window.localStorage.clear();
-      window.location.href = "/";
-    });
+  if (!userId){
+  profileTab.classList.add("hidden") ;
+  loginRegisterTabs.classList.remove("hidden") ;
+  } 
+  else {
+    loginRegisterTabs.classList.add("hidden") ;
+    profileTab.classList.remove("hidden") ;
+    showProfilePic() ;
+    signOutEventListener() ;
   }
 
   //
@@ -60,4 +75,5 @@ function revealOnScroll() {
     }
   }
 }
+
 window.addEventListener("scroll", revealOnScroll);

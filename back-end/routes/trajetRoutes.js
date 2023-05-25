@@ -43,7 +43,7 @@ router
 
 router.use(authController.protect);
 router.route("/conducteur/:slug").get(trajetController.getUserTrajects);
-router.route("/passager/:slug").get(trajetController.getUserReservations);
+router.route("/passager/:id").get(trajetController.getUserReservations);
 router.route("/reserver/:id").post(trajetController.reserverTrajet);
 
 module.exports = router;

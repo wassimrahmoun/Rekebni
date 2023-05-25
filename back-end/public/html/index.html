@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="../css/quaries.css" />
     <link rel="stylesheet" type="text/css" href="../css/general.css" />
     <!-- <link rel="stylesheet" type="text/css" href="../css/navbar1.css" /> -->
-
     <!-- ICONION SCRIPT LINKS -->
     <script
       type="module"
@@ -40,15 +39,7 @@
           <a class="quisommenous flex-center" href="#"
             ><span class="whitespan">Qui somme nous</span></a
           >
-<<<<<<< HEAD
-<<<<<<< HEAD
-          <a class="nav-ele" href="#">
-=======
           <a class="nav-ele" href="/recherche">
->>>>>>> said
-=======
-          <a class="nav-ele" href="/recherche">
->>>>>>> 55b9ef65b610f4f5d2732f282fa7c5d03e41f1f4
             <ion-icon name="search-outline" class="whiteicon"></ion-icon>
             <span class="whitespan">Recherche</span>
           </a>
@@ -90,13 +81,15 @@
               <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
             </div>
             <div class="nav-profile hidden">
-              <img class="profile-pic" src="default.jpg" id="menu-btn" />
+              <img class="profile-pic" src="../img/user/default.jpg" id="menu-btn" />
               <div class="--absolute" style="display: none" id="menu">
                 <div class="profile-menu a">
                   <!-- <img src="../img/menubbl.png" class="bbl" /> -->
-                  <div class="profile-menu-ele child" id="profil">
+                  <a href="html/dashboard.html">
+                  <div class="profile-menu-ele child" id="profil" style="color: black;">
                     Mon Profil
                   </div>
+                </a>
                   <div class="profile-menu-ele" id="settings">
                     Paramètres du Compte
                   </div>
@@ -601,7 +594,6 @@
       threshold: 0,
       rootMargin: "50px",
     });
-
     imgTargets.forEach((img) => imgObserver.observe(img));
 
     // Get the current date

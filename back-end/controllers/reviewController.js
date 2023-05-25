@@ -27,3 +27,18 @@ exports.createReview = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getReviewsofuser = catchAsync(async (req, res, next) => {
+  const review = await Review.find({
+    conducteur: req.params.id,
+  });
+
+  res.status(200).json({
+
+    status: "success",
+    data: {
+      review,
+    },
+  });
+}); 
+

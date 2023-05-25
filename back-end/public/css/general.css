@@ -10,7 +10,7 @@
   Bold: 700
 
   - Line Heights:
-
+profile-pic
   - Letter spacing
 
 
@@ -140,6 +140,7 @@ section {
 }
 body {
   position: relative;
+  overflow-x: hidden;
 }
 .container {
   max-width: 120rem;

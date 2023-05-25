@@ -4,7 +4,7 @@ const AppError = require("../utils/appError");
 const User = require("./../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const jwt = require("jsonwebtoken");
-const sendEmail = require("../utils/email");
+const Email = require("../utils/email");
 
 const signToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -36,7 +36,8 @@ const createSendToken = (user, statusCode, res) => {
 };
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
-
+  const url = `http://localhost:8000/api/v1/users/activate/${newUser.id}`;
+  await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, res);
 });
 
@@ -50,7 +51,9 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   //2) chesk if user existes && password is correct
-  const user = await User.findOne({ email: email }).select("+password"); //+password because password fdont apire in db
+  const user = await User.findOne({ email: email, active: true }).select(
+    "+password"
+  ); //+password because password fdont apire in db
 
   if (!user || !(await user.verifyPassword(password, user.password))) {
     return next(new AppError("incorrect email or password", 401));
@@ -132,11 +135,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.\nIf you didn't forget your password, please ignore this email!`;
 
   try {
-    await sendEmail({
-      email: user.email,
-      subject: "Your password reset token (valid for 10 min)",
-      message,
-    });
+    await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({
       status: "success",
@@ -271,3 +270,31 @@ exports.restrictTo = (...roles) => {
     next();
   };
 };
+
+exports.activateUser = catchAsync(async (req, res, next) => {
+  const userId = req.params.id;
+
+  // Recherchez l'utilisateur dans la base de données
+  const user = await User.findById({ _id: userId });
+
+  // Vérifiez si l'utilisateur existe
+  if (!user) {
+    return next(new AppError("User not found", 404));
+  }
+
+  // Vérifiez si l'utilisateur est déjà activé
+  if (user.active) {
+    return next(new AppError("User is already activated", 400));
+  }
+
+  // Activez l'utilisateur
+  user.active = true;
+  await user.save();
+
+  // Redirigez l'utilisateur vers une page de succès ou renvoyez une réponse JSON réussie
+
+  res.status(200).json({
+    status: "success",
+    message: "User activated successfully",
+  });
+});
