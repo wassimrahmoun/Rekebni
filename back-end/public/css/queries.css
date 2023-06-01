@@ -3,21 +3,49 @@
 /**************************/
 /* BELOW 1600px */
 /**************************/
-@media (max-width: 160em) {
+@media (max-width: 1600px) {
   .hero-title {
-    font-size: 4rem;
+    /* font-size: 4rem; */
+  }
+  .container {
+    width: 100% !important;
   }
   .hero-subtext {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
-  .info-title-text {
+  /* .info-title-text {
     font-size: 2.4rem;
-  }
+  } */
   .info-text {
   }
 }
 /**************************/
 /* BELOW 1400px */
 /**************************/
-@media (max-width: 87.5em) {
+@media (max-width: 1540px) {
+  .hero-title {
+    font-size: 5rem;
+  }
+  .hero-subtext {
+    font-size: 1.8rem;
+  }
+  .info-title-text {
+    font-size: 2.2rem;
+  }
+  .info-text {
+    font-size: 2rem;
+  }
+  .bubble1 {
+    background-image: url(../img/bubble1.png);
+    padding: 4rem 6rem 5rem 6rem;
+    /* padding: 10% 7% 10% 7%; */
+  }
+  .bubble2 {
+    background-image: url(../img/bubble2.png);
+    padding: 4rem 5rem 8rem 8rem;
+  }
+  .bubble3 {
+    background-image: url(../img/bubble3.png);
+    padding: 6rem 6rem 7rem 8rem;
+  }
 }

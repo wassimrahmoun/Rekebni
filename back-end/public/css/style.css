@@ -393,6 +393,7 @@ img {
 .bubble1 {
   background-image: url(../img/bubble1.png);
   padding: 6rem 6rem 8rem 7rem;
+  /* padding: 10% 7% 10% 7%; */
 }
 .bubble2 {
   background-image: url(../img/bubble2.png);
@@ -400,7 +401,8 @@ img {
 }
 .bubble3 {
   background-image: url(../img/bubble3.png);
-  padding: 6rem 6rem 7rem 8rem;
+
+  padding: 8rem 7rem 7rem 7rem;
 }
 
 .info-title {
@@ -420,7 +422,7 @@ img {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
-  font-size: 2.84rem;
+  font-size: 2.6rem;
   font-weight: 700;
 }
 .info-title-text.is-visible {
