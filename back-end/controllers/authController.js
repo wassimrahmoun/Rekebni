@@ -107,7 +107,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   if (currentUser.changedPasswordAfter(decoded.iat)) {
     return next(
-      new AppError("User recently changfed password , please try again", 401)
+      new AppError("User recently changed password , please try again", 401)
     );
   }
 
@@ -140,6 +140,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: "Token sent to email!",
+      url: resetURL,
     });
   } catch (err) {
     user.passwordResetToken = undefined;
