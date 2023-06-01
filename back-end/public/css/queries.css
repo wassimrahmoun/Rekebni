@@ -3,7 +3,7 @@
 /**************************/
 /* BELOW 1600px */
 /**************************/
-@media (max-width: 100em) {
+@media (max-width: 160em) {
   .hero-title {
     font-size: 4rem;
   }
