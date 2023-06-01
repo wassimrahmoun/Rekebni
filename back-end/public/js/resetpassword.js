@@ -31,14 +31,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
       if (response.ok) {
         console.log("Changement de mot de passe confirmé avec succès.");
-        // Réinitialisation réussie, redirigez l'utilisateur vers une autre page si nécessaire
       } else {
-        console.log("Échec de la confirmation du changement de mot de passe.");
-        // Gérer l'échec de la réinitialisation du mot de passe
+        const invalide = document.querySelector(".invalid");
+        invalide.style.display = "flex";
       }
     } catch (error) {
       console.error("Erreur lors de l'envoi de la requête PATCH :", error);
-      // Gérer les erreurs de requête
     }
   });
 });
