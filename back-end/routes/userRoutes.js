@@ -51,4 +51,5 @@ router
   .route("/")
   .get(authController.restrictTo("admin"), userController.getAllUsers);
 
+router.route("/annuler").post(userController.emailtrajetannule);
 module.exports = router;

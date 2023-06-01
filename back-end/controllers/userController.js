@@ -4,6 +4,8 @@ const User = require("./../models/userModel.js");
 const catchAsync = require("../utils/catchAsync");
 const factory = require("./handlerFactory");
 const { path } = require("../app.js");
+const Email = require("../utils/email");
+const AppError = require("../utils/appError");
 
 exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User, { path: "reviews" });
@@ -85,4 +87,23 @@ exports.updateMe = catchAsync(async (req, res, next) => {
       user: updatedUser,
     },
   });
+});
+
+exports.emailtrajetannule = catchAsync(async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+
+    if (!user) {
+      return next(new AppError("There is no user with email address.", 404));
+    }
+    await new Email(user).Trajetannuler();
+    res.status(200).json({
+      status: "success",
+      message: "sent to email!",
+    });
+  } catch (err) {}
+  return next(
+    new AppError("There was an error sending the email. Try again later!"),
+    500
+  );
 });

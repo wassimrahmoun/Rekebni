@@ -179,7 +179,7 @@ else {
 
           await res.json();
 
-          window.location.href = "/recherche";
+          window.location.href = "/";
         } catch (err) {
           document.querySelectorAll(".erreur").forEach((txt) => txt.remove());
           const html = ` <div class="invalid erreur" style="display: flex;" >

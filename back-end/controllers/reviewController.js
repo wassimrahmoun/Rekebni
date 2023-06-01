@@ -34,7 +34,6 @@ exports.getReviewsofuser = catchAsync(async (req, res, next) => {
   });
 
   res.status(200).json({
-    //to resive tours const array
     status: "success",
     data: {
       review,

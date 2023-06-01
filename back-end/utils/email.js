@@ -75,10 +75,11 @@ module.exports = class Email {
 
     await this.send(subject, text, modifiedHtml);
   }
-
-  async sendPasswordReset() {
+  async Trajetannuler() {
     const subject = `Trajet annuler !`;
 
     const text = `Narvé de vous annoncer que votre conducteur a annuler son trajet pour des raisons inconnu , vous pouvais encore trouver un nv trajet dans notre site web : ${this.url}`;
+
+    await this.send(subject, text);
   }
 };
