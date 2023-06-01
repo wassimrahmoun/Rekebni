@@ -75,7 +75,6 @@ module.exports = class Email {
 
     await this.send(subject, text, modifiedHtml);
   }
-
   async Trajetannuler() {
     const subject = `Trajet annuler !`;
 

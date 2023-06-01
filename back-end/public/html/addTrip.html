@@ -43,7 +43,6 @@
       rel="stylesheet"
     />
     <script src="../js/addTrip.js"></script>
-    <script src="../js/addTrip.js"></script>
   </head>
   <body>
     <!-- END OF SESSION -->
@@ -477,7 +476,7 @@
     var numberInput = document.getElementById("matricule-input");
     var submitButton = document.getElementById("ajouter-btn");
 
-    submitButton.addEventListener("click", function() {
+  /*  submitButton.addEventListener("click", function() {
       var pattern = /^\d{6} \d{3} \d{2}$/;
   
       if (pattern.test(numberInput.value)) {
@@ -504,7 +503,7 @@
       var div = document.createElement("div");
       div.style.color = colorName;
       return div.style.color !== "";
-    }
+    } 
     function translateWord(word) {
       var apiKey = "YOUR_GOOGLE_TRANSLATE_API_KEY";
       var apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
@@ -552,6 +551,6 @@
       alert("The second time must be at least 1 hour after the first time.");
     } 
   }
-}
+} */
   </script>
 </html>
