@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, "public/css")));
+app.use(express.static(path.join(__dirname, "public/css")));
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
