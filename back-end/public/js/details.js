@@ -1,31 +1,31 @@
-"use strict"
-const reserverTrajet = document.querySelector(".confirm") ;
+"use strict";
+const reserverTrajet = document.querySelector(".confirm");
 var user = JSON.parse(window.localStorage.getItem("userJson"));
-var token = window.localStorage.getItem("userToken") ;
-var userId ;
-if(user)  userId = user.id ;
-var selectedTrajetId ;
-var place ;
+var token = window.localStorage.getItem("userToken");
+var userId;
+if (user) userId = user.id;
+var selectedTrajetId;
+var place;
 
-const showProfilePic = function(){
-  const userPic = user.photo ;
-  document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
-}
+const showProfilePic = function () {
+  const userPic = user.photo;
+  document
+    .querySelector(".profile-pic")
+    .setAttribute("src", `../img/user/${userPic}`);
+};
 
-const signOutEventListener=function(){
-   const profilSignOut = document.getElementById("signout"); // Déconnecter
-    profilSignOut.addEventListener("click", async function () {
-      await fetch("http://localhost:8000/api/v1/users/logout") ;
-      window.localStorage.removeItem("userJson") ;
-      window.location.href = "/";
-      
-    });
-}
-
+const signOutEventListener = function () {
+  const profilSignOut = document.getElementById("signout"); // Déconnecter
+  profilSignOut.addEventListener("click", async function () {
+    await fetch("http://localhost:8000/api/v1/users/logout");
+    window.localStorage.removeItem("userJson");
+    window.location.href = "/";
+  });
+};
 
 document.addEventListener("DOMContentLoaded", function () {
-  showProfilePic() ;
-  signOutEventListener() ;
+  showProfilePic();
+  signOutEventListener();
   // Simulating a delay of 3 seconds for demonstration purposes
   setTimeout(function () {
     // Remove the spinner and display the content
@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // ...
   }, 3000);
 });
-
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -307,6 +306,7 @@ function showPerson(person) {
   fullname.textContent = item.user.name;
   ladate.textContent = item.date.substring(0, 10);
   info.textContent = item.review;
+  star.innerHTML = getStarRatingHTML(item.rating);
 }
 
 // show next person
@@ -327,31 +327,28 @@ prevBtn.addEventListener("click", function () {
   showPerson(currentItem);
 });
 
+reserverTrajet.addEventListener("click", async function () {
+  const url = `http://localhost:8000/api/v1/trajets/reserver/${selectedTrajetId}`;
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        passagerId: userId,
+        places: place,
+      }),
+    });
 
-reserverTrajet.addEventListener("click", async function(){
- const url = `http://localhost:8000/api/v1/trajets/reserver/${selectedTrajetId}` ;
- try{
- const res = await fetch(url , {
-            method: "POST",
-            headers: {
-             "Content-Type": "application/json",
-             "Authorization": `Bearer ${token}` 
-            },
-            body: JSON.stringify({
-              passagerId:userId ,
-              places:place
-            }),
-          });
-  
-if (!res.ok) throw new Error("Something has gone wrong ❌ , please try again later !") ;
+    if (!res.ok)
+      throw new Error("Something has gone wrong ❌ , please try again later !");
 
-await res.json() ;
+    await res.json();
 
-window.location.href = "/html/dashboard.html" ;
-
-
-}catch(err){
-  console.error(err.message) ;
-}
- 
-})
+    window.location.href = "/html/dashboard.html";
+  } catch (err) {
+    console.error(err.message);
+  }
+});

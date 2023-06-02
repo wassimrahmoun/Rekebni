@@ -50,8 +50,5 @@ router
 router.route("/").get(userController.getAllUsers);
 
 router.route("/annuler").post(userController.emailtrajetannule);
-
-router
-  .route("/ban/:id")
-  .patch(authController.restrictTo("admin"), userController.banUser);
+router.route("/ban/:id").patch(userController.banUser);
 module.exports = router;
