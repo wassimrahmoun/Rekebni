@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mon Compte</title>
-    <link rel="stylesheet" type="text/css" href="/css/general.css" />
-    <link rel="stylesheet" type="text/css" href="/css/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="../css/general.css" />
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
 
     <!-- ICONION SCRIPT LINKS -->
     <script
@@ -69,64 +69,23 @@
           class="custom-radio"
           onclick="showSection('reviews-section')"
         />
-        <label for="reviews" class="menu-item">Avis Sur Moi</label>
+        <label for="reviews" class="menu-item">Mes Avis</label>
       </fieldset>
-      <div class="return-container">
-        <a href="/" class="return menu-item">retour à la page d'accueil</a>
-        <span class="menu-item disconnect">Se Déconnecter</span>
-      </div>
+
+      <span class="menu-item disconnect">Se Déconnecter</span>
     </section>
     <section id="profile-section" class="section-content">
       <div class="head">
         <div class="head-photo">
           <img src="../img/user/avatar-details.jpg" class="head-pfp" />
-          <label for="edit--photo" class="edit--photo special">
-            <ion-icon
-              name="create-outline"
-<<<<<<< HEAD
-              class=" edit--icon-photo"
-=======
-              class="edit--icon edit--icon-photo"
->>>>>>> oussama
-            ></ion-icon>
-            <input
-              type="file"
-              accept="image/png, image/jpeg"
-              id="edit--photo"
-            />
-          </label>
+          <botton id="edit--photo" class="edit--photo special">
+            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
+          </botton>
         </div>
         <div class="head-name">
-          <!-- <span class="head-name-fullname">Felix Lengyel</span> -->
-          <div class="input-parent nogap unshown">
-            <span
-              id="head-name-fullname"
-              class="head-name-fullname unhiddens-text"
-              >Felix Lengyel</span
-            >
-            <input
-              class="input"
-              type="text"
-              id="prenom"
-              name="name"
-              size="15"
-              placeholder="Votre Prénom"
-            />
-            <input
-              class="input"
-              type="text"
-              id="nom"
-              name="name"
-              size="15"
-              placeholder="Votre Nom de Famille"
-            />
-          </div>
-          <!-- <botton id="edit--name" class="edit--name special">
+          <span class="head-name-fullname">Felix Lengyel</span>
+          <botton id="edit--name" class="edit--name special">
             <ion-icon name="create-outline" class="edit--icon"></ion-icon>
-          </botton> -->
-          <botton class="edit--content edit--name">
-            <ion-icon name="create-outline" class="edit--icon"></ion-icon>
-            <span class="button-text">cancel</span>
           </botton>
         </div>
         <div class="head-rating">
@@ -220,6 +179,11 @@
             <input class="input" type="text" id="name" name="name" size="25" />
           </div>
         </div>
+        <div class="content">
+          <div>
+            <span id="telephone">&nbsp;549 208 230</span>
+          </div>
+        </div>
         <div class="divider"></div>
         <div class="title">
           numéro de telephone
@@ -244,13 +208,7 @@
         </div>
         <div class="content">
           <div class="input-parent nogap unshown">
-<<<<<<< HEAD
-            <span class="unhiddens-text" id="email"
-              >djezirioussama@gmail.com</span
-            >
-=======
             <span class="unhiddens-text">djezirioussama@gmail.com</span>
->>>>>>> oussama
             <input
               class="input"
               type="email"
@@ -270,7 +228,7 @@
           soyez prudent - vous avez des modifications non enregistrées
         </span>
         <div>
-          <button class="cancel">annuler</button> <button id="save">sauvegarder</button>
+          <button class="cancel">annuler</button> <button>sauvegarder</button>
         </div>
       </div>
     </section>
@@ -279,8 +237,6 @@
         <div class="section-title">Mes Réservations</div>
         <div class="divider"></div>
         <div class="reservations">
-<<<<<<< HEAD
-=======
           <div class="result">
             <div class="left">
               <div class="driver-info">
@@ -450,7 +406,6 @@
                   <span>laisser un avis</span>
                 </div>
               </a>
-            </div>
           </div>
           <div class="result past">
             <div class="left">
@@ -616,7 +571,6 @@
               </a>
             </div>
           </div>
->>>>>>> oussama
         </div>
       </div>
     </section>
@@ -624,10 +578,6 @@
       <div class="container">
         <div class="section-title">Mes Trajets</div>
         <div class="divider"></div>
-<<<<<<< HEAD
-        <div class="trajets">
-        </div>   
-=======
         <div class="trajets" id="parentContainer">
           <div class="trajet">
             <div class="trajet-top">
@@ -832,104 +782,12 @@
             </div>
           </div>
         </div>
->>>>>>> oussama
       </div>
     </section>
     <section id="reviews-section" class="section-content">
       <div class="container">
         <div class="section-title">Mes Avis</div>
         <div class="divider"></div>
-        <div class="avis">
-<<<<<<< HEAD
-=======
-          <div class="review">
-            <div class="rating-stars">
-              <img
-                id="rating-star-1"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-              <img
-                id="rating-star-2"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-              <img
-                id="rating-star-3"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-              <img
-                id="rating-star-4"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-              <img
-                id="rating-star-5"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-            </div>
-            <span id="review-texte" class="review-text"
-              >2eme review teste bon conducteur ...</span
-            >
-            <div class="user-info">
-              <img
-                id="review-photo"
-                class="review-photo"
-                src="../img/user/default.jpg"
-              />
-              <div class="user">
-                <span id="review-date" class="review-date">2023-05-13</span>
-                <span id="review-full-name" class="review-full-name">said</span>
-              </div>
-            </div>
-          </div>
-          <li class="review">
-            <div class="rating-stars">
-              <img
-                id="rating-star-1"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-              <img
-                id="rating-star-2"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-              <img
-                id="rating-star-3"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-              <img
-                id="rating-star-4"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-              <img
-                id="rating-star-5"
-                src="../img/Star.png"
-                class="rating-star"
-              />
-            </div>
-            <span id="review-texte" class="review-text"
-              >2eme review teste bon conducteur ...</span
-            >
-            <div class="user-info">
-              <img
-                id="review-photo"
-                class="review-photo"
-                src="../img/user/default.jpg"
-              />
-              <div class="user">
-                <span id="review-date" class="review-date">2023-05-13</span>
-                <span id="review-full-name" class="review-full-name">said</span>
-              </div>
-            </div>
-          </li>
->>>>>>> oussama
-        </div>
       </div>
     </section>
     <script>
@@ -969,11 +827,6 @@
       //     }
       //   });
       // });
-<<<<<<< HEAD
-      // });
-    
-      
-=======
       // document.addEventListener("DOMContentLoaded", function () {
       //   var trajetElement = document.querySelector(".trajet");
       //   var trajetBottomElement = document.querySelector(".trajet-bottom");
@@ -1113,7 +966,6 @@
         //   }
         // });
       });
->>>>>>> oussama
     </script>
   </body>
 </html>
