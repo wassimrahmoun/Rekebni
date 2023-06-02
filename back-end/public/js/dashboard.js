@@ -14,9 +14,10 @@ if (user) {
   userRating = user.ratingsAverage;
   userPseudo = user.pseudo;
   userPhone = user.phone;
-  userPhoneFormatted = userPhone.slice(4); // j'envoie le numero avec 213
+  userPhoneFormatted = userPhone; // j'envoie le numero avec 213
   userEmail = user.email;
 }
+
 
 const sortTrajetsOuReservations = function(trajets){
   trajets.sort((a,b)=>{
@@ -86,7 +87,12 @@ const openCloseTrajetElementEventsListener = function () {
 };
 
 document.addEventListener("DOMContentLoaded", async function () {
+  var alertContainer = document.querySelector(".save-alert") ;
+  var editBtns = document.querySelectorAll(".edit--content") ;
+  console.log(user) ;
+
   signOutEventListener();
+
 
   const profilTabInfos = function () {
     const imgElement = document.querySelector(".head-pfp");
@@ -205,7 +211,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   mesTrajets();
 
   const mesReservations = async function () {
-    // const res = await fetch(`http://localhost:8000/api/v1/trajets/passager/645e8fd0ddef963735c6e2c9`,{  // mettre userId aprés
     const res = await fetch(
       `http://localhost:8000/api/v1/trajets/passager/${userId}`,
       {
@@ -219,8 +224,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     let reservations = (await res.json()).data.trajet;
     await sortTrajetsOuReservations(reservations) ;
     const reservationsContainer = document.querySelector(".reservations");
-    reservations.forEach((reservation) => {
+    reservations.forEach(async function(reservation){
       if (reservation.Conducteur) {
+        const numberOfReviews = reservation.reviews.length ;
         const date = new Date(reservation.date);
         const day = String(date.getDate()).padStart(2, "0");
         const month = String(date.getMonth()).padStart(2, "0");
@@ -247,11 +253,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                      role="img"
                      aria-label="star outline"
                    ></ion-icon>
-                   <span class="rating-value white">3.1</span>
+                   <span class="rating-value white">${reservation.Conducteur.ratingsAverage}</span>
                    <span class="white">/ 5 - </span>
                  </span>
                  <span class="reviews">
-                   <span class="reviews-value white">999</span>
+                   <span class="reviews-value white">${numberOfReviews}</span>
                    <span class="reviews-text white"> Avis</span>
                  </span>
                </div>
@@ -381,6 +387,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
   const mesAvis = async function(){
+
     const res = await fetch(`http://localhost:8000/api/v1/reviews/${userId}`,{
       method:"GET",
       headers: {
@@ -389,9 +396,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       },
     }) ;
     const avis = (await res.json()).data.review ;
-    console.log(avis) ;
     const avisContainer = document.querySelector(".avis") ;
     avis.forEach(review=>{
+    if (review.user){
     const date = new Date(review.createdAt) ;
     const day = String(date.getDate()).padStart(2,"0") ;
     const month = String(date.getMonth()).padStart(2,"0") ;
@@ -418,42 +425,169 @@ document.addEventListener("DOMContentLoaded", async function () {
     </div>
   </div>` ;
   avisContainer.insertAdjacentHTML("beforeend",html) ;
+    }
   }
  ) };
 
   mesAvis() ;
 
-  const profilModifier = function(){
-    var alertContainer = document.querySelector(".save-alert") ;
-    const editBtns = document.querySelectorAll(".edit--content") ;
+  var updateUser = async function(){
+    user.email = userEmail ;
+    user.name = userName ;
+    user.phone = userPhone ;
+    user.pseudo = userPseudo ;
+    user.photo = userPic ;
+    window.localStorage.removeItem("userJson") ;
+   await window.localStorage.setItem("userJson",JSON.stringify(user)) ;
+    } ;
+
+   const photoModifierListener =  async function(){
+    // edit--photo
+    const photoInput = document.getElementById("edit--photo") ;
+    var photoUrl = "aaaa" ;
+
+   await photoInput.addEventListener("change",async function(){
+      const reader = new FileReader() ;
+      reader.addEventListener("load",function(){
+          photoUrl = reader.result ;
+          console.log(photoUrl) ;
+      })
+      if (photoUrl){
+      userPic = `default.jpg` ;
+      console.log(photoUrl) ;
+      document.querySelector(".head-pfp").src = `../img/user/${userPic}` ;
+      }
+      const url = `http://localhost:8000/api/v1/users/updateMe` ;
+      const res = await fetch(url,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+           photo:userPic ,
+        }),
+      }) ;
+      if (res.ok) updateUser() ;
+    }) ;
+
+ 
+  }
   
+  photoModifierListener() ;
+
+  const profilModifier = function(){
+    
+
+    const calcModifyContainersOn = function(){
+      let onCompteur = 0 ;
+      editBtns.forEach(btn=>{
+        if (btn.classList.contains("container-shown"))
+        onCompteur++ ;
+      })
+      return onCompteur ;
+    }
+  
+    const alertContainerHideListener = function(){
     editBtns.forEach(btn=>{
       btn.addEventListener("click",function(){
-       alertContainer.classList.remove("put-away") ;
-      })
-    })
 
-    const hidden = Array.from(editBtns).every(btn=>!btn.classList.contains("redifyed")) ;
-    console.log(hidden) ;
+      const compteur = calcModifyContainersOn() ;
+      if (compteur == 1 && btn.classList.contains("container-shown"))  alertContainer.classList.add("put-away") ;      // only hide the alert container when all modify-containers are hidden
+
+       if (!btn.classList.contains("container-shown")){
+       btn.classList.add("container-shown") ;
+       alertContainer.classList.remove("put-away") ;
+       }
+       else {
+        btn.classList.remove("container-shown");
+       }
+      }) 
+    })
+  } ;
+
+  alertContainerHideListener() ;
+
+    
+    const hideModifyContainers = function(){
+      alertContainer.classList.add("put-away") ;
+      editBtns.forEach(btn=>{
+        btn.classList.remove("container-shown");
+        btn.classList.remove("redifyed") ;
+        document.querySelectorAll(".input-parent").forEach(cnt=>cnt.classList.add("unshown")) ;
+        document.querySelectorAll(".button-text").forEach(txt=>txt.classList.remove("redify")) ;
+      }) } 
+
+
+    const cancelBtn = alertContainer.querySelector(".cancel") ;
+    cancelBtn.addEventListener("click",hideModifyContainers)
+
+    var passwordSave = async function(){
+      const newPassword = document.getElementById("new-mdp").value ;
+      const confirmNewPassword = document.getElementById("confirm-new-mdp").value ;
+      const ancienPassword = document.getElementById("pass").value ;
+      const confirmAncienPassword = document.getElementById("confirm-pass").value ;
+
+      var mdpError = document.querySelector(".mdp-error") ;
+      try{
+
+      if (newPassword !== confirmNewPassword || ancienPassword !== confirmAncienPassword || !newPassword || !confirmNewPassword || !ancienPassword || !confirmAncienPassword)   throw new Error("Veuillez vérifier les informations saisies !")
+
+      const url = `http://localhost:8000/api/v1/users/updateMyPassword` ;
+      const res = await fetch(url,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          passwordCurrent:ancienPassword,
+          password:newPassword ,
+          passwordConfirm:confirmNewPassword,  
+        }),
+      }) ;  
+
+      if(res.ok) {
+        hideModifyContainers() ;
+        newPassword = "" ;
+        confirmNewPassword="";
+        ancienPassword="";
+        confirmAncienPassword="" ;
+      }
+      else throw new Error("Mot de passe actuelle incorrect !") ;
+
+    } catch(err){
+      mdpError.textContent = err.message ;
+      mdpError.classList.remove("hidden") ;
+    }
+  }
+
+
+    const passwordSaveBtn = document.querySelector(".confirm-pass-btn") ;
+    passwordSaveBtn.addEventListener("click",passwordSave)
 
     const saveBtn = document.getElementById("save") ;
     saveBtn.addEventListener("click",async function(){
-      const prenomInput = document.getElementById("prenom").value ;
-      const nomInput = document.getElementById("nom").value ;
-      const pseudoInput = document.getElementById("name").value ;      
-      const telephoneInput = document.getElementById("tel").value ;
-      const emailInput = document.getElementById("email").value ;
 
-      if (prenomInput && nomInput){const nomComplet =`${nomInput} ${prenomInput}`} ;
+      if (editBtns[0].classList.contains("container-shown")) { passwordSave() } ;  // password
+
+      let prenomInput = document.getElementById("prenom").value ;  // other fields
+      let nomInput = document.getElementById("nom").value ;
+      let pseudoInput = document.getElementById("name").value ;      
+      let telephoneInput = document.getElementById("tel").value ;
+      let emailInput = document.getElementById("email").value ;
+      let nomComplet ="" ;
+
+      if (prenomInput && nomInput){ nomComplet =`${prenomInput} ${nomInput}`} ;
 
       if(nomComplet) userName = nomComplet ;
       if (pseudoInput) userPseudo = pseudoInput ;
       if (telephoneInput && telephoneInput.length==10) userPhone = telephoneInput ;
       if (emailInput) userEmail = emailInput ;
-
+      try{
       const url = `http://localhost:8000/api/v1/users/updateMe` ;
       const res = await fetch(url,{
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
@@ -467,29 +601,45 @@ document.addEventListener("DOMContentLoaded", async function () {
       }) ;
 
       console.log(res) ;
+
+      if(res.ok){
+        hideModifyContainers() ;
+        updateUser() ;
+       setTimeout(()=>{
+        window.location.href ="/html/dashboard.html"  ; 
+      }, 120) ;  
+      }
+
+    }catch(err){
+      console.log(err.message) ;
+    }
       
 
 
     })
+
   }
 
   profilModifier() ;
+
+ 
   
+
     var cancelButtonElements = document.querySelectorAll(".edit--content");
     var textElements = document.querySelectorAll(".button-text");
     var inputParents = document.querySelectorAll(".input-parent");
-    var savePopUp = document.querySelector(".save-alert");
-    var b = false;
-    // var buttonElements = document.querySelectorAll(".button");
+  
     for (let i = 0; i < cancelButtonElements.length; i++) {
       if (!cancelButtonElements[i].classList.contains("special")) {
-        cancelButtonElements[i].addEventListener("click", function (event) {
+        cancelButtonElements[i].addEventListener("click", function () {
           textElements[i].classList.toggle("redify");
           cancelButtonElements[i].classList.toggle("redifyed");
           inputParents[i].classList.toggle("unshown");
         });
       }
     };
+
+
 }) ;
 
 ////////////////////////////////////////////////////////////////////////////////////

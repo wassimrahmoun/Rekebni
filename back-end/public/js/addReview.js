@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ratings.forEach((rtng) => {
         if (rtng.checked) rating = rtng.value;
       });
-      console.log(rating);
 
       const url = "http://localhost:8000/api/v1/reviews";
       const res = await fetch(url, {
