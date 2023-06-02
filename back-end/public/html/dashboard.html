@@ -268,16 +268,14 @@
       <div class="container">
         <div class="section-title">Mes Réservations</div>
         <div class="divider"></div>
-        <div class="reservations">
-        </div>
+        <div class="reservations"></div>
       </div>
     </section>
     <section id="trips-section" class="section-content">
       <div class="container">
         <div class="section-title">Mes Trajets</div>
         <div class="divider"></div>
-        <div class="trajets">
-        </div>   
+        <div class="trajets"></div>
       </div>
     </section>
     <section id="reviews-section" class="section-content">
@@ -287,44 +285,6 @@
         <div class="avis"></div>
       </div>
     </section>
-    <script>
-      function showSection(sectionId) {
-        var sections = document.getElementsByClassName("section-content");
-
-        // Hide all sections
-        for (var i = 0; i < sections.length; i++) {
-          sections[i].style.display = "none";
-        }
-
-        // Show the selected section
-        var section = document.getElementById(sectionId);
-        section.style.display = "block";
-        console.log("displaying : " + sectionId);
-      }
-
-      // Show "My Profile" section on page load
-      window.addEventListener("load", function () {
-        showSection("profile-section");
-      });
-      // space left bellow
-      // document.addEventListener("DOMContentLoaded", function () {
-      //   var trajetElement = document.querySelector(".trajet");
-      //   var trajetBottomElement = document.querySelector(".trajet-bottom");
-
-      //   trajetElement.addEventListener("click", function (event) {
-      //     trajetBottomElement.classList.toggle("open");
-      //   });
-
-      //   document.addEventListener("click", function (event) {
-      //     if (
-      //       !trajetElement.contains(event.target) &&
-      //       trajetBottomElement.classList.contains("open")
-      //     ) {
-      //       trajetBottomElement.classList.remove("open");
-      //     }
-      //   });
-      // });
-      // });
-    </script>
+    <script></script>
   </body>
 </html>

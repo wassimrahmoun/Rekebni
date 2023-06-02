@@ -149,9 +149,7 @@
                 placeholder="Wilaya"
                 required=""
               >
-                <option value="" disabled="" selected="">
-                  Choisissez Votre Départ
-                </option>
+                <option value="" disabled="" selected="">Votre Départ</option>
                 <option value="ADRAR">ADRAR - 01</option>
                 <option value="CHLEF">CHLEF - 02</option>
                 <option value="LAGHOUAT">LAGHOUAT - 03</option>
@@ -212,9 +210,7 @@
                 placeholder="Wilaya"
                 required=""
               >
-                <option value="" disabled="" selected="">
-                  Choisissez Votre Arrivée
-                </option>
+                <option value="" disabled="" selected="">Votre Arrivée</option>
                 <option value="ADRAR">ADRAR - 01</option>
                 <option value="CHLEF">CHLEF - 02</option>
                 <option value="LAGHOUAT">LAGHOUAT - 03</option>
@@ -552,8 +548,9 @@
     //   threshold: 0,
     //   rootMargin: "100px",
     // });
-
     // imgTargets.forEach((img) => imgObserver.observe(img));
+    // ****************************************************************************
+
     const imgTargets = document.querySelectorAll("img[data-src]");
 
     const loadImg = function (entries, observer) {
@@ -578,6 +575,7 @@
     });
     imgTargets.forEach((img) => imgObserver.observe(img));
 
+    // ****************************************************************************
     // Get the current date
     var currentDate = new Date();
 
