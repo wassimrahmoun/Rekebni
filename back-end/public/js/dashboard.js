@@ -88,6 +88,8 @@ const openCloseTrajetElementEventsListener = function () {
 document.addEventListener("DOMContentLoaded", async function () {
   signOutEventListener();
 
+  console.log(user) ;
+
   const profilTabInfos = function () {
     const imgElement = document.querySelector(".head-pfp");
     const ratingsStarsElement = document.querySelector(".head-rating-stars");
@@ -426,15 +428,53 @@ document.addEventListener("DOMContentLoaded", async function () {
   const profilModifier = function(){
     var alertContainer = document.querySelector(".save-alert") ;
     const editBtns = document.querySelectorAll(".edit--content") ;
+
+    const calcModifyContainersOn = function(){
+      let onCompteur = 0 ;
+      editBtns.forEach(btn=>{
+        if (btn.classList.contains("container-shown"))
+        onCompteur++ ;
+      })
+      return onCompteur ;
+    }
   
+    const alertContainerHideListener = function(){
     editBtns.forEach(btn=>{
       btn.addEventListener("click",function(){
+
+      const compteur = calcModifyContainersOn() ;
+      if (compteur == 1 && btn.classList.contains("container-shown"))  alertContainer.classList.add("put-away") ;      // only hide the alert container when all modify-containers are hidden
+
+       if (!btn.classList.contains("container-shown")){
+       btn.classList.add("container-shown") ;
        alertContainer.classList.remove("put-away") ;
-      })
+       }
+       else {
+        btn.classList.remove("container-shown");
+       }
+      }) 
+    })
+  } ;
+
+  alertContainerHideListener() ;
+
+    /* const hidden = Array.from(editBtns).every(btn=>!btn.classList.contains("redifyed")) ; 
+    console.log(hidden) ; */
+    const hideModifyContainers = function(){
+      alertContainer.classList.add("put-away") ;
+      editBtns.forEach(btn=>{
+        btn.classList.remove("container-shown");
+        btn.classList.remove("redifyed") ;
+        document.querySelectorAll(".input-parent").forEach(cnt=>cnt.classList.add("unshown")) ;
+        document.querySelectorAll(".button-text").forEach(txt=>txt.classList.remove("redify")) ;
+      }) } 
+
+
+    const cancelBtn = alertContainer.querySelector(".cancel") ;
+    cancelBtn.addEventListener("click",function(){
+      hideModifyContainers() ;
     })
 
-    const hidden = Array.from(editBtns).every(btn=>!btn.classList.contains("redifyed")) ;
-    console.log(hidden) ;
 
     const saveBtn = document.getElementById("save") ;
     saveBtn.addEventListener("click",async function(){
@@ -443,8 +483,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       const pseudoInput = document.getElementById("name").value ;      
       const telephoneInput = document.getElementById("tel").value ;
       const emailInput = document.getElementById("email").value ;
+      const nomComplet ="" ;
 
-      if (prenomInput && nomInput){const nomComplet =`${nomInput} ${prenomInput}`} ;
+      if (prenomInput && nomInput){ nomComplet =`${nomInput} ${prenomInput}`} ;
 
       if(nomComplet) userName = nomComplet ;
       if (pseudoInput) userPseudo = pseudoInput ;
@@ -471,25 +512,54 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
     })
+
+    const passwordSaveBtn = document.querySelector(".confirm-pass-btn") ;
+    passwordSaveBtn.addEventListener("click",async function(){
+      const newPassword = document.getElementById("new-mdp").value ;
+      const confirmNewPassword = document.getElementById("confirm-new-mdp").value ;
+      if (newPassword !== confirmNewPassword) {
+        const html = `<span class="mdp-error">Mot de passe incorrect !</span>` ;
+        passwordSaveBtn.insertAdjacentHTML("beforebegin",html) ;
+      }
+       else {
+
+    /* const url = `http://localhost:8000/api/v1/users/updateMe` ;
+      const res = await fetch(url,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+           
+        }),
+      }) ;  
+
+      console.log(res) ; */
+
+       }
+
+    })
   }
 
   profilModifier() ;
   
+
     var cancelButtonElements = document.querySelectorAll(".edit--content");
     var textElements = document.querySelectorAll(".button-text");
     var inputParents = document.querySelectorAll(".input-parent");
-    var savePopUp = document.querySelector(".save-alert");
-    var b = false;
-    // var buttonElements = document.querySelectorAll(".button");
+  
     for (let i = 0; i < cancelButtonElements.length; i++) {
       if (!cancelButtonElements[i].classList.contains("special")) {
-        cancelButtonElements[i].addEventListener("click", function (event) {
+        cancelButtonElements[i].addEventListener("click", function () {
           textElements[i].classList.toggle("redify");
           cancelButtonElements[i].classList.toggle("redifyed");
           inputParents[i].classList.toggle("unshown");
         });
       }
     };
+
+
 }) ;
 
 ////////////////////////////////////////////////////////////////////////////////////
