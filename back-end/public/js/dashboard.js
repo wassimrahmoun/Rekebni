@@ -18,6 +18,7 @@ if (user) {
   userEmail = user.email;
 }
 
+
 const sortTrajetsOuReservations = function(trajets){
   trajets.sort((a,b)=>{
     const date1 = new Date(a.date) ;
@@ -86,6 +87,9 @@ const openCloseTrajetElementEventsListener = function () {
 };
 
 document.addEventListener("DOMContentLoaded", async function () {
+  var alertContainer = document.querySelector(".save-alert") ;
+  var editBtns = document.querySelectorAll(".edit--content") ;
+
   signOutEventListener();
 
   console.log(user) ;
@@ -207,7 +211,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   mesTrajets();
 
   const mesReservations = async function () {
-    // const res = await fetch(`http://localhost:8000/api/v1/trajets/passager/645e8fd0ddef963735c6e2c9`,{  // mettre userId aprés
     const res = await fetch(
       `http://localhost:8000/api/v1/trajets/passager/${userId}`,
       {
@@ -221,8 +224,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     let reservations = (await res.json()).data.trajet;
     await sortTrajetsOuReservations(reservations) ;
     const reservationsContainer = document.querySelector(".reservations");
-    reservations.forEach((reservation) => {
+    reservations.forEach(async function(reservation){
       if (reservation.Conducteur) {
+        console.log(reservation) ;
+      /*  const res2 = await fetch(`http://localhost:8000/api/v1/reviews/${reservation.Conducteur.id}`,{
+        method:"GET",
+        headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+        },
+        }) ;
+        const avis = (await res2.json()).data.review ;
+        console.log(avis); */
         const date = new Date(reservation.date);
         const day = String(date.getDate()).padStart(2, "0");
         const month = String(date.getMonth()).padStart(2, "0");
@@ -391,7 +404,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       },
     }) ;
     const avis = (await res.json()).data.review ;
-    console.log(avis) ;
+    // console.log(avis) ;
     const avisContainer = document.querySelector(".avis") ;
     avis.forEach(review=>{
     const date = new Date(review.createdAt) ;
@@ -426,8 +439,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   mesAvis() ;
 
   const profilModifier = function(){
-    var alertContainer = document.querySelector(".save-alert") ;
-    const editBtns = document.querySelectorAll(".edit--content") ;
+    
 
     const calcModifyContainersOn = function(){
       let onCompteur = 0 ;
@@ -471,14 +483,51 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
     const cancelBtn = alertContainer.querySelector(".cancel") ;
-    cancelBtn.addEventListener("click",function(){
-      hideModifyContainers() ;
-    })
+    cancelBtn.addEventListener("click",hideModifyContainers)
 
+    var passwordSave = async function(){
+      const newPassword = document.getElementById("new-mdp").value ;
+      const confirmNewPassword = document.getElementById("confirm-new-mdp").value ;
+      var mdpError = document.querySelector(".mdp-error") ;
+      if (newPassword !== confirmNewPassword || !newPassword) {
+       mdpError.classList.remove("hidden") ;
+      }
+       else {
+
+       try{ 
+
+    /* const url = `http://localhost:8000/api/v1/users/updateMe` ;
+      const res = await fetch(url,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+           
+        }),
+      }) ;  
+
+      console.log(res) ; 
+      window.location.href ="/html/dashboard.html" ; */
+
+    } catch(err){
+      mdpError.textContent = err.message ;
+      mdpError.classList.remove("hidden") ;
+    }
+  }
+
+       }
+
+    const passwordSaveBtn = document.querySelector(".confirm-pass-btn") ;
+    passwordSaveBtn.addEventListener("click",passwordSave)
 
     const saveBtn = document.getElementById("save") ;
     saveBtn.addEventListener("click",async function(){
-      const prenomInput = document.getElementById("prenom").value ;
+
+      if (editBtns[0].classList.contains("container-shown")) { passwordSave() } ;  // password
+
+      const prenomInput = document.getElementById("prenom").value ;  // other fields
       const nomInput = document.getElementById("nom").value ;
       const pseudoInput = document.getElementById("name").value ;      
       const telephoneInput = document.getElementById("tel").value ;
@@ -491,7 +540,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       if (pseudoInput) userPseudo = pseudoInput ;
       if (telephoneInput && telephoneInput.length==10) userPhone = telephoneInput ;
       if (emailInput) userEmail = emailInput ;
-
+      try{
       const url = `http://localhost:8000/api/v1/users/updateMe` ;
       const res = await fetch(url,{
         method: "POST",
@@ -509,37 +558,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       console.log(res) ;
       
+      window.location.href ="/html/dashboard.html"
+
+    }catch(err){
+      console.log(err.message) ;
+    }
+      
 
 
     })
 
-    const passwordSaveBtn = document.querySelector(".confirm-pass-btn") ;
-    passwordSaveBtn.addEventListener("click",async function(){
-      const newPassword = document.getElementById("new-mdp").value ;
-      const confirmNewPassword = document.getElementById("confirm-new-mdp").value ;
-      if (newPassword !== confirmNewPassword) {
-        const html = `<span class="mdp-error">Mot de passe incorrect !</span>` ;
-        passwordSaveBtn.insertAdjacentHTML("beforebegin",html) ;
-      }
-       else {
-
-    /* const url = `http://localhost:8000/api/v1/users/updateMe` ;
-      const res = await fetch(url,{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-           
-        }),
-      }) ;  
-
-      console.log(res) ; */
-
-       }
-
-    })
   }
 
   profilModifier() ;
