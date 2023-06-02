@@ -107,3 +107,20 @@ exports.emailtrajetannule = catchAsync(async (req, res, next) => {
     500
   );
 });
+
+exports.banUser = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  console.log(req.params.id);
+
+  if (!user) {
+    return next(new AppError("Utilisateur introuvable.", 404));
+  }
+
+  user.active = false;
+  await user.save();
+
+  res.status(200).json({
+    status: "success",
+    message: "Utilisateur banni avec succès.",
+  });
+});

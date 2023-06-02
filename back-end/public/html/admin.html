@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page d'administration</title>
+  <style>
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .ban-button, .delete-button {
+      background-color: #00aff5;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      margin-right: 5px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .ban-button:hover, .delete-button:hover {
+      background-color: red;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Utilisateurs</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Pseudo</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Smith</td>
+      <td>John</td>
+      <td>jsmith</td>
+      <td>
+        <button class="ban-button">Ban</button>
+        <button class="delete-button">Supprimer</button>
+      </td>
+    </tr>
+    <!-- Ajoutez d'autres lignes pour les autres utilisateurs -->
+  </table>
+</body>
+</html>
