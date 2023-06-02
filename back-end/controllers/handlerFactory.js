@@ -1,13 +1,18 @@
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const APIFeatures = require("../utils/apiFeatures");
+const Trajet = require("../models/trajetModel");
 
 exports.deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
 
+    const doc1 = await Trajet.deleteMany({ Conducteur: req.params.id });
     if (!doc) {
       return next(new AppError("No document found with that ID", 404));
+    }
+    if (!doc1) {
+      return next(new AppError("No document trajet found with that ID", 404));
     }
 
     res.status(204).json({

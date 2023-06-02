@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, "public/css")));
+app.use(express.static(path.join(__dirname, "public/css")));
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
@@ -69,6 +69,10 @@ app.get("/confirmEmail", function (req, res) {
 });
 app.get("/resetPassword", function (req, res) {
   const filePath = path.join(__dirname, "public", "html", "resetPassword.html");
+  res.sendFile(filePath);
+});
+app.get("/admin", function (req, res) {
+  const filePath = path.join(__dirname, "public", "html", "admin.html");
   res.sendFile(filePath);
 });
 // if we cherche /API/mehdii ou qlq chose qui nexiste pas on vous donne une err vadalnle poour comprendre
