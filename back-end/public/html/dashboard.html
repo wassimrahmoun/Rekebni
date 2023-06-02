@@ -79,7 +79,7 @@
     <section id="profile-section" class="section-content">
       <div class="head">
         <div class="head-photo">
-          <img src="../img/user/avatar-details.jpg" class="head-pfp" />
+          <img src="" class="head-pfp" />
           <label for="edit--photo" class="edit--photo special">
             <ion-icon name="create-outline" class="edit--icon-photo"></ion-icon>
             <input
@@ -95,8 +95,7 @@
             <span
               id="head-name-fullname"
               class="head-name-fullname unhiddens-text"
-              >Felix Lengyel</span
-            >
+            ></span>
             <input
               class="input"
               type="text"
@@ -130,7 +129,7 @@
             <img src="../img/half-star.png" class="head-rating-star" />
             <img src="../img/empty-star.png" class="head-rating-star" />
           </div>
-          <span class="head-rating-score">3.73</span>
+          <span class="head-rating-score"></span>
         </div>
       </div>
       <div class="container">
@@ -171,7 +170,7 @@
               </div>
               <div class="input-container">
                 <label for="confirm-pass" class="input-label"
-                  >Confirmez votre mot de passe actuel:</label
+                  >Confirmez votre ancien mot de passe :</label
                 >
                 <input
                   type="password"
@@ -194,6 +193,7 @@
                 />
               </div>
             </div>
+            <div class="mdp-error hidden"></div>
             <button class="confirm-pass-btn">
               Sauvegarder le mot de passe
             </button>
@@ -285,6 +285,44 @@
         <div class="avis"></div>
       </div>
     </section>
-    <script></script>
+    <script>
+      function showSection(sectionId) {
+        var sections = document.getElementsByClassName("section-content");
+
+        // Hide all sections
+        for (var i = 0; i < sections.length; i++) {
+          sections[i].style.display = "none";
+        }
+
+        // Show the selected section
+        var section = document.getElementById(sectionId);
+        section.style.display = "block";
+        console.log("displaying : " + sectionId);
+      }
+
+      // Show "My Profile" section on page load
+      window.addEventListener("load", function () {
+        showSection("profile-section");
+      });
+      // space left bellow
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   var trajetElement = document.querySelector(".trajet");
+      //   var trajetBottomElement = document.querySelector(".trajet-bottom");
+
+      //   trajetElement.addEventListener("click", function (event) {
+      //     trajetBottomElement.classList.toggle("open");
+      //   });
+
+      //   document.addEventListener("click", function (event) {
+      //     if (
+      //       !trajetElement.contains(event.target) &&
+      //       trajetBottomElement.classList.contains("open")
+      //     ) {
+      //       trajetBottomElement.classList.remove("open");
+      //     }
+      //   });
+      // });
+      // });
+    </script>
   </body>
 </html>
