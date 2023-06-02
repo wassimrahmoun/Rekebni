@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded",function(){
     const ratings = ratingsElement.querySelectorAll("input") ;
     var rating = 0 ;
     ratings.forEach(rtng=>{if(rtng.checked) rating= rtng.value}) ;
-    console.log(rating);
 
     const url = "http://localhost:8000/api/v1/reviews"
     const res = await fetch(url, {
@@ -36,15 +35,16 @@ document.addEventListener("DOMContentLoaded",function(){
           });
        
     console.log(res) ;
-   if (!res.ok) throw new Error("Something has gone wrong ❌ , please try again later !")       
+   if (!res.ok) throw new Error("Chauffeur déjà évalué !")       
 
    await res.json() ;
 
    window.location.href ="/html/dashboard.html"
 
 }catch(err){
-
-  console.error(err.message) ;
+  const errContainer = document.querySelector(".invalid")
+  errContainer.querySelector(".invalid-text").textContent = err.message ;
+  errContainer.style.display = "flex" ;
 
 }
 })

@@ -226,16 +226,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const reservationsContainer = document.querySelector(".reservations");
     reservations.forEach(async function(reservation){
       if (reservation.Conducteur) {
-        console.log(reservation) ;
-      /*  const res2 = await fetch(`http://localhost:8000/api/v1/reviews/${reservation.Conducteur.id}`,{
-        method:"GET",
-        headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-        },
-        }) ;
-        const avis = (await res2.json()).data.review ;
-        console.log(avis); */
+        const numberOfReviews = reservation.reviews.length ;
         const date = new Date(reservation.date);
         const day = String(date.getDate()).padStart(2, "0");
         const month = String(date.getMonth()).padStart(2, "0");
@@ -262,11 +253,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                      role="img"
                      aria-label="star outline"
                    ></ion-icon>
-                   <span class="rating-value white">3.1</span>
+                   <span class="rating-value white">${reservation.Conducteur.ratingsAverage}</span>
                    <span class="white">/ 5 - </span>
                  </span>
                  <span class="reviews">
-                   <span class="reviews-value white">999</span>
+                   <span class="reviews-value white">${numberOfReviews}</span>
                    <span class="reviews-text white"> Avis</span>
                  </span>
                </div>
@@ -396,6 +387,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
   const mesAvis = async function(){
+
     const res = await fetch(`http://localhost:8000/api/v1/reviews/${userId}`,{
       method:"GET",
       headers: {
@@ -404,7 +396,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       },
     }) ;
     const avis = (await res.json()).data.review ;
-    // console.log(avis) ;
     const avisContainer = document.querySelector(".avis") ;
     avis.forEach(review=>{
     const date = new Date(review.createdAt) ;
@@ -496,7 +487,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
        try{ 
 
-    /* const url = `http://localhost:8000/api/v1/users/updateMe` ;
+      const url = `http://localhost:8000/api/v1/users/updateMyPassword` ;
       const res = await fetch(url,{
         method: "POST",
         headers: {
@@ -509,7 +500,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       }) ;  
 
       console.log(res) ; 
-      window.location.href ="/html/dashboard.html" ; */
+      if(res.ok) window.location.href ="/html/dashboard.html"  ; 
 
     } catch(err){
       mdpError.textContent = err.message ;
@@ -557,8 +548,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       }) ;
 
       console.log(res) ;
-      
-      window.location.href ="/html/dashboard.html"
+      if(res.ok) window.location.href ="/html/dashboard.html" ;
 
     }catch(err){
       console.log(err.message) ;
