@@ -1,176 +1,384 @@
-/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px
 
 /**************************/
 /* BELOW 1600px */
 /**************************/
-@media (max-width: 1600px) {
-  .hero-title {
-    /* font-size: 4rem; */
+@media (max-width: 1571px) {
+  .info-textbubble {
+    gap: 1rem;
   }
-  .hero-subtext {
-    font-size: 2rem;
+
+  .bubble1 .info-container {
+    height: 80%;
+    width: 80%;
   }
-  .container {
-    width: 100% !important;
+  .bubble2 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+  .bubble3 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+
+  .info-title {
+    gap: 1rem;
+  }
+  .info-title-icon {
+    height: 3rem;
+    width: 3rem;
+    padding: 1rem;
   }
   .info-title-text {
     font-size: 2.5rem;
+    font-weight: 700;
   }
   .info-text {
-    font-size: 2.3rem;
-    line-height: 150%;
-  }
-  .bubble1 {
-    background-image: url(../img/bubble1.png);
-    padding: 4rem 6rem 5rem 6rem;
-  }
-  .bubble2 {
-    background-image: url(../img/bubble2.png);
-    padding: 4rem 5rem 8rem 8rem;
-  }
-  .bubble3 {
-    background-image: url(../img/bubble3.png);
-    padding: 8rem 5rem 7rem 8rem;
-  }
-}
-@media (max-width: 1540px) {
-  .hero-title {
-  }
-  .hero-subtext {
-    font-size: 2rem;
-  }
-  .container {
-    width: 100% !important;
-  }
-  .info-title-text {
-    font-size: 2.4rem;
-  }
-  .info-text {
-    font-size: 2rem;
-  }
-  .bubble1 {
-    background-image: url(../img/bubble1.png);
-    padding: 4rem 6rem 5rem 6rem;
-  }
-  .bubble2 {
-    background-image: url(../img/bubble2.png);
-    padding: 4rem 5rem 8rem 8rem;
-  }
-  .bubble3 {
-    background-image: url(../img/bubble3.png);
-    padding: 8rem 5rem 8rem 8rem;
-  }
-}
-
-@media (max-width: 1490px) {
-  .hero-title {
-  }
-  .hero-subtext {
-    font-size: 2rem;
-  }
-  .container {
-    width: 100% !important;
-  }
-  .info-title-text {
     font-size: 2.2rem;
+    line-height: 3.25rem;
+  }
+}
+@media (max-width: 1520px) {
+  .info-textbubble {
+    gap: 1rem;
+  }
+
+  .bubble1 .info-container {
+    height: 80%;
+    width: 80%;
+  }
+  .bubble2 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+  .bubble3 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+
+  .info-title {
+    gap: 1rem;
+  }
+  .info-title-icon {
+    height: 2.7rem;
+    width: 2.7rem;
+    padding: 0.8rem;
+  }
+  .info-title-text {
+    font-size: 2.3rem;
+    font-weight: 700;
   }
   .info-text {
+    font-size: 2rem;
+    line-height: 2.9rem;
+  }
+}
+@media (max-width: 1480px) {
+  .info-textbubble {
+    gap: 1rem;
+  }
+
+  .bubble1 .info-container {
+    height: 80%;
+    width: 80%;
+  }
+  .bubble2 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+  .bubble3 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+
+  .info-title {
+    gap: 1rem;
+  }
+  .info-title-icon {
+    height: 2.6rem;
+    width: 2.6rem;
+    padding: 0.9rem;
+  }
+  .info-title-text {
+    font-size: 2.3rem;
+    font-weight: 700;
+  }
+  .info-text {
+    font-size: 2rem;
+    line-height: 2.8rem;
+  }
+}
+@media (max-width: 1430px) {
+  .info-textbubble {
+    gap: 1rem;
+  }
+
+  .bubble1 .info-container {
+    height: 80%;
+    width: 80%;
+  }
+  .bubble2 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+  .bubble3 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+
+  .info-title {
+    gap: 1rem;
+  }
+  .info-title-icon {
+    height: 2.2rem;
+    width: 2.2rem;
+    padding: 0.7rem;
+  }
+  .info-title-text {
+    font-size: 2.1rem;
+    font-weight: 700;
+  }
+  .info-text {
+    font-size: 1.95rem;
+    line-height: 2.6rem;
+  }
+}
+@media (max-width: 1359px) {
+  .searchbar-text-box {
+    height: 4.6rem;
+    padding: 0px 1.8rem;
+  }
+  .depart-text,
+  .arrive-text {
+    font-size: 2.1rem;
+  }
+  input[type="date"] {
+    font-size: 2.1rem;
+  }
+  .searchbar-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  .date-text,
+  .personnes-text {
+    font-size: 2.3rem;
+  }
+  .searchbar-btn {
+    font-size: 2.1rem;
+    padding: 0 2.8rem;
+  }
+  .info-textbubble {
+    gap: 1rem;
+  }
+
+  .bubble1 .info-container {
+    height: 80%;
+    width: 80%;
+  }
+  .bubble2 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+  .bubble3 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+
+  .info-title {
+    gap: 1rem;
+  }
+  .info-title-icon {
+    height: 2.2rem;
+    width: 2.2rem;
+    padding: 0.7rem;
+  }
+  .info-title-text {
     font-size: 1.9rem;
-  }
-  .bubble1 {
-    background-image: url(../img/bubble1.png);
-    padding: 4rem 6rem 5rem 6rem;
-  }
-  .bubble2 {
-    background-image: url(../img/bubble2.png);
-    padding: 4rem 5rem 8rem 8rem;
-  }
-  .bubble3 {
-    background-image: url(../img/bubble3.png);
-    padding: 8rem 5rem 8rem 8rem;
-  }
-}
-@media (max-width: 1440px) {
-  .hero-title {
-  }
-  .hero-subtext {
-    font-size: 2rem;
-  }
-  .container {
-    width: 100% !important;
-  }
-  .info-title-text {
-    font-size: 2rem;
-  }
-  .info-text {
-    font-size: 1.75rem;
-  }
-  .bubble1 {
-    background-image: url(../img/bubble1.png);
-    padding: 4rem 6rem 5rem 6rem;
-  }
-  .bubble2 {
-    background-image: url(../img/bubble2.png);
-    padding: 4rem 5rem 8rem 8rem;
-  }
-  .bubble3 {
-    background-image: url(../img/bubble3.png);
-    padding: 12rem 5rem 13rem 7rem;
-  }
-}
-@media (max-width: 1390px) {
-  .hero-title {
-  }
-  .hero-subtext {
-    font-size: 2rem;
-  }
-  .container {
-    width: 100% !important;
-  }
-  .info-title-text {
-    font-size: 1.8rem;
-  }
-  .info-text {
-    font-size: 1.6rem;
-  }
-  .bubble1 {
-    background-image: url(../img/bubble1.png);
-    padding: 4rem 6rem 5rem 6rem;
-  }
-  .bubble2 {
-    background-image: url(../img/bubble2.png);
-    padding: 4rem 5rem 8rem 8rem;
-  }
-  .bubble3 {
-    background-image: url(../img/bubble3.png);
-    padding: 12rem 5rem 13rem 7rem;
-  }
-}
-@media (max-width: 1340px) {
-  .hero-title {
-  }
-  .hero-subtext {
-    font-size: 2rem;
-  }
-  .container {
-    width: 100% !important;
-  }
-  .info-title-text {
-    font-size: 1.9rem;
+    font-weight: 700;
   }
   .info-text {
     font-size: 1.7rem;
+    line-height: 2.4rem;
   }
-  .bubble1 {
-    background-image: url(../img/bubble1.png);
-    padding: 4rem 6rem 5rem 6rem;
+}
+@media (max-width: 1287px) {
+  .searchbar-text-box {
+    height: 4.6rem;
+    padding: 0px 1.8rem;
   }
-  .bubble2 {
-    background-image: url(../img/bubble2.png);
-    padding: 4rem 5rem 8rem 8rem;
+  .depart-text,
+  .arrive-text {
+    font-size: 2.1rem;
   }
-  .bubble3 {
-    background-image: url(../img/bubble3.png);
-    padding: 12rem 5rem 13rem 7rem;
+  input[type="date"] {
+    font-size: 2.1rem;
+  }
+  .searchbar-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  .date-text,
+  .personnes-text {
+    font-size: 2.3rem;
+  }
+  .searchbar-btn {
+    font-size: 2.1rem;
+    padding: 0 2.8rem;
+  }
+  .info-textbubble {
+    gap: 1rem;
+  }
+
+  .bubble1 .info-container {
+    height: 80%;
+    width: 80%;
+  }
+  .bubble2 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+  .bubble3 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+
+  .info-title {
+    gap: 1rem;
+  }
+  .info-title-icon {
+    height: 2.2rem;
+    width: 2.2rem;
+    padding: 0.7rem;
+  }
+  .info-title-text {
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+  .info-text {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}
+@media (max-width: 1270px) {
+  .logo {
+    height: 4rem;
+  }
+  .whiteicon {
+    margin-top: 0rem;
+    height: 1.4rem;
+    width: 1.4rem;
+  }
+  .nav-ele span,
+  .quisommenous span {
+    font-size: 1.1rem;
+  }
+  .nav-profile {
+    padding: 0px 0px;
+  }
+  .profile-pic {
+    height: 2.6rem;
+    width: auto;
+    border: 1px solid #030045;
+  }
+
+  .section-hero {
+    gap: 4.3rem;
+    padding-bottom: 7rem;
+  }
+
+  .hero-text-box {
+    gap: 1.4rem;
+  }
+  .hero-title {
+    font-weight: 500;
+    font-size: 3rem;
+  }
+  .hero-subtext {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  .searchbar {
+    gap: 1.4rem;
+  }
+  .searchbar-text-box {
+    border-radius: 10px;
+    height: 3.1rem;
+    padding: 0px 0.7rem;
+  }
+  .depart-text,
+  .arrive-text {
+    font-size: 1.3rem;
+  }
+  input[type="date"] {
+    font-size: 1.4rem;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 5px;
+  }
+  .searchbar-icon {
+    height: 2rem;
+    margin-right: 0rem;
+    margin-left: 0.5rem;
+  }
+  .arrive,
+  .date {
+    margin-left: 0.5rem;
+  }
+  /* .searchbar-text-box div {
+    padding: 0 0 0 0.5rem;
+  } */
+
+  .date-text,
+  .personnes-text {
+    font-size: 1.6rem;
+  }
+  .searchbar-btn {
+    font-size: 1.4rem;
+    padding: 0 2rem;
+    border-radius: 9px;
+  }
+  .info-textbubble {
+    gap: 1rem;
+  }
+
+  .bubble1 .info-container {
+    height: 80%;
+    width: 80%;
+  }
+  .bubble2 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+  .bubble3 .info-container {
+    height: 80%;
+    width: 75%;
+  }
+
+  .info-title {
+    gap: 1rem;
+  }
+  .info-title-icon {
+    height: 2.2rem;
+    width: 2.2rem;
+    padding: 0.7rem;
+  }
+  .info-title-text {
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+  .info-text {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+  .trajet {
+    width: 30%;
+    padding: 2rem 2rem;
+    border-radius: 25px;
+    gap: 0.5rem;
+  }
+  .trajet-text {
+    font-size: 1.7rem;
   }
 }
