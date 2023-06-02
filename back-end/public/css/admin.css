@@ -80,3 +80,6 @@ th {
 .delete-button:hover {
   background-color: red;
 }
+.user-row {
+  display: table-row;
+}
