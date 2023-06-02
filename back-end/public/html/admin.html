@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../css/queries.css" />
     <link rel="stylesheet" type="text/css" href="../css/general.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="../css/navbar1.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../css/navbar1.css"> -->
     <!-- ICONION SCRIPT LINKS -->
     <script
       type="module"
@@ -31,6 +31,7 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
       rel="stylesheet"
     />
+    <script src="/js/admin.js"></script>
   </head>
   <body>
     <h1>Utilisateurs</h1>
@@ -42,11 +43,11 @@
         <th>Pseudo</th>
         <th>Actions</th>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Smith</td>
-        <td>John</td>
-        <td>jsmith</td>
+      <tr class="user-row">
+        <td class="user-id">1</td>
+        <td class="user-name">Smith</td>
+        <td class="user-lastname">John</td>
+        <td class="user-username">jsmith</td>
         <td>
           <button class="ban-button">Ban</button>
           <button class="delete-button">Supprimer</button>

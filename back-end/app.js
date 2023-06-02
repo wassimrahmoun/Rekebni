@@ -71,6 +71,10 @@ app.get("/resetPassword", function (req, res) {
   const filePath = path.join(__dirname, "public", "html", "resetPassword.html");
   res.sendFile(filePath);
 });
+app.get("/admin", function (req, res) {
+  const filePath = path.join(__dirname, "public", "html", "admin.html");
+  res.sendFile(filePath);
+});
 // if we cherche /API/mehdii ou qlq chose qui nexiste pas on vous donne une err vadalnle poour comprendre
 // app.all("*", (req, res, next) => {
 //   next(new AppError(`cant find ${req.originalUrl} on this serv`, 404));
