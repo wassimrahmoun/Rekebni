@@ -145,7 +145,18 @@
           <!-- <span class="mdp">••••••••</span>  -->
           <div class="input-parent unshown">
             <div class="input-father">
-            
+              <div class="input-container">
+                <label for="pass" class="input-label"
+                  >Votre ancien Mot de passe:</label
+                >
+                <input
+                  type="password"
+                  id="pass"
+                  name="password"
+                  class="input"
+                  size="15"
+                />
+              </div>
               <div class="input-container">
                 <label for="new-mdp" class="input-label"
                   >Saisisez votre nouveau Mot de passe:
@@ -156,6 +167,18 @@
                   name="name"
                   size="15"
                   class="input"
+                />
+              </div>
+              <div class="input-container">
+                <label for="confirm-pass" class="input-label"
+                  >Confirmez votre ancien mot de passe :</label
+                >
+                <input
+                  type="password"
+                  id="confirm-pass"
+                  name="confirm password"
+                  class="input"
+                  size="15"
                 />
               </div>
               <div class="input-container">
@@ -171,7 +194,7 @@
                 />
               </div>
             </div>
-            <div class="mdp-error hidden">Veuillez vérifier les informations saisies !</div>
+            <div class="mdp-error hidden"></div>
             <button class="confirm-pass-btn">
               Sauvegarder le mot de passe
             </button>

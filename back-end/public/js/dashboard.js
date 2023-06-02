@@ -14,7 +14,7 @@ if (user) {
   userRating = user.ratingsAverage;
   userPseudo = user.pseudo;
   userPhone = user.phone;
-  userPhoneFormatted = userPhone.slice(4); // j'envoie le numero avec 213
+  userPhoneFormatted = userPhone; // j'envoie le numero avec 213
   userEmail = user.email;
 }
 
@@ -89,10 +89,10 @@ const openCloseTrajetElementEventsListener = function () {
 document.addEventListener("DOMContentLoaded", async function () {
   var alertContainer = document.querySelector(".save-alert") ;
   var editBtns = document.querySelectorAll(".edit--content") ;
+  console.log(user) ;
 
   signOutEventListener();
 
-  console.log(user) ;
 
   const profilTabInfos = function () {
     const imgElement = document.querySelector(".head-pfp");
@@ -398,6 +398,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const avis = (await res.json()).data.review ;
     const avisContainer = document.querySelector(".avis") ;
     avis.forEach(review=>{
+    if (review.user){
     const date = new Date(review.createdAt) ;
     const day = String(date.getDate()).padStart(2,"0") ;
     const month = String(date.getMonth()).padStart(2,"0") ;
@@ -424,10 +425,56 @@ document.addEventListener("DOMContentLoaded", async function () {
     </div>
   </div>` ;
   avisContainer.insertAdjacentHTML("beforeend",html) ;
+    }
   }
  ) };
 
   mesAvis() ;
+
+  var updateUser = async function(){
+    user.email = userEmail ;
+    user.name = userName ;
+    user.phone = userPhone ;
+    user.pseudo = userPseudo ;
+    user.photo = userPic ;
+    window.localStorage.removeItem("userJson") ;
+   await window.localStorage.setItem("userJson",JSON.stringify(user)) ;
+    } ;
+
+   const photoModifierListener =  async function(){
+    // edit--photo
+    const photoInput = document.getElementById("edit--photo") ;
+    var photoUrl = "aaaa" ;
+
+   await photoInput.addEventListener("change",async function(){
+      const reader = new FileReader() ;
+      reader.addEventListener("load",function(){
+          photoUrl = reader.result ;
+          console.log(photoUrl) ;
+      })
+      if (photoUrl){
+      userPic = `default.jpg` ;
+      console.log(photoUrl) ;
+      document.querySelector(".head-pfp").src = `../img/user/${userPic}` ;
+      }
+      const url = `http://localhost:8000/api/v1/users/updateMe` ;
+      const res = await fetch(url,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+           photo:userPic ,
+        }),
+      }) ;
+      if (res.ok) updateUser() ;
+    }) ;
+
+ 
+  }
+  
+  photoModifierListener() ;
 
   const profilModifier = function(){
     
@@ -461,8 +508,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   alertContainerHideListener() ;
 
-    /* const hidden = Array.from(editBtns).every(btn=>!btn.classList.contains("redifyed")) ; 
-    console.log(hidden) ; */
+    
     const hideModifyContainers = function(){
       alertContainer.classList.add("put-away") ;
       editBtns.forEach(btn=>{
@@ -479,28 +525,36 @@ document.addEventListener("DOMContentLoaded", async function () {
     var passwordSave = async function(){
       const newPassword = document.getElementById("new-mdp").value ;
       const confirmNewPassword = document.getElementById("confirm-new-mdp").value ;
-      var mdpError = document.querySelector(".mdp-error") ;
-      if (newPassword !== confirmNewPassword || !newPassword) {
-       mdpError.classList.remove("hidden") ;
-      }
-       else {
+      const ancienPassword = document.getElementById("pass").value ;
+      const confirmAncienPassword = document.getElementById("confirm-pass").value ;
 
-       try{ 
+      var mdpError = document.querySelector(".mdp-error") ;
+      try{
+
+      if (newPassword !== confirmNewPassword || ancienPassword !== confirmAncienPassword || !newPassword || !confirmNewPassword || !ancienPassword || !confirmAncienPassword)   throw new Error("Veuillez vérifier les informations saisies !")
 
       const url = `http://localhost:8000/api/v1/users/updateMyPassword` ;
       const res = await fetch(url,{
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
-           
+          passwordCurrent:ancienPassword,
+          password:newPassword ,
+          passwordConfirm:confirmNewPassword,  
         }),
       }) ;  
 
-      console.log(res) ; 
-      if(res.ok) window.location.href ="/html/dashboard.html"  ; 
+      if(res.ok) {
+        hideModifyContainers() ;
+        newPassword = "" ;
+        confirmNewPassword="";
+        ancienPassword="";
+        confirmAncienPassword="" ;
+      }
+      else throw new Error("Mot de passe actuelle incorrect !") ;
 
     } catch(err){
       mdpError.textContent = err.message ;
@@ -508,7 +562,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-       }
 
     const passwordSaveBtn = document.querySelector(".confirm-pass-btn") ;
     passwordSaveBtn.addEventListener("click",passwordSave)
@@ -518,14 +571,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (editBtns[0].classList.contains("container-shown")) { passwordSave() } ;  // password
 
-      const prenomInput = document.getElementById("prenom").value ;  // other fields
-      const nomInput = document.getElementById("nom").value ;
-      const pseudoInput = document.getElementById("name").value ;      
-      const telephoneInput = document.getElementById("tel").value ;
-      const emailInput = document.getElementById("email").value ;
-      const nomComplet ="" ;
+      let prenomInput = document.getElementById("prenom").value ;  // other fields
+      let nomInput = document.getElementById("nom").value ;
+      let pseudoInput = document.getElementById("name").value ;      
+      let telephoneInput = document.getElementById("tel").value ;
+      let emailInput = document.getElementById("email").value ;
+      let nomComplet ="" ;
 
-      if (prenomInput && nomInput){ nomComplet =`${nomInput} ${prenomInput}`} ;
+      if (prenomInput && nomInput){ nomComplet =`${prenomInput} ${nomInput}`} ;
 
       if(nomComplet) userName = nomComplet ;
       if (pseudoInput) userPseudo = pseudoInput ;
@@ -534,7 +587,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       try{
       const url = `http://localhost:8000/api/v1/users/updateMe` ;
       const res = await fetch(url,{
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
@@ -548,7 +601,14 @@ document.addEventListener("DOMContentLoaded", async function () {
       }) ;
 
       console.log(res) ;
-      if(res.ok) window.location.href ="/html/dashboard.html" ;
+
+      if(res.ok){
+        hideModifyContainers() ;
+        updateUser() ;
+       setTimeout(()=>{
+        window.location.href ="/html/dashboard.html"  ; 
+      }, 120) ;  
+      }
 
     }catch(err){
       console.log(err.message) ;
@@ -561,6 +621,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   profilModifier() ;
+
+ 
   
 
     var cancelButtonElements = document.querySelectorAll(".edit--content");
