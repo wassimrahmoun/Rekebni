@@ -110,7 +110,7 @@ body {
 .input-parent {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.7rem;
 }
 .input-father {
   display: grid;
@@ -363,6 +363,11 @@ body {
 
 .mdp {
   letter-spacing: 0.1rem;
+}
+.mdp-error {
+  color: #f00606;
+  font-size: 1.6rem;
+  text-align: center;
 }
 .edit--content {
   height: 2.5rem;

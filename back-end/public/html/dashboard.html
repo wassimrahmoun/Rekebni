@@ -81,10 +81,7 @@
         <div class="head-photo">
           <img src="" class="head-pfp" />
           <label for="edit--photo" class="edit--photo special">
-            <ion-icon
-              name="create-outline"
-              class=" edit--icon-photo"
-            ></ion-icon>
+            <ion-icon name="create-outline" class="edit--icon-photo"></ion-icon>
             <input
               type="file"
               accept="image/png, image/jpeg"
@@ -197,6 +194,7 @@
                 />
               </div>
             </div>
+            <div class="mdp-error">Le mot de passe saisi est incorrecte!</div>
             <button class="confirm-pass-btn">
               Sauvegarder le mot de passe
             </button>
@@ -262,7 +260,8 @@
           soyez prudent - vous avez des modifications non enregistrées
         </span>
         <div>
-          <button class="cancel">annuler</button> <button id="save">sauvegarder</button>
+          <button class="cancel">annuler</button>
+          <button id="save">sauvegarder</button>
         </div>
       </div>
     </section>
@@ -270,24 +269,21 @@
       <div class="container">
         <div class="section-title">Mes Réservations</div>
         <div class="divider"></div>
-        <div class="reservations">
-        </div>
+        <div class="reservations"></div>
       </div>
     </section>
     <section id="trips-section" class="section-content">
       <div class="container">
         <div class="section-title">Mes Trajets</div>
         <div class="divider"></div>
-        <div class="trajets">
-        </div>   
+        <div class="trajets"></div>
       </div>
     </section>
     <section id="reviews-section" class="section-content">
       <div class="container">
         <div class="section-title">Mes Avis</div>
         <div class="divider"></div>
-        <div class="avis">
-        </div>
+        <div class="avis"></div>
       </div>
     </section>
     <script>
@@ -328,8 +324,6 @@
       //   });
       // });
       // });
-    
-      
     </script>
   </body>
 </html>
