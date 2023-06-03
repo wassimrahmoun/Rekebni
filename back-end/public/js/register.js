@@ -28,14 +28,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const pseudo = document.getElementById("pseudo").value;
 
       // Checking inputs
-      if (
-        phoneNumber.charAt(0) !== "0" ||
-        !["5", "6", "7"].includes(phoneNumber.charAt(1)) ||
-        phoneNumber.length !== 10
-      ) {
-        throw new Error("Le numéro de téléphone n'existe pas !");
-      }
-
+      
       if (
         !email ||
         !password ||
@@ -47,6 +40,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
       ) {
         throw new Error(`Veuillez verifiez vos informations !`);
       }
+
+      if (
+        phoneNumber.charAt(0) !== "0" ||
+        !["5", "6", "7"].includes(phoneNumber.charAt(1)) ||
+        phoneNumber.length !== 10
+      ) {
+        throw new Error("Le numéro de téléphone n'existe pas !");
+      }
+      
       if (passwordConfirm != password)
         throw new Error(`Les champs de mot de passe ne correspondent pas !`);
 
