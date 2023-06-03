@@ -114,7 +114,12 @@ exports.banUser = catchAsync(async (req, res, next) => {
     return next(new AppError("Utilisateur introuvable.", 404));
   }
 
-  user.active = false;
+  if (user.active == true) {
+    user.active = false;
+  } else {
+    user.active = true;
+  }
+
   await user.save();
 
   res.status(200).json({
