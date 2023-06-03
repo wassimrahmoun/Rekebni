@@ -2,28 +2,24 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const APIFeatures = require("../utils/apiFeatures");
 const Trajet = require("../models/trajetModel");
+const Review = require("../models/reviewModel");
 exports.deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findByIdAndDelete(req.params.id);
+    const userId = req.params.id;
 
-    const doc1 = await Trajet.deleteMany({ Conducteur: req.params.id });
-    const doc2 = await Review.deleteMany({ conducteur: req.params.id });
-    const doc3 = await Review.deleteMany({ user: req.params.id });
+    await Review.deleteMany({ conducteur: userId });
+
+    await Review.deleteMany({ user: userId });
+
+    await Trajet.deleteMany({ Conducteur: userId });
+
+    const doc = await Model.findByIdAndDelete(userId);
+
     if (!doc) {
       return next(new AppError("No document found with that ID", 404));
     }
-    if (!doc1) {
-      return next(new AppError("No document trajet found with that ID", 404));
-    }
-    if (!doc2) {
-      return next(new AppError("No document Review found with that ID", 404));
-    }
-    if (!doc3) {
-      return next(new AppError("No document Review found with that ID", 404));
-    }
 
     res.status(204).json({
-      //204 = no content
       status: "success",
       data: null,
     });
