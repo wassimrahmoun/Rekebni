@@ -96,7 +96,7 @@ exports.getAll = (Model) =>
     // const doc = await features.query.explain(); juste to see indexes a quoi ils servent
     await Model.populate(doc, {
       path: "Conducteur",
-      select: "name photo slug ranking phone ratingsAverage active email",
+      select: "name photo slug ranking phone ratingsAverage active email Sexe",
     });
     await Model.populate(doc, {
       path: "Passagers",
