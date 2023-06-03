@@ -89,7 +89,6 @@ const openCloseTrajetElementEventsListener = function () {
 document.addEventListener("DOMContentLoaded", async function () {
   var alertContainer = document.querySelector(".save-alert") ;
   var editBtns = document.querySelectorAll(".edit--content") ;
-  console.log(user) ;
 
   signOutEventListener();
 
@@ -124,10 +123,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       "Authorization": `Bearer ${token}`,
     },
   });
-  // console.log(res) ;
   let trajets = (await res.json()).data.trajet; // array of current user trajets;
   await sortTrajetsOuReservations(trajets) ;
-
   const mesTrajets = function () {
     trajets.forEach((trajet) => {
       const date = new Date(trajet.date);
@@ -137,11 +134,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       const passagers = trajet.Passagers;
       var htmlP = "";
       passagers.forEach((passager) => {
+        console.log(passager);
         htmlP += `<div class="passager-info">
         <img class="passager-pfp" src="../img/user/${passager.photo}" />
         <span class="passager-name">${passager.name}}</span>
       </div>`;
       });
+      console.log(trajet) ;
       const html = `<div class="trajet ${trajet.isActive ? "" : "past"} ">
     <div class="trajet-top">
       <div class="left">
@@ -353,16 +352,39 @@ document.addEventListener("DOMContentLoaded", async function () {
     deleteTrajetElement.forEach((elmnt) => {
       elmnt.addEventListener("click", async function () {
         const trajetId = this.id;
+        const res1 = await fetch(`http://localhost:8000/api/v1/trajets/${trajetId}`,{
+          method:"GET",
+          headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+      },
+    }) ;
+
+   const passagers = (await res1.json()).data.trajet.Passagers ;
+
+  await passagers.forEach(async(psg)=> {
+    console.log(psg) ;
+    const res2 = await fetch("http://localhost:8000/api/v1/users/annuler", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: psg.email,
+    }),
+  });
+   console.log(res2);
+}) ;
+ 
         const res = await fetch(
           `http://localhost:8000/api/v1/trajets/${trajetId}`,
           {
             method: "DELETE",
           }
-        );
-        if (res.ok) {
-          mesTrajets();
-          window.location.href = "/html/dashboard.html";
-        }
+        );  
+    
+        if(res.ok) window.location.href = "/html/dashboard.html";
+        
       });
     });
   };
@@ -444,19 +466,10 @@ document.addEventListener("DOMContentLoaded", async function () {
    const photoModifierListener =  async function(){
     // edit--photo
     const photoInput = document.getElementById("edit--photo") ;
-    var photoUrl = "aaaa" ;
 
-   await photoInput.addEventListener("change",async function(){
-      const reader = new FileReader() ;
-      reader.addEventListener("load",function(){
-          photoUrl = reader.result ;
-          console.log(photoUrl) ;
-      })
-      if (photoUrl){
-      userPic = `default.jpg` ;
-      console.log(photoUrl) ;
+     photoInput.addEventListener("change",async function(){
+      userPic = "default.jpg" ;
       document.querySelector(".head-pfp").src = `../img/user/${userPic}` ;
-      }
       const url = `http://localhost:8000/api/v1/users/updateMe` ;
       const res = await fetch(url,{
         method: "PATCH",
@@ -468,11 +481,11 @@ document.addEventListener("DOMContentLoaded", async function () {
            photo:userPic ,
         }),
       }) ;
+      console.log(res) ;
       if (res.ok) updateUser() ;
     }) ;
+  } ;
 
- 
-  }
   
   photoModifierListener() ;
 

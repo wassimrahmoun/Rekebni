@@ -32,7 +32,7 @@ exports.getTrajet = catchAsync(async (req, res, next) => {
     })
     .populate({
       path: "Passagers",
-      select: "name photo pseudo",
+      select: "name photo pseudo email",
     });
 
   res.status(200).json({
@@ -49,7 +49,7 @@ exports.getUserTrajects = catchAsync(async (req, res, next) => {
     slug: req.params.slug,
   }).populate({
     path: "Passagers",
-    select: "name photo slug",
+    select: "name photo slug email",
   });
 
   res.status(200).json({

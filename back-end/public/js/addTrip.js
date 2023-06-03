@@ -86,6 +86,7 @@ else {
       if(data.length<1){msg.classList.remove("hidden") ;} 
       else{
       data.forEach(trajet=>{
+        if(trajet.Conducteur){
         const date =  new Date(trajet.date) ;
         const day = String(date.getDate()).padStart(2,"0") ;
         const month = date.toLocaleDateString("default",{month:"short"}) ;
@@ -117,6 +118,7 @@ else {
         </div>
       </div>`
       document.querySelector(".suggested-prices").insertAdjacentHTML("beforeend",html) ;
+        }
       })} 
      
       
