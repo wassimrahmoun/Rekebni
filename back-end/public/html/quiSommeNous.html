@@ -27,88 +27,94 @@
     />
     <link rel="shortcut icon" type="image" href="/img/ICON3 1.svg" />
     <!-- <script defer src="/js/script.js"></script> -->
+    <script defer src="../js/quiSommeNous.js"></script>
   </head>
   <body>
-    <div class="header">
-      <a href="/">
-        <img class="logo" src="../img/LOGO.png"le Logo de Rekebni" />
-      </a>
-      <nav class="main-nav">
-        <div class="nav-righthand">
-          <!-- <a class="quisommenous flex-center" href="#">
-            <span class="whitespan">Qui somme nous</span>
-          </a> -->
-          <a class="nav-ele" href="#departs">
-            <ion-icon name="search-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan">Recherche</span>
-          </a>
-          <a class="nav-ele" href="/publier">
-            <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
-            <span class="whitespan">Ajouter un trajet</span>
-          </a>
-          <div class="nav-login flex-center">
-            <a class="btn--login flex-center whitespan" href="/login"
-              >se connecter</a
-            >
-            <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
-          </div>
-          <div class="nav-profile hidden">
-            <img class="profile-pic" src="../img/user/default.jpg" id="menu-btn" />
-            <div class="--absolute" style="display: none" id="menu">
-              <div class="profile-menu a">
-                <!-- <img src="../img/menubbl.png" class="bbl" /> -->
-                <a href="html/dashboard.html">
-                <div class="profile-menu-ele child" id="profil" style="color: black;">
-                  Mon Profil
-                </div>
-              </a>
-                <div class="profile-menu-ele" id="settings">
-                  Paramètres du Compte
-                </div>
-                <div class="profile-menu-ele last" id="signout">
-                  Se Déconnecter
+    <header>
+      <div class="header">
+        <a href="/">
+          <img class="logo" src="../img/LOGO.png"le Logo de Rekebni" />
+        </a>
+        <nav class="main-nav">
+          <div class="nav-righthand">
+            <a class="quisommenous flex-center" href="../html/quiSommeNous.html">
+              <span class="whitespan">Qui somme nous</span>
+            </a>
+            <a class="nav-ele" href="#departs">
+              <ion-icon name="search-outline" class="whiteicon"></ion-icon>
+              <span class="whitespan">Recherche</span>
+            </a>
+            <a class="nav-ele" href="/publier">
+              <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
+              <span class="whitespan">Ajouter un trajet</span>
+            </a>
+            <div class="nav-login flex-center">
+              <a class="btn--login flex-center whitespan" href="/login"
+                >se connecter</a
+              >
+              <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
+            </div>
+            <div class="nav-profile hidden">
+              <img
+                class="profile-pic"
+                src="../img/user/default.jpg"
+                id="menu-btn"
+              />
+              <div class="--absolute" style="display: none" id="menu">
+                <div class="profile-menu a">
+                  <!-- <img src="../img/menubbl.png" class="bbl" /> -->
+                  <a href="html/dashboard.html">
+                  <div class="profile-menu-ele child" id="profil" style="color: black;">
+                    Mon Profil
+                  </div>
+                </a>
+                  <div class="profile-menu-ele last" id="signout">
+                    Se Déconnecter
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
-      <script>
-        // const parent = document.querySelector(".parent");
-        // const child = parent.querySelector(".a .child");
+        </nav>
+        <script>
+          // const parent = document.querySelector(".parent");
+          // const child = parent.querySelector(".a .child");
 
-        // child.addEventListener("mouseover", () => {
-        //   parent.style.backgroundColor = "red";
-        // });
+          // child.addEventListener("mouseover", () => {
+          //   parent.style.backgroundColor = "red";
+          // });
 
-        // child.addEventListener("mouseout", () => {
-        //   parent.style.backgroundColor = "";
-        // });
+          // child.addEventListener("mouseout", () => {
+          //   parent.style.backgroundColor = "";
+          // });
 
-        const menuBtn = document.querySelector("#menu-btn");
-        const menu = document.querySelector("#menu");
+          const menuBtn = document.querySelector("#menu-btn");
+          const menu = document.querySelector("#menu");
 
-        menuBtn.addEventListener("click", () => {
-          if (menu.style.display === "none") {
-            menu.style.display = "block";
-          } else {
-            menu.style.display = "none";
-          }
+          menuBtn.addEventListener("click", () => {
+            if (menu.style.display === "none") {
+              menu.style.display = "block";
+            } else {
+              menu.style.display = "none";
+            }
+            document.addEventListener("click", (event) => {
+              if (!menu.contains(event.target) && event.target !== menuBtn) {
+                menu.style.display = "none";
+              }
+            });
+          });
+
+          // Close the menu when a click is detected outside of it
           document.addEventListener("click", (event) => {
             if (!menu.contains(event.target) && event.target !== menuBtn) {
               menu.style.display = "none";
             }
           });
-        });
-
-        // Close the menu when a click is detected outside of it
-        document.addEventListener("click", (event) => {
-          if (!menu.contains(event.target) && event.target !== menuBtn) {
-            menu.style.display = "none";
-          }
-        });
-      </script>
-    </div>
+        </script>
+      </div>
+      <!-- <img class="waves2" src="../img/waves4.png" /> -->
+    </header>
+    <main>
     <div class="container">
       <div class="title">
         <h2>Qui somme nous ?</h2>
@@ -147,7 +153,7 @@
         </div>
       </div>
     </div>
-  </body>
+  </main>
   <footer>
     <div class="copyright">
       <a href="#">
@@ -193,4 +199,5 @@
       <a class="footer-element" href="#">Confidentialité et Conditions</a>
     </div>
   </footer>
+</body>
 </html>
