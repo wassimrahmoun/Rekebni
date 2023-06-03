@@ -31,9 +31,13 @@ window.addEventListener("DOMContentLoaded", function () {
 
       if (response.ok) {
         console.log("Changement de mot de passe confirmé avec succès.");
-      } else {
-        const invalide = document.querySelector(".invalid");
-        invalide.style.display = "flex";
+        const errorMessage = document.createElement("div");
+        errorMessage.classList.add("error-message");
+        errorMessage.textContent =
+          "vous avez changer votre message avec Succes ";
+        // Insertion du message d'erreur dans le document
+        const container = document.querySelector(".invalid-text");
+        container.appendChild(errorMessage);
       }
     } catch (error) {
       console.error("Erreur lors de l'envoi de la requête PATCH :", error);

@@ -100,6 +100,108 @@
             }
           });
         });
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rekebni - </title>
+    <!-- CSS LINKS -->
+    <link rel="stylesheet" type="text/css" href="../css/quiSommeNous.css" />
+    <link rel="stylesheet" type="text/css" href="../css/navbar3.css" />
+    <link rel="stylesheet" type="text/css" href="../css/footer.css" />
+    <!-- ICONION SCRIPT LINKS -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- FONT LINK (UBUNTU-All) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" type="image" href="/img/ICON3 1.svg" />
+    <script defer src="/js/script.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <a href="/">
+        <img class="logo" src="../img/LOGO.png"le Logo de Rekebni" />
+      </a>
+      <nav class="main-nav">
+        <div class="nav-righthand">
+          <!-- <a class="quisommenous flex-center" href="#">
+            <span class="whitespan">Qui somme nous</span>
+          </a> -->
+          <a class="nav-ele" href="#departs">
+            <ion-icon name="search-outline" class="whiteicon"></ion-icon>
+            <span class="whitespan">Recherche</span>
+          </a>
+          <a class="nav-ele" href="/publier">
+            <ion-icon name="add-circle-outline" class="whiteicon"></ion-icon>
+            <span class="whitespan">Ajouter un trajet</span>
+          </a>
+          <div class="nav-login flex-center">
+            <a class="btn--login flex-center whitespan" href="/login"
+              >se connecter</a
+            >
+            <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
+          </div>
+          <div class="nav-profile hidden">
+            <img class="profile-pic" src="../img/user/default.jpg" id="menu-btn" />
+            <div class="--absolute" style="display: none" id="menu">
+              <div class="profile-menu a">
+                <!-- <img src="../img/menubbl.png" class="bbl" /> -->
+                <a href="html/dashboard.html">
+                <div class="profile-menu-ele child" id="profil" style="color: black;">
+                  Mon Profil
+                </div>
+              </a>
+                <div class="profile-menu-ele" id="settings">
+                  Paramètres du Compte
+                </div>
+                <div class="profile-menu-ele last" id="signout">
+                  Se Déconnecter
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <script>
+        // const parent = document.querySelector(".parent");
+        // const child = parent.querySelector(".a .child");
+
+        // child.addEventListener("mouseover", () => {
+        //   parent.style.backgroundColor = "red";
+        // });
+
+        // child.addEventListener("mouseout", () => {
+        //   parent.style.backgroundColor = "";
+        // });
+
+        const menuBtn = document.querySelector("#menu-btn");
+        const menu = document.querySelector("#menu");
+
+        menuBtn.addEventListener("click", () => {
+          if (menu.style.display === "none") {
+            menu.style.display = "block";
+          } else {
+            menu.style.display = "none";
+          }
+          document.addEventListener("click", (event) => {
+            if (!menu.contains(event.target) && event.target !== menuBtn) {
+              menu.style.display = "none";
+            }
+          });
+        });
 
         // Close the menu when a click is detected outside of it
         document.addEventListener("click", (event) => {
