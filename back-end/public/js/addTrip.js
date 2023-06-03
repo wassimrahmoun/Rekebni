@@ -135,10 +135,6 @@ else {
       .querySelector(".ajouter-btn")
       .addEventListener("click", async function (e) {
         // Ajouter trajet
-    document
-      .querySelector(".ajouter-btn")
-      .addEventListener("click", async function (e) {
-        // Ajouter trajet
         e.preventDefault();
         try {
           const depart = locations[0].value;
