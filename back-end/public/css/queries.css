@@ -166,8 +166,12 @@
     width: 1.6rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 1.35rem;
+  }
+  .btn--signup {
   }
   .nav-profile {
     padding: 0.5rem;
@@ -496,8 +500,14 @@
     gap: 0.2rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 1.05rem;
+  }
+  .btn--signup {
+    padding: 0.2rem 1.5rem;
+    border-radius: 7px;
   }
   .nav-profile {
     padding: 0rem;
@@ -678,8 +688,14 @@
     gap: 0.2rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 1.05rem;
+  }
+  .btn--signup {
+    padding: 0.2rem 1.5rem;
+    border-radius: 7px;
   }
   .nav-profile {
     padding: 0rem;
@@ -937,7 +953,9 @@
     width: 1.4rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 1.05rem;
   }
   .nav-profile {
@@ -1082,7 +1100,9 @@
     width: 1.4rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 1.05rem;
   }
   .nav-profile {
@@ -1209,7 +1229,9 @@
     width: 1.4rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 1.05rem;
   }
   .nav-profile {
@@ -1357,7 +1379,9 @@
     width: 1.4rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 1.05rem;
   }
   .nav-profile {
@@ -1521,7 +1545,9 @@
     width: 1.4rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 1.05rem;
   }
   .nav-profile {
@@ -1688,8 +1714,14 @@
     width: 1.4rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 0.95rem;
+  }
+  .btn--signup {
+    padding: 0.1rem 1.4rem;
+    border-radius: 5px;
   }
   .nav-profile {
     padding: 0px 0px;
@@ -1852,7 +1884,9 @@
     width: 1.3rem;
   }
   .nav-ele span,
-  .quisommenous span {
+  .quisommenous span,
+  .btn--signup,
+  .whitespan {
     font-size: 0.85rem;
   }
   .nav-profile {
