@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   };
 
   profilTabInfos();
+  console.log(user);
 
   const trajetsContainer = document.querySelector(".trajets");
   const url = `http://localhost:8000/api/v1/trajets/conducteur/${userPseudo}`;
@@ -134,13 +135,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       const passagers = trajet.Passagers;
       var htmlP = "";
       passagers.forEach((passager) => {
-        console.log(passager);
         htmlP += `<div class="passager-info">
         <img class="passager-pfp" src="../img/user/${passager.photo}" />
         <span class="passager-name">${passager.name}}</span>
       </div>`;
       });
-      console.log(trajet) ;
       const html = `<div class="trajet ${trajet.isActive ? "" : "past"} ">
     <div class="trajet-top">
       <div class="left">
@@ -464,14 +463,53 @@ document.addEventListener("DOMContentLoaded", async function () {
     } ;
 
    const photoModifierListener =  async function(){
-    // edit--photo
-    const photoInput = document.getElementById("edit--photo") ;
 
-     photoInput.addEventListener("change",async function(){
-      userPic = "default.jpg" ;
-      document.querySelector(".head-pfp").src = `../img/user/${userPic}` ;
+    
+      // userPic = "default.jpg" ;
+
+const fileInput = document.getElementById('edit--photo');
+const profilePhoto = document.getElementById('head-pfp');
+
+fileInput.addEventListener('change', async (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const formData = new FormData();
+    formData.append('photo', file);
+
+    try {
       const url = `http://localhost:8000/api/v1/users/updateMe` ;
-      const res = await fetch(url,{
+       const response = await fetch(url,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+           photo:formData ,
+        })}) ;
+
+      if (response.ok) {
+        profilePhoto.src = URL.createObjectURL(file) ;
+      } else {
+        console.error('Error uploading photo');
+      }
+    } catch (error) {
+      console.error('Error uploading photo:', error);
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
+      // document.querySelector(".head-pfp").src = `../img/user/${userPic}` ;
+      // const url = `http://localhost:8000/api/v1/users/updateMe` ;
+    /*  const res = await fetch(url,{
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -482,8 +520,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         }),
       }) ;
       console.log(res) ;
-      if (res.ok) updateUser() ;
-    }) ;
+      if (res.ok) updateUser() ; */
+
   } ;
 
   
