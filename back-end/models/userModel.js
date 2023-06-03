@@ -82,6 +82,11 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    Sexe: {
+      type: String,
+      required: [true, "Vous devez entrer le sexe de la personne"],
+      values: ["Homme", "Femme"],
+    },
   },
   {
     toJSON: { virtuals: true },

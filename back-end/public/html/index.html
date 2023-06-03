@@ -7,7 +7,7 @@
     <title>Rekebni - Votre Solution de Covoiturage</title>
     <!-- CSS LINKS -->
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../css/quaries.css" />
+    <link rel="stylesheet" type="text/css" href="../css/queries.css" />
     <link rel="stylesheet" type="text/css" href="../css/general.css" />
     <!-- <link rel="stylesheet" type="text/css" href="../css/navbar1.css" /> -->
     <!-- ICONION SCRIPT LINKS -->
@@ -55,7 +55,11 @@
               <a class="btn--signup flex-center" href="/signup">s'inscrire</a>
             </div>
             <div class="nav-profile hidden">
-              <img class="profile-pic" src="../img/user/default.jpg" id="menu-btn" />
+              <img
+                class="profile-pic"
+                src="../img/user/default.jpg"
+                id="menu-btn"
+              />
               <div class="--absolute" style="display: none" id="menu">
                 <div class="profile-menu a">
                   <!-- <img src="../img/menubbl.png" class="bbl" /> -->
@@ -112,15 +116,12 @@
     </header>
     <main>
       <section class="section-hero my-section">
-        <div class="container hero">
+        <div class="container hero container-gap">
           <div class="hero-text-box">
             <h1 class="hero-title show">
               Voyagez en toute securité et économisez votre argent !
             </h1>
-            <span class="hero-subtext"
-              >Avec Rekebni, Faites un geste pour l'environnement et voyagez en
-              toute serenité .</span
-            >
+            <span class="hero-subtext"> Avec Rekebni, </span>
           </div>
           <img
             src="../img/26234278_7178884 1.png"
@@ -138,9 +139,7 @@
                 placeholder="Wilaya"
                 required=""
               >
-                <option value="" disabled="" selected="">
-                  Choisissez Votre Départ
-                </option>
+                <option value="" disabled="" selected="">Votre Départ</option>
                 <option value="ADRAR">ADRAR - 01</option>
                 <option value="CHLEF">CHLEF - 02</option>
                 <option value="LAGHOUAT">LAGHOUAT - 03</option>
@@ -201,9 +200,7 @@
                 placeholder="Wilaya"
                 required=""
               >
-                <option value="" disabled="" selected="">
-                  Choisissez Votre Arrivée
-                </option>
+                <option value="" disabled="" selected="">Votre Arrivée</option>
                 <option value="ADRAR">ADRAR - 01</option>
                 <option value="CHLEF">CHLEF - 02</option>
                 <option value="LAGHOUAT">LAGHOUAT - 03</option>
@@ -330,22 +327,22 @@
         <div class="container info">
           <div class="info-ele grid--typeA">
             <div class="info-textbubble bubble1">
-              <div class="info-title">
-                <ion-icon
-                  name="leaf-outline"
-                  class="info-title-icon"
-                ></ion-icon>
-                <span class="info-title-text"
-                  >Réduisez votre empreinte carbone</span
-                >
+              <div class="info-container">
+                <div class="info-title">
+                  <ion-icon name="leaf-outline" class="info-title-icon">
+                  </ion-icon>
+                  <span class="info-title-text">
+                    Réduisez votre empreinte carbone
+                  </span>
+                </div>
+                <span class="info-text"
+                  >En choisissant le covoiturage, vous contribuez à la
+                  protection de l'environnement en réduisant votre empreinte
+                  carbone. En diminuant le nombre de véhicules sur la route,
+                  vous entraînez une réduction des émissions de CO2 et de la
+                  pollution de l'air.
+                </span>
               </div>
-              <span class="info-text"
-                >En choisissant le covoiturage, vous contribuez à la protection
-                de l'environnement en réduisant votre empreinte carbone. En
-                diminuant le nombre de véhicules sur la route, vous entraînez
-                une réduction des émissions de CO2 et de la pollution de
-                l'air.</span
-              >
             </div>
             <img
               src="../img/picture1-ConvertImage.png"
@@ -360,37 +357,41 @@
               class="lazy-img info-img"
             />
             <div class="info-textbubble bubble2">
-              <div class="info-title">
-                <ion-icon
-                  name="cash-outline"
-                  class="info-title-icon"
-                ></ion-icon>
-                <span class="info-title-text">Économisez de l'argent</span>
+              <div class="info-container">
+                <div class="info-title">
+                  <ion-icon
+                    name="cash-outline"
+                    class="info-title-icon"
+                  ></ion-icon>
+                  <span class="info-title-text">Économisez de l'argent</span>
+                </div>
+                <span class="info-text"
+                  >Avec notre service de covoiturage, vous pouvez économiser de
+                  l'argent sur les frais de transport. En partageant les coûts
+                  avec d'autres passagers ou conducteurs, vous pouvez réduire
+                  considérablement vos dépenses de voyage.</span
+                >
               </div>
-              <span class="info-text"
-                >Avec notre service de covoiturage, vous pouvez économiser de
-                l'argent sur les frais de transport. En partageant les coûts
-                avec d'autres passagers ou conducteurs, vous pouvez réduire
-                considérablement vos dépenses de voyage.</span
-              >
             </div>
           </div>
           <div class="info-ele grid--typeA">
             <div class="info-textbubble bubble3">
-              <div class="info-title">
-                <ion-icon
-                  name="lock-closed-outline"
-                  class="info-title-icon"
-                ></ion-icon>
-                <span class="info-title-text">Voyagez en toute sécurité</span>
+              <div class="info-container">
+                <div class="info-title">
+                  <ion-icon
+                    name="lock-closed-outline"
+                    class="info-title-icon"
+                  ></ion-icon>
+                  <span class="info-title-text">Voyagez en toute sécurité</span>
+                </div>
+                <span class="info-text"
+                  >Nous mettons tout en œuvre pour garantir la sécurité de notre
+                  communauté de covoiturage. Tous nos conducteurs et passagers
+                  sont vérifiés et approuvés. Vous pouvez ainsi voyager en toute
+                  confiance, sachant que nous avons pris toutes les mesures
+                  nécessaires pour assurer votre sécurité.</span
+                >
               </div>
-              <span class="info-text"
-                >Nous mettons tout en œuvre pour garantir la sécurité de notre
-                communauté de covoiturage. Tous nos conducteurs et passagers
-                sont vérifiés et approuvés. Vous pouvez ainsi voyager en toute
-                confiance, sachant que nous avons pris toutes les mesures
-                nécessaires pour assurer votre sécurité.</span
-              >
             </div>
             <img
               src="../img/image3-ConvertImage.png"
@@ -402,9 +403,7 @@
       </section>
       <img src="../img/wave2.png" class="waves" />
       <section class="section-toptrajets">
-        <h2 class="container info-title-text trajets-title">
-          Où voulez-vous aller?
-        </h2>
+        <h2 class="trajets-title">Où voulez-vous aller?</h2>
         <div class="container trajets">
           <a class="trajet" href="#">
             <span class="trajet-text">Alger</span>
@@ -456,13 +455,13 @@
           </a>
           <div class="trajet-more">
             <a href="#" class="morelink">
-              <span class="trajet-more-text"
+              <!-- <span class="trajet-more-text"
                 >Voir tous nos meillieurs trajets</span
-              >
-              <ion-icon
+              > 
+               <ion-icon
                 name="chevron-forward-outline"
                 class="trajet-more-fleche"
-              ></ion-icon>
+              ></ion-icon> -->
             </a>
           </div>
         </div>
@@ -473,7 +472,7 @@
       <div class="container footer-grid">
         <div class="copyright">
           <a href="#">
-            <img class="footer-logo" src="../img/LOGOShrunk.png" />
+            <img class="logo footer-logo" src="../img/LOGOShrunk.png" />
           </a>
           <div class="sm-logos">
             <a href="#" class="sociallink">
@@ -486,7 +485,7 @@
               <ion-icon name="logo-twitter" class="sm-logo"></ion-icon>
             </a>
           </div>
-          <span class="copyright-text"
+          <span class="copyright-text footer-element"
             >© 2023 Copyright par l'équipe de développement de Rekebni. Tous les
             droits sont réservés</span
           >
@@ -541,8 +540,9 @@
     //   threshold: 0,
     //   rootMargin: "100px",
     // });
-
     // imgTargets.forEach((img) => imgObserver.observe(img));
+    // ****************************************************************************
+
     const imgTargets = document.querySelectorAll("img[data-src]");
 
     const loadImg = function (entries, observer) {
@@ -567,6 +567,7 @@
     });
     imgTargets.forEach((img) => imgObserver.observe(img));
 
+    // ****************************************************************************
     // Get the current date
     var currentDate = new Date();
 

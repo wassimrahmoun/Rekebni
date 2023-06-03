@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const lastName = document.getElementById("last-name").value;
       const firstName = document.getElementById("first-name").value;
       const pseudo = document.getElementById("pseudo").value;
+      const sexe = document.getElementById("sexe").value ;
 
       // Checking inputs
       
@@ -36,7 +37,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
         !phoneNumber ||
         !firstName ||
         !lastName ||
-        !pseudo
+        !pseudo ||
+        !sexe
       ) {
         throw new Error(`Veuillez verifiez vos informations !`);
       }
@@ -64,6 +66,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
           passwordConfirm: passwordConfirm,
           name: `${lastName} ${firstName}`,
           phone: phoneNumber,
+          Sexe:sexe
           // lastName: lastName,
           // firstName: firstName,
           // birthDate:  birthDate,

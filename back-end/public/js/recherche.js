@@ -1,5 +1,4 @@
 //  code propre
-
 function gett(x) {
   console.log(x);
   localStorage.setItem("selectedTrajetId", x);
@@ -9,9 +8,8 @@ function gett(x) {
   window.location.href = detailsUrl;
 }
 var user = JSON.parse(window.localStorage.getItem("userJson"));
-var userId ;
-if(user)  userId = user.id ;
-
+var userId;
+if (user) userId = user.id;
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -147,20 +145,21 @@ function displayrecherch(nbrtrajet, mesDonnees) {
   }
 }
 
-const showProfilePic = function(){
-  var userPic = user.photo ;
-  document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
-}
+const showProfilePic = function () {
+  var userPic = user.photo;
+  document
+    .querySelector(".profile-pic")
+    .setAttribute("src", `../img/user/${userPic}`);
+};
 
-const signOutEventListener=function(){
-   const profilSignOut = document.getElementById("signout"); // Déconnecter
-    profilSignOut.addEventListener("click", async function () {
-      await fetch("http://localhost:8000/api/v1/users/logout") ;
-      window.localStorage.removeItem("userJson") ;
-      window.location.href = "/";
-      
-    });
-}
+const signOutEventListener = function () {
+  const profilSignOut = document.getElementById("signout"); // Déconnecter
+  profilSignOut.addEventListener("click", async function () {
+    await fetch("http://localhost:8000/api/v1/users/logout");
+    window.localStorage.removeItem("userJson");
+    window.location.href = "/";
+  });
+};
 
 function erreur() {
   const errorMessage = document.createElement("div");
@@ -170,158 +169,697 @@ function erreur() {
   const container = document.querySelector(".search-results");
   container.appendChild(errorMessage);
 }
-document.addEventListener("DOMContentLoaded", function () { 
+document.addEventListener("DOMContentLoaded", function () {
   // verifier si connecté / deconnecté
   const loginRegisterTabs = document.querySelector(".nav-login");
   const profileTab = document.querySelector(".nav-profile");
-  if (!userId){
-    profileTab.classList.add("hidden") ;
-    loginRegisterTabs.classList.remove("hidden") ;
-    } 
-    else {
-      loginRegisterTabs.classList.add("hidden") ;
-      profileTab.classList.remove("hidden") ;
-      showProfilePic() ;
-      signOutEventListener() ;
-    }
-  //  
-    
-  
+  if (!userId) {
+    profileTab.classList.add("hidden");
+    loginRegisterTabs.classList.remove("hidden");
+  } else {
+    loginRegisterTabs.classList.add("hidden");
+    profileTab.classList.remove("hidden");
+    showProfilePic();
+    signOutEventListener();
+  }
+  //
+
   const mesDonnees = JSON.parse(localStorage.getItem("mes-donnees"));
   console.log(mesDonnees);
   if (mesDonnees.results === 0) {
     erreur();
   }
   const nbrtrajet = mesDonnees.results;
-  console.log(`nbTrajet : ${nbrtrajet}`) ;
-  console.log(`mes données ${mesDonnees.data.data[0].id}`) ;
+  console.log(`nbTrajet : ${nbrtrajet}`);
+  console.log(`mes données ${mesDonnees.data.data[0].id}`);
   const selectedPassengers = localStorage.getItem("selectedPassengers");
   displaySearchInfo(mesDonnees, selectedPassengers);
   displayrecherch(nbrtrajet, mesDonnees);
-
   const filterACCheckbox = document.getElementById("filter-price");
-  filterACCheckbox.addEventListener("click", () => {
-    if (filterACCheckbox.checked) {
-      url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=Prix`;
-
-      fetch(url)
-        .then((response) => response.json())
-        .then((mesDonnees) => {
-          console.log(mesDonnees);
-          const nbrrtrajet = mesDonnees.results;
-          console.log();
-          const trajetbox = document.querySelector(".search-results");
-          trajetbox.innerHTML = "";
-
-          // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(mesDonnees, selectedPassengers);
-          displayrecherch(nbrrtrajet, mesDonnees);
-        })
-        .catch((error) => console.error(error));
-    }
-  });
   const filterACCheckbox2 = document.getElementById("filter-time");
-  filterACCheckbox2.addEventListener("click", () => {
-    if (filterACCheckbox2.checked) {
-      url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=HeurD`;
-
-      fetch(url)
-        .then((response) => response.json())
-        .then((donnon) => {
-          console.log(mesDonnees);
-          const nbrrtrajet = mesDonnees.results;
-          console.log();
-          const trajetbox = document.querySelector(".search-results");
-          trajetbox.innerHTML = "";
-
-          // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(mesDonnees, selectedPassengers);
-          displayrecherch(nbrrtrajet, mesDonnees);
-        })
-        .catch((error) => console.error(error));
-    }
-  });
-  const filterACCheckbox3 = document.getElementById("filter-duration");
-  filterACCheckbox3.addEventListener("click", () => {
-    if (filterACCheckbox3.checked) {
-      url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=-Prix`;
-
-      fetch(url)
-        .then((response) => response.json())
-        .then((mesDonnees) => {
-          console.log(mesDonnees);
-          const nbrrtrajet = mesDonnees.results;
-          console.log();
-          const trajetbox = document.querySelector(".search-results");
-          trajetbox.innerHTML = "";
-          // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(mesDonnees, selectedPassengers);
-          displayrecherch(nbrrtrajet, mesDonnees);
-        })
-        .catch((error) => console.error(error));
-    }
-  });
   const interditfumeur = document.getElementById("filter-ac");
-  interditfumeur.addEventListener("click", () => {
-    if (interditfumeur.checked) {
-      url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true`;
-
-      fetch(url)
-        .then((response) => response.json())
-        .then((mesDonnees) => {
-          console.log(mesDonnees);
-          const nbrrtrajet = mesDonnees.results;
-          if (mesDonnees.results === 0) {
-            erreur();
-          }
-          console.log();
-          const trajetbox = document.querySelector(".search-results");
-          trajetbox.innerHTML = "";
-          // const trajettbox = document.querySelector(".search-results");
-          displaySearchInfo(mesDonnees, selectedPassengers);
-          displayrecherch(nbrrtrajet, mesDonnees);
-        })
-        .catch((error) => console.error(error));
-    }
-  });
+  const filterACCheckbox3 = document.getElementById("filter-duration");
   const clim = document.getElementById("filter-smoke");
-  clim.addEventListener("click", () => {
-    if (clim.checked) {
-      url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&climatisation=true`;
+
+  filterACCheckbox.addEventListener("click", () => {
+    if (filterACCheckbox.checked && !interditfumeur.checked && !clim.checked) {
+      const url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=Prix`;
 
       fetch(url)
         .then((response) => response.json())
         .then((mesDonnees) => {
           console.log(mesDonnees);
           const nbrrtrajet = mesDonnees.results;
-          console.log();
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox.checked &&
+      !clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
           if (mesDonnees.results === 0) {
             erreur();
           }
           const trajetbox = document.querySelector(".search-results");
           trajetbox.innerHTML = "";
-          // const trajettbox = document.querySelector(".search-results");
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=Prix&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      !interditfumeur.checked &&
+      filterACCheckbox.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=Prix&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
           displaySearchInfo(mesDonnees, selectedPassengers);
           displayrecherch(nbrrtrajet, mesDonnees);
         })
         .catch((error) => console.error(error));
     }
   });
-});
+  // filtre acccheckbox  HeurD
+  filterACCheckbox2.addEventListener("click", () => {
+    if (filterACCheckbox2.checked && !interditfumeur.checked && !clim.checked) {
+      const url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=HeurD`;
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".results-box").forEach(function (trajetElement) {
-    trajetElement.addEventListener("click", function (event) {
-      const trajetId = event.currentTarget.id;
-      console.log(trajetId);
-      localStorage.setItem("selectedTrajetId", trajetId);
-      const currentUrl = window.location.href;
-      const currentPathname = window.location.pathname;
-      const detailsUrl = currentUrl.replace(
-        currentPathname,
-        "/html/details.html"
-      );
-      window.location.href = detailsUrl;
+      fetch(url)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox2.checked &&
+      !clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=HeurD`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=HeurD&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      !interditfumeur.checked &&
+      filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=HeurD&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    }
+  });
+  // filtre 3 -Prix
+  filterACCheckbox3.addEventListener("click", () => {
+    if (filterACCheckbox3.checked && !interditfumeur.checked && !clim.checked) {
+      const url = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=-Prix`;
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox3.checked &&
+      !clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=-Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox3.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=-Prix&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      !interditfumeur.checked &&
+      filterACCheckbox3.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&sort=-Prix&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    }
+  });
+  interditfumeur.addEventListener("click", () => {
+    if (
+      interditfumeur.checked &&
+      !clim.checked &&
+      !filterACCheckbox.checked &&
+      !filterACCheckbox3.checked &&
+      !filterACCheckbox2.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox3.checked &&
+      !clim.checked &&
+      !filterACCheckbox.checked &&
+      !filterACCheckbox2.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=-Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      !filterACCheckbox3.checked &&
+      filterACCheckbox.checked &&
+      !filterACCheckbox2.checked &&
+      !clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      !filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      filterACCheckbox2.checked &&
+      !clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&sort=HeurD`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      !filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      !filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      !filterACCheckbox3.checked &&
+      filterACCheckbox.checked &&
+      !filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&climatisation=true&sort=Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      !filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&climatisation=true&sort=-Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      !filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&climatisation=true&sort=HeurD`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    }
+  });
+  //  Climatisation
+  clim.addEventListener("click", () => {
+    if (
+      !interditfumeur.checked &&
+      clim.checked &&
+      !filterACCheckbox.checked &&
+      !filterACCheckbox3.checked &&
+      !filterACCheckbox2.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      !interditfumeur.checked &&
+      clim.checked &&
+      filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      !filterACCheckbox2.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&climatisation=true&sort=-Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      !interditfumeur.checked &&
+      clim.checked &&
+      !filterACCheckbox3.checked &&
+      filterACCheckbox.checked &&
+      !filterACCheckbox2.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&climatisation=true&sort=Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      !interditfumeur.checked &&
+      clim.checked &&
+      !filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      filterACCheckbox2.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&&climatisation=true&sort=HeurD`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      !filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      !filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&climatisation=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      !filterACCheckbox3.checked &&
+      filterACCheckbox.checked &&
+      !filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&climatisation=true&sort=Prix&fumers=true`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      !filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&climatisation=true&sort=-Prix`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    } else if (
+      interditfumeur.checked &&
+      !filterACCheckbox3.checked &&
+      !filterACCheckbox.checked &&
+      filterACCheckbox2.checked &&
+      clim.checked
+    ) {
+      const urlWithFilters = `http://localhost:8000/api/v1/trajets?Depart=${mesDonnees.data.data[0].Depart}&Arrivée=${mesDonnees.data.data[0].Arrivée}&places[gte]=${selectedPassengers}&date=${mesDonnees.data.data[0].date}&fumers=true&climatisation=true&sort=HeurD`;
+
+      fetch(urlWithFilters)
+        .then((response) => response.json())
+        .then((mesDonnees) => {
+          console.log(mesDonnees);
+          const nbrrtrajet = mesDonnees.results;
+          if (mesDonnees.results === 0) {
+            erreur();
+          }
+          const trajetbox = document.querySelector(".search-results");
+          trajetbox.innerHTML = "";
+
+          displaySearchInfo(mesDonnees, selectedPassengers);
+          displayrecherch(nbrrtrajet, mesDonnees);
+        })
+        .catch((error) => console.error(error));
+    }
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".results-box").forEach(function (trajetElement) {
+      trajetElement.addEventListener("click", function (event) {
+        const trajetId = event.currentTarget.id;
+        console.log(trajetId);
+        localStorage.setItem("selectedTrajetId", trajetId);
+        const currentUrl = window.location.href;
+        const currentPathname = window.location.pathname;
+        const detailsUrl = currentUrl.replace(
+          currentPathname,
+          "/html/details.html"
+        );
+        window.location.href = detailsUrl;
+      });
     });
   });
 });

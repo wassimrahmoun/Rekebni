@@ -34,6 +34,7 @@ const createSendToken = (user, statusCode, res) => {
     },
   });
 };
+
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
   const url = `http://localhost:8000/api/v1/users/activate/${newUser.id}`;
@@ -184,15 +185,12 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
-  //1 get user from the collection
   const user = await User.findById(req.user.id).select("+password");
 
-  //2 check if posted current password is correct
   if (!(await user.verifyPassword(req.body.passwordCurrent, user.password))) {
     return next(new AppError("The current password is incorrect", 401));
   }
 
-  //3 if so update password
   user.password = req.body.password;
   user.passwordConfirm = req.body.passwordConfirm;
 
@@ -262,12 +260,12 @@ exports.getCurrentUser = (req, res, next) => {
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    //   role='user'
     if (!roles.includes(req.user.role)) {
       return next(
         new AppError("You do not have permission to perform this action", 403)
       );
     }
+
     next();
   };
 };

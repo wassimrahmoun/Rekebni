@@ -72,7 +72,14 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
 
   // 2) Filtered out unwanted fields names that are not allowed to be updated
-  const filteredBody = filterObj(req.body, "name", "email", "pseudo", "phone");
+  const filteredBody = filterObj(
+    req.body,
+    "name",
+    "email",
+    "pseudo",
+    "phone",
+    "Sexe"
+  );
   if (req.file) filteredBody.photo = req.file.filename;
 
   // 3) Update user document
@@ -106,4 +113,24 @@ exports.emailtrajetannule = catchAsync(async (req, res, next) => {
     new AppError("There was an error sending the email. Try again later!"),
     500
   );
+});
+exports.banUser = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(new AppError("Utilisateur introuvable.", 404));
+  }
+
+  if (user.active == true) {
+    user.active = false;
+  } else {
+    user.active = true;
+  }
+
+  await user.save();
+
+  res.status(200).json({
+    status: "success",
+    message: "Utilisateur banni avec succès.",
+  });
 });
