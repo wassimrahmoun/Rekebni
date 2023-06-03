@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         !["5", "6", "7"].includes(phoneNumber.charAt(1)) ||
         phoneNumber.length !== 10
       ) {
-        throw new Error("Phone number doesn't exist ❌");
+        throw new Error("Le numéro de téléphone n'existe pas !");
       }
 
       if (
@@ -45,10 +45,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
         !lastName ||
         !pseudo
       ) {
-        throw new Error(`Check your inputs ❌`);
+        throw new Error(`Veuillez verifiez vos informations !`);
       }
       if (passwordConfirm != password)
-        throw new Error(`password fields unmatching ❌`);
+        throw new Error(`Les champs de mot de passe ne correspondent pas !`);
 
       const res = await fetch("http://localhost:8000/api/v1/users/signup", {
         method: "POST",
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         }),
       });
       if (!res.ok)
-        throw new Error("Something is wrong ❌ , please try again later !");
+        throw new Error("Quelque chose ne va pas ❌, veuillez réessayer ultérieurement !");
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {
