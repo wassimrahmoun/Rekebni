@@ -7,11 +7,11 @@ exports.deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const userId = req.params.id;
 
-    await Trajet.deleteMany({ Conducteur: userId });
-
     await Review.deleteMany({ conducteur: userId });
 
     await Review.deleteMany({ user: userId });
+
+    await Trajet.deleteMany({ Conducteur: userId });
 
     const doc = await Model.findByIdAndDelete(userId);
 
