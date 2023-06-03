@@ -10,54 +10,249 @@ button {
   font-family: "ubuntu", sans-serif;
 }
 
-
-.container{
+.container {
   background-color: #00aff5;
   display: flex;
-   flex-direction: column;
+  flex-direction: column;
   align-items: center;
-	gap:30px;
-	padding: 3rem 15rem;
-    padding-bottom: 7rem;
-
+  gap: 30px;
+  padding: 3rem 15rem;
+  padding-bottom: 7rem;
 }
 
-
-.container h2{
+.container h2 {
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
   line-height: 136.52%;
-	color: white;
+  color: white;
 }
 
-.content{
-	background-color: white;
-	border-radius: 20px;
-	padding: 3rem 10rem;
-	display: flex;
-	flex-direction: column;
-    justify-content: center;
-	gap: 3rem;
+.content {
+  background-color: white;
+  border-radius: 20px;
+  padding: 3rem 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
 }
 
-.content span{
-	font-style: normal;
-	font-weight: 700;
+.content span {
+  font-style: normal;
+  font-weight: 700;
   font-size: 25px;
   text-align: center;
-	color: #00aff5;
+  color: #00aff5;
 }
 
-.content p{
-	font-style: normal;
+.content p {
+  font-style: normal;
   font-weight: 300;
   font-size: 20px;
   text-align: justify;
 }
 
-.conclution p{
-    font-style: normal;
-    font-weight: 500;
-    text-align: center;
+.conclution p {
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
 }
+
+/* ****************************** */
+/* HEADER */
+/* ****************************** */
+
+.header {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  position: absolute;
+  transition: all 0.3s;
+  width: 100%;
+  padding: 0 15rem;
+  background-color: #fff;
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scrolling {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.logo {
+  height: 6rem;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-left: 4rem;
+}
+.nav-righthand {
+  display: flex;
+  gap: 2rem;
+}
+.nav-ele {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.nav-ele span,
+.quisommenous span {
+  color: #030045;
+  font-size: 1.7rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.whiteicon {
+  margin-top: 0.2rem;
+  transition: all 0.3s;
+  height: 2rem;
+  width: 2rem;
+  color: #00aff5;
+}
+.nav-ele:hover span,
+.nav-ele:active span,
+.quisommenous:hover span,
+.quisommenous:active span,
+.nav-ele:hover .whiteicon,
+.nav-ele:active .whiteicon {
+  color: #00aff5;
+}
+
+.nav-login * {
+  font-size: 1.6rem;
+  transition: all 0.3s;
+}
+
+.btn--login {
+  border-right: 1px solid #030045;
+  font-weight: 500;
+  padding: 0 1rem;
+  height: 2rem;
+}
+
+.btn--login:visited,
+.btn--login:link {
+  color: #030045;
+  background-color: #fff;
+}
+
+.btn--login:hover,
+.btn--login:active {
+  color: #00aff5;
+  background-color: #fff;
+}
+
+.btn--signup {
+  border: 3px solid #00aff5;
+  color: #fff;
+  background-color: #00aff5;
+  border-radius: 11px;
+  padding: 0.3rem 2rem;
+  margin-left: 1rem;
+  font-weight: 500;
+}
+.btn--signup:hover,
+.btn--signup:active {
+  color: #030045;
+  background-color: #fff;
+}
+/* //////////////////////////// */
+/* PROFIL CSS HANDING */
+/* //////////////////////////// */
+.nav-profile {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0px;
+}
+.profile-pic {
+  height: 5rem;
+  width: 5rem;
+  border: 3px solid #030045;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 7rem;
+  top: 7rem;
+  max-width: 22rem;
+  border-radius: 1.3rem 1.3rem 1.3rem 1.3rem;
+  /* Clip the box shadows to container */
+  overflow: hidden;
+  /* Add box shadows */
+  transition: all 0.5s;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+.bbl {
+  width: 100%;
+}
+.profile-menu-ele {
+  background-color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: red;
+  cursor: pointer;
+}
+.profile-menu-ele:hover,
+.profile-menu-ele:active {
+  background-color: #daf4ff;
+}
+
+.profile-menu-ele:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+}
+.profile-menu-ele:not(:last-child) {
+  color: #030045;
+}
+/* .last {
+  padding-bottom: 0px;
+} */
+/* .--absolute::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-bottom: 2rem solid #daf4ff;
+  display: block;
+  transform: translateX(0.5rem);
+} */
+.--absolute::before + .profile-menu-ele:hover {
+  background-color: #c3e5f3;
+}
+/* .--absolute::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #000;
+  display: block;
+  height: 1rem;
+  width: 2rem;
+  background-color: #d8d8d8;
+} */
+
+/* .child {
+  padding-top: 0px;
+} */
