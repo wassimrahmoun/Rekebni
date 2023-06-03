@@ -30,8 +30,6 @@ function displayallusers(data, resultatt) {
       banUser(userId);
     });
   });
-
-  // Ajouter un écouteur d'événement pour les boutons "Supprimer"
   const deleteButtons = document.querySelectorAll(".delete-button");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -61,6 +59,7 @@ async function banUser(userId) {
       if (userStatus) {
         userStatus.textContent = "Banni";
       }
+      location.reload();
     } else {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -82,13 +81,13 @@ async function deleteUser(userId) {
 
     if (response.ok) {
       console.log(`Utilisateur avec ID ${userId} supprimé avec succès`);
-      // Supprimer la ligne de l'utilisateur du tableau
       const userRow = document.querySelector(
         `.user-row[data-user-id="${userId}"]`
       );
       if (userRow) {
         userRow.remove();
       }
+      location.reload();
     } else {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
