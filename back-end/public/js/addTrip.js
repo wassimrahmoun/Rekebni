@@ -1,35 +1,39 @@
 "use strict";
 
 var user = JSON.parse(window.localStorage.getItem("userJson"));
-var userId ;
-var userSlug ;
-if(user) { userId = user.id ;
-           userSlug = user.pseudo  } ;
-
-
-const showProfilePic = function(){
-  var userPic = user.photo ;
-  document.querySelector(".profile-pic").setAttribute("src",`../img/user/${userPic}`) ;
+var userId;
+var userSlug;
+var userSexe;
+if (user) {
+  userId = user.id;
+  userSlug = user.pseudo;
+  userSexe = user.Sexe;
 }
 
-const signOutEventListener=function(){
-   const profilSignOut = document.getElementById("signout"); // Déconnecter
-    profilSignOut.addEventListener("click", async function () {
-      await fetch("http://localhost:8000/api/v1/users/logout") ;
-      window.localStorage.removeItem("userJson") ;
-      window.location.href = "/";
-      
-    });
-}
+const showProfilePic = function () {
+  var userPic = user.photo;
+  document
+    .querySelector(".profile-pic")
+    .setAttribute("src", `../img/user/${userPic}`);
+};
 
-const averageRating = function(arr){
-  let sum = 0 ;
-  const numberOfRatings = arr.length ;
-  arr.forEach(user=>{
-  sum+=user.rating ;
-  })
-  return sum/numberOfRatings ;
-}
+const signOutEventListener = function () {
+  const profilSignOut = document.getElementById("signout"); // Déconnecter
+  profilSignOut.addEventListener("click", async function () {
+    await fetch("http://localhost:8000/api/v1/users/logout");
+    window.localStorage.removeItem("userJson");
+    window.location.href = "/";
+  });
+};
+
+const averageRating = function (arr) {
+  let sum = 0;
+  const numberOfRatings = arr.length;
+  arr.forEach((user) => {
+    sum += user.rating;
+  });
+  return sum / numberOfRatings;
+};
 
 /* const nbPersonnesFunction = function(){
     nbPersonnesElements.forEach(btn=> {if(btn.checked) nbPersonnes = btn.value}) ;
@@ -47,50 +51,56 @@ const rechercheId = function(data,email){
 if (!userId) window.location.href = "/login"; // Verifier si il est connecté
 else {
   document.addEventListener("DOMContentLoaded", function () {
-    showProfilePic() ;
-    signOutEventListener() ;
-    var msg = document.getElementById("pas-de-trajets") ;
-    
+    showProfilePic();
+    signOutEventListener();
+    var msg = document.getElementById("pas-de-trajets");
 
     const locations = document.querySelectorAll(".destination-input");
     const heures = document.querySelectorAll(".time-input");
     const container = document.querySelector(".container");
     const trajetsSimilar = document.querySelector(".trajet-similairs");
 
-    const cleanTrajetsSimilairesContainer = function(){
-     const tripContainer = document.querySelectorAll(".trip") ;
-     tripContainer.forEach(trip=>{
-                                   trip.remove() ; 
-     })
-     msg.classList.add("hidden") ;
-     }
-  
+    const cleanTrajetsSimilairesContainer = function () {
+      const tripContainer = document.querySelectorAll(".trip");
+      tripContainer.forEach((trip) => {
+        trip.remove();
+      });
+      msg.classList.add("hidden");
+    };
 
-    document.querySelector(".affiche-btn").addEventListener("click", async function () {   // Trajets similaires
-      cleanTrajetsSimilairesContainer() ;
-      const depart = locations[0].value ;
-      const destination =locations[1].value ;
-      const carType = document.getElementById("vehicule-input").value;
-      const matricule = document.getElementById("matricule-input").value;
-      const nbPersonnes = document.getElementById("nbrpersonne-input").value ;
-      const fumeur = document.getElementById("fumeur-input").checked; // boolean
-      const climatisation = document.getElementById("climatisation-input").checked ;
-      const date = document.getElementById("date-input").value;
-      const heureDepart = heures[0].value;
-      const heureArrivé = heures[1].value;
-      const prix = document.getElementById("price-input").value;
+    document
+      .querySelector(".affiche-btn")
+      .addEventListener("click", async function () {
+        // Trajets similaires
+        cleanTrajetsSimilairesContainer();
+        const depart = locations[0].value;
+        const destination = locations[1].value;
+        const carType = document.getElementById("vehicule-input").value;
+        const matricule = document.getElementById("matricule-input").value;
+        const nbPersonnes = document.getElementById("nbrpersonne-input").value;
+        const fumeur = document.getElementById("fumeur-input").checked; // boolean
+        const climatisation = document.getElementById(
+          "climatisation-input"
+        ).checked;
+        const date = document.getElementById("date-input").value;
+        const heureDepart = heures[0].value;
+        const heureArrivé = heures[1].value;
+        const prix = document.getElementById("price-input").value;
 
-      const url = `http://localhost:8000/api/v1/trajets?Depart=${depart}&Arrivée=${destination}&sort={"Prix"}` ;
-      const response = await fetch(url) ;
-      const data = (await response.json()).data.data ;
-      if(data.length<1){msg.classList.remove("hidden") ;} 
-      else{
-      data.forEach(trajet=>{
-        const date =  new Date(trajet.date) ;
-        const day = String(date.getDate()).padStart(2,"0") ;
-        const month = date.toLocaleDateString("default",{month:"short"}) ;
-        const year = date.getFullYear() 
-        let html = `
+        const url = `http://localhost:8000/api/v1/trajets?Depart=${depart}&Arrivée=${destination}&sort={"Prix"}`;
+        const response = await fetch(url);
+        const data = (await response.json()).data.data;
+        if (data.length < 1) {
+          msg.classList.remove("hidden");
+        } else {
+          data.forEach((trajet) => {
+            const date = new Date(trajet.date);
+            const day = String(date.getDate()).padStart(2, "0");
+            const month = date.toLocaleDateString("default", {
+              month: "short",
+            });
+            const year = date.getFullYear();
+            let html = `
         <div class="trip" style="display: flex" >
           <div class="driver-profile">
             <img class="photo" src="../img/user/${trajet.Conducteur.photo}"></img>
@@ -115,25 +125,30 @@ else {
             <p>${trajet.Prix} DA</p>
           </div>
         </div>
-      </div>`
-      document.querySelector(".suggested-prices").insertAdjacentHTML("beforeend",html) ;
-      })} 
-     
-      
-      });     
+      </div>`;
+            document
+              .querySelector(".suggested-prices")
+              .insertAdjacentHTML("beforeend", html);
+          });
+        }
+      });
 
-
-    document.querySelector(".ajouter-btn").addEventListener("click", async function (e) {     // Ajouter trajet
+    document
+      .querySelector(".ajouter-btn")
+      .addEventListener("click", async function (e) {
+        // Ajouter trajet
         e.preventDefault();
         try {
-        
-          const depart = locations[0].value ;
-          const destination =locations[1].value ;
+          const depart = locations[0].value;
+          const destination = locations[1].value;
           const carType = document.getElementById("vehicule-input").value;
           const matricule = document.getElementById("matricule-input").value;
-          const nbPersonnes = document.getElementById("nbrpersonne-input").value ;
+          const nbPersonnes =
+            document.getElementById("nbrpersonne-input").value;
           const fumeur = document.getElementById("fumeur-input").checked; // boolean
-          const climatisation = document.getElementById("climatisation-input").checked ;
+          const climatisation = document.getElementById(
+            "climatisation-input"
+          ).checked;
           const date = document.getElementById("date-input").value;
           const heureDepart = heures[0].value;
           const heureArrivé = heures[1].value;
@@ -141,15 +156,23 @@ else {
           // check inputs function
           const inputsEmpty = function () {
             let inputsEmptyVar = false;
-            if (depart && destination && carType && matricule && date && heureDepart && heureArrivé && prix)  inputsEmptyVar = false;
+            if (
+              depart &&
+              destination &&
+              carType &&
+              matricule &&
+              date &&
+              heureDepart &&
+              heureArrivé &&
+              prix
+            )
+              inputsEmptyVar = false;
             else inputsEmptyVar = true;
             return inputsEmptyVar;
           };
           //
 
           if (inputsEmpty()) throw new Error("Please check your inputs ❌"); // if there's an error it automatically goes to the catch block
-
-          
 
           const res = await fetch("http://localhost:8000/api/v1/trajets", {
             method: "POST",
@@ -168,12 +191,13 @@ else {
               HeurA: heureArrivé,
               Prix: prix,
               Conducteur: userId,
-              climatisation:climatisation,
-              slug:userSlug
+              climatisation: climatisation,
+              slug: userSlug,
+              Sexe: userSexe,
             }),
           });
-          console.log(res) ;
-        
+          console.log(res);
+
           if (!res.ok)
             throw new Error(`Something went wrong ❌ , please try again later`);
 

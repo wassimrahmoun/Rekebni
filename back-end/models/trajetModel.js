@@ -82,6 +82,11 @@ const trajetSchema = new mongoose.Schema(
         "Vous devez ajouter le pseudo du conducteur pour le trajet",
       ],
     },
+    Sexe: {
+      type: String,
+      required: [true, "Vous devez entrer le sexe de la personne"],
+      values: ["Homme", "Femme"],
+    },
   },
   {
     toJSON: { virtuals: true },
