@@ -224,6 +224,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     await sortTrajetsOuReservations(reservations) ;
     const reservationsContainer = document.querySelector(".reservations");
     reservations.forEach(async function(reservation){
+      console.log(reservation) ;
       if (reservation.Conducteur) {
         const numberOfReviews = reservation.reviews.length ;
         const date = new Date(reservation.date);
@@ -259,7 +260,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                    <span class="reviews-value white">${numberOfReviews}</span>
                    <span class="reviews-text white"> Avis</span>
                  </span>
-                 <div class="reserved-tel">05 49208230</div>
+                 <div class="reserved-tel">${reservation.Conducteur.phone}</div>
                </div>
              </div>
              <div class="trip-info">
