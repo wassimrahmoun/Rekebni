@@ -32,6 +32,24 @@ document.addEventListener("DOMContentLoaded", () => {
     signOutEventListener();
   }
 
+  const trajetsLinksEventListener = function(){
+    const departMenu = document.getElementById("departs") ;
+    const destinationMenu = document.getElementById("arrives") ;
+    const trajetsBtns = document.querySelectorAll(".trajet") ;
+    trajetsBtns.forEach(btn=>{
+      btn.addEventListener("click",function(){
+        const locations = btn.querySelectorAll(".trajet-text") ;
+        const depart=locations[0].textContent.toUpperCase().split(" ").join("-");
+        const destination = locations[1].textContent.toUpperCase().split(" ").join("-") ; 
+        if (depart && destination ){
+          departMenu.value = depart ;
+          destinationMenu.value = destination ;
+        }
+      })
+    })
+  }
+  trajetsLinksEventListener() ;
+
   //
 
   const recherche = document.querySelector(".searchbar-btn");

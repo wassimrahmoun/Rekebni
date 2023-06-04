@@ -27,7 +27,7 @@ body {
 }
 .invalid-text {
   font-weight: 500;
-  font-size: 1.15rem;
+  font-size: 1.5rem !important ;
   color: rgb(233, 12, 12);
 }
 .invalid-icon {

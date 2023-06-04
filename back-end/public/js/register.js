@@ -26,16 +26,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const lastName = document.getElementById("last-name").value;
       const firstName = document.getElementById("first-name").value;
       const pseudo = document.getElementById("pseudo").value;
+      const sexe = document.getElementById("sexe").value ;
 
       // Checking inputs
-      if (
-        phoneNumber.charAt(0) !== "0" ||
-        !["5", "6", "7"].includes(phoneNumber.charAt(1)) ||
-        phoneNumber.length !== 10
-      ) {
-        throw new Error("Phone number doesn't exist ❌");
-      }
-
+      
       if (
         !email ||
         !password ||
@@ -43,12 +37,22 @@ document.addEventListener("DOMContentLoaded", (e) => {
         !phoneNumber ||
         !firstName ||
         !lastName ||
-        !pseudo
+        !pseudo ||
+        !sexe
       ) {
-        throw new Error(`Check your inputs ❌`);
+        throw new Error(`Veuillez verifiez vos informations !`);
       }
+
+      if (
+        phoneNumber.charAt(0) !== "0" ||
+        !["5", "6", "7"].includes(phoneNumber.charAt(1)) ||
+        phoneNumber.length !== 10
+      ) {
+        throw new Error("Le numéro de téléphone n'existe pas !");
+      }
+      
       if (passwordConfirm != password)
-        throw new Error(`password fields unmatching ❌`);
+        throw new Error(`Les champs de mot de passe ne correspondent pas !`);
 
       const res = await fetch("http://localhost:8000/api/v1/users/signup", {
         method: "POST",
@@ -62,13 +66,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
           passwordConfirm: passwordConfirm,
           name: `${lastName} ${firstName}`,
           phone: phoneNumber,
+          Sexe:sexe
           // lastName: lastName,
           // firstName: firstName,
           // birthDate:  birthDate,
         }),
       });
       if (!res.ok)
-        throw new Error("Something is wrong ❌ , please try again later !");
+        throw new Error("Quelque chose ne va pas ❌, veuillez réessayer ultérieurement !");
       data = await res.json();
       window.location.href = "/login";
     } catch (err) {

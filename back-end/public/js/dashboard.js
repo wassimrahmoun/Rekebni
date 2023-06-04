@@ -89,7 +89,6 @@ const openCloseTrajetElementEventsListener = function () {
 document.addEventListener("DOMContentLoaded", async function () {
   var alertContainer = document.querySelector(".save-alert") ;
   var editBtns = document.querySelectorAll(".edit--content") ;
-  console.log(user) ;
 
   signOutEventListener();
 
@@ -114,6 +113,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   };
 
   profilTabInfos();
+  console.log(user);
 
   const trajetsContainer = document.querySelector(".trajets");
   const url = `http://localhost:8000/api/v1/trajets/conducteur/${userPseudo}`;
@@ -124,10 +124,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       "Authorization": `Bearer ${token}`,
     },
   });
-  // console.log(res) ;
   let trajets = (await res.json()).data.trajet; // array of current user trajets;
   await sortTrajetsOuReservations(trajets) ;
-
   const mesTrajets = function () {
     trajets.forEach((trajet) => {
       const date = new Date(trajet.date);
@@ -353,16 +351,39 @@ document.addEventListener("DOMContentLoaded", async function () {
     deleteTrajetElement.forEach((elmnt) => {
       elmnt.addEventListener("click", async function () {
         const trajetId = this.id;
+        const res1 = await fetch(`http://localhost:8000/api/v1/trajets/${trajetId}`,{
+          method:"GET",
+          headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+      },
+    }) ;
+
+   const passagers = (await res1.json()).data.trajet.Passagers ;
+
+  await passagers.forEach(async(psg)=> {
+    console.log(psg) ;
+    const res2 = await fetch("http://localhost:8000/api/v1/users/annuler", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: psg.email,
+    }),
+  });
+   console.log(res2);
+}) ;
+ 
         const res = await fetch(
           `http://localhost:8000/api/v1/trajets/${trajetId}`,
           {
             method: "DELETE",
           }
-        );
-        if (res.ok) {
-          mesTrajets();
-          window.location.href = "/html/dashboard.html";
-        }
+        );  
+    
+        if(res.ok) window.location.href = "/html/dashboard.html";
+        
       });
     });
   };
@@ -442,23 +463,53 @@ document.addEventListener("DOMContentLoaded", async function () {
     } ;
 
    const photoModifierListener =  async function(){
-    // edit--photo
-    const photoInput = document.getElementById("edit--photo") ;
-    var photoUrl = "aaaa" ;
 
-   await photoInput.addEventListener("change",async function(){
-      const reader = new FileReader() ;
-      reader.addEventListener("load",function(){
-          photoUrl = reader.result ;
-          console.log(photoUrl) ;
-      })
-      if (photoUrl){
-      userPic = `default.jpg` ;
-      console.log(photoUrl) ;
-      document.querySelector(".head-pfp").src = `../img/user/${userPic}` ;
-      }
+    
+      // userPic = "default.jpg" ;
+
+const fileInput = document.getElementById('edit--photo');
+const profilePhoto = document.getElementById('head-pfp');
+
+fileInput.addEventListener('change', async (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const formData = new FormData();
+    formData.append('photo', file);
+
+    try {
       const url = `http://localhost:8000/api/v1/users/updateMe` ;
-      const res = await fetch(url,{
+       const response = await fetch(url,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+           photo:formData ,
+        })}) ;
+
+      if (response.ok) {
+        profilePhoto.src = URL.createObjectURL(file) ;
+      } else {
+        console.error('Error uploading photo');
+      }
+    } catch (error) {
+      console.error('Error uploading photo:', error);
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
+      // document.querySelector(".head-pfp").src = `../img/user/${userPic}` ;
+      // const url = `http://localhost:8000/api/v1/users/updateMe` ;
+    /*  const res = await fetch(url,{
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -468,11 +519,11 @@ document.addEventListener("DOMContentLoaded", async function () {
            photo:userPic ,
         }),
       }) ;
-      if (res.ok) updateUser() ;
-    }) ;
+      console.log(res) ;
+      if (res.ok) updateUser() ; */
 
- 
-  }
+  } ;
+
   
   photoModifierListener() ;
 

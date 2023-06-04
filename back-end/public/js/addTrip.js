@@ -87,20 +87,18 @@ else {
         const heureArrivé = heures[1].value;
         const prix = document.getElementById("price-input").value;
 
-        const url = `http://localhost:8000/api/v1/trajets?Depart=${depart}&Arrivée=${destination}&sort={"Prix"}`;
-        const response = await fetch(url);
-        const data = (await response.json()).data.data;
-        if (data.length < 1) {
-          msg.classList.remove("hidden");
-        } else {
-          data.forEach((trajet) => {
-            const date = new Date(trajet.date);
-            const day = String(date.getDate()).padStart(2, "0");
-            const month = date.toLocaleDateString("default", {
-              month: "short",
-            });
-            const year = date.getFullYear();
-            let html = `
+      const url = `http://localhost:8000/api/v1/trajets?Depart=${depart}&Arrivée=${destination}&sort={"Prix"}` ;
+      const response = await fetch(url) ;
+      const data = (await response.json()).data.data ;
+      if(data.length<1){msg.classList.remove("hidden") ;} 
+      else{
+      data.forEach(trajet=>{
+        if(trajet.Conducteur){
+        const date =  new Date(trajet.date) ;
+        const day = String(date.getDate()).padStart(2,"0") ;
+        const month = date.toLocaleDateString("default",{month:"short"}) ;
+        const year = date.getFullYear() 
+        let html = `
         <div class="trip" style="display: flex" >
           <div class="driver-profile">
             <img class="photo" src="../img/user/${trajet.Conducteur.photo}"></img>
@@ -125,13 +123,13 @@ else {
             <p>${trajet.Prix} DA</p>
           </div>
         </div>
-      </div>`;
-            document
-              .querySelector(".suggested-prices")
-              .insertAdjacentHTML("beforeend", html);
-          });
+      </div>`
+      document.querySelector(".suggested-prices").insertAdjacentHTML("beforeend",html) ;
         }
-      });
+      })} 
+     
+      
+      });     
 
     document
       .querySelector(".ajouter-btn")
