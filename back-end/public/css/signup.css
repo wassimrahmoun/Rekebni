@@ -258,7 +258,7 @@ body {
   gap: 2rem;
 }
 
-input[type="text" i] {
+input[type="text" i],  select{
   font-family: "ubuntu", sans-serif;
   font-weight: 400;
   color: #030045;
@@ -302,7 +302,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .inputGroup select{
   font-size: 1.5rem;
-  padding: 1rem 2rem;
+padding: 1rem 1.5rem;
   outline: none;
   border: 2px solid rgb(200, 200, 200);
   border-radius: 20px;
