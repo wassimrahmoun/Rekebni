@@ -1,14 +1,11 @@
 var user = JSON.parse(window.localStorage.getItem("userJson"));
 var userId;
 if (user) userId = user.id;
-const loginRegisterTabs = document.querySelector(".nav-login");
-const profileTab = document.querySelector(".nav-profile");
+
 
 const showProfilePic = function () {
   var userPic = user.photo;
-  document
-    .querySelector(".profile-pic")
-    .setAttribute("src", `../img/user/${userPic}`);
+  document.querySelector(".profile-pic").setAttribute("src", `../img/user/${userPic}`);
 };
 
 const signOutEventListener = function () {
@@ -21,6 +18,8 @@ const signOutEventListener = function () {
 };
 
 document.addEventListener("DOMContentLoaded",function(){
+  const loginRegisterTabs = document.querySelector(".nav-login");
+  const profileTab = document.querySelector(".nav-profile");
     if (!userId) {
         profileTab.classList.add("hidden");
         loginRegisterTabs.classList.remove("hidden");
