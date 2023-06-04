@@ -23,16 +23,16 @@ const signOutEventListener = function () {
   });
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  showProfilePic();
-  signOutEventListener();
+// document.addEventListener("DOMContentLoaded", function () {
+//   showProfilePic();
+//   signOutEventListener();
 
-  setTimeout(function () {
-    // Remove the spinner and display the content
-    document.getElementById("loading-spinner-container").style.display = "none";
-    document.body.style.overflow = "auto"; // Show scrollbars
-  }, 300);
-});
+//   setTimeout(function () {
+//     // Remove the spinner and display the content
+//     document.getElementById("loading-spinner-container").style.display = "none";
+//     document.body.style.overflow = "auto"; // Show scrollbars
+//   }, 300);
+// });
 
 function formatDate(dateString) {
   const date = new Date(dateString);

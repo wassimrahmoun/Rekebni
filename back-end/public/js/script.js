@@ -94,30 +94,23 @@ function revealOnScroll() {
   }
 }
 window.addEventListener("scroll", revealOnScroll);
-const messages = [
-  "Faites un geste pour l'environnement",
-  "et voyagez en toute sérénité.",
-];
+// Sélectionner l'élément de texte
+const heroSubtext = document.getElementById("hero-subtext");
+// Obtenir le texte à afficher
+const text = heroSubtext.innerText;
 
-const textElement = document.querySelector(".hero-subtext");
-let currentMessageIndex = 0;
-let currentCharacterIndex = 0;
+heroSubtext.innerText = "";
 
-function typeWriter() {
-  if (currentMessageIndex < messages.length) {
-    const currentMessage = messages[currentMessageIndex];
-
-    if (currentCharacterIndex < currentMessage.length) {
-      textElement.innerHTML += currentMessage.charAt(currentCharacterIndex);
-      currentCharacterIndex++;
-      setTimeout(typeWriter, 50);
-    } else {
-      currentMessageIndex++;
-      currentCharacterIndex = 0;
-      textElement.innerHTML += "<br>"; // Ajoute un saut de ligne après chaque message
-      setTimeout(typeWriter, 500); // Attendre 1 seconde avant d'afficher le message suivant
-    }
+// Fonction pour ajouter progressivement les caractères au texte
+function typeWriter(text, i) {
+  if (i < text.length) {
+    heroSubtext.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(function () {
+      typeWriter(text, i);
+    }, 50); // Temps d'attente entre chaque caractère (50ms)
   }
 }
 
-typeWriter();
+// Appeler la fonction pour démarrer l'effet de typewriter
+typeWriter(text, 0);
