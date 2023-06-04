@@ -146,7 +146,7 @@ body {
   background-color: #ffffff;
 }
 
-.inputGroup :is(input:focus, input:valid) {
+.inputGroup :is(input:focus, input:valid), .inputGroup :is(select:focus, select:valid) {
   border-color: #030045;
 }
 
