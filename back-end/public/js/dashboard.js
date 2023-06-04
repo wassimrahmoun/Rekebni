@@ -472,6 +472,7 @@ const fileInput = document.getElementById('edit--photo');
 const profilePhoto = document.querySelector('.head-pfp');
 
 fileInput.addEventListener('change', async (event) => {
+  window.onbeforeunload = () => 'Êtes-vous sûr de vouloir quitter cette page ?';
   const file = event.target.files[0];
   if (file) {
     const formData = new FormData();
@@ -498,15 +499,16 @@ fileInput.addEventListener('change', async (event) => {
              });
 
   let photo = (await res.json()).data.doc.photo ; // array of current user trajets;
-        profilePhoto.src = URL.createObjectURL(file) ;
+        profilePhoto.src = await URL.createObjectURL(file) ;
         userPic = photo ;
-        
         updateUser() ;
+        window.onbeforeunload =  undefined ; 
       } else {
-        console.error('Error uploading photo');
+        throw new Error('Error uploading photo');
       }
     } catch (error) {
-      console.error('Error uploading photo:', error);
+      console.error(error.message);
+      window.onbeforeunload =  undefined ;
     }
   }
 });
