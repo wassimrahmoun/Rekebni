@@ -488,9 +488,19 @@ fileInput.addEventListener('change', async (event) => {
     }) ;
 
       if (response.ok) {
+        const url = `http://localhost:8000/api/v1/users/${userId}`;
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+             },
+             });
+
+  let photo = (await res.json()).data.doc.photo ; // array of current user trajets;
         profilePhoto.src = URL.createObjectURL(file) ;
-        console.log(formData);
-        console.log(URL.createObjectURL(file))
+        userPic = photo ;
+        
         updateUser() ;
       } else {
         console.error('Error uploading photo');
