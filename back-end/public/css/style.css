@@ -637,7 +637,7 @@ img {
   display: flex;
   flex-direction: column;
   position: absolute;
-  right: 7rem;
+  right: 8.5rem;
   top: 7rem;
   max-width: 22rem;
   border-radius: 1.3rem 1.3rem 1.3rem 1.3rem;
@@ -652,7 +652,7 @@ img {
 }
 .profile-menu-ele {
   background-color: #fff;
-  padding: 2rem 1rem;
+  padding: 2rem 3rem;
   text-align: center;
   position: relative;
   font-size: 1.7rem;
