@@ -500,7 +500,7 @@ fileInput.addEventListener('change', async (event) => {
              },
              });
 
-  let photo = (await res.json()).data.doc.photo ; // array of current user trajets;
+  let photo = (await res.json()).data.doc.photo ; 
         profilePhoto.src = await URL.createObjectURL(file) ;
         userPic = photo ;
         updateUser() ;

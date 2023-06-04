@@ -74,8 +74,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
       });
       if (!res.ok)
         throw new Error("Quelque chose ne va pas ❌, veuillez réessayer ultérieurement !");
-      data = await res.json();
-      window.location.href = "/login";
+      const compteActive = (await res.json()).date.user.active ;
+      console.log(compteActive) ;
+      
+      // window.location.href = "/login";
     } catch (err) {
       // emptyOutInputs();
       document.querySelectorAll(".erreur").forEach((txt) => txt.remove());
