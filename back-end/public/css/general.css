@@ -151,6 +151,13 @@ body {
 .container-gap {
   gap: 0.2rem;
 }
+.error-message{
+  font-size: 2.7rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* //////////////////////////// */
 /* PROFIL CSS HANDING */
 /* //////////////////////////// */
