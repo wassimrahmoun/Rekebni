@@ -259,6 +259,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                    <span class="reviews-value white">${numberOfReviews}</span>
                    <span class="reviews-text white"> Avis</span>
                  </span>
+                 <div class="reserved-tel">05 49208230</div>
                </div>
              </div>
              <div class="trip-info">
